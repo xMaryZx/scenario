@@ -1,0 +1,760 @@
+
+/*------------------------------------------------------------------------------
+＞松井さんからのメール
+
+	シチュエーション機能を実装いたしました。
+	環境を更新することで確認できます。
+
+	シチュエーションのデータベース、サンプルスクリプトは以下のファイルになります。
+	データベース    ：    \make\database\dbSituation.cpp
+	サンプル		：    \make\script\シナリオ\サンプルプログラム\907-シチュエーション.stcm2
+
+	実行のテストはゲーム起動時のデバッグメニューから
+	松井テスト→シチュエーション
+	を選択することで可能です。
+
+	実行の際は以下の点にご注意ください。
+	・各解放のフラグがないためInitファイルに追加する必要があります。
+	・サンプルでは峰雄のソースのみが用意されているため、強制で峰雄のシチュエーションが始まります。
+	・シチュエーション名画像の8番がないため表示されません。（ダミーなので問題はございません）
+
+------------------------------------------------------------------------------*/
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+// 愛時服装：ジャケットあり
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure60
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure60_turn0"]
+	[/if]
+
+	*sure60_turn0
+
+		// 機能の制限
+		// パレットメニューは開けないように制限する必要があります。
+		// ※セーブ、ロード、タイトルへ戻るなどの動作があるため
+		// バックログは使用可能ですが、ログに同じ言葉が並ぶことになると思われるので
+		// 見栄えが悪くなる可能性があります。
+
+		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="1"]			// メニュー
+		//[set_restrict bit="ADV_RESTRICT_INPUT_BACKLOG" num="1"]	// バックログ
+		//[set_restrict bit="ADV_RESTRICT_INPUT_QUICK" num="1"]		// クイックセーブ、クイックロード
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+
+		///////////////////////////////////////////////
+
+		[bgm_play no="18" count="0"]		// BGM再生：18_捜査Ｂ ＡＤＶ
+
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j == 0"]	[ezbg_change3 name="bg_34c" time="LIGHT2" count="0"]		/* bg34　　夜　　　　探偵事務所前データ　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 1"]	[ezbg_change3 name="bg_15a" time="NOON" count="0"]		/* bg15　昼　　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 2"]	[ezbg_change3 name="bg_16a" time="NOON" count="0"]		/* bg16　昼　　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 3"]	[ezbg_change3 name="bg_17a" time="NOON" count="0"]		/* bg17　昼　　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 4"]	[ezbg_change3 name="bg_17c" time="LIGHT2" count="0"]		/* bg17　　夜　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 5"]	[ezbg_change3 name="bg_15c" time="LIGHT2" count="0"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[/if]
+
+		[chara_app_cm ch_name="aiji_a400a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		// シチュエーション開始
+		[open_situation chara_id="0"]	// ０：柳愛時
+
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		// スマートフォン版はメニュー画面を終了確認ウィンドウに置き換えます
+		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="0"]			// メニュー
+
+		[batch]
+
+		[return]
+
+
+
+/*=======================================================================================================================
+シチュエーション１　■待ち合わせ
+=======================================================================================================================*/
+*sure1
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+
+	*sure1_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 1"]
+
+			[ezbg_change3 name="bg_15a" time="NOON" count="BG_SP"]		/* bg15　昼　　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="1"]
+		/*-----------------------------*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[ezchara_nextstate_cm ch_name="aiji_a203a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012084" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="こら、慌てて走ると転ぶぞ。"]	// 「
+		[maintxt_print2 text="そんなに待ってないから、気にするな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a200b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012085" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="お前が遅れるなんて珍しいな。"]	// 「
+		[maintxt_print2 text="なにかあったのか？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a214b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012086" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="…………は？"]	// 「
+		[maintxt_print2 text="来る途中でナンパに、遭った……？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a205b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012087" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……大丈夫だったのか？"]	// 「
+		[maintxt_print2 text="変なことされてないか。どういう奴だった？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a218a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012088" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="ん？　べつにお前に怒ってるわけじゃない。"]	// 「
+		[maintxt_print2 text="ただ……そのクソナンパ野郎――じゃない、"]
+		[maintxt_print2 text="お前にちょっかいかけた男に腹は立ってる"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a403a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012089" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……最近、自分でもどうかとは思うんだ。"]	// 「
+		[maintxt_print2 text="お前のことになると、驚くほど心が狭くなる。"]
+		[maintxt_print2 text="おい……なんで喜んでるんだ？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012090" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="とにかく……あまり心配させるな。"]	// 「
+		[maintxt_print2 text="目の前でお前が他の男に触られたりしたら、"]
+		[maintxt_print2 text="さすがに冷静でいられる自信がないからな"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3000" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション２　■手をつなぐ
+=======================================================================================================================*/
+*sure2
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+
+	*sure2_turn0
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]/* 全キャラ削除 */
+		[batch]
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 2"]
+
+			[ezbg_change3 name="bg_16a" time="NOON" count="BG_SP"]		/* bg16　昼　　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="2"]
+		/*-----------------------------*/
+
+		[bgm_play no="03" count="0"]		// BGM再生：03_日常Ｂ 昼
+
+		[chara_app_cm ch_name="b-aiji_a200b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012091" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="ん？　俺の手が大きい？"]	// 「
+		[maintxt_print2 text="ああ、いつも安心するって言ってくれるな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a208a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012092" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="俺は……お前の手を握ると少し不安になる。"]	// 「
+		[maintxt_print2 text="ちょっとしたことで壊れそうなくらい小さくて。"]
+		[maintxt_print2 text="他でもない俺自身が壊さないか、心配なんだ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a214b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012093" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="は？　壊されてもいい、って……。"]	// 「
+		[maintxt_print2 text="……あのな。いい機会だから、"]
+		[maintxt_print2 text="ちゃんと言っておく"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a408b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012094" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="お前はいつもそうやって、俺になら"]	// 「
+		[maintxt_print2 text="なにをされてもいい、みたいなこと言うが……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a405a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012095" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="さすがに俺も、男だからな。"]	// 「
+		[maintxt_print2 text="そういうことを言われて、平然としていられるほど"]
+		[maintxt_print2 text="大人でもないし、枯れてもいない"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a406a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012096" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……誘ってるなら、据え膳はもらうが。"]	// 「
+		[maintxt_print2 text="俺を煽って後悔したくないなら、やめとけ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012097" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="後悔しない？　はあ……わかった。"]	// 「
+		[maintxt_print2 text="そこまで言うなら、覚悟してもらうぞ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a406a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012098" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……もう、取り消してやれないからな"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3000" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション３　■トラブル発生（orささいな喧嘩）
+=======================================================================================================================*/
+*sure3
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+
+	*sure3_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 3"]
+
+			[ezbg_change3 name="bg_17a" time="NOON" count="BG_SP"]		/* bg17　昼　　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="3"]
+		/*-----------------------------*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[ezchara_nextstate_cm ch_name="aiji_a200a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012099" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="どうした。誰か知り合いでもいたか？"]	// 「
+		[maintxt_print2 text="なに？　さっきナンパされた奴、だと……？"]	// 」
+
+		[batch]
+
+		/*-----------------------------
+		台詞：愛時、理性と戦ってる
+		-------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="aiji_a204a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012100" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="………………"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a211b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012101" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="…………いや。ちょっと待ってくれ。"]	// 「
+		[maintxt_print2 text="今、必死で理性と戦ってる"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a210a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012102" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……ああ、大丈夫だ。冷静になった。"]	// 「
+		[maintxt_print2 text="想像の中だけでボコボコにしたからな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a201b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012103" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="まあ、比較的優しいお仕置きレベルだな。"]	// 「
+		[maintxt_print2 text="お前に引かれたくないし、詳細は秘密にしておく"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3000" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション４　■タイトル未定（デート終盤、いちばん良いムード、改めての告白や内緒のキスなど）
+=======================================================================================================================*/
+*sure4
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure4_turn0"]
+	[/if]
+
+	*sure4_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 4"]
+
+			[ezbg_change3 name="bg_17c" time="LIGHT2" count="BG_SP"]		/* bg17　　夜　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="4"]
+		/*-----------------------------*/
+
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		[ezchara_nextstate_cm ch_name="aiji_a200a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012104" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="まだ時間は大丈夫か？"]	// 「
+		[maintxt_print2 text="ああ、なら店を予約してあるから、"]
+		[maintxt_print2 text="夕飯食べて帰るか"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a228a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012105" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="一応、女子が喜びそうな店を選んだ。"]	// 「
+		[maintxt_print2 text="慣れないことをしたから自信はないが……"]
+		[maintxt_print2 text="たまには、な"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a206a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012106" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……一緒にいられるだけでいい？"]	// 「
+		[maintxt_print2 text="そう、か。……ああ、俺もだ。"]
+		[maintxt_print2 text="お前と一緒なら、なんでもいい"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a210a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012107" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="手を繋いで、同じものを見て、笑い合って……"]	// 「
+		[maintxt_print2 text="そんな時間を過ごせるだけで、幸せだって思う。"]
+		[maintxt_print2 text="……そのたびに、お前をもっと好きになる"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a201b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012108" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……とはいえ、今日くらいは恋人らしく"]	// 「
+		[maintxt_print2 text="エスコートさせてくれ。お前の笑った顔が"]
+		[maintxt_print2 text="見たくて、頑張って考えたんだからな"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3000" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション５　■また明日
+=======================================================================================================================*/
+*sure5
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure5_turn0"]
+	[/if]
+
+	*sure5_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 5"]
+
+			[ezbg_change3 name="bg_15c" time="LIGHT2" count="BG_SP"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="5"]
+		/*-----------------------------*/
+
+		[bgm_play no="10" count="0"]		// BGM再生：10_恋愛Ａ 安らぎ
+
+		[ezchara_nextstate_cm ch_name="aiji_a201a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012109" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="じゃあな。"]	// 「
+		[maintxt_print2 text="１日歩き通しで疲れただろ。ゆっくり休め"]	// 」
+
+		[batch]
+
+		/*-----------------------------
+		ＳＥ：歩き出す足音
+		ＳＥ：引き留める布ずれの音
+		-------------------------------*/
+		/*----------------------------*/
+		[ezchara_del_cm ch_name="aiji_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+		[se_play3 no="00018" count="40"]/* SE再生：足音　歩き　去る　１人・アスファルトＢ（固め：タッタッタ…）　　　　　　　　 */
+
+		[ezbg_change3 name="enbg_15c" time="LIGHT2" count="BG_SP_MDL"]	/* bg15　夜　　　　新宿署付近＿交差点（原寸大）　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="50" point_y="100" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]//背景カメラ
+		[batch]
+
+		[ef_shake3 side="INSIDE" slevel="YOKO_Lv1"]	/* 横揺れＬｖ１（軽く腕を捕まれるなど　） */
+		[se_play2 no="00173" count="40"]/* SE再生：衣服　止める（バスッ）　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		/*----------------------------*/
+
+		[chara_app_cm ch_name="b-aiji_a400a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012110" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……どうした？　あっさりしすぎてる？"]	// 「
+		[maintxt_print2 text="いや、だが……もう遅い時間だろ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a208a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012111" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……っ、そんな顔、するな。"]	// 「
+		[maintxt_print2 text="べつに、俺だって名残惜しくないわけじゃない。"]
+		[maintxt_print2 text="むしろ俺のほうが……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a210a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012112" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="はあ……お前、やっぱりわかってないな。"]	// 「
+		[maintxt_print2 text="……目、閉じろ"]	// 」
+
+		[batch]
+
+		/*-----------------------------
+		ＳＥ：キス音
+		-------------------------------*/
+
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[txtwaitset count="20"]
+		[batch]
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_BACK5" alpha="255" speed="80"]	// ブラックアウト開始
+		[txtwaitset count="80"]
+		[batch]
+		[ezchara_nextstate_cm ch_name="b-aiji_a227a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+		[txtwaitset count="120"]
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_BACK5" speed="100"]					// ブラックアウト終了
+		[txtwaitset count="100"]
+		[batch]
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012113" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="っは……。こうやって、お前にキスすると"]	// 「
+		[maintxt_print2 text="止まらなくなるから、我慢してるんだ。"]
+		[maintxt_print2 text="……帰したく、なくなる"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a225a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012114" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="帰して欲しくない、か。……言うと思った"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a224a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012115" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="わかってて抑えられない俺も俺だな。"]	// 「
+		[maintxt_print2 text="本当に俺は……お前に溺れてる"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a206a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012116" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="じゃあ……帰してやらない。いいんだな？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[ezbg_change3 name="bg_15c" time="LIGHT2" count="BG_SP"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[batch]
+
+		[file_change no="3000" label="sure60"]
+
+		[batch]
+
+		[return]
+
+

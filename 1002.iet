@@ -1,0 +1,836 @@
+
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure1_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure1_turn2"]
+	[/if]
+	[if estimate="$i==3"][calllua function="stcm2_goto" label="sure1_turn3"]
+	[/if]
+	[if estimate="$i==4"][calllua function="stcm2_goto" label="sure1_turn4"]
+	[/if]
+
+	*sure1_turn0
+
+		/*------------------------------
+		●シーンAS-mineo-0001
+		場所：
+		時間：
+		登場人物（服装）：主人公、峰雄
+		視点：峰雄
+		------------------------------*/
+		/*------------------------------
+		【カラマリ】ショートストーリー
+		榎本峰雄編
+		------------------------------*/
+		/*------------------------------
+		演出：すべてノベルモードです。
+		※ボイスはありません。
+		------------------------------*/
+		/*------------------------------
+		背景：空（夜）
+		------------------------------*/
+		/*----------------------------*/
+		/* 制限                       */
+		// スマートフォン版はメニュー画面を終了確認ウィンドウに置き換えます
+//		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="1"]			// メニュー
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+		/*----------------------------*/
+		/*----------------------------*/
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+		[ezbg_change3 name="bg_60c" time="NIGHT" count="BG_SP"]		/* bg60　夜　　　　　空　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[novel_st shadow="0" outline="0"]		// ノベルスタート
+		[ezfg_change2 name="fg_novel" count="BG_SP"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[maintxt_print text="鼓膜に響く大きな音と共に、"]	// ノベル
+		[maintxt_print text="彩とりどりの光が空に散りばめられる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「た～まや～！　キレイだなー！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「はい……！"]	// ノベル
+		[maintxt_print text="　さすが、国内でも屈指の品評会ですね」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「へへ、だろー？"]	// ノベル
+		[maintxt_print text="　ずっと、お前に見せてやりたかったんだ。"]	// ノベル
+		[maintxt_print text="　やっと新宿の外に出られることになったし」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「それに、そのー……やっぱりカップルって"]	// ノベル
+		[maintxt_print text="　言ったら、花火デートが定番っつーか……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ありがとうございます、峰雄さん。"]	// ノベル
+		[maintxt_print text="　……でも、さっきの『たまや』って掛け声、"]	// ノベル
+		[maintxt_print text="　どういう意味なんですか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「えっ！？　お前、知らねえの！？"]	// ノベル
+		[maintxt_print text="　『かぎやー』ってのも！？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「し、知らないです……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「うおお……こ、これが噂の"]	// ノベル
+		[maintxt_print text="　ジェネレーションギャップってやつ……！？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「え、でも私と峰雄さんって、"]	// ノベル
+		[maintxt_print text="　２歳しか変わらないですよね……？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「う。そ、それはそうなんだけどさ……。"]	// ノベル
+		[maintxt_print text="　俺、じーちゃんばーちゃんと仲良かったし、"]	// ノベル
+		[maintxt_print text="　わりと古臭いって言われること多くて……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――そう、今時の若者のようにスマートに"]	// ノベル
+		[maintxt_print text="恋人をエスコートすることもできないし、"]	// ノベル
+		[maintxt_print text="女子が喜ぶようなデートプランもわからない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="これが、最近の俺――榎本峰雄にとって"]	// ノベル
+		[maintxt_print text="最大の悩みと言っても過言じゃなかった。"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		背景：新宿俯瞰（昼）（回想扱い）
+		------------------------------*/
+		/*----------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+		[ezbg_change3 name="bg_WHITE" time="NOON" count="BG_SP"]
+		[batch]
+		[txtwaitset count="30"]
+		[batch]
+		[ezbg_change3 name="bg_00a" time="NOON" count="CG_WAIT"]		/* bg00　昼　　　　　新宿俯瞰　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+
+		[txtwaitset count="40"]
+		[batch]
+		[ezfg_change2 name="fg_novel" count="BG_SP"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[maintxt_print text="#Name[1]に出逢って、"]	// ノベル
+		[maintxt_print text="共に事件を追うパートナーになって、"]	// ノベル
+		[maintxt_print text="一緒に過ごすたびに惹かれていった。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="先輩の事件があって、警察を辞めて……"]	// ノベル
+		[maintxt_print text="現実から目を背け続けていた俺に、"]	// ノベル
+		[maintxt_print text="前へ進む勇気をくれた大切な人。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="恋人同士になれたときには、"]	// ノベル
+		[maintxt_print text="都合の良い夢か、ドッキリかとも疑ったが――。"]	// ノベル
+		[maintxt_print text="X-Day事件が一段落して新宿が元に戻っても、"]	// ノベル
+		[maintxt_print text="こうして#Name[1]は隣で笑っていてくれる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="それだけで、やっぱり夢じゃないかと"]	// ノベル
+		[maintxt_print text="疑いたくなるほど幸せな日々だ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="……だからこそ、恋人として喜ばせたいし、"]	// ノベル
+		[maintxt_print text="もっと好きになってもらえるように努力したい。"]	// ノベル
+		[maintxt_print text="思うのは簡単でも、経験不足の自分は"]	// ノベル
+		[maintxt_print text="どうにもうまくやれている自信がなかった。"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		背景：空（夜）
+		------------------------------*/
+
+		/*----------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+		[ezbg_change3 name="bg_WHITE" time="NOON" count="BG_SP"]
+		[batch]
+		[txtwaitset count="30"]
+		[batch]
+		[ezbg_change3 name="bg_60c" time="NIGHT" count="CG_WAIT"]		/* bg60　夜　　　　　空　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+
+		[txtwaitset count="40"]
+		[batch]
+		[ezfg_change2 name="fg_novel" count="BG_SP"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[maintxt_print text="今日も花火大会に誘ったはいいものの、"]	// ノベル
+		[maintxt_print text="急速に不安が襲ってくる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……悪い。女子的にはもっとこう……"]	// ノベル
+		[maintxt_print text="　夜景のキレイなレストランとか憧れるよな？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「なに言ってるんですか！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="しおしおと落ち込みながら呟くと、"]	// ノベル
+		[maintxt_print text="なぜか#Name[1]が怒ったように声を上げた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――いや、実際に顔も怒っている。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「私は、峰雄さんとそういうところに"]	// ノベル
+		[maintxt_print text="　行きたいだなんて思ったことありません」"]	// ノベル
+
+		[batch]
+
+		[bgm_play no="03" count="0"]		// BGM再生：03_日常Ｂ 昼
+
+		[maintxt_print text="「うえっ！？"]	// ノベル
+		[maintxt_print text="　それはそれでどうなんだ……！？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あ、そういう意味じゃなくて……。"]	// ノベル
+		[maintxt_print text="　その……峰雄さんとは、こうやって賑やかな"]	// ノベル
+		[maintxt_print text="　場所で花火を一緒に見たり、昼間の公園で"]	// ノベル
+		[maintxt_print text="　お弁当持って何気ない話をしたり……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="言い募りながら、#Name[1]がふっと微笑む。"]	// ノベル
+		[maintxt_print text="その笑顔に、ドキリと心臓が鳴った。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「そういう、普通のことで幸せを感じるんです。"]	// ノベル
+		[maintxt_print text="　峰雄さんと一緒にいられるだけで、嬉しいから」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「#Name[1]……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="その言葉に、うっかり目頭が熱くなる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（……そうだよ、自分で言ったんじゃねえか）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="こいつとは、気取った場所でのデートとか、"]	// ノベル
+		[maintxt_print text="飾り立てたシチュエーションなんて必要ない。"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn1
+
+		[maintxt_print text="等身大で笑い合えるだけで、幸せだって。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「そう……だよな。"]	// ノベル
+		[maintxt_print text="　そういうお前だからこそ、好きになったんだ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「えっ……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「？　なに驚いてんだよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「だ、だって、いきなり好きとか……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「はは、今さらだろ。"]	// ノベル
+		[maintxt_print text="　これに関しては、俺はもう自分を偽らねえぞ？"]	// ノベル
+		[maintxt_print text="　俺は、お前のことが大好きだ。すっげー好き」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……っ、峰雄さん……っ！"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="周囲を気にしながら、#Name[1]が顔を赤くする。"]	// ノベル
+		[maintxt_print text="いつもは強気なくせに、ふとしたときに"]	// ノベル
+		[maintxt_print text="恥ずかしがる姿が可愛くてどうしようもない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「どうせ、花火と喧騒で誰も聞こえてねえよ。"]	// ノベル
+		[maintxt_print text="　……な、だからお前も言ってくれ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「え……え！？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「俺だけって不公平だろ。"]	// ノベル
+		[maintxt_print text="　前のときは俺が動揺しまくっても"]	// ノベル
+		[maintxt_print text="　おかまいなしに言ってくれたじゃねえか」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あ、あれは峰雄さんが落ち込んでたし、"]	// ノベル
+		[maintxt_print text="　勢いというものがあって……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="改めてとなると、恥ずかしいらしい。"]	// ノベル
+		[maintxt_print text="珍しく主導権を握れた気分になって、"]	// ノベル
+		[maintxt_print text="俺はワクワクしながら言葉の先を待った。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……ご想像にお任せします」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「はぁっ！？　ちょ、ずるいぞソレ！"]	// ノベル
+		[maintxt_print text="　なんで言ってくれねえの！？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「そんなに軽く言えることじゃないんです！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「いやいやいや。"]	// ノベル
+		[maintxt_print text="　カップルなら毎日言い合うだろ。"]	// ノベル
+		[maintxt_print text="　おはようとおやすみレベルで言うだろ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「どこで得た知識ですか……。"]	// ノベル
+		[maintxt_print text="　とにかく、峰雄さんには言葉にしなくても"]	// ノベル
+		[maintxt_print text="　ちゃんと伝わってると思ってますから」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="『ですよね？』と言いながら、"]	// ノベル
+		[maintxt_print text="#Name[1]がにっこりと笑顔を作る。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……卑怯だぞ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="そんな可愛い顔を見せられたら、"]	// ノベル
+		[maintxt_print text="押し黙るしかなくなってしまう。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あ、峰雄さん。"]	// ノベル
+		[maintxt_print text="　焼きトウモロコシありますよ！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="しかも、あからさまに話題を逸らされてしまった。"]	// ノベル
+		[maintxt_print text="ここで食い下がるのも情けない気がして、"]	// ノベル
+		[maintxt_print text="俺は唇を尖らせながら、後をついていく。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――と。"]	// ノベル
+
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[maintxt_print text="「きゃっ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="人混みにぶつかって、"]	// ノベル
+		[maintxt_print text="#Name[1]が盛大によろけた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「っ！　大丈夫か？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「は、はい。ありがとうございます。"]	// ノベル
+		[maintxt_print text="　すみません、躓いちゃって……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ああ、下駄慣れてねえと歩きにくいよな。"]	// ノベル
+		[maintxt_print text="　……っと、」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="ふらついた#Name[1]の肩を支えて、"]	// ノベル
+		[maintxt_print text="俺は辺りをきょろきょろと見回した。"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn2
+
+		[maintxt_print text="少し離れたところに人の少ない公園を見つけると、"]	// ノベル
+		[maintxt_print text="彼女に向かって手を差し伸べる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あっちでも花火見えそうだし、休憩しようぜ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「え、でも……峰雄さん、屋台回るの"]	// ノベル
+		[maintxt_print text="　楽しみにしてたんじゃないですか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「そんなの、いつでも楽しめるだろ。"]	// ノベル
+		[maintxt_print text="　今はお前のほうが大事。"]	// ノベル
+		[maintxt_print text="　……足、ちょっとひねっただろ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「つーか、下駄履いてんだから"]	// ノベル
+		[maintxt_print text="　歩き回るのも辛いに決まってるし。"]	// ノベル
+		[maintxt_print text="　……気付かなくてごめんな」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……たいしたことないです。"]	// ノベル
+		[maintxt_print text="　私は大丈夫ですから――」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ったく……いいから、大人しく言うこと聞け。"]	// ノベル
+		[maintxt_print text="　そうやって意地張るの、お前の悪い癖だぞ。"]	// ノベル
+		[maintxt_print text="　ま、好きなとこでもあるけどさ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="#Name[1]の反論を最後まで聞かず、"]	// ノベル
+		[maintxt_print text="俺はその手をぎゅっと握った。"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		背景：公園（夜）
+		※背景ないので代用していますが、
+		　可能であれば少しアップにしたほうが
+		　良いかもしれません……。
+		------------------------------*/
+		/*----------------------------*/
+		/* ページ切り替え             */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="enbg_43c" time="LIGHT2" count="BG_SP"]	/* bg43　夜　　　　公園（原寸大）　　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="BENCH_XPOS" point_y="450" size_z="120" count="NO_CNT" ptn="NO_PT"]	//背景カメラ：公園ベンチ
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		[maintxt_print text="「よし。ちょっと我慢してくれよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="#Name[1]をベンチに座らせると、"]	// ノベル
+		[maintxt_print text="俺は水道でハンカチを濡らしてから、"]	// ノベル
+		[maintxt_print text="膝をついて足先に押し当てる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……っ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「痛いか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「いえ、ちょっと冷たかっただけです。"]	// ノベル
+		[maintxt_print text="　本当にもう大丈夫ですよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="確かに見たところ、腫れてはいないようだ。"]	// ノベル
+		[maintxt_print text="鼻緒で指が擦れているかとも思ったが、"]	// ノベル
+		[maintxt_print text="それも問題なし。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ん。けど、しばらく冷やしとけ。"]	// ノベル
+		[maintxt_print text="　歩きっぱなしで疲れてるだろうしな」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="#Name[1]の頭をぽんと軽く叩いて、"]	// ノベル
+		[maintxt_print text="俺もベンチに腰を下ろす。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="さっきよりも小さくなった花火を見上げた。"]	// ノベル
+		[maintxt_print text="喧騒もだいぶ遠のいて、これはこれで"]	// ノベル
+		[maintxt_print text="風流な気がする。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="……すると、#Name[1]がこちらを"]	// ノベル
+		[maintxt_print text="じっと見つめているのに気付いた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……どうした？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……峰雄さん。"]	// ノベル
+		[maintxt_print text="　ちょっと変わりましたよね」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「んあ？　なにが？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「前はハンカチなんてまともに"]	// ノベル
+		[maintxt_print text="　持ってなかったのに……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「うぐっ……、ンなことねえよ。"]	// ノベル
+		[maintxt_print text="　あんときはたまたま持ってなかっただけ！"]	// ノベル
+		[maintxt_print text="　やっぱ男の身だしなみとして必要だろ？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「それに……前は手を繋ぐだけで"]	// ノベル
+		[maintxt_print text="　動揺してたのに、サラッとしてるし……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「うぐぐ……、そ、そりゃ、今さら手くらいで"]	// ノベル
+		[maintxt_print text="　動揺してたらカッコ悪ぃだろ。"]	// ノベル
+		[maintxt_print text="　俺たちはもう……恋人同士なんだし」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「そうなんですけど……なんだか、悔しいです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「へ？　悔しい……？」"]	// ノベル
+
+		[batch]
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+
+		[maintxt_print text="「ドキドキしてるの、私だけみたいで」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「は……？」"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn3
+
+		[maintxt_print text="ぽつりと呟いた#Name[1]を改めて見ると、"]	// ノベル
+		[maintxt_print text="俯き加減の顔は少し赤く染まっていた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="その表情に、言葉に、心に、"]	// ノベル
+		[maintxt_print text="俺が毎日どれだけ振り回されているかも"]	// ノベル
+		[maintxt_print text="わかっていなかったなんて。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……バカじゃねえの」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「な……なんでですか！」"]	// ノベル
+
+		[batch]
+
+		[bgm_play no="10" count="0"]		// BGM再生：10_恋愛Ａ 安らぎ
+
+		[maintxt_print text="「ドキドキしてんのがお前だけなわけねーだろ！"]	// ノベル
+		[maintxt_print text="　これに関しては負ける気しねえからな！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……っ！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「俺はずっとドキドキさせられっぱなしだっつの。"]	// ノベル
+		[maintxt_print text="　……今だって、頑張ってんだよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「え……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「俺、動揺するとすぐに考えてること口に出るし。"]	// ノベル
+		[maintxt_print text="　これでも、なるべく冷静になろうとしてんだ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「峰雄さん……言ったじゃないですか。"]	// ノベル
+		[maintxt_print text="　無理する必要なんてないです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「や、無理してるわけじゃねえんだけど……。"]	// ノベル
+		[maintxt_print text="　正直……お前に惚れすぎてるって"]	// ノベル
+		[maintxt_print text="　自覚あるからさ。やりすぎて引かれたくねえ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「引くわけないです！"]	// ノベル
+		[maintxt_print text="　それを言ったら私だって、そうですよ。"]	// ノベル
+		[maintxt_print text="　いつだって峰雄さんのこと……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="前のめりになった#Name[1]が何かを"]	// ノベル
+		[maintxt_print text="言いかけたが、そこで言葉が止まってしまう。"]	// ノベル
+		[maintxt_print text="――我慢できず、俺は口を開いていた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……好きか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「…………っ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="今度は誤魔化すことができないように、"]	// ノベル
+		[maintxt_print text="真剣な目でまっすぐ彼女を見つめる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="すると、#Name[1]はムッとした顔になって、"]	// ノベル
+		[maintxt_print text="なぜか無言でぐいっと身体を寄せてきた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「？　お、おい……？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="突然の接近に戸惑っていると、"]	// ノベル
+		[maintxt_print text="今度は顔が目の前まで近づいて――"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……大好きです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="ぽそりと、耳元で大好きな声が囁く。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「！！！！！！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……ちゃんと伝わりましたか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「………………」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あ、あの。峰雄さん……？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……ダメだ。……今の、超キた」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="想像以上の破壊力に、"]	// ノベル
+		[maintxt_print text="俺の思考は真っ白になってしまった。"]	// ノベル
+		[maintxt_print text="頭を抱えるしかない。一発ＫＯだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「やっぱ……お前には敵う気がしねえ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ふふ、お互い様ですよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="一転して楽しそうに笑う彼女につられて、"]	// ノベル
+		[maintxt_print text="俺もふっと笑みがこぼれる。"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn4
+
+		[maintxt_print text="「……俺さ。なんて言ったら男らしいか、とか"]	// ノベル
+		[maintxt_print text="　どう行動すんのがカッコイイのか、とか"]	// ノベル
+		[maintxt_print text="　つい色々と考えちまうけど」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="取り繕うのもバカらしいというか、"]	// ノベル
+		[maintxt_print text="そっちのほうが空回る気がして、"]	// ノベル
+		[maintxt_print text="吹っ切れた気持ちになる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="慣れないことばかりで、落ち込むこともあるし"]	// ノベル
+		[maintxt_print text="ふわふわと浮かれて夢心地になるときもある。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="……でも、たとえ失敗ばかりでも、情けなくても"]	// ノベル
+		[maintxt_print text="前向きで単純なのが自分の長所だった。"]	// ノベル
+		[maintxt_print text="――こいつが、思い出させてくれたものだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「変なこと考えずに……思ったこと、"]	// ノベル
+		[maintxt_print text="　素直に言ったほうが伝わるんだよな」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「はい。そのほうが峰雄さんらしいです。"]	// ノベル
+		[maintxt_print text="　私も、そうします」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……最初からずっと言いたかったんだけどよ。"]	// ノベル
+		[maintxt_print text="　その浴衣、すげー似合ってるぜ。超可愛い」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……！　あ……ありがとうございます」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「それから――……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="今度は俺が#Name[1]を抱き寄せて、"]	// ノベル
+		[maintxt_print text="その耳元にそっと囁いた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「俺も、大好き」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――心からの、愛しさを込めて。"]	// ノベル
+
+		[batch]
+
+		/*----------------------------*/
+		/* 終了処理                   */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[novel_end]		// ノベルエンド
+		[batch]
+		[txtwaitset count="60"]
+		[batch]
+		[sub_end count="120"]	// 終了処理
+		[txtwaitset count="60"]
+		[batch]
+		/*----------------------------*/
+
+		/*------------------------------
+		終わり＞ＳＳ選択画面に戻ります
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[calllua function="game_end"]
+
+	[return]
+

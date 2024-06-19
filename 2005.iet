@@ -1,0 +1,309 @@
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=====================================================================================================================
+　その他　ev6030　探偵事務所ソファ
+=====================================================================================================================*/
+*sure10
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure10_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure10_turn1"]
+	[/if]
+
+	*sure10_turn0
+
+		[memory_init]				// 回想モード初期化処理*/
+		[bgm_stop count="FD_FAST"]			// BGM停止：速い
+		[flag_set name="flg_memory" num="1"]	// シーン再生
+		[batch]
+
+		/*------------------------------
+		【自動分岐】
+		岡崎差分を見た　　　＞　選択肢表示
+		岡崎差分を見てない　＞　１枚目のシーンにジャンプ
+		------------------------------*/
+
+		[spflag_number name="sp_ev6031" i="i"]
+		[if estimate="$i == 1"]
+
+			[flag_set name="switch" num="1"]
+			[return]
+
+		[else]
+
+			// ▼飛び先ターン指定
+			[flag_set name="switch" num="0"]
+
+			// ▼飛び先ファイル＋スレット指定
+			[file_change no="100" label="sure52"]
+			[return]
+
+		[/if]
+
+	*sure10_turn1
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_SCENE" time="NOON" count="BG_SP"]	// 分岐がある場合のシーン再生用
+		[batch]
+
+		// ▼飛び先ターン指定
+		[flag_set name="switch" num="0"]
+
+		// ▼飛び先ファイル＋スレット指定
+		[menutxt_set2 num="HANYO" text="探偵事務所のメンバー" file="100" sure="sure52"]
+		[menutxt_set2 num="HANYO" text="岡崎契登場" file="100" sure="sure53"]
+
+		[batch]
+
+	[return]
+
+
+/*=====================================================================================================================
+　その他　ev4020　ステージ上の一色と香月
+=====================================================================================================================*/
+*sure11
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure11_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure11_turn1"]
+	[/if]
+
+	*sure11_turn0
+
+		[memory_init]				// 回想モード初期化処理*/
+		[bgm_stop count="FD_FAST"]			// BGM停止：速い
+		[flag_set name="flg_memory" num="1"]	// シーン再生
+		[batch]
+
+		//-------------------------------------------------------------
+		// ①差分を２枚以上見ていたら選択肢ターンへ
+
+		[var name="BX" data="0"]
+
+		[spflag_number name="sp_ev4020_mine" i="AX"]	// シーン再生分岐用：関連（１／２）
+		[var name="BX" data="$BX + AX"]
+
+		[spflag_number name="sp_ev4020_take" i="AX"]	// シーン再生分岐用：関連（２／２）
+		[var name="BX" data="$BX + AX"]
+
+		// 差分を２枚以上見た場合は、選択肢表示へ
+		[if estimate="$BX >= 2"]
+
+			[flag_set name="switch" num="1"]//	選択肢へ
+			[return]
+
+		[/if]
+		//-------------------------------------------------------------
+
+		//-------------------------------------------------------------
+		// ②差分を見たのが１枚の場合は直接、そのスレへ
+
+		[spflag_number name="sp_ev4020_mine" i="AX"]	// シーン再生分岐用：関連（１／２）
+		[if estimate="$AX == 1"]	// ▽シーン１分岐の条件
+
+			// ▼飛び先ターン指定
+			[flag_set name="switch" num="0"]
+
+			// ▼飛び先ファイル＋スレット指定
+			[file_change no="305" label="sure50"]
+			[return]
+
+		[/if]
+
+		[spflag_number name="sp_ev4020_take" i="AX"]	// シーン再生分岐用：関連（２／２）
+		[if estimate="$AX == 1"]	// ▽シーン２分岐の条件
+
+			// ▼飛び先ターン指定
+			[flag_set name="switch" num="0"]
+
+			// ▼飛び先ファイル＋スレット指定
+			[file_change no="403" label="sure50"]
+			[return]
+
+		[/if]
+		//-------------------------------------------------------------
+
+	*sure11_turn1
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_SCENE" time="NOON" count="BG_SP"]	// 分岐がある場合のシーン再生用
+		[batch]
+
+		[flag_set name="switch" num="0"]		// ターン０へ
+
+		[spflag_number name="sp_ev4020_mine" i="AX"]	// シーン再生分岐用：関連（１／２）
+		[if estimate="$AX == 1"][menutxt_set2 num="HANYO" text="榎本ルート" file="305" sure="sure50"]
+		[/if]
+
+		[spflag_number name="sp_ev4020_take" i="AX"]	// シーン再生分岐用：関連（２／２）
+		[if estimate="$AX == 1"][menutxt_set2 num="HANYO" text="笹塚ルート" file="403" sure="sure50"]
+		[/if]
+
+		[batch]
+
+	[return]
+
+
+
+/*=====================================================================================================================
+　その他　ev6020　白石撲滅の会（主人公、桜川、向井）
+=====================================================================================================================*/
+*sure12
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure12_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure12_turn1"]
+	[/if]
+
+	*sure12_turn0
+
+		[memory_init]				// 回想モード初期化処理*/
+		[bgm_stop count="FD_FAST"]			// BGM停止：速い
+		[flag_set name="flg_memory" num="1"]	// シーン再生
+		[batch]
+
+		//-------------------------------------------------------------
+		// ①差分を２枚以上見ていたら選択肢ターンへ
+
+		[var name="BX" data="0"]
+
+		[spflag_number name="sp_ev6020_kage1" i="AX"]	// シーン再生分岐用：関連（１／３）
+		[var name="BX" data="$BX + AX"]
+
+		[spflag_number name="sp_ev6020_kage2" i="AX"]	// シーン再生分岐用：関連（２／３）
+		[var name="BX" data="$BX + AX"]
+
+		[spflag_number name="sp_ev6020_aiji" i="AX"]	// シーン再生分岐用：関連（３／３）
+		[var name="BX" data="$BX + AX"]
+
+		// 差分を２枚以上見た場合は、選択肢表示へ
+		[if estimate="$BX >= 2"]
+
+			[flag_set name="switch" num="1"]//	選択肢へ
+			[return]
+
+		[/if]
+		//-------------------------------------------------------------
+
+		//-------------------------------------------------------------
+		// ②差分を見たのが１枚の場合は直接、そのスレへ
+
+		[spflag_number name="sp_ev6020_kage1" i="AX"]	// シーン再生分岐用：関連（１／３）
+		[if estimate="$AX == 1"]	// ▽シーン１分岐の条件
+
+			// ▼飛び先ターン指定
+			[flag_set name="switch" num="0"]
+
+			// ▼飛び先ファイル＋スレット指定
+			[file_change no="502" label="sure50"]
+			[return]
+
+		[/if]
+
+		[spflag_number name="sp_ev6020_kage2" i="AX"]	// シーン再生分岐用：関連（２／３）
+		[if estimate="$AX == 1"]	// ▽シーン２分岐の条件
+
+			// ▼飛び先ターン指定
+			[flag_set name="switch" num="0"]
+
+			// ▼飛び先ファイル＋スレット指定
+			[file_change no="504" label="sure52"]
+			[return]
+
+		[/if]
+
+		[spflag_number name="sp_ev6020_aiji" i="AX"]	// シーン再生分岐用：関連（３／３）
+		[if estimate="$AX == 1"]	// ▽シーン３分岐の条件
+
+			// ▼飛び先ターン指定
+			[flag_set name="switch" num="0"]
+
+			// ▼飛び先ファイル＋スレット指定
+			[file_change no="151" label="sure51"]
+			[return]
+
+		[/if]
+		//-------------------------------------------------------------
+
+	*sure12_turn1
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_SCENE" time="NOON" count="BG_SP"]	// 分岐がある場合のシーン再生用
+		[batch]
+
+		[flag_set name="switch" num="0"]		// ターン０へ
+
+		[spflag_number name="sp_ev6020_kage1" i="AX"]	// シーン再生分岐用：関連（１／３）
+		[if estimate="$AX == 1"][menutxt_set2 num="HANYO" text="白石ルートＡ" file="502" sure="sure50"]
+		[/if]
+
+		[spflag_number name="sp_ev6020_kage2" i="AX"]	// シーン再生分岐用：関連（２／３）
+		[if estimate="$AX == 1"][menutxt_set2 num="HANYO" text="白石ルートＢ" file="504" sure="sure52"]
+		[/if]
+
+		[spflag_number name="sp_ev6020_aiji" i="AX"]	// シーン再生分岐用：関連（３／３）
+		[if estimate="$AX == 1"][menutxt_set2 num="HANYO" text="柳ルート" file="151" sure="sure51"]
+		[/if]
+
+		[batch]
+
+	[return]
+
+
+
+/*=====================================================================================================================
+　愛時　ev1110　冴木ＥＮＤ
+=====================================================================================================================*/
+*sure13
+
+		[memory_init]				// 回想モード初期化処理*/
+		[bgm_stop count="FD_FAST"]			// BGM停止：速い
+		[flag_set name="flg_memory" num="1"]	// シーン再生
+		[batch]
+
+		// スマートフォン版追加
+		[scenario_download_check id="scenario_yanagi"]
+
+		// ▼飛び先ターン指定
+		[flag_set name="switch" num="1"]
+
+		// ▼飛び先ファイル＋スレット指定
+		[file_change no="161" label="sure51"]
+
+	[return]
+
+
+/*=====================================================================================================================
+　その他　ev6040　犯人側集合
+=====================================================================================================================*/
+*sure14
+
+		[memory_init]				// 回想モード初期化処理*/
+		[bgm_stop count="FD_FAST"]			// BGM停止：速い
+		[flag_set name="flg_memory" num="1"]	// シーン再生
+		[batch]
+
+		// スマートフォン版追加
+		[scenario_download_check id="scenario_yanagi"]
+
+		// ▼飛び先ターン指定
+		[flag_set name="switch" num="0"]
+
+		// ▼飛び先ファイル＋スレット指定
+		[file_change no="610" label="sure50"]
+
+	[return]
+
+

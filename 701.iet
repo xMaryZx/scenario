@@ -1,0 +1,768 @@
+
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+
+	*sure1_turn0
+
+		/*------------------------------
+		●シーンbaddf-02-0001
+		場所：自宅前→ライブハウス前
+		時間：夜
+		登場人物（服装）：主人公（私服）、香月（私服、帽子ギターあり）、一色、小林
+		視点：主人公
+		------------------------------*/
+		/*------------------------------
+		【カラマリ】バッドエンド汎用シナリオ
+		小林花子編
+		------------------------------*/
+		/*------------------------------
+		◆注意。香月と会話があるシーンでは使用検討。
+		必ず香月との関係が修復する前、序盤で使用。
+		および小林初登場前のシーン必須。
+		------------------------------*/
+		/*------------------------------
+		背景：自宅前（夜）
+		------------------------------*/
+		[scenechange_bs name="bg_39c" time="LIGHT2" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg39　　夜　　　　自宅前　　　　　　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんと岡崎さんの背中を見送って、"]
+		[maintxt_print2 text="マンションに入ろうとしたとき。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="自宅前で、私はふと人影に気付いた。"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		/*------------------------------
+		立ち絵：香月（帽子あり／ギターあり）ＩＮ
+		------------------------------*/
+//背景アップ
+		[ezbg_change3 name="enbg_39c" time="LIGHT2" count="BG_SP"]	/* bg39　夜　　　　自宅前（原寸大）　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="900" point_y="400" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+
+		[chara_app_cm ch_name="b-kazu_d101a" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（あ……香月）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="今日は早く帰ってきてくれたようだ。"]
+		[maintxt_print2 text="ホッとしながら、声をかけようとして――。"]
+
+		[batch]
+
+		/*------------------------------
+		流用：シーン003-mineo-0018から
+		------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="b-kazu_d101b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="060069" count="0"]
+
+		[speaker_change name="星野 香月"]// ※
+		[maintxt_print2 text="それじゃ、明日スタジオで"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：一色ＩＮ
+		------------------------------*/
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_cm ch_name="b-kazu_d" dir="TO_CENTER" speed="0" delay="NO_DELAY"]/*キャラ削除*/
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_39c" time="LIGHT2" count="0"]	/* bg39　夜　　　　自宅前（原寸大）　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="POS_X" point_y="400" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+//さっきとは逆方向
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-isiki_a101a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="160001" count="0"]
+
+		[speaker_change name="？？？"]// ※一色康弘
+		[maintxt_print2 text="ん、楽しみにしてる"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="香月が誰かと喋っていることに気付いた。"]
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_39c" time="LIGHT2" count="0"]		/* bg39　　夜　　　　自宅前　　　　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="isiki_a101a" place="LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+		[chara_app_cm ch_name="kazu_d101a" place="RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（派手な人……香月の友達？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="しかも、どこかで見たことのある顔だ。"]
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：一色、香月ＯＵＴ
+		------------------------------*/
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そんなことを考えていたら、"]
+		[maintxt_print2 text="香月も彼も去って行ってしまう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（どうしよう……声かけそびれちゃった）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="香月は最近、外泊が多い。"]
+		[maintxt_print2 text="夜遅くに出かけることも少なくない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（もし、悪い人とつるんでるんだったら……）"]
+
+		[batch]
+
+		/*------------------------------
+		【選択肢】
+		香月を追いかける　　＞シーンbaddf-02-0002へ
+		【彼】を追いかける　＞シーンbaddf-02-0003へ
+		------------------------------*/
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[flag_set name="switch" num="0"]
+
+		[menutxt_set2 num="HANYO" text="香月を追いかける" file="701" sure="sure2"]
+		[menutxt_set2 num="HANYO" text="【彼】を追いかける" file="701" sure="sure3"]
+
+		[batch]
+
+	[return]
+
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure2
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+
+	*sure2_turn0
+
+		/*------------------------------
+		●シーンbaddf-02-0002
+		場所：自宅前→ライブハウス前
+		時間：夜
+		登場人物（服装）：主人公（私服）、小林
+		視点：主人公
+		------------------------------*/
+
+		/*選択肢【香月を追いかける】から*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……タイミングが合ったら、"]
+		[maintxt_print2 text="　香月にそれとなく聞いてみよう）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="干渉するなとか、お前には関係ないとか"]
+		[maintxt_print2 text="言われて、はぐらかされてしまうだろうけど。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="予想できる反応にため息をつきながら、"]
+		[maintxt_print2 text="私は香月を追いかけて自宅に向かった。"]
+
+		[batch]
+
+		/*個別ルートに戻る*/
+		[sub_end count="60"]	// 終了処理
+
+		[flag_set name="switch" num="0"]
+
+		[file_change no="201" label="sure1"]//岡崎１章b
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure3
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure3_turn1"]
+	[/if]
+
+	*sure3_turn0
+
+		/*------------------------------
+		●シーンbaddf-02-0003
+		場所：自宅前→ライブハウス前
+		時間：夜
+		登場人物（服装）：主人公（私服）、小林
+		視点：主人公
+		------------------------------*/
+
+		/*選択肢【【彼】を追いかける】から*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そんな不安が浮かんですぐ、"]
+		[maintxt_print2 text="考えるよりも早く私は駆け出していた。"]
+
+		[batch]
+
+		/*------------------------------
+		背景：住宅街２（夜）
+		------------------------------*/
+		/*------------------------------
+		背景：歌舞伎町（夜）
+		------------------------------*/
+		/*------------------------------
+		背景：ライブハウス前（夜）
+		------------------------------*/
+
+		[scenechange_bs name="bg_21c" time="LIGHT2" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg21　　夜　　　　住宅街２（新宿）　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="80"]
+		[batch]
+		[scenechange_bs name="bg_18c" time="LIGHT2" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg18　　夜　　　　新宿＿歌舞伎町　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="80"]
+		[batch]
+		[scenechange_bs name="bg_25c" time="LIGHT2" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg25　　夜　　　　ライブハウス外観（高田馬場）　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="尾行なんて真似、良くないとは思ったけれど。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="香月の交友関係が気になって、"]
+		[maintxt_print2 text="つい彼の後を追ってしまっていた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ライブハウス……？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="男の人は、建物の中に入ろうとしている。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あの！　すみません！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私は慌てて彼を呼び止めた。"]
+
+		[batch]
+
+		[chara_app_cm ch_name="isiki_a100b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="160204" count="0"]
+
+		[speaker_change name="？？？"]// 一色 康弘
+		[maintxt_print2 text="……？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="突然ごめんなさい。"]	// 「
+		[maintxt_print2 text="あの、少しお時間頂けませんか"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="isiki_a108b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="160205" count="0"]
+
+		[speaker_change name="？？？"]// 一色 康弘
+		[maintxt_print2 text="……悪いけど、急いでるから"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ま、待ってください。えっと、私……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（どうやって切り出そう……）"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="isiki_a104a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="160206" count="0"]
+
+		[speaker_change name="？？？"]// 一色 康弘
+		[maintxt_print2 text="……君。"]	// 「
+		[maintxt_print2 text="ずっと俺の後をつけてたよね"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="！！　そ、それは……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="isiki_a105a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="160207" count="0"]
+
+		[speaker_change name="？？？"]// 一色 康弘
+		[maintxt_print2 text="そういうの迷惑だからやめてって、"]	// 「
+		[maintxt_print2 text="いつも言ってるはずだよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え？？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="isiki_a110b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="160208" count="0"]
+
+		[speaker_change name="？？？"]// 一色 康弘
+		[maintxt_print2 text="出待ちも過度な付きまといも厳禁。"]	// 「
+		[maintxt_print2 text="俺だけじゃなくて、他のメンバーも"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="isiki_a100b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="160209" count="0"]
+
+		[speaker_change name="？？？"]// 一色 康弘
+		[maintxt_print2 text="君、見たことないけど……新しい子？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="isiki_a104a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="160210" count="0"]
+
+		[speaker_change name="？？？"]// 一色 康弘
+		[maintxt_print2 text="ファンになってくれるのは嬉しい。"]	// 「
+		[maintxt_print2 text="でも、マナーは守って"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="い、いえ、あのですね"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="isiki_a100b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="160211" count="0"]
+
+		[speaker_change name="？？？"]// 一色 康弘
+		[maintxt_print2 text="ちゃんとしてる他の子にも、迷惑だから。"]	// 「
+		[maintxt_print2 text="……じゃあ"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		/*------------------------------
+		ＳＥ：ばたん、と扉が閉まる音
+		------------------------------*/
+		[ezchara_del_cm ch_name="isiki_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[batch]
+
+		[se_play2 no="00063" count="40"]/* SE再生：扉　金属　開き戸・閉めるＡ（激しく：ガシャン！！）　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="さっさと扉を締められてしまって、"]
+		[maintxt_print2 text="途方に暮れるしかない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（もしかして……追っかけの子か"]
+		[maintxt_print2 text="　なにかと間違えられた……？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="自分の行動を思い返せば"]
+		[maintxt_print2 text="致し方ないものの、情けなくなる。"]
+
+		[batch]
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="240277" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="ほんっと、迷惑にもほどがあるよね～？"]	// 「
+		[maintxt_print2 text="しかも新規とか、超サイアク"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="突然、べつの声がすぐ近くから聞こえた。"]
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：小林ＩＮ
+		------------------------------*/
+		[ezeffect_scenechange2 color="F_BLACK" count="30" mode="1" mode2="0"]/* 時間経過(急に走り出す時とか) */
+
+		//後程後ずさる表現のため、原寸使用してます　by長本
+		[ezbg_change3 name="enbg_25c" time="LIGHT2" count="BG_SP"]	/* bg25　夜　　　　ライブハウス外観（原寸大）　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="240" point_y="250" size_z="75" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+
+		[chara_app_cm ch_name="yahiro_a403a" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="振り返った瞬間、若い女の子がいて。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a403b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240278" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="ハナねー。"]	// 「
+		[maintxt_print2 text="アンタみたいのがいちばん大っ嫌い。"]
+		[maintxt_print2 text="最低最悪の害虫ゴミ以下"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="にっこりと微笑みながら顔を近づけられる。"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure3_turn1
+
+		[ezchara_del_cm ch_name="yahiro_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[chara_app_cm ch_name="b-yahiro_a413b" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240279" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="だーかーらー……"]	// 「	// 」
+
+		[batch]
+
+		[ez_target_set side="OMOTE" target="CAME0" point_x="POS_X" point_y="POS_Y" size_z="99" count="30" ptn="GEN_PT"]					//全体カメラ
+
+		[se_play2 no="00010" count="WAIT_NONE"]/* SE再生：足音　１歩　ハイヒール（コツッ）　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="妙な気迫に気圧され、後ずさると――。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-yahiro_a413a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240280" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="今すぐ、死んで？"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：ドカッと鈍器で殴られる音
+		------------------------------*/
+		/*------------------------------
+		演出：赤フラッシュ
+		------------------------------*/
+		[ezeffect_scenechange2 color="F_RED" count="15" mode="0" mode2="0"]/* 時間経過(急に走り出す時とか) */
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		[se_play2 no="00189" count="WAIT_NONE"]/* SE再生：打撃・通常Lv60・１発（ドン！！）　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[ef_shake3 side="INSIDE" slevel="ATCK_Lv1"]	/* 衝撃　Ｌｖ１（通常の打撃など　　　　） */
+
+//		[blackout_flash2 dir="F_FADE" color="F_RED" zpos="ZPOS_FORE3" alpha="255" speed="20"]	/* 赤フラッシュ */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="なにか言葉を発しようとする前に、"]
+		[maintxt_print2 text="視界が一気に真っ赤に染まった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――鈍器のようなもので、頭を殴られた。"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		/*------------------------------
+		ＳＥ：どさっと倒れる音
+		------------------------------*/
+		[ezbg_target_set side="OMOTE" target="CAME0" point_x="240" point_y="320" size_z="75" count="60" ptn="KAS_PT"]				//背景カメラ
+
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+
+		[batch]
+
+		[se_play2 no="00224" count="40"]/* SE再生：倒れる　汎用　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私が最後に感じたのは、それだけだった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="240281" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="ほんとも～困っちゃう。"]	// 「
+		[maintxt_print2 text="アンタみたいなクズがいるから、"]
+		[maintxt_print2 text="ヒロ君が哀しむんだよ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="240282" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="ヒロ君を応援する同志なら、"]	// 「
+		[maintxt_print2 text="やっちゃいけないことくらいわかってよね。"]
+		[maintxt_print2 text="……って、あ、もう聞こえないか♪"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="240283" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="きゃははっ♪"]	// 「
+		[maintxt_print2 text="ヒロ君を哀しませるなんて"]
+		[maintxt_print2 text="ファン失格だよね～？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="240284" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="だからこの世界から消えるのが正解♪"]	// 「
+		[maintxt_print2 text="えへへ、今日もいいことしちゃった♪"]	// 」
+
+		[batch]
+
+		/*　バッドエンド　小林専用BAD扉絵*/
+
+		/*----------------------------*/
+		// ▽画面終了処理
+		[end_graphic_bad speed="0" name="BAD_END_8"]	// ブラックアウト速度　／　バッドＥＮＤ（岡崎ルート１個目）
+
+		// ▽フラグ
+		[spflag_set name="badend岡崎_01" num="1"]		// ＢＡＤＥＮＤ　０８
+
+		// ▽トロフィー（判定）
+		[unlock_trophy2 no="TROPHY_09"]	// トロフィー09：初めてバッドエンドを見た
+		[all_end_check]					// トロフィー開放判定
+		/*----------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[calllua function="game_end"]
+
+	[return]
+

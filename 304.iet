@@ -1,0 +1,7502 @@
+
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure1_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure1_turn2"]
+	[/if]
+	[if estimate="$i==3"][calllua function="stcm2_goto" label="sure1_turn3"]
+	[/if]
+
+	*sure1_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0001
+		場所：自宅・リビング
+		時間：朝
+		登場人物（服装）：香月、花子
+		視点：主人公
+		------------------------------*/
+
+		/*------------------------------
+		演出：日付表示
+		１２月１１日、ＡＭ４：００
+		------------------------------*/
+		/*------------------------------
+		背景：黒（主人公、寝てます）
+		------------------------------*/
+
+		[save_name name="CHAPTER.4　Mineo Enomoto" icon="SAVE_ENMT"]	// セーブネーム：榎本峰雄４章
+
+		/*-------------------------------------*/
+		[CW_Chapter control_id="0" file_id="CP_ENMT" param="CP_04"]	// 扉絵：榎本峰雄　４章
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[CW_Current_Time control_id="1" month="MONTH_12" day="DAY_11" ampm="AP_AM" time="TIME_04" minutes="MINUTES_00"]	// 現在時刻
+		/*-------------------------------------*/
+		/*------------------------------
+		（済み）ＳＥ：扉が閉まる音
+		------------------------------*/
+		[se_play2 no="SE_DOR_CL_TANTEI" count="WAIT_NONE"]/* SE再生：扉　探偵事務所の入り口　閉める */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ん……？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240018" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="へぇ～。ここが香月の家なんだ？"]	// 「
+		[maintxt_print2 text="小ぢんまりしてて、可愛いね？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="060108" count="0"]
+
+		[speaker_change name="？？？"]// 星野 香月
+		[maintxt_print2 text="ウゼー……。"]	// 「
+		[maintxt_print2 text="こんなとこまでついてくんなよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240019" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="いいじゃん、別に。"]	// 「
+		[maintxt_print2 text="私と香月の仲でしょ～？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（え……、香月……？）"]
+
+		[batch]
+
+		/*------------------------------
+		演出：目を開ける
+		背景：自宅・リビング（朝）
+		（済み）ＳＥ：衣擦れ
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_40dCL" time="NIGHT" count="BG_SP"]		/* bg40　　夜　　　　自宅＿リビング　　　　　　　　　灯りなし　　　*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="寝ぼけ眼で携帯を見れば、"]
+		[maintxt_print2 text="時刻は４時過ぎ……。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（昨日は瀬良君の家に泊まるって"]
+		[maintxt_print2 text="　メールが来てたけど……）"]
+
+		[batch]
+
+		/*------------------------------
+		以下のやり取りは立ち絵なしで声のみ。
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240020" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="ねーったら！　ハナが応援しに来て"]	// 「
+		[maintxt_print2 text="あげたんだから、無視しないでよー"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="060109" count="0"]
+
+		[speaker_change name="星野 香月"]
+		[maintxt_print2 text="誰も頼んでねえし。"]	// 「
+		[maintxt_print2 text="集中したいから、マジで邪魔"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：ガーン
+		------------------------------*/
+		[se_play2 no="00232" count="WAIT_NONE"]/* SE再生：ショックＡ（ガーン）　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（朝帰りな上に、女の子と一緒……！？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="こんなことは今までなかった。"]
+		[maintxt_print2 text="それだけに、動揺を隠せない。"]
+
+		[batch]
+
+		/*------------------------------
+		シーン004-mineo-0001より流用
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　開始                          */
+
+		[monochro_st1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_ON" substop="SUBSTOP_ON" f_se="SE_OFF"]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_40a_up" time="NOON" count="0"]	/* bg37　昼　　　　リビング＿机付近アップ　カーテン　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-mine_b500b" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[monochro_st2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="030640" count="0"]
+
+		[speaker_change name="榎本 峰雄"]// ※
+		[maintxt_print2 text="お前のとこの弟って、どうだ？"]	// 「
+		[maintxt_print2 text="高校じゃモテたりする？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b511a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="030644" count="0"]
+
+		[speaker_change name="榎本 峰雄"]// ※
+		[maintxt_print2 text="近頃は小学生でも彼氏いたりするらしいし、"]	// 「
+		[maintxt_print2 text="ひょっとして俺の妹も……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b421b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="030645" count="0"]
+
+		[speaker_change name="榎本 峰雄"]// ※
+		[maintxt_print2 text="ううっ。ダメだ、早い……早すぎるぞ！"]	// 「
+		[maintxt_print2 text="お兄ちゃんは認めない……！"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		流用ここまで
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　終了                          */
+
+		[monochro_ed1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_ON" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_40dCL" time="NIGHT" count="0"]		/* bg40　　夜　　　　自宅＿リビング　　　　　　　　　灯りなし　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[monochro_ed2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="昨日は、妹さんのことを心配する"]
+		[maintxt_print2 text="榎本さんを微笑ましく見ていたけど――"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（いきなり彼女を連れて来られると、"]
+		[maintxt_print2 text="　焦る……！）"]
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：ベッドから身体を起こす音
+		------------------------------*/
+		[se_play2 no="00168" count="WAIT_NONE"]/* SE再生：衣服　動く（ガバッ）　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ベッドから身を起こすと、"]
+		[maintxt_print2 text="ひとまず髪の毛を手櫛で直した。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ええと、まずは挨拶……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（いやでも……、そもそもこんな時間に"]
+		[maintxt_print2 text="　家に来るなんて、ちょっと非常識じゃない？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ここは注意すべき……だけど、"]
+		[maintxt_print2 text="　絶対嫌な顔されるだろうな……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="だからといって、"]
+		[maintxt_print2 text="見過ごすわけにはいかない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ちょっと緊張しながら、私は玄関に向かった。"]
+
+		[batch]
+
+		/*------------------------------
+		背景：自宅・廊下（朝）
+		香月・花子立ち絵ＩＮ
+		------------------------------*/
+		[scenechange_bs name="bg_41a" time="NOON" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg41　昼　　　　　自宅＿廊下　　　　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="kazu_e104a" place="LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+		[chara_app_cm ch_name="yahiro_a400a" place="RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="か、香月……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kazu_e113a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="060110" count="0"]
+
+		[speaker_change name="星野 香月"]
+		[maintxt_print2 text="！"]	// 「	// 」
+
+		[batch]
+
+		[bgm_play no="03" count="0"]		// BGM再生：03_日常Ｂ 昼
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240021" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="ん？　誰？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="香月の姉の#Name[1]です。"]	// 「
+		[maintxt_print2 text="あの、あなたは――"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a414b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240022" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="えーお姉さん？"]	// 「
+		[maintxt_print2 text="あ、確かによく見ると似てるかも"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240023" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="何よー、香月。"]	// 「
+		[maintxt_print2 text="お姉さんがいるならいるって言ってよ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kazu_e104b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+		[ezchara_nextstate_cm ch_name="yahiro_a413a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="060111" count="0"]
+
+		[speaker_change name="星野 香月"]
+		[maintxt_print2 text="こっちの話も聞かずについてきといて、"]	// 「
+		[maintxt_print2 text="文句言うな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="香月は私に接するときみたいに、"]
+		[maintxt_print2 text="相手の女の子に対しても冷たい。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（照れ隠し……？　うーん、"]
+		[maintxt_print2 text="　でも素のような気もする……）"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn1
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="香月、あの……そっちの子は"]	// 「
+		[maintxt_print2 text="彼女……なの？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kazu_e114b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="060112" count="0"]
+
+		[speaker_change name="星野 香月"]
+		[maintxt_print2 text="はあ！？　違うに決まってんだろ！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kazu_e100a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="えっ、違う……？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a406a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240024" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="そんな力いっぱい否定しなくても"]	// 「
+		[maintxt_print2 text="いいじゃん。ハナ、傷つくー"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ハナさんっていうんだ……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（よくわからないけど、"]
+		[maintxt_print2 text="　付き合ってるわけじゃないみたい……？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ええと、ハナさん……は、学生？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240025" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="あ、ひょっとして十代に見えたりする？"]	// 「
+		[maintxt_print2 text="ハナねー、こう見えて立派な大人なんだよー"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="大人……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="服装やきゃぴきゃぴした雰囲気から"]
+		[maintxt_print2 text="香月と同じくらいかと思ったけど、"]
+		[maintxt_print2 text="どうやら違うらしい。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（それにしたって、"]
+		[maintxt_print2 text="　こんな時間に一緒にいるってことは……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ねえ、香月。昨日は瀬良君の家に泊まるって"]	// 「
+		[maintxt_print2 text="連絡してくれたけど……本当なの？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kazu_e104b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="060113" count="0"]
+
+		[speaker_change name="星野 香月"]
+		[maintxt_print2 text="は？　何……疑ってんのか？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kazu_e104a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="私だって疑いたくはないよ。"]	// 「
+		[maintxt_print2 text="だけど、それじゃハナさんと一緒にいた"]
+		[maintxt_print2 text="説明がつかないし……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="バンドやってるんだよね？"]	// 「
+		[maintxt_print2 text="だったら今まで練習をしてたんじゃ――"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kazu_e125a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="060114" count="0"]
+
+		[speaker_change name="星野 香月"]
+		[maintxt_print2 text="ごちゃごちゃうるせえな。"]	// 「
+		[maintxt_print2 text="外泊の連絡はしただろ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="うん。でも……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="練習をしてたのなら、"]
+		[maintxt_print2 text="隠さないで教えてほしかった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（本当のことを言ったら、"]
+		[maintxt_print2 text="　私が文句を言うと思ったのかな）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（香月が音楽に本気で打ち込んでいるのなら、"]
+		[maintxt_print2 text="　私も応援したいのに……）"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a402a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240026" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="なんか……２人ってあんま"]	// 「
+		[maintxt_print2 text="仲良くないんだね？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240027" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="香月もそんなツンケンしないでさー、"]	// 「
+		[maintxt_print2 text="練習してたのくらい、教えてあげればいいじゃん"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240028" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="なんたって、今日が初ライブだもんねー？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="初ライブ？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kazu_e100b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="060115" count="0"]
+
+		[speaker_change name="星野 香月"]
+		[maintxt_print2 text="お前……余計なこと言うなよ。"]	// 「
+		[maintxt_print2 text="つか、いつまで居座る気？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kazu_e100a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+		[ezchara_nextstate_cm ch_name="yahiro_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240029" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="居座ってるんじゃないもん。"]	// 「
+		[maintxt_print2 text="香月が緊張してるみたいだったから、"]
+		[maintxt_print2 text="励ましに来てあげたの"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240030" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="ライブが失敗したら困るもんね～。"]	// 「
+		[maintxt_print2 text="ハナ、超優しくない？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+		[ezchara_nextstate_cm ch_name="kazu_e110a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="060116" count="0"]
+
+		[speaker_change name="星野 香月"]
+		[maintxt_print2 text="……もういい。勝手にしろ"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		香月立ち絵ＯＦＦ
+		ＳＥ：怒ったように歩き去る音
+		ＳＥ：扉が勢いよく閉まる音
+		------------------------------*/
+		[ezchara_del_cm ch_name="kazu_e" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[se_play3 no="NEW_SE14" count="100"]/* SE再生：マンションの室内の引き戸を勢い良く閉める音　ゴロ──トッ！！　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="香月は足音荒く、"]
+		[maintxt_print2 text="自分の部屋に入ってしまい。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a403b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[ezchara_move_cm ch_name="yahiro_a" place="MD_RIGHT" speed="NORMAL_MOVE" delay="NO_DELAY"]/*キャラ移動*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240031" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="なーに、あの態度。感じ悪ーい"]	// 「	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn2
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="あとには私とハナさんだけが取り残された。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あの……ごめんなさい。"]	// 「
+		[maintxt_print2 text="香月を気遣ってくれてたみたいなのに……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240032" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="ん、別にいーよ。"]	// 「
+		[maintxt_print2 text="香月っていつもあんなだし"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		演技：小声で、影がある感じでお願いします。
+		------------------------------*/
+		[ezchara_nextstate_cm ch_name="yahiro_a418a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240033" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="ホント……お子ちゃまって感じ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240034" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="ううん、何でもない"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240035" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="それより……お姉さん、"]	// 「
+		[maintxt_print2 text="ライブのことなんにも知らないの？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ライブのことというか、香月が組んでる"]	// 「
+		[maintxt_print2 text="バンドのこともよく知らない……です"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a414b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240036" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="えー。ヒロ君がボーカルやってる"]	// 「
+		[maintxt_print2 text="バンド知らないとか、ありえないよ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240037" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="もうねー、すっごいから！"]	// 「
+		[maintxt_print2 text="あれは生で見ないとダメ"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		演技：ファンと言うより、狂気寄りにしてください。
+		------------------------------*/
+		[ezchara_nextstate_cm ch_name="yahiro_a422a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240038" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="同じ空気を吸って、全部混ざり合って"]	// 「
+		[maintxt_print2 text="歌と一体になる感じ……たまんないよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="うっとりしてるところや口ぶりから、"]
+		[maintxt_print2 text="ハナさんがバンドのファンなのは明らかだった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ボーカルのヒロ君って……、"]
+		[maintxt_print2 text="　一色さんのこと、だよね）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="藤井さんが誤認逮捕をしたことから、"]
+		[maintxt_print2 text="彼も容疑者候補に挙がっている。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（話したときは、"]
+		[maintxt_print2 text="　悪い人に見えなかったけど……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="香月の演奏をかっこいいと言ってくれたし、"]
+		[maintxt_print2 text="聴きに来てとも言われた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（でも、もしもって可能性もある）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あの……香月のライブのチケットって、"]	// 「
+		[maintxt_print2 text="今から手に入れられたりしますか？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a403b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240039" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="無理に決まってるじゃん。"]	// 「
+		[maintxt_print2 text="１分もしないうちに売り切れちゃったし"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……ですよね"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240040" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="で・も。ハナねー、実はチケット"]	// 「
+		[maintxt_print2 text="何枚か持ってるんだー♪"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="えっ！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240041" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="絶対取りたかったから、"]	// 「
+		[maintxt_print2 text="友達に協力してもらったの。"]
+		[maintxt_print2 text="そしたら思ったより取れちゃって"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そ、そのチケット、買い取らせて"]	// 「
+		[maintxt_print2 text="もらうわけにはいきませんか？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a409a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240042" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="んー……。まあ、香月の晴れ姿、"]	// 「
+		[maintxt_print2 text="お姉さんも見たいだろうし。いーよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ありがとうございます！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a418a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240043" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="チケットは家だからー……んー……。"]	// 「
+		[maintxt_print2 text="昼休みに会って渡せばいいかな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240044" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="ハナ、駅前のビルで働いてるの。"]	// 「
+		[maintxt_print2 text="お姉さん、何時ならこれる？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そうですね……。"]	// 「
+		[maintxt_print2 text="１３時くらいなら行けると思います"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240045" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="うん、じゃあ１３時に駅前ね。"]	// 「
+		[maintxt_print2 text="連絡先教えて？"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn3
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ、はい"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="連絡先を交換すると、ハナさんは"]
+		[maintxt_print2 text="香月が消えた部屋へ目を向けた。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a409a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240046" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="香月のことは気になるけど、"]	// 「
+		[maintxt_print2 text="あんま口出ししたら逆効果っポイし"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240047" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="私は退散しよーっと。"]	// 「
+		[maintxt_print2 text="じゃ、お姉さん。またね♪"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="はい。よろしくお願いします"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		花子立ち絵ＯＦＦ
+		（済み）ＳＥ：扉開閉音
+		------------------------------*/
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+
+		[ezchara_del_cm ch_name="yahiro_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+/*Dm*/	[se_play3 no="SE_DOR_OP_MANSION" count="100"]/* SE再生：扉　マンションの入り口　開ける */
+/*Dm*/	[se_play3 no="SE_DOR_CL_MANSION" count="WAIT_NONE"]/* SE再生：扉　マンションの入り口　閉める */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ひらりと手を振ってハナさんが出ていき、"]
+		[maintxt_print2 text="嵐が過ぎ去ったように静かになった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（彼女かと思ったときは、"]
+		[maintxt_print2 text="　どうなることかと思ったけど）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ハナさんのおかげで、ライブに行ける。"]
+		[maintxt_print2 text="香月が頑張ってきた姿を直に見れるのは、"]
+		[maintxt_print2 text="嬉しかった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（香月はそっけなかったけど、"]
+		[maintxt_print2 text="　ハナさんは好意を持ってくれてるんだよね）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（姉としては応援すべきなのか、"]
+		[maintxt_print2 text="　見守るべきなのか……）"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="enbg_41a" time="NOON" count="BG_SP"]	/* bg41　昼　　　　自宅＿廊下（原寸大）　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="1800" point_y="200" size_z="160" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="複雑な思いを抱きながらも、"]
+		[maintxt_print2 text="香月の部屋の前に立つ。"]
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：扉ノックする音
+		------------------------------*/
+		[se_play3 no="00068" count="WAIT_KN1"]/* SE再生：扉　汎用　ノックＡ（普通：コン×２）　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="香月、ハナさん帰ったよ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="反応があるか少し待ってみたけど、"]
+		[maintxt_print2 text="返答はなかった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あのね、ライブ……ハナさんが"]	// 「
+		[maintxt_print2 text="チケットを譲ってくれたから、"]
+		[maintxt_print2 text="見に行けることになったの"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="香月が真剣に音楽に向き合ってる姿、"]	// 「
+		[maintxt_print2 text="私……ちゃんと見に行くからね"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_41a" time="NOON" count="BG_SP"]		/* bg41　昼　　　　　自宅＿廊下　　　　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="それだけ告げると、そっと部屋の前を離れる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（よし。せっかく早起きしたことだし）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ライブを頑張ってもらうためにも、"]
+		[maintxt_print2 text="　お弁当のおかずは豪勢にいこう！）"]
+
+		[batch]
+
+		/*------------------------------
+		＞シーン005-mineo-0002へ
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure2"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure2
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+
+	*sure2_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0002
+		場所：新宿署・特防デスク
+		時間：昼
+		登場人物（服装）：峰雄（上着なし）
+		視点：主人公
+		------------------------------*/
+
+		/*------------------------------
+		演出：日付表示
+		１２月１１日、ＰＭ１２：１０
+		------------------------------*/
+		[scenechange_bs name="bg_04a" time="NOON" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg04　昼　　　　　新宿署＿特殊地域防犯対策室　　　　　　　　　　*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[CW_Current_Time control_id="0" month="MONTH_12" day="DAY_11" ampm="AP_PM" time="TIME_00" minutes="MINUTES_10"]
+
+		//[loopse_play no="GAYA_46" count="0" ch="CH00"]		/* サブBGM：ガヤ　捜査本部　活気付く　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ふぅ……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="切りのいいところで仕事を終え、"]
+		[maintxt_print2 text="伸びをする。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="今朝は香月のお弁当を凝りに凝ったため、"]
+		[maintxt_print2 text="自分の分を作りそびれてしまった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（たまには外でランチって言うのも"]
+		[maintxt_print2 text="　いいかも）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（１３時にハナさんと会うなら、"]
+		[maintxt_print2 text="　駅前近くのお店がいいよね）"]
+
+		//修正前
+		//[maintxt_print2 text="（１３時にハナさんと会うなら、"]
+		//[maintxt_print2 text="　アルタ近くのお店がいいよね）"]
+
+		[batch]
+
+		//[loopse_stop count="LP_SP" ch="CH00"]			/* ループＳＥ停止 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そんなことを思いながら、"]
+		[maintxt_print2 text="どこに行こうか考えていると――"]
+
+		[batch]
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure80"]
+
+	[return]
+
+
+/*=======================================================================================================================
+携帯　着信スレ　榎本峰雄（１／２）
+=======================================================================================================================*/
+*sure80
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure80_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure80_turn1"]
+	[/if]
+
+	*sure80_turn0
+
+		/*------------------------------
+		ＳＥ：携帯着信音
+		------------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[loopse_play no="SE_MOBILECALL" count="0" ch="CH02"]		/* サブBGM：足音　携帯電話の着信音	　　　　　　　　　　　　　　 */
+		[batch]
+
+		[txtwaitset count="60"]
+		[batch]
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ん……？）"]
+
+		[batch]
+
+		/*------------------------------
+		★携帯モード
+		------------------------------*/
+
+		/*------------------------------
+		演出：携帯表示
+		峰雄から電話
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 携帯着信モード　開始                */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[call_start chara="ID_ENMT" strap="ST_FAN"]	// 着信：榎本 峰雄　　／　ストラップ：ファン君
+		[batch]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="携帯を取り出し、"]
+		[maintxt_print2 text="着信が榎本さんからなのに驚く。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（榎本さん、"]
+		[maintxt_print2 text="　滅多に電話なんてしてこないのに）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ひょっとして、何かあったんじゃ……）"]
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：電話に出る音
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 携帯着信モード　判定                */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[call_select type="TS_ON" time="0"]	// 着信分岐タイプ：強制的に電話にでる　　　／　秒数
+
+		[batch]
+
+		[flag_set name="switch" num="1"]
+
+		[batch]
+
+		[return]
+		/*-------------------------------------*/
+
+	*sure80_turn1
+
+		[flag_set name="switch" num="0"]
+
+		// フラグは電話を取った場合が0,取らなかった場合が1となります。
+//		[flag_number name="PhoneResultID" i="flag"]
+//		[if estimate="$flag == 0"]
+//		{
+			[file_change no="304" label="sure81"]
+//		}
+//		[elseif estimate="$flag == 1"]
+//		{
+//			[file_change no="***" label="sure"]
+//		}
+
+		[batch]
+
+	[return]
+
+
+/*=======================================================================================================================
+携帯　着信スレ　榎本峰雄（２／２）
+=======================================================================================================================*/
+*sure81
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure81_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure81_turn1"]
+	[/if]
+
+	*sure81_turn0
+
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="は、はい……星野です"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		ボイス加工：ここから峰雄は電話越し
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031017" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あー、星野？　昼飯食わねえ？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………え？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031018" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="いや、だから……昼飯を、だな……"]	// 「
+		[maintxt_print2 text="一緒に食わねえかって言ってんだよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……それだけ、ですか？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031019" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="そ、それだけってなんだ！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031020" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="俺がどんだけ、さりげなーくかつスマートな"]	// 「
+		[maintxt_print2 text="誘い方を練習したと思ってんだよ……！"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="練習……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031021" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あっ……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031022" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ち、違うぞ。アレだ。"]	// 「
+		[maintxt_print2 text="俺くらいになると、女を昼飯に誘うのなんて、"]
+		[maintxt_print2 text="年中無休日常茶飯事だからな！？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（そう言う割に、すごく動揺してる……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031023" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ほら、この前は岡崎がくっついてきただろ？"]	// 「
+		[maintxt_print2 text="しかもあいつ、遠慮なく好きなもん注文しやがって"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031024" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="おかげで、俺の財布から"]	// 「
+		[maintxt_print2 text="何人の野口英世が召されたか……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ああ……。榎本さん、"]
+		[maintxt_print2 text="　お会計のときに震えてたっけ）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（でも男を見せるとか言ってた。"]
+		[maintxt_print2 text="　無理してたんだろうな……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031025" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="だがしかし！　今日の俺は一味違う"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031026" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="パートナーつっても、俺の方が先輩だからな。"]	// 「
+		[maintxt_print2 text="今度こそ、お前にたらふく飯を食わてやるぜ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031027" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="もちろん……デザート付きだ！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="デザート……！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="心惹かれる誘いに、つい反応してしまう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031028" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ふふん。どうだ、悪い話じゃねえだろ？"]	// 「	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure81_turn1
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="はい"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031029" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="よし。"]	// 「
+		[maintxt_print2 text="んじゃ、どこか行きたいとこあるか？"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		ボイス加工：ここまで峰雄は電話越し、
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ、じゃあ――"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="255" speed="80"]	/* ブラックアウト開始 */
+		[txtwaitset count="80"]
+		[batch]
+		[call_fadeOut time="0.1"]
+		[batch]
+		/*-------------------------------------*/
+		/* 携帯着信モード　終了                */
+		[call_seFlag flag="P_OFF"]	//切る音を再生しない
+		[batch]
+		[call_fin]
+		/*-------------------------------------*/
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="1"]					/* ブラックアウト終了 */
+		[txtwaitset count="10"]
+		[batch]
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure82"]
+		[batch]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure82
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure82_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure82_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure82_turn2"]
+	[/if]
+	[if estimate="$i==3"][calllua function="stcm2_goto" label="sure82_turn3"]
+	[/if]
+	[if estimate="$i==4"][calllua function="stcm2_goto" label="sure82_turn4"]
+	[/if]
+	[if estimate="$i==5"][calllua function="stcm2_goto" label="sure82_turn5"]
+	[/if]
+
+	*sure82_turn0
+
+		/*------------------------------
+		時間経過
+		背景：居酒屋（昼）
+		------------------------------*/
+		[scenechange_bs name="enbg_23c_up" time="LIGHT" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]/* bg23　　夜　　　　居酒屋(新宿)　　ぼかしアップ（座席での会話用）*/
+
+		[chara_app_cm ch_name="b-mine_b421b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031030" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="って、なんで居酒屋なんだよぉおおお！！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b415b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031031" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="お前……もっとこう……あるだろ？"]	// 「
+		[maintxt_print2 text="シャレオツなビュッフェとかさぁ！　なあ！？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そういうところは入りやすいんですけど、"]	// 「
+		[maintxt_print2 text="ここ、お昼時は男性が多くて入りにくくて……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b402a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031032" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="や、そうだとしても……。"]	// 「
+		[maintxt_print2 text="雰囲気、というか。ムード、とかさ……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……すみません。"]	// 「
+		[maintxt_print2 text="でも、前に望田先輩が言ってたんです"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ここにはランチ限定の、ふわっふわで"]	// 「
+		[maintxt_print2 text="とろとろなプリンがあるって……！"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：キラーン
+		------------------------------*/
+		[se_play2 no="00236" count="WAIT_NONE"]/* SE再生：フラッシュ（キラーン）　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[ezchara_nextstate_cm ch_name="b-mine_b415a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031033" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="っ！　プリン……だと……？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="先月くらいから、"]	// 「
+		[maintxt_print2 text="メニューに加わったそうなんです"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="クチコミでも人気みたいで、"]	// 「
+		[maintxt_print2 text="一度食べてみたかったんですよね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b410b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031034" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……そっか。"]	// 「
+		[maintxt_print2 text="プリンは……うまいよな、うん"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……あれ。なんだか榎本さん、"]
+		[maintxt_print2 text="　急にそわそわしだした……？）"]
+
+		[batch]
+
+		/*------------------------------
+		演技：小声
+		------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="b-mine_b512a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031035" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ふわっふわでとろとろか……。"]	// 「
+		[maintxt_print2 text="こりゃ、かなり期待できそうだな……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="榎本さんって……プリン、"]	// 「
+		[maintxt_print2 text="好きだったりします？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b514b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031036" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="えっ！　あーうん、まあ……普通？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="さっき、"]	// 「
+		[maintxt_print2 text="目を輝かせていませんでした？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b523a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031037" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="か、輝かせてねえよ。"]	// 「
+		[maintxt_print2 text="子供じゃあるまいし……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……どうせ、私はプリンが好きな"]	// 「
+		[maintxt_print2 text="子供です"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b414b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031038" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あっ……ちが、別にバカにした"]	// 「
+		[maintxt_print2 text="わけじゃなくてだな……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b425b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031039" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="だあっ、もー！　わかった、白状する。"]	// 「
+		[maintxt_print2 text="俺も……プリンは好きだ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="やけっぱちのように打ち明けてくれた"]
+		[maintxt_print2 text="榎本さんに、私は微笑む。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="やっぱり、好きなんじゃないですか。"]	// 「
+		[maintxt_print2 text="隠さなくてもいいのに"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b423a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031040" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あのなぁ、男には男のプライドがあるんだ。"]	// 「
+		[maintxt_print2 text="プリンが好きなんて、恥ずかしいだろ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……そうですか？"]	// 「
+		[maintxt_print2 text="笹塚さんはドーナツが好きでしたよね。"]
+		[maintxt_print2 text="スイーツ全般よく食べるって……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b200b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031041" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="そう、だけどよ。"]	// 「
+		[maintxt_print2 text="あいつはほら、見た目が男らしくねえから"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（笹塚さんが聞いたら怒りそうだな……）"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure82_turn1
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……私は親近感がわきましたよ。"]	// 「
+		[maintxt_print2 text="好きなものが同じって、なんだか嬉しいですし"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b220a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031042" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="っ！　……そ、そっか。"]	// 「
+		[maintxt_print2 text="お前が嬉しいなら……まあ、いいや"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ、じゃあご当地のプリンを見つけたら"]	// 「
+		[maintxt_print2 text="買ったりします？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b212b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031043" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あー、瓶に入ってるやつとかな。"]	// 「
+		[maintxt_print2 text="高いけど、めちゃうまなんだよなー"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031044" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="物産展で何種類か見かけた日にゃ、"]	// 「
+		[maintxt_print2 text="気付くと全種類買ってる俺がいる……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ、その気持ち……わかります！"]	// 「
+		[maintxt_print2 text="最初は２種類までって決めてても……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="これを逃したら……と思うと、"]	// 「
+		[maintxt_print2 text="つい買っちゃうんですよね！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b201b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031045" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="そうそう！　あのご当地ならではの"]	// 「
+		[maintxt_print2 text="限定感には、恐ろしいもんがあるよなー"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b211a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031046" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……まあ、尊に見つかると"]	// 「
+		[maintxt_print2 text="いつの間にか全部食われてたりするけど"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……！　希少なプリンを全部……！？"]	// 「
+		[maintxt_print2 text="それはさすがにひどいですね……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b403b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031047" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="だろ！？　そう思うだろ！？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="喧嘩にならなかったんですか？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b411a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031048" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="なった。すげえ大喧嘩になったことある"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="笹塚さんは悪びれなさそうですし、"]	// 「
+		[maintxt_print2 text="なかなか収拾がつかなそうですね……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b402a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031049" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="そうなんだよ。ずーっと平行線でさ。"]	// 「
+		[maintxt_print2 text="で、どうやって収まったと思う？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ。柳さんが仲裁したんじゃないですか？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b412a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031050" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……柳先輩も俺のプリン、食ってたんだよ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b421b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031051" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="冷蔵庫にたくさん入ってたからつい、って……。"]	// 「
+		[maintxt_print2 text="ううっ、今思い出しても胸が苦しい……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031052" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="それで結局、柳先輩が代わりのプリン"]	// 「
+		[maintxt_print2 text="買ってきてくれて……一応、収まった"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……次からは名前を書くか、"]	// 「
+		[maintxt_print2 text="別のところに隠したほうがいいですね……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="プリンの話題で盛り上がっているうちに、"]
+		[maintxt_print2 text="頼んでいた定食が運ばれてきた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私はサバの味噌煮定食で、"]
+		[maintxt_print2 text="榎本さんは和風おろしハンバーグ定食だ。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b500b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031053" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="お、プリン出すなんて、俺が通ってたときと"]	// 「
+		[maintxt_print2 text="変わっちまったかと思いきや……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b512a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031054" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="定食は全然変わってねえな。"]	// 「
+		[maintxt_print2 text="なんだか安心したぜ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="榎本さん……お昼、"]	// 「
+		[maintxt_print2 text="ここに通ってたんですか？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b500a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031055" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="そりゃ安い、うまい、量も多いとくりゃ、"]	// 「
+		[maintxt_print2 text="通わない手はないだろ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そう、ですか……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="もしかしたら、藤井さんとも来たことが"]
+		[maintxt_print2 text="あるのかもしれない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="だけど、さすがにそこまで踏み込んだことは"]
+		[maintxt_print2 text="聞けなかった。"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure82_turn2
+
+		/*------------------------------
+		（済み）ＳＥ：手を合わせる音
+		------------------------------*/
+		[se_play2 no="00193" count="WAIT_NONE"]/* SE再生：平手打ちＡ（パン）　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[ezchara_nextstate_cm ch_name="b-mine_b409a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031056" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="いっただきまーす！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="榎本さんは手を合わせると、"]
+		[maintxt_print2 text="大根おろしがのったハンバーグに齧りつく。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私もいただきますをして、箸を手に取った。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031057" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="つーかさ。お前って、"]	// 「
+		[maintxt_print2 text="いつもはどこで昼飯食ってんの？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ……いつもはお弁当なんです"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b414b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031058" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="弁当！？"]	// 「
+		[maintxt_print2 text="え……じゃあ、今日も持ってきてたのか？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="いえ、今日は……香月のお弁当作りに"]	// 「
+		[maintxt_print2 text="集中しすぎちゃって、作りそびれました"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031059" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="？　なんでそんな気合入れたんだ？"]	// 「
+		[maintxt_print2 text="あ、もしかして弟の誕生日とか？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="いえ。"]	// 「
+		[maintxt_print2 text="香月……バンドを組んでいたみたいで、"]
+		[maintxt_print2 text="今日はそのバンドの初ライブがあるんです"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031060" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="へえ……バンド組んでんだ。"]	// 「
+		[maintxt_print2 text="あ、でもそれっぽいよな。音楽好きそう"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="しかも高校の部活レベルじゃないんですよ。"]	// 「
+		[maintxt_print2 text="ライブハウスで、本格的なライブをするんです。"]
+		[maintxt_print2 text="すごくないですか？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b413a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031061" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="なるほどな。弟の晴れ舞台だから、"]	// 「
+		[maintxt_print2 text="張り切って弁当作ったってわけか。"]
+		[maintxt_print2 text="いい姉ちゃんしてんじゃん"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……私が力になれるのは、"]	// 「
+		[maintxt_print2 text="これくらいですから……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031062" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="なに弱気になってんだよ。"]	// 「
+		[maintxt_print2 text="お前が作った料理、どれもうまかったしさ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031063" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="普通であれなら、気合入れたやつなんて"]	// 「
+		[maintxt_print2 text="すっげーご馳走だろ？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031064" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="口には出さないかもしれねえけど、"]	// 「
+		[maintxt_print2 text="弟も喜んでると思うぜ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（喜んでる……か）"]
+
+		[batch]
+
+		/*------------------------------
+		回想：シーン003-mineo-0018より
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　開始                          */
+
+		[monochro_st1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_ON" substop="SUBSTOP_ON" f_se="SE_OFF"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_cm ch_name="b-mine_b" dir="TO_CENTER" speed="0" delay="NO_DELAY"]/*キャラ削除*/
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_40a_up" time="NOON" count="0"]	/* bg37　昼　　　　リビング＿机付近アップ　カーテン　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-kazu_e110a" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[monochro_st2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="060090" count="0"]
+
+		[speaker_change name="星野 香月"]// ※
+		[maintxt_print2 text="……ごちそうさま"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		回想：ここまで
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　終了                          */
+
+		[monochro_ed1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_ON" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_23c_up" time="LIGHT" count="0"]	/* bg23　　夜　　　　居酒屋(新宿)　　ぼかしアップ（座席での会話用）*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-mine_b400a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[monochro_ed2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="脳裏に、香月の言葉が蘇る。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……実は今日、"]	// 「
+		[maintxt_print2 text="香月のライブを見に行く予定なんです"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="どんなふうに音楽に打ち込んできたのか、"]	// 「
+		[maintxt_print2 text="ちゃんと見届けたい気持ちもあるんですが……。"]
+		[maintxt_print2 text="……心配なのも、あって"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b502b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031065" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="心配？　ミスしねえかとかそういう？"]	// 「
+		[maintxt_print2 text="お前、小学生の運動会じゃねえんだから"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ち、違います。その……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="伝えるタイミングを逸してしまったから、"]
+		[maintxt_print2 text="口にするのをためらう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="榎本さんは言葉を止めた私を"]
+		[maintxt_print2 text="首を傾げながら見つめていた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="香月と同じバンドメンバーに……"]	// 「
+		[maintxt_print2 text="一色さんが、いるから……です"]	// 」
+
+		[batch]
+
+		[bgm_play no="05" count="0"]		// BGM再生：05_日常Ｄ 真面目
+
+		[ezchara_nextstate_cm ch_name="b-mine_b500a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031066" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="一色……？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="その名前に、榎本さんの顔色が変わる。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b503a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031067" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="一色って……一色康弘のことか？"]	// 「
+		[maintxt_print2 text="お前の弟と同じバンドって……どういうことだよ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……すみません。本当ならもっと早く"]	// 「
+		[maintxt_print2 text="伝えるべきだったんですが……"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure82_turn3
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="少し前に、家の前で香月と話してる"]	// 「
+		[maintxt_print2 text="一色さんに会ったんです"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="服装は奇抜でしたけど、"]	// 「
+		[maintxt_print2 text="話してみたら落ち着いた印象で――"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b503b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031068" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="藤井先輩に誤認逮捕された奴らが"]	// 「
+		[maintxt_print2 text="完全なシロとは言い切れない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031069" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……そう言ったのは、お前だろ？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b503a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……はい"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b504b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031070" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="いくら外面がよくても、裏では悪事に"]	// 「
+		[maintxt_print2 text="手を染めてる、なんて奴はごまんといる"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b506a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031071" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……誤認逮捕した件については、"]	// 「
+		[maintxt_print2 text="警察に非があるけどよ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b500a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031072" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="だからって、藤井先輩の事件に一色が"]	// 「
+		[maintxt_print2 text="無関係だって確証はない。そうだろ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……確かに、その通りです"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="一色さんには、"]	// 「
+		[maintxt_print2 text="藤井さんを殺す動機がある。でも……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="私は、香月の夢に力を貸してくれている人を……"]	// 「
+		[maintxt_print2 text="疑いたくないんです"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b500b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031073" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="お前……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="警察官として甘いって、自分でも思います。"]	// 「
+		[maintxt_print2 text="だけど……香月にとって、一色さんは大切な"]
+		[maintxt_print2 text="仲間なんです"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="一色さんを尊敬してるのは……、"]	// 「
+		[maintxt_print2 text="傍から見てもわかるほどでした"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="今までの罪滅ぼしにはならないかもしれない。"]	// 「
+		[maintxt_print2 text="それでも、私は……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="香月がつかみかけている夢を、"]	// 「
+		[maintxt_print2 text="壊したくないんです"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b508a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="榎本 峰雄"]// ※
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私の話を黙って聞いていた榎本さんは、"]
+		[maintxt_print2 text="小さく息を吐き出した。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031074" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="お前の言う通り、"]	// 「
+		[maintxt_print2 text="その考えは警察官としては甘ちゃんだろうな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b405a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031075" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="でも……姉として、弟の夢を守りたいって"]	// 「
+		[maintxt_print2 text="気持ちは……おかしなことなんかじゃねえ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b409a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031076" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="もし妹がお前の弟と同じ立場だったら、"]	// 「
+		[maintxt_print2 text="俺だって妹の夢を守ってやりたいと思う"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b405a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031077" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……警察官つっても、人間だからさ。"]	// 「
+		[maintxt_print2 text="身内に甘くなっちまうのは、仕方ねえよな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031078" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="現に俺も今……弟の夢を壊したくないっていう"]	// 「
+		[maintxt_print2 text="お前の気持ちを……壊したくねえなって思った"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="榎本さん……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031079" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ま、とはいえ完全にノーマークってわけには"]	// 「
+		[maintxt_print2 text="いかねえ。それはお前もわかってんだろ？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……はい"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="考えたくはないですけど、もし一色さんが"]	// 「
+		[maintxt_print2 text="藤井さんの事件に関わっているなら……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="香月を傷つけることになったとしても、"]	// 「
+		[maintxt_print2 text="逮捕しなければいけませんから"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure82_turn4
+
+		[ezchara_nextstate_cm ch_name="b-mine_b401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031080" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……そこんとこがブレてないなら、大丈夫だな"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031081" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="俺も、一色とは直接会ったことねえんだ。"]	// 「
+		[maintxt_print2 text="犯人だって決め付ける根拠は今のとこないしさ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="糾弾されてもおかしくなかったのに、"]
+		[maintxt_print2 text="榎本さんは私の気持ちを汲み取ってくれた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ありがとう……ございます"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b500b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031082" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……礼を言われるようなことじゃねえよ。"]	// 「
+		[maintxt_print2 text="それより、ひとつ確認させてくれ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="？　はい"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b504a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031083" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="一色のこと俺に言わなかったのは……"]	// 「
+		[maintxt_print2 text="俺を信用できなかったからか？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="！　違います！"]	// 「
+		[maintxt_print2 text="ただタイミングがつかめなかっただけで……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b500b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031084" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="でも、俺に話したら弟に影響があるかもしれない、"]	// 「
+		[maintxt_print2 text="弟の夢が壊されるかもしれないとは思っただろ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="それは、そう……ですけど。"]	// 「
+		[maintxt_print2 text="でも、榎本さんを信用してないからじゃ――"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b502b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031085" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あー……悪ぃ、責めてるわけじゃねえんだよ。"]	// 「
+		[maintxt_print2 text="そういうわけじゃなくて……なんつうのかな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b506a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031086" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……俺が、お前を不安に"]	// 「
+		[maintxt_print2 text="させてるんじゃないかって思ってさ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……？　どういうことですか？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b408a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031087" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="俺が、一色を疑って恨んでるんじゃないか、"]	// 「
+		[maintxt_print2 text="一色に会ったらなにかするんじゃないか、って"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031088" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="そう考えて、俺に話すのをためらうのは"]	// 「
+		[maintxt_print2 text="当然っちゃ当然だと思うぜ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b409a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031089" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="でも、それは俺の個人的な私情だ。"]	// 「
+		[maintxt_print2 text="事件の解決には必要ねえもんだろ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b404a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031090" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="たとえ一色が事件に関係してたとしても"]	// 「
+		[maintxt_print2 text="俺は勝手に暴走したりしない。約束する"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b426a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031091" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="つまり……その、さ。"]	// 「
+		[maintxt_print2 text="情けねえとこばっか見せたからアレだけど、"]
+		[maintxt_print2 text="もうちっと俺を信用してほしいって話"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b422a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031092" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="お前のおかげで、俺は前を向けた。"]	// 「
+		[maintxt_print2 text="今度は俺が、お前に信用してもらうために"]
+		[maintxt_print2 text="努力すべきだしな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="榎本さん……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031093" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="なんかあったら、隠さず相談してくれよ。"]	// 「
+		[maintxt_print2 text="俺たちはパートナー、なんだろ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……ごめんなさい。"]	// 「
+		[maintxt_print2 text="榎本さんに話さなかったのは……"]
+		[maintxt_print2 text="少しはそういう不安もあったかもしれません"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="でも、これからは隠しません。"]	// 「
+		[maintxt_print2 text="なにかあったら、ちゃんと相談します"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b401c" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031094" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="おう。俺もそうするぜ"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031095" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あ、でも……。"]	// 「
+		[maintxt_print2 text="相談するのは、俺だけにしろよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b411a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031096" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="さっき言ってた……感情論だってわかってても、"]	// 「
+		[maintxt_print2 text="弟のために一色を疑いたくないって話とかな。"]
+		[maintxt_print2 text="うかつに口にしないほうがいい"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b404a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031097" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="他の奴……特に警察関係者に言ったら、"]	// 「
+		[maintxt_print2 text="それこそ私情で弟を庇ってるのかって、"]
+		[maintxt_print2 text="お前自身が疑われかねない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031098" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="俺はお前の気持ちもわかるし、"]	// 「
+		[maintxt_print2 text="そもそも警察辞めてるからいいけど。"]
+		[maintxt_print2 text="組織じゃそういうのは通用しねえからな"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure82_turn5
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031099" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……星野？"]	// 「
+		[maintxt_print2 text="口ぽかんとして、どうした？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ……、すみません。なんだか急に、"]	// 「
+		[maintxt_print2 text="榎本さんが先輩っぽく見えて……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b414b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031100" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ちょ、急にってなんだ、急にって！"]	// 「
+		[maintxt_print2 text="お前、時々失礼だぞ！"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="す、すみません、"]	// 「
+		[maintxt_print2 text="バカにしてるわけじゃないんですよ。"]
+		[maintxt_print2 text="榎本さんって、親しみやすいので……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="さっきみたいな助言をされると、"]	// 「
+		[maintxt_print2 text="ハッとさせられるというか……"]	// 」
+
+		[batch]
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="身が引き締まる思いがしたって言うのを"]	// 「
+		[maintxt_print2 text="伝えたかったんです"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b503a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031101" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="…………それならいいけど"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ぶすっとしながら、榎本さんは"]
+		[maintxt_print2 text="お味噌汁をすする。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私もサバの味噌煮を口に運び、"]
+		[maintxt_print2 text="しばらくはお互い黙々と食事をした。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="しかし……、"]
+		[maintxt_print2 text="私はあることに気付いてしまう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="榎本さん。ハンバーグの付け合せの"]	// 「
+		[maintxt_print2 text="ニンジン、食べないんですか？"]	// 」
+
+		[batch]
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[ezchara_nextstate_cm ch_name="b-mine_b513a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031102" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ふぇっ！？　いや、これは……"]	// 「
+		[maintxt_print2 text="最後に食べようとして、だな……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="最後……ってことは、"]	// 「
+		[maintxt_print2 text="ニンジン、好きなんですね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b512b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031103" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="お、おう。この毒々しいオレンジ色が"]	// 「
+		[maintxt_print2 text="たまんねえよな！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b511a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_del_cm ch_name="b-mine_b" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="目は口ほどにものを言う、というけど……。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="その言葉通り、榎本さんの目は"]
+		[maintxt_print2 text="明らかに泳いでいた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（さっき、プリンが好きなのも子供っぽいって"]
+		[maintxt_print2 text="　理由で隠そうとしていたくらいだし……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……ここは、気付かないフリをしよう）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="何食わぬ顔で食事を続ける私に対し、"]
+		[maintxt_print2 text="榎本さんはもうすぐ食べ終わる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="となると、ニンジンの行方が気になる"]
+		[maintxt_print2 text="ところだが……。"]
+
+		[batch]
+
+		/*------------------------------
+		峰雄立ち絵、ニンジンを睨んでいる
+		------------------------------*/
+
+		[chara_app_cm ch_name="b-mine_b403a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="榎本 峰雄"]// ※
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="榎本さんもどう処理するべきか、"]
+		[maintxt_print2 text="ニンジンに睨みを利かせていた。"]
+
+		[batch]
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（最後に食べるって言った手前、"]
+		[maintxt_print2 text="　かなり困ってるみたい……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ここは、助け舟を出してあげるべきだよね）"]
+
+		[batch]
+
+		/*------------------------------
+		【好感度選択肢】
+		あえて席を外す＞シーン005-mineo-0003へ
+		食べてあげる　＞シーン005-mineo-0004へ
+		------------------------------*/
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[flag_set name="switch" num="0"]
+
+		[menutxt_set2 num="KOUKAN" text="あえて席を外す" file="304" sure="sure3"]
+		[menutxt_set2 num="KOUKAN" text="食べてあげる" file="304" sure="sure4"]
+
+		[batch]
+
+	[return]
+
+
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure3
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+
+	*sure3_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0003
+		場所：居酒屋
+		時間：昼
+		登場人物（服装）：峰雄（上着なし）
+		視点：主人公
+		------------------------------*/
+
+		/*------------------------------
+		あえて席を外す
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（私が席を外せば、店員さんに"]
+		[maintxt_print2 text="　お皿を下げてもらえるはず……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="すみません、榎本さん。"]	// 「
+		[maintxt_print2 text="私、ちょっとお手洗いに行ってきます"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b403b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031104" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……おお"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_del_cm ch_name="b-mine_b" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ニンジンを睨んだままの榎本さんを残し、"]
+		[maintxt_print2 text="私は席を立つ。"]
+
+		[batch]
+
+		/*------------------------------
+		時間経過
+		------------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[scenechange_bs name="enbg_23c_up" time="LIGHT" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]/* bg23　　夜　　　　居酒屋(新宿)　　ぼかしアップ（座席での会話用）*/
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（もうそろそろ、いいかな）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="頃合を見計らい、席に戻ると――"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（あれ……お皿がまだある。"]
+		[maintxt_print2 text="　なのに……ニンジンが消えてる！）"]
+
+		[batch]
+
+		[chara_app_cm ch_name="b-mine_b412a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031105" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="うっ、ううっ……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え、榎本さん！？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="涙目になりながら手で口を押さえ、"]
+		[maintxt_print2 text="榎本さんは口をもごもごさせていた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あの、ひょっとしてニンジン……"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		峰雄立ち絵、目逸らし
+		------------------------------*/
+
+		/*------------------------------
+		演技：ニンジンを何とか食べようとしてます。
+		------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="b-mine_b418a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031106" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（食べたんだ……！）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私が見ていなければ……と思ったけど、"]
+		[maintxt_print2 text="甘かった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="榎本さんは一度口にしたことを"]
+		[maintxt_print2 text="覆したりしない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ましてやコソコソ処理するなんて、"]
+		[maintxt_print2 text="論外だったのだろう。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b501b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031107" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="っしゃ、食ってやったぜ……！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="なんとか榎本さんはニンジンを飲み込んだらしく、"]
+		[maintxt_print2 text="達成感に満ち溢れた目で私を見る。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="か、完食……ですね"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b502b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031108" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ま、俺に嫌いなものなんてねえからな！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……そういうことにしておこうっと）"]
+
+		[batch]
+
+		/*------------------------------
+		＞シーン005-mineo-0005へ
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure5"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure4
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure4_turn0"]
+	[/if]
+
+	*sure4_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0004
+		場所：居酒屋
+		時間：昼
+		登場人物（服装）：峰雄（上着なし）
+		視点：主人公
+		------------------------------*/
+
+		/*------------------------------
+		食べてあげる
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="榎本さん、実は私……"]	// 「
+		[maintxt_print2 text="ニンジンが大好きなんです"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b414b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031109" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="えっ！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b407a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031110" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="そ、そうか。お前も……ニンジンが"]	// 「
+		[maintxt_print2 text="好きなのか……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="はい。でも、私の定食には"]	// 「
+		[maintxt_print2 text="ニンジンが入ってなくて……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="よければそのニンジン、"]	// 「
+		[maintxt_print2 text="私の小鉢と交換しませんか？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b502b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031111" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="え……。でも、量的にお前の方が"]	// 「
+		[maintxt_print2 text="損することになるぞ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="いいんです。そんなの気にならないくらい、"]	// 「
+		[maintxt_print2 text="ニンジンが好きなので！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b507a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031112" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ふーん……。"]	// 「
+		[maintxt_print2 text="まあ、そういうことなら俺は構わねえけど"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ありがとうございます！"]	// 「
+		[maintxt_print2 text="それじゃ、いただきますね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b500b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031113" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="おう"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ニンジンと小鉢を交換すると、"]
+		[maintxt_print2 text="途端に榎本さんはニコニコしだす。"]
+
+		[batch]
+
+		/*------------------------------
+		（済み）峰雄の好感度アップ　＋１
+		------------------------------*/
+		[open_ai_catch2 type="AI_CATCH_TYPE_LOVE" chara="AI_CATCH_CHARA_MINEO"]	// 好感度ＵＰ：榎本峰雄
+
+		[ezchara_nextstate_cm ch_name="b-mine_b512b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031114" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ニンジンが牛肉のしぐれ煮に化けるとは……。"]	// 「
+		[maintxt_print2 text="俺、これ好きなんだよなー"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……良かった。"]
+		[maintxt_print2 text="　榎本さん、喜んでくれたみたい）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="榎本さんのことだから、あのままだと"]
+		[maintxt_print2 text="無理をしてニンジンを食べていたと思う。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（だいぶ私も榎本さんのことが"]
+		[maintxt_print2 text="　わかってきたかもしれない）"]
+
+		[batch]
+
+		/*------------------------------
+		＞シーン005-mineo-0005へ
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure5"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure5
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure5_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure5_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure5_turn2"]
+	[/if]
+
+	*sure5_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0005
+		場所：居酒屋
+		時間：昼
+		登場人物（服装）：峰雄（上着なし）
+		視点：主人公
+		------------------------------*/
+
+		[ezchara_del_cm ch_name="b-mine_b" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		/*------------------------------
+		合流
+		時間経過
+		------------------------------*/
+		[scenechange_time color="F_BLACK" count="F_SP" dir="F_RIGHT"]	/*時間経過*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="お互い定食を完食すると、"]
+		[maintxt_print2 text="いよいよ待望のプリンが運ばれてきた。"]
+
+		[batch]
+
+		[chara_app_cm ch_name="b-mine_b414b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031115" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="おおお……！　これが噂のプリンか。"]	// 「
+		[maintxt_print2 text="見ろよ、星野。プッルプルだぜ！"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="榎本さんはそう言って、"]
+		[maintxt_print2 text="プリンの容器を揺らして見せる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="すごい……。"]	// 「
+		[maintxt_print2 text="クチコミの人気も頷けますね！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031116" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="だな。じゃあ、早速……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="スプーンを手に取り、"]
+		[maintxt_print2 text="プリンを口へ運ぶと――"]
+
+		[batch]
+
+		/*------------------------------
+		ボイス加工：擬似合成
+		------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="b-mine_b414a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		//[speaker_change name="星野 #Name[1]＆榎本 峰雄"]// ※
+		//[maintxt_print2 text="！！"]	// 「	// 」
+
+		//[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="031117" count="0"]
+
+		[speaker_change name="星野 #Name[1]＆榎本 峰雄"]// ※
+		//[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="！！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="口の中でとろけたプリンに、"]
+		[maintxt_print2 text="私たちは顔を見合わせた。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b514b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031118" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="くおぉぉ。なんだこの口溶けは……。"]	// 「
+		[maintxt_print2 text="とても居酒屋のプリンとは思えねえ……！"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="来て良かったですね、榎本さん……！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b512b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031119" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ああ。このうまさで値段も安いなんて、"]	// 「
+		[maintxt_print2 text="文句の付けどころがねえよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="幸せそうにプリンを口に運ぶ榎本さんを見て、"]
+		[maintxt_print2 text="私も嬉しくなる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="榎本さんさえよければ、"]	// 「
+		[maintxt_print2 text="また一緒に食べにきませんか？"]	// 」
+
+		[batch]
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+
+		[ezchara_nextstate_cm ch_name="b-mine_b508a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031120" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……んー、そうだな……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（なんだか煮え切らない返事……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あの、無理にとは言わないので……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031121" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ん？　あー違う違う"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b407a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031122" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="俺さ……女を連れてくなら、"]	// 「
+		[maintxt_print2 text="もっと気取った店のがいいと思ってて"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b405a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031123" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="でも、なんか……下手に格好つけなくても、"]	// 「
+		[maintxt_print2 text="お前とは好きなものは好きって言い合えて、"]
+		[maintxt_print2 text="楽しいんだよな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b409a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031124" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="最初はお前の顔見るだけで、"]	// 「
+		[maintxt_print2 text="すっげえ落ち着かなかったのに……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b401c" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031125" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="いつの間にか、こうして話してても"]	// 「
+		[maintxt_print2 text="むしろ落ち着くっていうか、居心地いい"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b422a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031126" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……これって、さ。"]	// 「
+		[maintxt_print2 text="もしかして、俺がお前のこと……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……っ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="いつになく真剣な榎本さんに、"]
+		[maintxt_print2 text="なんだかこっちまで緊張してしまう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="だけど……。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b413b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031127" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="無意識のうちに、パートナーとして"]	// 「
+		[maintxt_print2 text="信頼してる証なのかもな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え……。パートナー……？"]	// 「	// 」
+
+		[batch]
+
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		[ezchara_nextstate_cm ch_name="b-mine_b500b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031128" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ん？　なんだよ、変な顔して。"]	// 「
+		[maintxt_print2 text="今、俺かなりいいこと言ったつもりだぞ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031129" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="まあでも、まだまだお前は危なっかしいからな。"]	// 「
+		[maintxt_print2 text="さっきの……弟のライブもさ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b517a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031130" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="お前１人に行かせるのは、その……心配だ"]	// 「	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure5_turn1
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……そんなに私、頼りがいないですか？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b504a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031131" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="うん。ない"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：ガーン
+		------------------------------*/
+		[se_play2 no="00232" count="WAIT_NONE"]/* SE再生：ショックＡ（ガーン）　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そ、そんなハッキリ言わなくても"]	// 「
+		[maintxt_print2 text="いいじゃないですか！"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="たしかに私は経験も浅いし"]	// 「
+		[maintxt_print2 text="色々と足りないところ多いですけど……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b501b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031132" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="そんなしょぼくれるなって。"]	// 「
+		[maintxt_print2 text="能力とかそういうこと言ってるわけじゃねえよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031133" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="言っただろ、今度は俺を信用してくれって"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b501a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031134" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="要は……お前に足りないとこは、俺が補う。"]	// 「
+		[maintxt_print2 text="だから、もう少し俺に頼れってことだ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……それって……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b501b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031135" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="それが本当のパートナーってもんだろ？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="榎本さん……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031136" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="つーわけで、ライブには俺も行くから"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="えっ、ちょっと待ってください。"]	// 「
+		[maintxt_print2 text="行くって、チケットはどうするんです？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b409a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031137" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="そこはお前が用意するに決まってるだろ。"]	// 「
+		[maintxt_print2 text="俺は先輩、お前は後輩なんだからな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（せっかく先輩として尊敬しかけたのに、"]
+		[maintxt_print2 text="　パシリ扱い……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……榎本さんって、体育系の部活に"]	// 「
+		[maintxt_print2 text="入ってたりしました？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031138" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="おう、よくわかったな。"]	// 「
+		[maintxt_print2 text="俺、中学高校と陸上部だったんだ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031139" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="しかもインハイまで行ったんだぞ。"]	// 「
+		[maintxt_print2 text="どうだ、すごいだろ！"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="なるほど。道理で……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="足が速かったことと、上下関係に"]
+		[maintxt_print2 text="こだわっているのに合点がいった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="とりあえず、チケットを譲ってくれる子に"]	// 「
+		[maintxt_print2 text="確認してみます"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031140" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="おう。俺はいつでも動けるようにしとく。"]	// 「
+		[maintxt_print2 text="チケットが用意できたら連絡してくれ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="わかりました"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b404a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031141" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="一色のことが少しでもわかるかもしれねえし、"]	// 「
+		[maintxt_print2 text="今後の捜査に役立つ可能性もある"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……はい"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b401c" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031142" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……パートナー自慢の弟の雄姿も"]	// 「
+		[maintxt_print2 text="見届けなきゃなんねえしな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="！　はい……！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b413b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031143" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="うっし。そんじゃ会計は俺に任せて、"]	// 「
+		[maintxt_print2 text="お前は仕事、頑張って来い"]	// 」
+
+		[batch]
+
+		[ezchara_del_cm ch_name="b-mine_b" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ばしっと背中を叩かれ、軽くむせる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……榎本さん、気合入ってるな）"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure5_turn2
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（私も気持ちだけは"]
+		[maintxt_print2 text="　負けないようにしないと……！）"]
+
+		[batch]
+
+		/*------------------------------
+		＞シーン005-mineo-0006へ
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure6"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure6
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure6_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure6_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure6_turn2"]
+	[/if]
+
+	*sure6_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0006
+		場所：アルタ前
+		時間：夜
+		登場人物（服装）：花子
+		視点：主人公
+		------------------------------*/
+
+		/*------------------------------
+		演出：日付表示
+		１２月１１日、ＰＭ１：００
+		------------------------------*/
+		/*-------------------------------------*/
+		[scenechange_bs name="bg_17aN" time="NOON" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_ON"]	/* bg17　昼　　　　　新宿＿アルタ前　　　（人あり）　　　　　　　　*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[CW_Current_Time control_id="1" month="MONTH_12" day="DAY_11" ampm="AP_PM" time="TIME_01" minutes="MINUTES_00"]	// 現在時刻
+		/*-------------------------------------*/
+
+		//SEデータがと届き次第解除
+		//[loopse_play no="GAYA_42" count="0" ch="CH00"]		/* サブBGM：ガヤ　雑踏　通常　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="榎本さんに送り出された私は、"]
+		[maintxt_print2 text="ハナさんと待ち合わせた駅前に来ていた。"]
+
+		//修正前
+		//[maintxt_print2 text="榎本さんに送り出された私は、"]
+		//[maintxt_print2 text="ハナさんと待ち合わせたアルタ前に来ていた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ここで最初にX-Day事件の予告動画が"]
+		[maintxt_print2 text="　流されたんだよね……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="日中なのもあって、"]
+		[maintxt_print2 text="サラリーマンやＯＬなど行きかう人は多い。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（動画が流れた４月は、新宿が様変わり"]
+		[maintxt_print2 text="　するなんて思いもしなかった）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……もちろん、"]
+		[maintxt_print2 text="　こんな首輪を付けられることも）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="マフラーの上から首輪に触れ、"]
+		[maintxt_print2 text="変わらずそこにある感触に落ち込む。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（もうすぐX-Dayまで２０日を切る……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（私は無事にX-Day事件の真実に"]
+		[maintxt_print2 text="　たどり着けるのかな……）"]
+
+		[batch]
+
+		//SEデータがと届き次第解除
+		//[loopse_stop count="LP_SP" ch="CH00"]			/* ループＳＥ停止 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240048" count="0"]
+
+		[speaker_change name="？？？"]// 小林 花子
+		[maintxt_print2 text="おねーさーん！"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：抱き付く音
+		------------------------------*/
+		[se_play2 no="00168" count="WAIT_NONE"]/* SE再生：衣服　動く（ガバッ）　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[ef_shake3 side="INSIDE" slevel="ATCK_Lv1"]	/* 衝撃　Ｌｖ１（通常の打撃など　　　　） */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ひゃっ！？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="いきなり背後から抱き着かれ、"]
+		[maintxt_print2 text="素っ頓狂な声を上げてしまった。"]
+
+		[batch]
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[chara_app_cm ch_name="yahiro_a101a" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ……、ハナさん……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a101b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240049" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="おっまたせー。"]	// 「
+		[maintxt_print2 text="チケット、持ってきたよ～！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="じゃーん、と掲げて見せたハナさんの手には、"]
+		[maintxt_print2 text="チケットが４枚あった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あれ……、４枚……？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240050" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="うん。"]	// 「
+		[maintxt_print2 text="余ってた分、全部持ってきちゃった♪"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240051" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="香月のこと応援するなら、"]	// 「
+		[maintxt_print2 text="人数は多い方がいいでしょ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……そうですね。それに……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="実は追加で、あと１枚チケットを"]	// 「
+		[maintxt_print2 text="頼めないかと思っていたんです"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240052" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="あ、そうなの？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="はい。香月のことを知ってる人に"]	// 「
+		[maintxt_print2 text="ライブの話をしたら、見に行きたいと言われて"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a407a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240053" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="ふーん……。なんかお姉さんといい、"]	// 「
+		[maintxt_print2 text="参観日に子供を見守る親みたい"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="えっ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ハナさんの解釈だと、香月が子供で"]
+		[maintxt_print2 text="私と榎本さんが親――"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="違います！　私と榎本さんは"]	// 「
+		[maintxt_print2 text="そんなんじゃないです！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240054" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="……誘った人、榎本さんって言うの？"]	// 「
+		[maintxt_print2 text="その感じだと……男？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（しまった、墓穴を掘った……！）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ただの知り合いなんですよ、ほんとに"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240055" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="お姉さんってば、"]	// 「
+		[maintxt_print2 text="そんなに否定したら逆に怪しいよう？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="う……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a113b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240056" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="きゃははっ♪"]	// 「
+		[maintxt_print2 text="もう、そういうことならハナに任せて！"]
+		[maintxt_print2 text="ばっちりアシストしちゃうから♪"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure6_turn1
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="いえ、あの……アシストって言うなら、"]	// 「
+		[maintxt_print2 text="むしろ私がしなきゃいけない……ですよね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a114a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240057" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="え？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="こういう経験がないので、"]	// 「
+		[maintxt_print2 text="うまくいくかわからないんですが……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="香月とハナさんの仲を取り持つように、"]	// 「
+		[maintxt_print2 text="私もなんとかアシストを――"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a414b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240058" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="待って待って。"]	// 「
+		[maintxt_print2 text="そんなのしなくていいから！"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="えっ……いいんですか？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240059" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="うん。だってハナは――"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a418a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="ハナ"]// ※小林花子
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……ハナさん？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a407a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240060" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="あ、ほら……香月ってそういうお節介、"]	// 「
+		[maintxt_print2 text="１番嫌いそうでしょ？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240061" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="ハナは香月やバンドメンバーを"]	// 「
+		[maintxt_print2 text="応援できたら、それで満足だから♪"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そう……ですか"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240062" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="うん。でも、ハナのこと応援しようと"]	// 「
+		[maintxt_print2 text="してくれたのは、嬉しかったなー"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240063" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="香月はガード固いけど、"]	// 「
+		[maintxt_print2 text="お姉さんとは仲良くできそう♪"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="相談くらいならのれると思うので、"]	// 「
+		[maintxt_print2 text="何かあったら言ってください"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240064" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="うん、ありがと！"]	// 「
+		[maintxt_print2 text="それじゃこれ、チケットね"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="４枚のチケットを受け取り、"]
+		[maintxt_print2 text="私はお財布を出す。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="えーと、チケット代は……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240065" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="お姉さんの分だけでいいよー。"]	// 「
+		[maintxt_print2 text="あとの３人分は、サービス！"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え！？　いえ、そういうわけには……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240066" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="いいからいいから。お姉さんみたいに"]	// 「
+		[maintxt_print2 text="ヒロ君の歌聞いたことないとか、可哀想だし"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240067" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="これで誘った人たちがファンになってくれたら、"]	// 「
+		[maintxt_print2 text="ハナも嬉しいもんね♪"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……本当に、いいんでしょうか"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240068" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="チケット余らせちゃうほうが"]	// 「
+		[maintxt_print2 text="もったいなかったから、いーの"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……それじゃ、お言葉に甘えて……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="１人分のチケット代を渡しつつ、"]
+		[maintxt_print2 text="ちょっと申し訳ない気持ちになる。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240069" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="お姉さん、顔に出すぎ―。"]	// 「
+		[maintxt_print2 text="気にしなくていいのに"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240070" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="そんなに気になるならさ、"]	// 「
+		[maintxt_print2 text="ハナ、そこのビルに入ってるショップで、"]
+		[maintxt_print2 text="こういう服売ってるの"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="自分のスカートの裾をつかみ、"]
+		[maintxt_print2 text="ハナさんはクルリと一回転して見せる。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240071" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="お姉さん可愛いし、"]	// 「
+		[maintxt_print2 text="きっとこういう服、似合うよ～"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure6_turn2
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（えっ、似合う……かな？）"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240072" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="あ、心配しなくてもハナが選んであげる"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240073" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="ショップの売り上げに貢献してくれた方が、"]	// 「
+		[maintxt_print2 text="ハナ的には助かるんだよね♪"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ああ、なるほど……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そういうことなら、"]
+		[maintxt_print2 text="力になってあげたい……けど。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ごめんなさい、"]	// 「
+		[maintxt_print2 text="もうすぐ昼休みが終わるので……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="お店に寄るのは、今度でいいですか？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a421b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240074" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="えー。せっかくお姉さんと仲良くなれる"]	// 「
+		[maintxt_print2 text="チャンスだと思ったのに～"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="今日はライブがあるから無理ですけど、"]	// 「
+		[maintxt_print2 text="仕事が早めに上がれたら、寄らせてもらいます"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="yahiro_a413b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="240075" count="0"]
+
+		[speaker_change name="ハナ"]// 小林 花子
+		[maintxt_print2 text="ん、約束だよ？　じゃあ、まったね～"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_del_cm ch_name="yahiro_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="フードのうさ耳を揺らしながら、"]
+		[maintxt_print2 text="ハナさんはショップが入ってるビルへ姿を消す。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（っと、いけない。"]
+		[maintxt_print2 text="　私も急いで戻らなきゃ……！）"]
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：走る音
+		------------------------------*/
+
+		/*------------------------------
+		＞シーン005-mineo-0007へ
+		------------------------------*/
+
+		[sub_end count="60"]	// 終了処理
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure7"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure7
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure7_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure7_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure7_turn2"]
+	[/if]
+
+	*sure7_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0007
+		場所：新宿署・受付
+		時間：昼
+		登場人物（服装）：峰雄（上着あり）、白石（白衣あり）
+		視点：峰雄
+		------------------------------*/
+
+		/*------------------------------
+		演出：日付表示
+		１２月１１日、ＰＭ１：３０
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 視点変更                            */
+
+		[player_change1 color="F_BLACK" speed="F_SP_60" bgmstop="BGMSTOP_ON" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▼前景　　　　　※速度は"０"
+		[ezfg_change_pc pc="PC_MINEO"]/* 送りアイコン＋前景チェンジ　 ／ 峰雄　　　　　　 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_02a" time="NOON" count="0"]		/* bg02　昼　　　　　新宿署＿玄関　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[player_change2 speed="F_SP_60"]
+		/*-------------------------------------*/
+		[batch]
+		[CW_Current_Time control_id="1" month="MONTH_12" day="DAY_11" ampm="AP_PM" time="TIME_01" minutes="MINUTES_30"]	// 現在時刻
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="榎本 峰雄"]// ※
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：歩み寄る音
+		------------------------------*/
+		[se_play3 no="00015" count="WAIT_WK1"]/* SE再生：足音　歩き　寄る　１人・アスファルトＢ（固め：…タッタッタ）　　　　　　　　 */
+
+		[chara_app_cm ch_name="kage_a101a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051729" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="お待たせ、榎本君"]	// 「	// 」
+
+		[batch]
+
+		[bgm_play no="05" count="0"]		// BGM再生：05_日常Ｄ 真面目
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031161" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あ……、すんません。"]	// 「
+		[maintxt_print2 text="忙しいとこ無理言って……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a113a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051730" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="いいよ、ちょうど息抜きしようと"]	// 「
+		[maintxt_print2 text="思ってたところだし"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a101b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051731" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="それに……ちょっと興味があるしね？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031162" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="え？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a400b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051732" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="君は表向き、事件を独自で追うために"]	// 「
+		[maintxt_print2 text="警察を辞めたって言ってたけど、本心は"]
+		[maintxt_print2 text="真実に直面するのが怖かったからだ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="榎本 峰雄"]// ※
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051733" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="逃げるような形で辞めたここに近寄るのも、"]	// 「
+		[maintxt_print2 text="捜査のために柳君や笹塚君、ましてや俺に"]
+		[maintxt_print2 text="頼ることも避けたがっていた"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051734" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="柳君が心配しても、笹塚君が焚きつけても"]	// 「
+		[maintxt_print2 text="のらりくらり逃げてばかりいて、事務所内でも"]
+		[maintxt_print2 text="置物状態になってたよね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031163" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……否定はしません"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051735" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="その君が、自らここに足を運んで"]	// 「
+		[maintxt_print2 text="俺にアドバイスを求めようとしてる"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="榎本 峰雄"]// ※
+		[maintxt_print2 text="！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a101b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051736" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……本気で捜査する気になったっていうのは"]	// 「
+		[maintxt_print2 text="嘘じゃないみたいだね？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031164" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……はい"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a101b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051737" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="一応、俺も同じ事務所の一員だしね。"]	// 「
+		[maintxt_print2 text="話くらいは聞いてあげてもいいかなって"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031165" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="白石さん……。何気に俺のこと"]	// 「
+		[maintxt_print2 text="気にかけてくれてたんッスね……！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a200b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051738" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="いや、別にそこまで気にしてない"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：矢が刺さる音（グサッ）
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031166" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="んなっ！？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a201a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051739" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="ほらほら。俺の時間は限られてるんだから、"]	// 「
+		[maintxt_print2 text="早く用件を言わないと……帰っちゃうよ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031167" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ま、待ってください！"]	// 「
+		[maintxt_print2 text="言う！　言いますから！！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a113a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051740" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="しー……。声、大きすぎるよ。"]	// 「
+		[maintxt_print2 text="君は相変わらず落ち着きがないなぁ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031168" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ぐっ……"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		演技：小声
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031169" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="前言撤回……。"]	// 「
+		[maintxt_print2 text="やっぱ白石さんは意地悪だ……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a100c" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051741" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="それで？　俺に聞きたいことってなに？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031170" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……その、X-Day事件は"]	// 「
+		[maintxt_print2 text="交換殺人の線が強い……ですよね？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051742" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="うん、そうだね"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031171" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="でも、５月の事件に当てはめると、"]	// 「
+		[maintxt_print2 text="その前提に違和感があるんです"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a100a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="白石 景之"]// ※
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031172" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="藤井先輩の殺され方を見る限り、"]	// 「
+		[maintxt_print2 text="実行犯も先輩に強い恨みを持ってた"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031173" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="でも、それだと完璧なアリバイを作るために"]	// 「
+		[maintxt_print2 text="動機とは無関係な人間を実行犯にする、"]
+		[maintxt_print2 text="【交換殺人】が成り立たないんです"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure7_turn1
+
+		[ezchara_nextstate_cm ch_name="kage_a401b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051743" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……へえ。"]	// 「
+		[maintxt_print2 text="君がそこまで考えてるとは意外だったな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031174" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="その感じだと……全くの見当違いって"]	// 「
+		[maintxt_print2 text="わけじゃないですよね？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051744" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="うん。というか、そこまでわかってるなら、"]	// 「
+		[maintxt_print2 text="実行犯の絞り込みなんて簡単でしょ？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031175" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="えっ？　うーんと……。"]	// 「
+		[maintxt_print2 text="実行犯は藤井先輩とは無関係で、"]
+		[maintxt_print2 text="けど恨みを持ってるってことで……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031176" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ううーん……？？？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a113b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051745" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="ふふっ。そんなに必死になって"]	// 「
+		[maintxt_print2 text="考えるようなことかな？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a113a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031177" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ううっ…………ヒント！"]	// 「
+		[maintxt_print2 text="ヒントください！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a108a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051746" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="んー……まあ、君なりに頑張って"]	// 「
+		[maintxt_print2 text="考えたみたいだしね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a100b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051747" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……別に、被害者本人じゃなくたって、"]	// 「
+		[maintxt_print2 text="恨みを持つケースはある"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a100a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031178" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="被害者じゃないのに恨みを持つ……？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a100b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051748" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="そう。……考えてみれば、"]	// 「
+		[maintxt_print2 text="君の立ち位置は実行犯に近いかもね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a100a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031179" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="え……？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a401a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051749" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="俺が言えるのは、ここまで。"]	// 「
+		[maintxt_print2 text="あとは自分で考えてみなよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031180" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="…………わかり、ました"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031181" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="助言ありがとうございます。"]	// 「
+		[maintxt_print2 text="俺なりに、もう少し考えてみます！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="白石 景之"]// ※
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051750" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="ねえ。君が変わったのって、一緒に"]	// 「
+		[maintxt_print2 text="捜査してる彼女のおかげだったりする？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031182" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="えっ、ま、まあ……そう、ですね"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a420a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051751" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="ふーん……。あんまり彼女とは"]	// 「
+		[maintxt_print2 text="話せてないけど、少し興味湧いたな……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031183" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="きょ、興味？　駄目ッスよ、白石さん。"]	// 「
+		[maintxt_print2 text="あいつは、俺の相棒です！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a101b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051752" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="ただの相棒ってだけなら、"]	// 「
+		[maintxt_print2 text="俺が仲良くしてもいいよね？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031184" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="それは、だから……！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051753" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……嫌なんだ？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031185" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="！？　べべ、別に嫌っていうか、"]	// 「
+		[maintxt_print2 text="ちょっと面白くないっていうか"]
+		[maintxt_print2 text="でも深い意味はないっていうか……！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a113b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051754" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="ふ……ははっ。"]	// 「
+		[maintxt_print2 text="君をからかうと、退屈しなくていいよ"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		演技：悔しげなうめき
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031186" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="～～～～～っ"]	// 「	// 」
+
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		/*------------------------------
+		（済み）ＳＥ：メール着信音
+		------------------------------*/
+		[se_play3 no="SE_MAIL" count="WAIT_MAIL"]/* SE再生：メール着信　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[ezchara_nextstate_cm ch_name="kage_a401a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051755" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="ほら、うめいてる場合じゃないよ。"]	// 「
+		[maintxt_print2 text="ひょっとしたら……彼女からかも"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031187" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="そんな、まさか……"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：衣擦れ
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031188" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="！！　マ、マジだ……！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051756" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="これ以上からかうと"]	// 「
+		[maintxt_print2 text="君が爆発しちゃいそうだから、俺は行くね"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure7_turn2
+
+		[ezchara_nextstate_cm ch_name="kage_a423b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051757" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="進展があったら教えてよ。"]	// 「
+		[maintxt_print2 text="事件も……彼女とのことも、ね"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		白石立ち絵ＯＦＦ
+		------------------------------*/
+		[ezchara_del_cm ch_name="kage_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031189" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="だだ、だからあいつとは勘ぐられる"]	// 「
+		[maintxt_print2 text="ようなことは、何も――"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031190" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="って、もういないし……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031191" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……つうか、あいつもこんなタイミングで"]	// 「
+		[maintxt_print2 text="メールしてこなくったっていいじゃんか"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="031192" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="一体、なんの用だっつーの……"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------------------------------------------------
+		▼メールのやりとり開始
+		------------------------------------------------------------------------------*/
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[mail_start]	// メール開始（下から）
+		[batch]
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		星野#Name[1]
+		榎本さん、チケット用意できました！
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[mail_txt text="榎本さん、チケット用意できました！"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031193" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……おっ。仕事早いじゃん"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		//枠からはみ出るので二つに分けました。　小塚
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		星野#Name[1]
+		全部で４枚もらったので、柳さんと
+		笹塚さんにも声をかけようと思ってるん
+		ですが、こういうの興味ありそうですか？
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[mail_txt text="全部で４枚もらったので、柳さんと"]
+		[mail_txt text="笹塚さんにも声をかけようと思ってるん"]
+		[mail_txt text="ですが、"]
+
+		[batch]
+
+		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[mail_txt text="こういうの興味ありそうですか？"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031194" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……へ？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031195" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="（なんだよ……２人きりじゃねえのか）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="031196" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="（……やっぱ、俺ひとりじゃ"]
+		[maintxt_print2 text="　頼りにならねえって思われてんのかな）"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[mail_fin]	// メール終了
+		[batch]
+
+		/*------------------------------------------------------------------------------
+		▲メールのやりとり終了
+		------------------------------------------------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="榎本 峰雄"]// ※
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		＞シーン005-mineo-0008へ
+		------------------------------*/
+		[sub_end count="60"]	// 終了処理
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure8"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure8
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure8_turn0"]
+	[/if]
+
+	*sure8_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0008
+		場所：新宿署・廊下
+		時間：昼
+		登場人物（服装）：
+		視点：主人公
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 視点変更                            */
+
+		[player_change1 color="F_BLACK" speed="F_SP_60" bgmstop="BGMSTOP_ON" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▼前景　　　　　※速度は"０"
+		[ezfg_change_pc pc="PC_ICHIK"]/* 送りアイコン＋前景チェンジ　 ／ 主人公　　　　　 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_03a" time="NOON" count="BG_SP"]		/* bg03　昼　　　　　新宿署＿廊下　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[player_change2 speed="F_SP_60"]
+		/*-------------------------------------*/
+
+		/*------------------------------
+		（済み）ＳＥ：メール着信音
+		------------------------------*/
+		[se_play3 no="SE_MAIL" count="WAIT_MAIL"]/* SE再生：メール着信　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ……、榎本さんからかな？"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：衣擦れ
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="携帯を取り出して見ると――"]
+
+		[batch]
+
+		/*------------------------------------------------------------------------------
+		▼メールのやりとり開始
+		------------------------------------------------------------------------------*/
+
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[mail_start]	// メール開始（下から）
+
+		// ▽前回メール１（下）		※中央表示では前回メール１（下段）は使用できません。２（中段）から始めてください。
+		[zenkai_mail_speaker index="ZM_ST" is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[zenkai_mail_txt index="ZM_ST" text="こういうの興味ありそうですか？"]
+
+		// ▽前回メール２（中）
+		[zenkai_mail_speaker index="ZM_NK" is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[zenkai_mail_txt index="ZM_NK" text="全部で４枚もらったので、柳さんと"]
+		[zenkai_mail_txt index="ZM_NK" text="笹塚さんにも声をかけようと思ってるん"]
+		[zenkai_mail_txt index="ZM_NK" text="ですが、"]
+
+		// ▽前回メール３（上）
+		[zenkai_mail_speaker index="ZM_UE" is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[zenkai_mail_txt index="ZM_UE" text="榎本さん、チケット用意できました！"]
+
+		[batch]
+		/*----------------------------*/
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		榎本峰雄
+		柳先輩も尊もそういうの興味ない。
+		俺はお前と２人で行くつもりだった。
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="榎本 峰雄" back_word="１２/１１"]
+		[mail_txt text="柳先輩も尊もそういうの興味ない。"]
+		[mail_txt text="俺はお前と２人で行くつもりだった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（え……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="メールにはそれだけしか書かれておらず、"]
+		[maintxt_print2 text="困惑する。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……なんだか榎本さん、怒ってる？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（どう返信しよう……？）"]
+
+		[batch]
+
+		/*------------------------------
+		☆☆有賀（ここから新規追加分）
+		------------------------------*/
+
+		/*------------------------------
+		【メール選択肢】
+		私もそのつもりでした　　　　＞シーン005-mineo-0009へ
+		香月に事情を話せないですしね＞シーン005-mineo-0010へ
+		信頼できる人を誘います　　　＞シーン005-mineo-0011へ
+		------------------------------*/
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		// 選択肢
+		[mail_menutxt_set text="私もそのつもりでした" file="304" sure="sure9"]
+		[mail_menutxt_set text="香月に事情を話せないですしね" file="304" sure="sure10"]
+		[mail_menutxt_set text="信頼できる人を誘います" file="304" sure="sure11"]
+
+		[batch]
+
+	[return]
+
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure9
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure9_turn0"]
+	[/if]
+
+	*sure9_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0009
+		場所：新宿署・廊下
+		時間：夕方
+		登場人物（服装）：
+		視点：主人公
+		------------------------------*/
+
+		/*------------------------------
+		私もそのつもりでした
+		------------------------------*/
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		星野#Name[1]
+		私もそのつもりでした。
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[mail_txt text="私もそのつもりでした。"]
+
+		[batch]
+
+		/*------------------------------
+		峰雄の好感度アップ　＋１
+		------------------------------*/
+		[open_ai_catch2 type="AI_CATCH_TYPE_LOVE" chara="AI_CATCH_CHARA_MINEO"]	// 好感度ＵＰ：榎本峰雄
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		榎本峰雄
+		やっぱそうだよな！
+		同じこと考えてて安心した。
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="榎本 峰雄" back_word="１２/１１"]
+		[mail_txt text="やっぱそうだよな！"]
+		[mail_txt text="同じこと考えてて安心した。"]
+
+		[batch]
+
+		[unlock_trophy2 no="TROPHY_08"]	// トロフィー08：空気の読めるメールを返した
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		星野#Name[1]
+		この事件は、私と榎本さんで
+		追ってますからね！
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[mail_txt text="この事件は、私と榎本さんで"]
+		[mail_txt text="追ってますからね！"]
+
+		[batch]
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		榎本峰雄
+		あ……そう、だな。事件……ね。
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="榎本 峰雄" back_word="１２/１１"]
+		[mail_txt text="あ……そう、だな。事件……ね。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（あれ……。急に榎本さんの"]
+		[maintxt_print2 text="　反応が鈍くなったような……？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="どうかしたのかなと思いつつ、"]
+		[maintxt_print2 text="手元にあるチケットに目をやる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……榎本さんの言い分もわかるけど、"]
+		[maintxt_print2 text="　チケットの料金を肩代わりしてくれたことや）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ライブを見に来てファンになってくれたら"]
+		[maintxt_print2 text="　嬉しいって言ってたのを思うと……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（…………）"]
+
+		[batch]
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		星野#Name[1]
+		譲ってくれた人に申し訳ないので
+		信頼できる人を誘おうと思うんですが
+		それでいいですか？
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[mail_speaker is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[mail_txt text="譲ってくれた人に申し訳ないので"]
+		[mail_txt text="信頼できる人を誘おうと思うんですが"]
+		[mail_txt text="それでいいですか？"]
+
+		[batch]
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		榎本峰雄
+		まあ……、
+		そういうことならいいんじゃね。
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="榎本 峰雄" back_word="１２/１１"]
+		[mail_txt text="まあ……、"]
+		[mail_txt text="そういうことならいいんじゃね。"]
+
+		[batch]
+
+		/*------------------------------
+		＞シーン005-mineo-0012へ
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure12"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure10
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure10_turn0"]
+	[/if]
+
+	*sure10_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0010
+		場所：新宿署・廊下
+		時間：夕方
+		登場人物（服装）：
+		視点：主人公
+		------------------------------*/
+
+		/*------------------------------
+		香月に事情を話せないですしね
+		------------------------------*/
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		星野#Name[1]
+		そうですよね、
+		香月に事情を話せないですし……。
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[mail_txt text="そうですよね、"]
+		[mail_txt text="香月に事情を話せないですし……。"]
+
+		[batch]
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		榎本峰雄
+		そ、そうだ。弟に変な疑惑を
+		向けられないためにも、他の
+		奴は誘わない方がいいと思う。
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="榎本 峰雄" back_word="１２/１１"]
+		[mail_txt text="そ、そうだ。弟に変な疑惑を"]
+		[mail_txt text="向けられないためにも、他の"]
+		[mail_txt text="奴は誘わない方がいいと思う。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（榎本さん、香月のことも"]
+		[maintxt_print2 text="　ちゃんと考えてくれてたんだ。"]
+		[maintxt_print2 text="　でも……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="チケットをもらってしまった手前、"]
+		[maintxt_print2 text="無駄にするわけにもいかない。"]
+
+		[batch]
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		星野#Name[1]
+		譲ってくれた人に申し訳ないので
+		信頼できる人を誘おうと思うんですが
+		それでいいですか？
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[mail_speaker is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[mail_txt text="譲ってくれた人に申し訳ないので"]
+		[mail_txt text="信頼できる人を誘おうと思うんですが"]
+		[mail_txt text="それでいいですか？"]
+
+		[batch]
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		榎本峰雄
+		う。まあ、そういうことなら
+		構わねえよ。
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="榎本 峰雄" back_word="１２/１１"]
+		[mail_txt text="う。まあ、そういうことなら"]
+		[mail_txt text="構わねえよ。"]
+
+		[batch]
+
+		/*------------------------------
+		＞シーン005-mineo-0012へ
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure12"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure11
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure11_turn0"]
+	[/if]
+
+	*sure11_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0011
+		場所：新宿署・廊下
+		時間：夕方
+		登場人物（服装）：
+		視点：主人公
+		------------------------------*/
+
+		/*------------------------------
+		信頼できる人を誘います
+		------------------------------*/
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		星野#Name[1]
+		大丈夫です、
+		信頼できる人を誘いますから。
+		------------------------------*/
+		[mail_speaker is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[mail_txt text="大丈夫です、"]
+		[mail_txt text="信頼できる人を誘いますから。"]
+
+		[batch]
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		榎本峰雄
+		…………わかったよ。
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="榎本 峰雄" back_word="１２/１１"]
+		[mail_txt text="…………わかったよ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……気のせいかな。"]
+		[maintxt_print2 text="　なんだか榎本さん、怒ってるみたい……）"]
+
+		[batch]
+
+		/*------------------------------
+		＞シーン005-mineo-0012へ
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure12"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure12
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure12_turn0"]
+	[/if]
+
+	*sure12_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0012
+		場所：新宿署・廊下
+		時間：夕方
+		登場人物（服装）：
+		視点：主人公
+		------------------------------*/
+
+		/*------------------------------
+		合流
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="何はともあれ、"]
+		[maintxt_print2 text="了承を得られたことにホッとする。"]
+
+		[batch]
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		星野#Name[1]
+		開場時間は１８時半なので、
+		それまでにライブハウスに
+		来てください。
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[mail_speaker is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/１１"]
+		[mail_txt text="開場時間は１８時半なので、"]
+		[mail_txt text="それまでにライブハウスに"]
+		[mail_txt text="来てください。"]
+
+		[batch]
+
+		/*------------------------------
+		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
+		
+		榎本峰雄
+		りょーかい。
+		------------------------------*/
+
+		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="榎本 峰雄" back_word="１２/１１"]
+		[mail_txt text="りょーかい。"]
+
+		[batch]
+
+		/*------------------------------
+		メール表示ここまで
+		------------------------------*/
+
+		[mail_fin]	// メール終了
+		[batch]
+
+		/*------------------------------------------------------------------------------
+		▲メールのやりとり終了
+		------------------------------------------------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（よし。あとは戻って、"]
+		[maintxt_print2 text="　望田先輩に事情を話さないと）"]
+
+		[batch]
+
+		/*------------------------------
+		＞シーン005-mineo-0013
+		------------------------------*/
+
+		/*------------------------------
+		☆☆有賀（ここまで新規追加分）
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure13"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure13
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure13_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure13_turn1"]
+	[/if]
+
+	*sure13_turn0
+
+		/*------------------------------
+		●シーン005-mineo-0013
+		場所：新宿署・特防デスク
+		時間：夕方
+		登場人物（服装）：冴木（制服）、望田
+		視点：主人公
+		------------------------------*/
+
+		/*------------------------------
+		演出：日付表示
+		１２月１１日、ＰＭ４：４５
+		------------------------------*/
+		/*-------------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[scenechange_bs name="bg_04b" time="LIGHT" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg04　夕方　　　　新宿署＿特殊地域防犯対策室　　　　　　　　　　*/
+		[batch]
+		[CW_Current_Time control_id="1" month="MONTH_12" day="DAY_11" ampm="AP_PM" time="TIME_04" minutes="MINUTES_45"]	// 現在時刻
+		/*-------------------------------------*/
+
+		/*------------------------------
+		ＳＥ：すごい勢いでペンに紙に走らせる音
+		------------------------------*/
+		/*------------------------------
+		望田立ち絵、ぽかん
+		------------------------------*/
+		[se_play3 no="00081" count="WAIT_NONE"]/* SE再生：ペン　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[chara_app_cm ch_name="mochi_a114b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="望田 政信"]// ※
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………ん？"]	// 「	// 」
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[bgm_play no="03" count="0"]		// BGM再生：03_日常Ｂ 昼
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ、報告書の追加ですか？"]	// 「
+		[maintxt_print2 text="だったらこっちに置いておいてください"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a107a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080189" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="いや、そうじゃないんだが……。"]	// 「
+		[maintxt_print2 text="気合の入り方が尋常じゃないと思ってな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080190" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="いつにも増して、すごいスピードで"]	// 「
+		[maintxt_print2 text="仕事をこなしてるじゃないか"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="それはそうですよ。今日は私用で"]	// 「
+		[maintxt_print2 text="早上がりをさせてもらうんですから"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="いつも以上に頑張らないと……！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a113a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080191" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="ははっ。"]	// 「
+		[maintxt_print2 text="弟さんのためとはいえ、燃えてるなぁ"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：歩み寄る音
+		------------------------------*/
+		[se_play3 no="00015" count="WAIT_WK1"]/* SE再生：足音　歩き　寄る　１人・アスファルトＢ（固め：…タッタッタ）　　　　　　　　 */
+
+		[chara_app_cm ch_name="saeki_a100a" place="RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[ezchara_move_cm ch_name="mochi_a" place="LEFT" speed="NORMAL_MOVE" delay="NO_DELAY"]/*キャラ移動*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090149" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="燃えてるって……なんかあったのか？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ……、冴木君"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080192" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="そうなんだよ。なんでも今日、"]	// 「
+		[maintxt_print2 text="星野の弟のライブがあるそうなんだ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a102b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090150" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="えっ！　今日あたり飲みに誘おうと"]	// 「
+		[maintxt_print2 text="思ってたのに……予定あるのかあ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……それなら、冴木君も来る？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a114b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090151" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="へっ？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="実はライブのチケット、あと２枚あるの"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a407b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090152" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="あー……ライブ、ねえ。"]	// 「
+		[maintxt_print2 text="悪い。俺はそういうのあんまり……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……冴木君って、こういうの苦手？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a407a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090153" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="ライブって大音量で耳が痛くなるだろ？"]	// 「
+		[maintxt_print2 text="ＤＶＤとかで落ち着いて見るほうが"]
+		[maintxt_print2 text="好きなんだよなあ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ああ、その気持ちもわからなくはないかも"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a100b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080193" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="だが、出演バンドのボーカルは、"]	// 「
+		[maintxt_print2 text="テレビに出るほど有名らしいぞ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080194" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="チケットもなかなか取れないんだよな？"]	// 「
+		[maintxt_print2 text="なんでも瞬殺するほど人気だとか"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そうなんです。ちょうど知り合った子が"]	// 「
+		[maintxt_print2 text="チケットを譲ってくれて"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="私もあまりライブって行かないんですけど、"]	// 「
+		[maintxt_print2 text="香月が出てるなら話は別です"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a111a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080195" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="まあ、そんな有名人のライブなら、"]	// 「
+		[maintxt_print2 text="行くだけで自慢できるんじゃないか？"]
+		[maintxt_print2 text="酒の席でのネタにもなるかもな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a407b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090154" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="……う、う～ん……。"]	// 「
+		[maintxt_print2 text="でも、人混みもあんま得意じゃないし……"]	// 」
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_04b" time="LIGHT" count="0"]	/* bg04　夕　　　　新宿署＿特殊地域防犯対策室（原寸大）　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="500" point_y="110" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-saeki_a407b" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……せっかくもらったチケット"]	// 「
+		[maintxt_print2 text="余らせちゃうのもあれだし……今ならタダだよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="たまにはこういうので、"]	// 「
+		[maintxt_print2 text="ストレス発散してみない……？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-saeki_a402b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090155" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="う……っ、そんな目で見るなよ。"]	// 「
+		[maintxt_print2 text="……あー……わかった、行く。"]
+		[maintxt_print2 text="弟の雄姿も拝んでみたいしな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="よかった！　望田先輩は予定があるみたいで、"]	// 「
+		[maintxt_print2 text="他に誰誘おうか迷ってたんだよね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-saeki_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090156" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="チケット、もう１枚あるんだろ？"]	// 「
+		[maintxt_print2 text="……あと１人、誰誘うんだ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ああ、それなら……"]	// 「	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure13_turn1
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		/*------------------------------
+		時間経過
+		背景：新宿署・外観
+		登場人物（服装）：冴木（私服）、桜川（私服）
+		------------------------------*/
+		/*------------------------------
+		演出：日付表示
+		１２月１１日、ＰＭ６：００
+		------------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP_SLOW"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[scenechange_bs name="bg_01c" time="NIGHT" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_ON"]	/* bg01　　夜　　　　新宿署＿外観　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[CW_Current_Time control_id="1" month="MONTH_12" day="DAY_11" ampm="AP_PM" time="TIME_06" minutes="MINUTES_00"]	// 現在時刻
+		/*----------------------------*/
+
+		[chara_app_cm ch_name="saeki_b400a" place="LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+		[chara_app_cm ch_name="koto_c100a" place="RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="070086" count="0"]
+
+		[speaker_change name="桜川 寿"]
+		[maintxt_print2 text="……ふーん。それでアタシに"]	// 「
+		[maintxt_print2 text="お呼びがかかったってわけか"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="肉料理のお誘いじゃなくて、"]	// 「
+		[maintxt_print2 text="すみません……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="koto_c109a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="070087" count="0"]
+
+		[speaker_change name="桜川 寿"]
+		[maintxt_print2 text="いいよ、別に。このところX-Day事件の"]	// 「
+		[maintxt_print2 text="実況見分に駆り出されっぱなしでさ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="koto_c101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="070088" count="0"]
+
+		[speaker_change name="桜川 寿"]
+		[maintxt_print2 text="さすがにストレスたまってきてたから、"]	// 「
+		[maintxt_print2 text="憂さ晴らしにはちょうどよさそうだし"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_b414b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090157" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="肉命……じゃない、鑑識の桜川さんと"]	// 「
+		[maintxt_print2 text="星野が知り合いとは思わなかったぜ……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（肉命っていうのを知ってるなんて、"]
+		[maintxt_print2 text="　冴木君の情報網は侮れないな……）"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_b401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090158" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="えーっと、あとはお前の知り合いが"]	// 「
+		[maintxt_print2 text="一緒なんだっけ？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_b401c" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="うん。その人とはライブハウスで"]	// 「
+		[maintxt_print2 text="待ち合わせることになってるから"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（冴木君と桜川さんを誘ったことは"]
+		[maintxt_print2 text="　話してないけど……この２人なら"]
+		[maintxt_print2 text="　信用が置けるし、大丈夫だよね）"]
+
+		[batch]
+
+		/*------------------------------
+		＞シーン005-mineo-0014へ
+		------------------------------*/
+
+		[sub_end count="60"]	// 終了処理
+
+		[flag_set name="switch" num="0"]
+
+		[file_change no="305" label="sure1"]
+
+	[return]
+

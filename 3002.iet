@@ -1,0 +1,706 @@
+
+/*------------------------------------------------------------------------------
+＞松井さんからのメール
+
+	シチュエーション機能を実装いたしました。
+	環境を更新することで確認できます。
+
+	シチュエーションのデータベース、サンプルスクリプトは以下のファイルになります。
+	データベース    ：    \make\database\dbSituation.cpp
+	サンプル		：    \make\script\シナリオ\サンプルプログラム\907-シチュエーション.stcm2
+
+	実行のテストはゲーム起動時のデバッグメニューから
+	松井テスト→シチュエーション
+	を選択することで可能です。
+
+	実行の際は以下の点にご注意ください。
+	・各解放のフラグがないためInitファイルに追加する必要があります。
+	・サンプルでは峰雄のソースのみが用意されているため、強制で峰雄のシチュエーションが始まります。
+	・シチュエーション名画像の8番がないため表示されません。（ダミーなので問題はございません）
+
+------------------------------------------------------------------------------*/
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+// 榎本服装：上着なし
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure60
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure60_turn0"]
+	[/if]
+
+	*sure60_turn0
+
+		// 機能の制限
+		// パレットメニューは開けないように制限する必要があります。
+		// ※セーブ、ロード、タイトルへ戻るなどの動作があるため
+		// バックログは使用可能ですが、ログに同じ言葉が並ぶことになると思われるので
+		// 見栄えが悪くなる可能性があります。
+
+		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="1"]			// メニュー
+		//[set_restrict bit="ADV_RESTRICT_INPUT_BACKLOG" num="1"]	// バックログ
+		//[set_restrict bit="ADV_RESTRICT_INPUT_QUICK" num="1"]		// クイックセーブ、クイックロード
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+
+		///////////////////////////////////////////////
+
+		[bgm_play no="18" count="0"]		// BGM再生：18_捜査Ｂ ＡＤＶ
+
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j == 0"]	[ezbg_change3 name="bg_34c" time="LIGHT2" count="0"]		/* bg34　　夜　　　　探偵事務所前データ　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 1"]	[ezbg_change3 name="bg_15a" time="NOON" count="0"]		/* bg15　昼　　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 2"]	[ezbg_change3 name="bg_16a" time="NOON" count="0"]		/* bg16　昼　　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 3"]	[ezbg_change3 name="bg_61a" time="NOON" count="0"]		/* bg61　昼　　　　　遊園地　　　　　　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 4"]	[ezbg_change3 name="bg_61b" time="EV2" count="BG_SP"]	/* bg17　夕　　　　　遊園地　　　　　　　　　　　　　　　　　　　　*/// ※観覧車後は遊園地（夕）に切り替えます。
+		[/if]
+		[if estimate="$j == 5"]	[ezbg_change3 name="bg_15c" time="LIGHT2" count="0"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[/if]
+
+		[chara_app_cm ch_name="mine_b500a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		// シチュエーション開始
+		[open_situation chara_id="2"]	// ２：榎本峰雄
+
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		// スマートフォン版はメニュー画面を終了確認ウィンドウに置き換えます
+		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="0"]			// メニュー
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション１　■待ち合わせ
+=======================================================================================================================*/
+*sure1
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+
+	*sure1_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 1"]
+
+			[ezbg_change3 name="bg_15a" time="NOON" count="BG_SP"]		/* bg15　昼　　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="1"]
+		/*-----------------------------*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[ezchara_nextstate_cm ch_name="mine_b400b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032264" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="おう、来たか。"]	// 「
+		[maintxt_print2 text="……ん？　目の下にクマがある？"]
+		[maintxt_print2 text="あー、ちょっと緊張して昨日眠れなくてさ……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mine_b410b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032265" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="心配すんな、予習は完璧だ。"]	// 「
+		[maintxt_print2 text="今日の俺は、いつもと一味も二味も違う"]	// 」
+
+		[batch]
+
+		/*-----------------------------
+		ＳＥ：キラーン
+		-------------------------------*/
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]/*全キャラ削除*/
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_15a" time="NOON" count="0"]	/* bg15　昼　　　　新宿署付近＿交差点（原寸大）　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="300" point_y="100" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]//背景カメラ
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-mine_b120a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="20"]
+		/*-------------------------------------*/
+
+		[se_play2 no="00236" count="WAIT_NONE"]/* SE再生：フラッシュ（キラーン）　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032266" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="華麗にお前をエスコートして、"]	// 「
+		[maintxt_print2 text="【キャー峰雄さん、ステキ！】って"]
+		[maintxt_print2 text="言わせてみせるぜ……！"]	// 」
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]/*全キャラ削除*/
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_15a" time="NOON" count="0"]		/* bg15　昼　　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="mine_b423a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032267" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="え？　……っ！！　な、なんだよ、"]	// 「
+		[maintxt_print2 text="いつもの飾らない俺が好きとか……！"]
+		[maintxt_print2 text="不意打ちが過ぎるぞ！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mine_b518a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032268" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="くそー……。ドキドキさせるつもりが"]	// 「
+		[maintxt_print2 text="させられてどうするんだ、俺！"]
+		[maintxt_print2 text="こ、こっから本気出してやるからな……！"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3002" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション２　■手をつなぐ
+=======================================================================================================================*/
+*sure2
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+
+	*sure2_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 2"]
+
+			[ezbg_change3 name="bg_16a" time="NOON" count="BG_SP"]		/* bg16　昼　　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="2"]
+		/*-----------------------------*/
+
+		[bgm_play no="03" count="0"]		// BGM再生：03_日常Ｂ 昼
+
+		[ezchara_nextstate_cm ch_name="mine_b219a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032269" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あ、あのさ……恋人らしく、手繋ごうぜ。"]	// 「
+		[maintxt_print2 text="ほら、迷子になったらいけねえしよ。"]
+		[maintxt_print2 text="ん……じゃ、手――"]	// 」
+
+		[batch]
+
+		/*-----------------------------
+		ＳＥ：子供の声
+		ＳＥ：走り去る音
+		-------------------------------*/
+		[se_play3 no="00046" count="WAIT_DS2"] /* SE再生：足音　走り　寄る　２人・汎用（…タッタッタ）　　　　　　　　　　　　　　　　 */
+
+		[ezchara_nextstate_cm ch_name="mine_b414b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032270" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="どわっ！？　なんだ、子供の集団！？"]	// 「
+		[maintxt_print2 text="あいつら鬼ごっこでもしてんのか？"]
+		[maintxt_print2 text="ったく……気を取り直して、手――"]	// 」
+
+		[batch]
+
+		/*-----------------------------
+		（済み）ＳＥ：クラクションの音
+		-------------------------------*/
+		[se_play2 no="00252" count="60"]/* SE再生：自動車　クラクション（プップ）　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[ezchara_nextstate_cm ch_name="mine_b415b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032271" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="わっ、今度は車が……！"]	// 「
+		[maintxt_print2 text="わかったよ、脇に寄ればいいんだろ……！"]
+		[maintxt_print2 text="……なんか、やけに変な邪魔が入るな"]	// 」
+
+		[batch]
+
+		/*-----------------------------
+		ＳＥ：車が走り去る音
+		-------------------------------*/
+		//雰囲気に合わなかったのでカットしました。吉田
+		//[se_play2 no="00250" count="80"]/* SE再生：自動車　アクセル音（ブーブゥー…ン）　　　　　　　　　　　　　　　　　　　　 */
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]/*全キャラ削除*/
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_16a" time="NOON" count="0"]	/* bg16　昼　　　　新宿＿オフィス街（原寸大）　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="200" point_y="100" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]//背景カメラ
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-mine_b413b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032272" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="え、うわ。あ……"]	// 「
+		[maintxt_print2 text="いや、お前から繋いでくれるとは思わなかった。"]
+		[maintxt_print2 text="へへ、災い転じて福となすだな！"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		[ezbg_change3 name="bg_16a" time="NOON" count="BG_SP"]		/* bg16　昼　　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+		[batch]
+
+		[file_change no="3002" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション３　■トラブル発生（orささいな喧嘩）
+=======================================================================================================================*/
+*sure3
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+
+	*sure3_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 3"]
+
+			[ezbg_change3 name="bg_61a" time="NOON" count="BG_SP"]		/* bg61　昼　　　　　遊園地　　　　　　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="3"]
+		/*-----------------------------*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[ezchara_nextstate_cm ch_name="mine_b402a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032273" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="なあ、誤解だって！　他の女に見惚れてた"]	// 「
+		[maintxt_print2 text="わけじゃねえよ。……その、あの人が持ってた"]
+		[maintxt_print2 text="ぬいぐるみを見てただけ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mine_b407a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032274" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あれって、この遊園地のオリジナルキャラだろ。"]	// 「
+		[maintxt_print2 text="なんか思い出になるもんをプレゼントしようって"]
+		[maintxt_print2 text="ずっと考えてたんだ。……サプライズしたくてさ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mine_b503b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032275" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="大体なー、俺が好きなのはお前だし！"]	// 「
+		[maintxt_print2 text="つか、むしろお前のことを見てる野郎共のほうが"]
+		[maintxt_print2 text="めちゃめちゃ多いし……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mine_b523a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032276" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="いつもハラハラさせられてんのは、"]	// 「
+		[maintxt_print2 text="俺の方なんだからな。自覚しろよ……バカ"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3002" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション４　■タイトル未定（デート終盤、いちばん良いムード、改めての告白や内緒のキスなど）
+=======================================================================================================================*/
+*sure4
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure4_turn0"]
+	[/if]
+
+	*sure4_turn0
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]/* 全キャラ削除 */
+		[batch]
+
+		/*-----------------------------*/
+
+//---------------------------------------
+//		観覧車は大立ち絵用の背景なので、必ず一度立ち絵を消去して使用します吉田。分岐背景処理カット。吉田
+//
+//		[flag_number name="シチュ用背景" i="j"]
+//		[if estimate="$j != 4"]
+//		{
+//			[ezbg_change3 name="bg_kan" time="EV" count="BG_SP"]	/* bg**　夕　　　　観覧車内　　　　　　　　　　　　　　　　　　　*/
+//		}
+//---------------------------------------
+
+		[flag_set name="シチュ用背景" num="4"]
+		/*-----------------------------*/
+
+		[ezbg_change3 name="bg_kan" time="EV2" count="BG_SP"]	/* bg**　夕　　　　観覧車内　　　　　　　　　　　　　　　　　　　*/
+
+		[bgm_play no="10" count="0"]		// BGM再生：10_恋愛Ａ 安らぎ
+
+		[chara_app_cm ch_name="b-mine_b401b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032277" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="夕陽が見える時間帯の観覧車っていいよな。"]	// 「
+		[maintxt_print2 text="これで乗り物も制覇して思い残すことはない、と"]
+		[maintxt_print2 text="言いたいとこだけど……実はまだ１つあってさ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b413a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032278" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……今日、楽しかったよな。"]	// 「
+		[maintxt_print2 text="お前も俺も、すっげー笑ってた気がする"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b405a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032279" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="こんなふうに、ずーっと自然体で笑い合える"]	// 「
+		[maintxt_print2 text="関係でいられたらいいよな。俺の隣にお前が"]
+		[maintxt_print2 text="ずっといてくれたら、これ以上の幸せなんてない"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mine_b500a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032280" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……あ、もう頂上か。"]	// 「
+		[maintxt_print2 text="そうそう。やり残してたことってのは――"]	// 」
+
+		[batch]
+
+		/*-----------------------------
+		台詞：冒頭にキス音
+		-------------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[txtwaitset count="40"]
+		[batch]
+		[blackout_start2 dir="F_FADE" color="F_WHITE" zpos="ZPOS_FORE3" alpha="255" speed="60"]	// ホワイトアウト開始
+		[txtwaitset count="60"]
+		[batch]
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]
+		[ezbg_change3 name="bg_WHITE" time="NOON" count="0"]
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="0"]					// ホワイトアウト終了
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="032281" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……もう、わかっただろ？"]	// 「
+		[maintxt_print2 text="ずっと一緒にいられるように、おまじない、だな"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		//[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3002" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション５　■また明日
+=======================================================================================================================*/
+*sure5
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure5_turn0"]
+	[/if]
+
+	*sure5_turn0
+
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 5"]
+
+			[ezbg_change3 name="bg_15c" time="LIGHT2" count="BG_SP"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="5"]
+		/*-----------------------------*/
+
+		[bgm_play no="10" count="0"]		// BGM再生：10_恋愛Ａ 安らぎ
+
+		[ezchara_nextstate_cm ch_name="mine_b401c" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+// 吉田作業　このセリフの３表目はカット予定
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032282" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="ナイトパレードも見たし、"]	// 「
+		[maintxt_print2 text="柳先輩たちへのお土産も買ったし……。"]
+		[maintxt_print2 text="これでもう、本当におしまいか"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mine_b409a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032283" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="お前といると、１日過ぎるのが早く感じる。"]	// 「
+		[maintxt_print2 text="ほんとはあと３６時間くらい、一緒にいたい"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mine_b401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032284" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あ、そうか。日帰りじゃなくて、"]	// 「
+		[maintxt_print2 text="泊まりならもっと一緒にいられ――"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mine_b425b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032285" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="あっ、ち、違うからな！？"]	// 「
+		[maintxt_print2 text="やましい意味とかじゃなくて、俺はただ、"]
+		[maintxt_print2 text="お前と２人の時間がもっと欲しくて……！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mine_b400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032286" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="……え、お前も……同じ気持ち？"]	// 「
+		[maintxt_print2 text="なんだ……俺だけじゃなかったのか。"]
+		[maintxt_print2 text="なら、今度はもう少し遠出してみようぜ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mine_b413a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		// ３行目の【ん……。じゃあ……また明日、な】をカット　吉田0615
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="032287" count="0"]
+
+		[speaker_change name="榎本 峰雄"]
+		[maintxt_print2 text="へへ、こうして次に楽しみがあるなら、"]	// 「
+		[maintxt_print2 text="今日が終わっちまうのも寂しくないよな？"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3002" label="sure60"]
+
+		[batch]
+
+		[return]
+
+

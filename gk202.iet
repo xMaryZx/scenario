@@ -1,0 +1,63 @@
+/***************************************************************************
+	現場検証の設定ファイルです。
+	ADV等のスクリプトとは別物です。
+***************************************************************************/
+
+// 以下のファイルのみをインクルードしてください。
+// コンパイラの設定は変更する必要はありません。
+//#include "Investigate\system.h"
+
+/*=======================================================================================================================
+ファイル202　スレ60　岡崎　２章
+=======================================================================================================================*/
+
+// 現場検証の行動回数です。
+// 数値以外は変えないでください。
+// 0以下の値を設定すると無制限になります。
+//	EXPORT int INV_NUM = 0;
+
+
+// 詳細の設定を行う関数です。
+// 関数名などは変えないでください。
+*main
+
+//	int handle0;
+//	int handle1;
+//	int handle2;
+
+	// 操作終了時に自動で移動するスクリプトファイル
+	[setEndScript file="202" sure="sure10"]
+
+	// 大元のエリア作成
+	[createBaseArea handle="handle0" id="1" area_name="歌舞伎町" bg_name=""]
+
+	// 名前ウィンドウを右上に作る
+	[onNameWndRight handle="handle0"]
+
+			// 操作場所Ａ－１
+			[createEventArea handle="handle1" parent="handle0" id="1" area_name="遺体の状況" x="670.0" y="380.0" w="180.0" h="100.0" file="202" sure="sure5"]
+				// 正解の場所なので色を変える
+				[setDbgColor handle="handle1" r="0.0" g="1.0" b="0.0" a="0.5"]
+
+			// 操作場所Ａ－２
+			[createEventArea handle="handle1" parent="handle0" id="1" area_name="凶器のナイフ" x="23.0" y="12.0" w="258.0" h="180.0" file="202" sure="sure6"]
+				// 正解の場所なので色を変える
+				[setDbgColor handle="handle1" r="0.0" g="1.0" b="0.0" a="0.5"]
+
+			// 操作場所Ａ－３
+			[createEventArea handle="handle1" parent="handle0" id="1" area_name="現場の状況" x="400.0" y="200.0" w="170.0" h="140.0" file="202" sure="sure7"]
+				// 正解の場所なので色を変える
+				[setDbgColor handle="handle1" r="0.0" g="1.0" b="0.0" a="0.5"]
+
+			// 操作場所Ａ－４
+			[createEventArea handle="handle1" parent="handle0" id="1" area_name="関係者資料" x="23.0" y="230.0" w="258.0" h="182.0" file="202" sure="sure8"]
+				// 正解の場所なので色を変える
+				[setDbgColor handle="handle1" r="0.0" g="1.0" b="0.0" a="0.5"]
+
+			// 操作場所Ａ－５
+			[createEventArea handle="handle1" parent="handle0" id="1" area_name="地面" x="380.0" y="410.0" w="160.0" h="100.0" file="202" sure="sure9"]
+				// 正解の場所なので色を変える
+				[setDbgColor handle="handle1" r="0.0" g="1.0" b="0.0" a="0.5"]
+
+	[return]
+

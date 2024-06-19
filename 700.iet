@@ -1,0 +1,976 @@
+
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+
+	*sure1_turn0
+
+		/*------------------------------
+		●シーンbaddf-04-0001
+		場所：住宅街２→公園
+		時間：夜
+		登場人物（服装）：主人公（私服）、鈴音、詩音
+		視点：主人公
+		------------------------------*/
+		/*------------------------------
+		【カラマリ】バッドエンド汎用シナリオ
+		宇野兄弟編
+		------------------------------*/
+		/*------------------------------
+		◆基本的に序盤であればどのルートでも使えます。
+		------------------------------*/
+		/*------------------------------
+		背景：住宅街２（夜）
+		------------------------------*/
+		[scenechange_bs name="bg_21c" time="LIGHT2" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg21　　夜　　　　住宅街２（新宿）　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（このあたりも人通りが少なくなったな……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="封鎖前は夜中でもちらほらと"]
+		[maintxt_print2 text="人の姿を見かけたというのに。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="今の新宿は、奇妙なほど静かだ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（前はあそこの公園も子供たちが"]
+		[maintxt_print2 text="　遊びまわっていたのに……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ふと視界に入った児童公園が、"]
+		[maintxt_print2 text="やけに寂しく浮いて見える。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（そういえば、子供の頃はよく"]
+		[maintxt_print2 text="　ああいう公園で香月と遊んだっけ）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="妙な懐かしさを覚えて、私は――"]
+
+		[batch]
+
+		/*------------------------------
+		【選択肢】
+		公園に寄る　＞シーンbaddf-04-0002へ
+		通り過ぎる　＞シーンbaddf-04-0003へ
+		------------------------------*/
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[flag_set name="switch" num="0"]
+
+		[menutxt_set2 num="HANYO" text="公園に寄る" file="700" sure="sure2"]
+		[menutxt_set2 num="HANYO" text="通り過ぎる" file="700" sure="sure3"]
+
+		[batch]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure2
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure2_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure2_turn2"]
+	[/if]
+
+	*sure2_turn0
+
+		/*------------------------------
+		●シーンbaddf-04-0002
+		場所：住宅街２→公園
+		時間：夜
+		登場人物（服装）：主人公（私服）、鈴音、詩音
+		視点：主人公
+		------------------------------*/
+		/*選択肢【公園に寄る】から*/
+
+		/*------------------------------
+		背景：公園（夜）
+		------------------------------*/
+		[scenechange_bs name="bg_43c" time="LIGHT2" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg43　　夜　　　　公園　　　　　　　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="なんとはなしに、公園に立ち寄ってみた。"]
+		[maintxt_print2 text="寂れた遊具が物悲しさを伝えてくる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ブランコでも乗ってみようか――なんて"]
+		[maintxt_print2 text="考えていると、隅のほうにあるベンチに"]
+		[maintxt_print2 text="人影が見えた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（若い女の子……？"]
+		[maintxt_print2 text="　こんな時間にひとりで……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="未成年なら家出の可能性もある。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="放っておくわけにもいかず、"]
+		[maintxt_print2 text="私は彼女に近づいた。"]
+
+		[batch]
+
+		[ezbg_target_set side="OMOTE" target="CAME0" point_x="80" point_y="50" size_z="120" count="110" ptn="NO_PT"]				//背景カメラ
+		[se_play3 no="00305" count="WAIT_WK8"]/* SE再生：足音　歩き　寄る　ハイヒールの足音　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あの……"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：鈴音ＩＮ
+		------------------------------*/
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_43c" time="LIGHT2" count="0"]	/* bg43　夜　　　　公園（原寸大）　　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="920" point_y="160" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]//背景カメラ
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-sznsan_a106b" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[ef_chara_shake2 ch_name="b-sznsan_a"]	/*キャラ横揺らし*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190126" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="っ！？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ、驚かせてしまってごめんなさい。"]	// 「
+		[maintxt_print2 text="こんな時間にひとりで……どうしましたか？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-sznsan_a102b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190127" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="……わ……私……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="警戒心を露わにする彼女をなだめようと"]
+		[maintxt_print2 text="しゃがみ込んで視線を合わす。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="見たところ……高校生くらいだろうか。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="家はこの近くなんですか？"]	// 「
+		[maintxt_print2 text="ご両親が心配してますよ"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		台詞：【両親】というワードに反応して別人格に変化
+		------------------------------*/
+		[ezchara_nextstate_cm ch_name="b-sznsan_a153a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190128" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="……………はあ？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-sznsan_a150a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190129" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="テメエ、今、なんつった？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え、あの……？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="弱弱しく見えた彼女の口調が、"]
+		[maintxt_print2 text="突然荒々しいものに変わった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="口調だけじゃない。"]
+		[maintxt_print2 text="表情すら狂気的なものに見える。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-sznsan_a154b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190130" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="帰る家？　両親……だあ？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-sznsan_a151b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190131" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="当然それが揃ってて当たり前、って"]	// 「
+		[maintxt_print2 text="口ぶりだなァ？　は……はははっ。"]
+		[maintxt_print2 text="一般的なジョーシキってやつ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190132" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="その能天気さ、羨ましいぜ。"]	// 「
+		[maintxt_print2 text="さぞかし恵まれた環境で育ったんだろ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（もしかして……両親がいないの？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ごめんなさい……無神経でした。"]	// 「
+		[maintxt_print2 text="でも、こんな時間に出歩くのは"]
+		[maintxt_print2 text="本当に危険ですから……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-sznsan_a155b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190133" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="へえ……危険か。"]	// 「
+		[maintxt_print2 text="そうだなあ……危ないぜ、お姉さん？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-sznsan_a158b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190134" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="オレみたいな奴に声かけちゃ、"]	// 「
+		[maintxt_print2 text="危険だっつってんだよ……！"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：胸倉をつかまれる音
+		------------------------------*/
+		/*------------------------------
+		演出：画面揺れ
+		------------------------------*/
+		[bgm_play no="16" count="0"]		// BGM再生：16_サスペンスＣ 事件発生
+
+		[ezeffect_scenechange2 color="F_WHITE" count="5" mode="0" mode2="0"]/* 時間経過(急に走り出す時とか) */
+		[ezchara_target_set ch_name="b-sznsan_a" side="OMOTE" target="CAME0" point_x="POS_X" point_y="POS_Y" size_z="110" count="0" ptn="GEN_PT"]			//キャラカメラ
+		[se_play2 no="00168" count="WAIT_NONE"]/* SE再生：衣服　動く（ガバッ）　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[ef_shake3 side="INSIDE" slevel="YOKO_Lv2"]	/* 横揺れＬｖ２（乱暴に腕を捕まれるなど） */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="っ！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――突然、目にも止まらぬ速さで"]
+		[maintxt_print2 text="胸倉を掴まれた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ぐ……っ"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：ギリギリと首を絞める音
+		ここから以降、断続的に。
+		------------------------------*/
+		[se_play2 no="00198" count="WAIT_NONE"]/* SE再生：肉弾戦・凄まじい力で相手の腕を握る音（ギリギリッ！）　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そして、そのまま――首を絞められる。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-sznsan_a151b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190135" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="はは……苦しいか？　苦しいよなあ？"]	// 「
+		[maintxt_print2 text="でもオマエが悪いんだぜ？"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn1
+		[se_play2 no="00198" count="WAIT_NONE"]/* SE再生：肉弾戦・凄まじい力で相手の腕を握る音（ギリギリッ！）　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（嘘……振りほどけない……！）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="その細腕からは考えられないほど強い力。"]
+		[maintxt_print2 text="必死で手に爪を立てても効果がない。"]
+
+		[batch]
+		[se_play2 no="00198" count="WAIT_NONE"]/* SE再生：肉弾戦・凄まじい力で相手の腕を握る音（ギリギリッ！）　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……っ、離し、て……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-sznsan_a154b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190136" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="帰る家があって当たり前。"]	// 「
+		[maintxt_print2 text="迎えてくれる家族がいて当たり前"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-sznsan_a153a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190137" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="そんな【当たり前】が与えられない奴の"]	// 「
+		[maintxt_print2 text="ことなんて、考えたこともねえだろ！？"]	// 」
+
+		[batch]
+
+		[se_play2 no="00198" count="WAIT_NONE"]/* SE再生：肉弾戦・凄まじい力で相手の腕を握る音（ギリギリッ！）　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……わ、私……は、警察、です。"]	// 「
+		[maintxt_print2 text="なにか、あるなら……話を聞きます、から"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-sznsan_a156b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190138" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="…………は？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="渾身の力で絞り出した声は、"]
+		[maintxt_print2 text="彼女の手を弱めるには至らなかった。"]
+
+		[batch]
+
+		[se_play2 no="00198" count="WAIT_NONE"]/* SE再生：肉弾戦・凄まじい力で相手の腕を握る音（ギリギリッ！）　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――むしろ、先ほどよりも力が増す。"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="255" speed="30"]	/* ブラックアウト開始 */
+		[txtwaitset count="30"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……ぐ……ぅ……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="このままでは――殺される。"]
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="200137" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 詩音
+		[maintxt_print2 text="――なにやってんだよ！？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_del_cm ch_name="b-sznsan_a" dir="TO_CENTER" speed="0" delay="NO_DELAY"]/*キャラ削除*/
+		[ezbg_change3 name="bg_43c" time="LIGHT2" count="0"]		/* bg43　　夜　　　　公園　　　　　　　　　　　　　　　　　　　　　*/
+		[chara_app_cm ch_name="shii_a125a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="死を覚悟したとき、声が聞こえた。"]
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：詩音ＩＮ
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_end2 dir="F_IN_OUT2" zpos="ZPOS_FORE3" speed="180"]					/* ブラックアウト終了 */
+		[txtwaitset count="90"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="朦朧とした意識で目を開けると、"]
+		[maintxt_print2 text="そこには彼女と同じくらいの年ごろの"]
+		[maintxt_print2 text="男の子がいる。"]
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_cm ch_name="shii_a" dir="TO_CENTER" speed="0" delay="NO_DELAY"]/*キャラ削除*/
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_43c" time="LIGHT2" count="0"]	/* bg43　夜　　　　公園（原寸大）　　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="920" point_y="160" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]//背景カメラ
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-sznsan_a106b" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190139" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="…………っ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そして、彼の姿を見たとたん、"]
+		[maintxt_print2 text="首を絞める力が急速に弱まった。"]
+
+		[batch]
+
+		[chara_app_cm ch_name="lc-shii_a104a" place="CENTER" dir="FROM_CENTER" zpos="ZPOS_BACK4" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="200138" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 詩音
+		[maintxt_print2 text="オマエ、また……っ。やめろ！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-sznsan_a152a" zpos="ZPOS_BACK4" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="？？？"]// ※宇野鈴音
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_cm ch_name="b-sznsan_a" dir="TO_CENTER" speed="0" delay="NO_DELAY"]/*キャラ削除*/
+		[ezchara_del_cm ch_name="lc-shii_a" dir="TO_CENTER" speed="0" delay="NO_DELAY"]/*キャラ削除*/
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_43c" time="LIGHT2" count="0"]		/* bg43　　夜　　　　公園　　　　　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="sznsan_a150a" place="RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+		[chara_app_cm ch_name="shii_a122a" place="LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[se_play2 no="00224" count="WAIT_NONE"]/* SE再生：倒れる　汎用　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[ef_shake3 side="INSIDE" slevel="ATCK_Lv1"]	/* 衝撃　Ｌｖ１（通常の打撃など　　　　） */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ぐ……っ、ごほっ、はぁ……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="首を絞める手から解放され、"]
+		[maintxt_print2 text="戻ってきた酸素に荒い息をつく。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（助か、った……？）"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="shii_a122b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="200139" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 詩音
+		[maintxt_print2 text="なにがあったんだ？"]	// 「
+		[maintxt_print2 text="オマエ、またこんなところにひとりで来て……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="sznsan_a154b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190140" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="――こいつ、ゴミクズだぜ"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="shii_a125b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="200140" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 詩音
+		[maintxt_print2 text="え？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="sznsan_a150a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="190141" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 鈴音
+		[maintxt_print2 text="警察だってさ。"]	// 「
+		[maintxt_print2 text="オレたちを殺しに来たんだよ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="shii_a120a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="200141" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 詩音
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="やっと意識がハッキリしてきて、"]
+		[maintxt_print2 text="へたり込みながら２人の姿を見上げる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――そこには、深淵のごとく昏い、"]
+		[maintxt_print2 text="二対の瞳があった。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="shii_a120b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="200142" count="0"]
+
+		[speaker_change name="？？？"]// 宇野 詩音
+		[maintxt_print2 text="そうか……それじゃ、仕方ないな"]	// 「	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn2
+
+		[ezchara_nextstate_cm ch_name="shii_a120a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ、あなたたちは、一体――"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：チャッと銃を構える音
+		------------------------------*/
+		/*------------------------------
+		ＳＥ：銃声
+		------------------------------*/
+		[se_play2 no="NEW_SE07" count="25"]/* SE再生：銃を構える音　チャキ　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[se_play2 no="NEW_SE06" count="WAIT_NONE"]/* SE再生：自動拳銃の発射音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[blackout_flash2 dir="F_FADE" color="F_RED" zpos="ZPOS_FORE3" alpha="255" speed="20"]	/* 赤フラッシュ */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="――――！"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		演出：赤フラッシュ
+		------------------------------*/
+		[blackout_start2 dir="F_FADE" color="F_RED" zpos="ZPOS_FORE1" alpha="64" speed="60"]	/* レッドアウト開始 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="状況もなにもかも飲みこめないまま、"]
+		[maintxt_print2 text="またその【突然】は訪れた。"]
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：銃声×２
+		------------------------------*/
+		/*------------------------------
+		演出：赤フラッシュ
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[se_play2 no="NEW_SE06" count="WAIT_NONE"]/* SE再生：自動拳銃の発射音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[blackout_flash2 dir="F_FADE" color="F_RED" zpos="ZPOS_FORE5" alpha="255" speed="20"]	/* 赤フラッシュ */
+		[txtwaitset count="30"]
+
+		[batch]
+
+		[se_play2 no="NEW_SE06" count="WAIT_NONE"]/* SE再生：自動拳銃の発射音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[blackout_flash2 dir="F_FADE" color="F_RED" zpos="ZPOS_FORE5" alpha="255" speed="20"]	/* 赤フラッシュ */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="言葉を発することも、"]
+		[maintxt_print2 text="思考することも叶わない。"]
+
+		[batch]
+
+		[blackout_start2 dir="F_FADE" color="F_RED" zpos="ZPOS_FORE3" alpha="64" speed="60"]	/* レッドアウト開始 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ただ――真っ赤に染まる視界の中で。"]
+
+		[batch]
+
+		[blackout_start2 dir="F_FADE" color="F_RED" zpos="ZPOS_FORE5" alpha="255" speed="60"]	/* レッドアウト開始 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="世界に絶望したような昏い瞳だけが、"]
+		[maintxt_print2 text="感情もなく私を見下ろしていた。"]
+
+		[batch]
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[ezbg_change3 name="bg_RED" time="NOON" count="0"]	/* bg52　共通　　　　赤　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE1" speed="0"]					/* ブラックアウト終了 */
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="0"]					/* ブラックアウト終了 */
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE5" speed="0"]					/* ブラックアウト終了 */
+		[batch]
+
+		/*　バッドエンド　宇野兄妹専用BAD扉絵*/
+
+		/*----------------------------*/
+		// ▽画面終了処理
+		[end_graphic_bad speed="80" name="BAD_END_34"]	// ブラックアウト速度　／　バッドＥＮＤ（笹塚ルート１個目）
+
+		// ▽フラグ
+		[spflag_set name="badend笹塚_01" num="1"]		// ＢＡＤＥＮＤ　１７
+
+		// ▽トロフィー（判定）
+		[unlock_trophy2 no="TROPHY_09"]	// トロフィー09：初めてバッドエンドを見た
+		[all_end_check]					// トロフィー開放判定
+		/*----------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[calllua function="game_end"]
+
+	[return]
+
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure3
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+
+	*sure3_turn0
+
+		/*------------------------------
+		●シーンbaddf-04-0003
+		場所：住宅街２→公園
+		時間：夜
+		登場人物（服装）：主人公（私服）、鈴音、詩音
+		視点：主人公
+		------------------------------*/
+
+		/*選択肢【通り過ぎる】から*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……早く帰らなきゃ）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="わずかに過ぎった郷愁を振り切って、"]
+		[maintxt_print2 text="私は足早に帰途につくことにした。"]
+
+		[batch]
+
+		/*個別ルートに戻る*/
+
+		[flag_set name="switch" num="0"]
+
+//---------------------------------------
+//	修正前
+//		[file_change no="400" label="sure20"]	// 尊１章
+//---------------------------------------
+//---------------------------------------
+//	修正後
+		[file_change no="401" label="sure17"]	// 尊１章（002-takeru-0034）
+//---------------------------------------
+
+	[return]
+

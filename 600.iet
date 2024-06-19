@@ -1,0 +1,485 @@
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+	愛時ルート開放チェック
+=======================================================================================================================*/
+*sure10
+
+
+		/*------------------------------
+		愛時ルート開放演出
+		------------------------------*/
+		[aiji_kaihou]	// 愛時ルート開放：４人クリアするとガラスが割れる　※入力制限あり
+
+		[spflag_set name="end" num="1"]	// 個別と悲恋含めて、いずれかのキャラをクリアした
+		[spflag_set name="CHAPTER_LIST開放" num="1"]	// チャプターリストを開放（ベストＥＮＤのみ）
+
+		[batch]
+
+		/*------------------------------
+		【自動分岐】
+		初めてクリアした合計が４人になったときのみ　＞　スレ１（愛時の夢シナリオ）へ
+		上記以前、以後はそのままゲームエンド　　　　＞
+
+		※アラートは『開放演出』→『愛時の夢』→『アラート』で表示
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[chr4_clear_check]	// SPフラグ "４キャラクリア" に合計値が入る。
+
+		[spflag_number name="４キャラクリア" i="BX"]
+		[if estimate="$BX >= 4"]
+
+			[spflag_number name="愛時開放アラート" i="i"]
+			[if estimate="$i == 0"]
+
+				[thread_change label="sure1"]	// 愛時の夢シナリオへ
+				[return]
+
+			[/if]
+
+		[/if]
+
+		[calllua function="game_end"]						// ゲーム終了
+
+		[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure1_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure1_turn2"]
+	[/if]
+	[if estimate="$i==3"][calllua function="stcm2_goto" label="sure1_turn3"]
+	[/if]
+	[if estimate="$i==4"][calllua function="stcm2_goto" label="sure1_turn4"]
+	[/if]
+
+	*sure1_turn0
+
+		/*------------------------------
+		●シーン100-aiji-0001
+		場所：なし
+		時間：なし
+		登場人物（服装）：
+		視点：
+		------------------------------*/
+		/*------------------------------
+		背景：新宿署付近・交差点（シルエットあり）
+		------------------------------*/
+		/*------------------------------
+		ＳＥ：雑踏
+		------------------------------*/
+		/*------------------------------
+		演出：ノベルモードで中央や上下など
+		　　　画面の色々な箇所に表示して頂けますでしょうか
+		　　　このシナリオはすべてノベルモードです。
+		------------------------------*/
+		/*------------------------------
+		補足：愛時が見ている夢です。
+		------------------------------*/
+		/*----------------------------*/
+		[restrict_noskip]		// 入力制限（開始）※早送りは使用可
+		/*----------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]	/* ウィンドウ（閉じる）  */
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+
+		[CW_Load control_id="0" file_id="121"]			// 赤文字１　Fortuna vitrea est; tum cum splendet frangitur.
+		[batch]
+		[txtwaitset count="360"]
+		[batch]
+		[CW_FreeEnd control_id="0"]
+		[txtwaitset count="10"]
+		[batch]
+
+		[CW_Flash control_id="1"]			// 白フラッシュ（中央から）※白背景で終わる処理です。
+		[batch]
+		/*----------------------------*/
+		/*----------------------------*/
+		[restoff_noskip] 		// 入力制限（解除）※早送りは使用可
+		[restrict_menu]		// メニュー制限（開始）
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+		/*----------------------------*/
+
+		[bgm_play no="12" count="0"]		// BGM再生：12_ホラー
+
+		[ezbg_change3 name="aiji_yume00" time="NOON" count="BG_SP"]	/* 愛時の夢00：文字なし　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[ezbg_change3 name="aiji_yume01" time="NOON" count="BG_SP"]	/* 愛時の夢01：――人殺し　　　　　　　　　　　　　　　　　　　　　*/
+
+
+
+/*		ここからテキストは背景「aiji_yume」に書かれているので非表示になります
+		なのでウィンドウは特に要しません　by長本*/
+
+		// スマートフォン版追加
+		[proc_talk_ex proc="ADV_STCM_TALK_CHARA_EX" chara_num="NEXT_COLOR_HANYO"]	// 地の文送りアイコン：汎用
+
+		/*ボイス再生*/
+		[voice_play no="860108" count="0"]
+
+		[speaker_change name="女性Ａ"]
+		[maintxt_print text="「――人殺し」"]	// カギかっこはそのまま
+
+		[batch]
+
+		[ezbg_change3 name="aiji_yume02" time="NOON" count="BG_SP"]	/* 愛時の夢02：お前さえいなければ生きられたのに　　　　　　　　　　*/
+
+		/*ボイス再生*/
+		[voice_play no="360101" count="0"]
+
+		[speaker_change name="男性Ａ"]
+		[maintxt_print text="「お前さえいなければ生きられたのに」"]	// カギかっこはそのまま
+
+		[batch]
+
+		[ezbg_change3 name="aiji_yume03" time="NOON" count="BG_SP"]	/* 愛時の夢03：殺したかったんでしょ？　　　　　　　　　　　　　　　*/
+
+		/*ボイス再生*/
+		[voice_play no="860206" count="0"]
+
+		[speaker_change name="女性Ｂ"]
+		[maintxt_print text="「殺したかったんでしょ？」"]	// カギかっこはそのまま
+
+		[batch]
+
+		[ezbg_change3 name="aiji_yume04" time="NOON" count="BG_SP"]	/* 愛時の夢04：守るなんて口実だ。自分の欲望を満たすために殺した　　*/
+
+		/*ボイス再生*/
+		[voice_play no="360201" count="0"]
+
+		[speaker_change name="男性Ｂ"]
+		[maintxt_print text="「守るなんて口実だ。"]	// カギかっこはそのまま
+		[maintxt_print text="自分の欲望を満たすために殺した」"]	// カギかっこはそのまま
+
+		[batch]
+
+		[ezbg_change3 name="aiji_yume05" time="NOON" count="BG_SP"]	/* 愛時の夢05：なんであんたはのうのうと生きてんの？　　　　　　　　*/
+
+		/*ボイス再生*/
+		[voice_play no="860303" count="0"]
+
+		[speaker_change name="女性Ｃ"]
+		[maintxt_print text="「なんであんたはのうのうと生きてんの？」"]	// カギかっこはそのまま
+
+		[batch]
+
+		[ezbg_change3 name="aiji_yume06" time="NOON" count="BG_SP"]	/* 愛時の夢06：お前は幸せになる資格なんてない　　　　　　　　　　　*/
+
+		/*ボイス再生*/
+		[voice_play no="360301" count="0"]
+
+		[speaker_change name="男性Ｃ"]
+		[maintxt_print text="「お前は幸せになる資格なんてない」"]	// カギかっこはそのまま
+
+		[batch]
+
+		[ezbg_change3 name="aiji_yume07" time="NOON" count="BG_SP"]	/* 愛時の夢07：――人殺し　　　　　　　　　　　　　　　　　　　　　*/
+
+		/*ボイス再生*/
+		[voice_play no="860109" count="0"]
+
+		[speaker_change name="女性Ａ"]
+		[maintxt_print text="「――人殺し」"]	// カギかっこはそのまま
+
+		[batch]
+
+		[ezbg_change3 name="aiji_yume08" time="NOON" count="BG_SP"]	/* 愛時の夢08：お前が殺したんだ　　　　　　　　　　　　　　　　　　*/
+
+		/*ボイス再生*/
+		[voice_play no="360202" count="0"]
+
+		[speaker_change name="男性Ｂ"]
+		[maintxt_print text="「お前が殺したんだ」"]	// カギかっこはそのまま
+
+		[batch]
+
+		[ezbg_change3 name="aiji_yume09" time="NOON" count="BG_SP"]	/* 愛時の夢09：……本当は全部、自分のためでしょ？　　　　　　　　　*/
+
+		/*ボイス再生*/
+		[voice_play no="860207" count="0"]
+
+		[speaker_change name="女性Ｂ"]
+		[maintxt_print text="「……本当は全部、自分のためでしょ？」"]	// カギかっこはそのまま
+
+		[batch]
+
+		/*----------------------------*/
+		[restrict_noskip]		// 入力制限（開始）※早送りは使用可
+		/*----------------------------*/
+		/*----------------------------*/
+		[CW_Load control_id="2" file_id="124"]			// 愛時の夢
+		[batch]
+		[txtwaitset count="100"]
+		[batch]
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[txtwaitset count="100"]
+		[batch]
+		[CW_FreeEnd control_id="2"]
+		[batch]
+		/*----------------------------*/
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+	*sure1_turn1
+
+		/*------------------------------
+		背景：黒
+		------------------------------*/
+		/*------------------------------
+		演出：ev1060のモブ男性のみアップ
+		　　　全体暗めにしてだんだんと暗さが薄れていく
+		------------------------------*/
+		/*----------------------------*/
+		[CW_Flash control_id="0"]			// 白フラッシュ（中央から）※白背景で終わる処理です。
+		[batch]
+		/*----------------------------*/
+		/*----------------------------*/
+		/*----------------------------*/
+		[restoff_noskip] 		// 入力制限（解除）※早送りは使用可
+		[restrict_menu]		// メニュー制限（開始）
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+		/*----------------------------*/
+
+		[ezbg_change3 name="aiji_yume10" time="NOON" count="BG_SP"]	// 愛時の夢10：容疑者が殴られる「た……たっ、頼む！　助けてくれ！」
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="990701" count="0"]
+
+		[speaker_change name="？？？"]//誘拐犯
+		[maintxt_print2 text="「た……たっ、頼む！　助けてくれ！」"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[ezbg_change3 name="aiji_yume11" time="NOON" count="BG_SP"]	// 愛時の夢11：容疑者が殴られる「ぐぁっ！　ゆ…………ゆる、して……」
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="990702" count="0"]
+
+		[speaker_change name="？？？"]//誘拐犯
+		[maintxt_print2 text="「ぐぁっ！　ゆ…………ゆる、して……」"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[ezbg_change3 name="aiji_yume12" time="NOON" count="BG_SP"]	// 愛時の夢12：容疑者が殴られる「がはっ……！！　……もう……やめて、くれ……」
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="990703" count="0"]
+
+		[speaker_change name="？？？"]//誘拐犯
+		[maintxt_print2 text="「がはっ……！！"]
+		[maintxt_print2 text="　……もう……やめて、くれ……」"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[ezbg_change3 name="aiji_yume13" time="NOON" count="BG_SP"]	// 愛時の夢13：容疑者が殴られる　――殺さなきゃ。＆――殺さなきゃいけない。
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――殺さなきゃ。"]
+
+		[batch]
+
+		[maintxt_print2 text="――殺さなきゃいけない。"]
+
+		[batch]
+
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[ezbg_change3 name="aiji_yume14" time="NOON" count="BG_SP"]	// 愛時の夢14：容疑者が殴られる　「――殺してやる」
+		[ezbg_target_set side="URA" target="CAME0" point_x="POS_X" point_y="POS_Y" size_z="140" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="012117" count="0"]
+
+		[speaker_change name="？？？"]//柳愛時
+		[maintxt_print2 text="「――殺してやる」"]
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：パリン、と薄いガラスか薄い氷が割れるような音
+		------------------------------*/
+		/*------------------------------
+		演出：立ち絵02使って愛時がパッと目を覚ますような演出できましたら。
+		------------------------------*/
+		/*------------------------------
+		演出：以下は台詞出さずに声のみ
+		------------------------------*/
+		/*----------------------------*/
+		[restrict_noskip]		// 入力制限（開始）※早送りは使用可
+		/*----------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]	/* ウィンドウ（閉じる）*/
+		[batch]
+
+		// ▽クロノ
+		[bgm_stop count="FD_ZERO"]		// BGM停止：ゼロ
+		[se_play2 no="NEW_SE11" count="WAIT_NONE"]/* SE再生：フラッシュバック　／　真実を思い出すとき　　　　　　　　　　　　　　　　 */
+		[CW_Load control_id="1" file_id="128"]			// バッドぶれ
+		[batch]
+		[ezbg_change3 name="bg_WHITE" time="NOON" count="0"]	/* bg53　共通　　　　白　　　　　　　　　　　　　　　　　　　　　　*/
+		[txtwaitset count="60"]
+		[batch]
+		[CW_FreeEnd control_id="1"]
+		[batch]
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+		[txtwaitset count="20"]
+		[batch]
+
+		// ▽目ざめ
+		[se_play2 no="00168" count="WAIT_NONE"]/* SE再生：衣服　動く（ガバッ）　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[ezbg_change3 name="aiji_mezame" time="NOON" count="BG_SP_FAST"]	// 愛時：夢から覚める
+		[ezbg_target_set side="URA" target="CAME0" point_x="POS_X" point_y="200" size_z="150" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[ezbg_target_set side="URA" target="CAME1" point_x="POS_X" point_y="2" size_z="150" count="20" ptn="GEN_PT"]				//背景カメラ
+		[batch]
+		[txtwaitset count="20"]
+		[batch]
+		/*----------------------------*/
+		/*----------------------------*/
+		[restoff_noskip] 		// 入力制限（解除）※早送りは使用可
+		[restrict_menu]		// メニュー制限（開始）
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="012118" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="――――ッ！"]	//「	//」
+
+		[batch]
+
+		/*----------------------------*/
+		[restrict_noskip]		// 入力制限（開始）※早送りは使用可
+		/*----------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		// ▽目アップ＋ブラックアウト
+		[ezbg_target_set side="OMOTE" target="CAME0" point_x="-200" point_y="-280" size_z="300" count="180" ptn="NO_PT"]				//背景カメラ
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="255" speed="180"]	// ブラックアウト開始
+		[txtwaitset count="180"]
+		[batch]
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="0"]					// ブラックアウト終了
+		[batch]
+
+		// ▽赤文字
+		[CW_Load control_id="2" file_id="122"]			// 赤文字２　This box contains *****.
+		[batch]
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[txtwaitset count="400"]
+		[batch]
+		[CW_FreeEnd control_id="2"]
+		[batch]
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ▽制限全解除               */
+
+		[restoff_noskip] 		// 入力制限（解除）※早送りは使用可
+		[restoff_menu]		// メニュー制限（解除）
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="0"]	// マテリアルズ封鎖（解除）
+		/*----------------------------*/
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+	*sure1_turn2
+
+		/*------------------------------
+		【自動分岐】★★★
+		チャプター（愛時０章）からきた場合　＞　愛時０章へジャンプ
+		それ以外は以下の場合　　　　　　　　＞　以下処理へ
+		------------------------------*/
+		[flag_number name="CHAPTER_st_aiji00" i="i"]
+		[if estimate="$i == 1"]
+
+			[flag_set name="switch" num="0"]
+			[file_change no="150" label="sure1"]// 柳愛時０章へ
+			[return]
+
+		[/if]
+
+
+		/*------------------------------
+		【自動分岐】
+		愛時ルート開放アラートを見た　　　＞　ターン３へ
+		愛時ルート開放アラートを見てない　＞　ターン２へ
+		------------------------------*/
+
+		[spflag_number name="愛時開放アラート" i="i"]
+		[if estimate="$i == 0"][flag_set name="switch" num="3"] [return]
+		[else]		[flag_set name="switch" num="4"] [return]
+		[/if]
+
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+	*sure1_turn3
+
+		[spflag_set name="愛時開放アラート" num="1"]
+
+		[openUiSimple text="【#Color[3]柳 愛時#Color[0]】が攻略可能になりました。#nSTArT（はじめから）から選択できます。"]
+		[batch]
+
+		[flag_set name="switch" num="4"]	// 合流ターンへ
+
+		[return]
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+	*sure1_turn4
+
+		/*------------------------------
+		＞タイトルに戻ります。
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[calllua function="game_end"]				// ゲーム終了
+
+	[return]
+

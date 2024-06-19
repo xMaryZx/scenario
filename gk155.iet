@@ -1,0 +1,64 @@
+/***************************************************************************
+	現場検証の設定ファイルです。
+	ADV等のスクリプトとは別物です。
+***************************************************************************/
+
+// 以下のファイルのみをインクルードしてください。
+// コンパイラの設定は変更する必要はありません。
+//#include "Investigate\system.h"
+
+/*=======================================================================================================================
+ファイル155　スレ60　柳愛時　第三章
+=======================================================================================================================*/
+
+// 現場検証の行動回数です。
+// 数値以外は変えないでください。
+// 0以下の値を設定すると無制限になります。
+//	EXPORT int INV_NUM = 0;
+
+
+// 詳細の設定を行う関数です。
+// 関数名などは変えないでください。
+*main
+
+//	int handle0;
+//	int handle1;
+//	int handle2;
+
+	// 操作終了時に自動で移動するスクリプトファイル
+	[setEndScript file="155" sure="sure2"]
+
+	// 大元のエリア作成
+	[createBaseArea handle="handle0" id="1" area_name="記憶" bg_name=""]
+	[setBgSize handle="handle0" x0="0" x1="0" y0="0" y1="537"]//スクロール範囲設定
+
+	// 名前ウィンドウを右上に作る
+	[onNameWndRight handle="handle1"]
+
+			// 操作場所Ａ－１
+			[createEventArea handle="handle1" parent="handle0" id="1" area_name="黒い怪物" x="500.0" y="200.0" w="300.0" h="500.0" file="155" sure="sure3"]
+				// 正解の場所なので色を変える
+				[setDbgColor handle="handle1" r="0.0" g="1.0" b="0.0" a="0.5"]
+
+			// 操作場所Ａ－２
+			[createEventArea handle="handle1" parent="handle0" id="1" area_name="悲鳴をあげる男性" x="145.0" y="500.0" w="210.0" h="320.0" file="155" sure="sure4"]
+				// 正解の場所なので色を変える
+				[setDbgColor handle="handle1" r="0.0" g="1.0" b="0.0" a="0.5"]
+
+			// 操作場所Ａ－３
+			[createEventArea handle="handle1" parent="handle0" id="1" area_name="飛び散る血" x="500.0" y="755.0" w="220.0" h="70.0" file="155" sure="sure5"]
+				// 正解の場所なので色を変える
+				[setDbgColor handle="handle1" r="0.0" g="1.0" b="0.0" a="0.5"]
+
+			// 操作場所Ａ－４
+			[createEventArea handle="handle1" parent="handle0" id="1" area_name="手首に巻きつく鎖" x="830.0" y="995.0" w="135.0" h="90.0" file="155" sure="sure6"]
+				// 正解の場所なので色を変える
+				[setDbgColor handle="handle1" r="0.0" g="1.0" b="0.0" a="0.5"]
+
+			// 操作場所Ａ－５
+			[createEventArea handle="handle1" parent="handle0" id="1" area_name="ステンドグラス" x="660.0" y="0.0" w="300.0" h="170.0" file="155" sure="sure7"]
+				// 正解の場所なので色を変える
+				[setDbgColor handle="handle1" r="0.0" g="1.0" b="0.0" a="0.5"]
+
+	[return]
+

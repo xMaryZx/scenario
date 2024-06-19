@@ -1,0 +1,744 @@
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure1_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure1_turn2"]
+	[/if]
+	[if estimate="$i==3"][calllua function="stcm2_goto" label="sure1_turn3"]
+	[/if]
+
+	*sure1_turn0
+
+		/*-------------------------------
+		●シーンAS-aiji-0001
+		場所：探偵事務所
+		時間：夜
+		登場人物（服装）：主人公、愛時
+		視点：愛時
+		------------------------------*/
+		/*------------------------------
+		【カラマリ】ショートストーリー
+		柳愛時編
+		------------------------------*/
+		/*------------------------------
+		演出：すべてノベルモードです。
+		※ボイスはありません。
+		※改ページをお願いしたい箇所には
+		　コメントアウトで▽を入れております。
+		------------------------------*/
+		/*------------------------------
+		背景：空（夜）
+		------------------------------*/
+		/*----------------------------*/
+		/* 制限                       */
+		// スマートフォン版はメニュー画面を終了確認ウィンドウに置き換えます
+//		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="1"]			// メニュー
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+		/*----------------------------*/
+		/*----------------------------*/
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+		[ezbg_change3 name="bg_60c" time="NIGHT" count="BG_SP"]		/* bg60　夜　　　　　空　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[novel_st shadow="0" outline="0"]		// ノベルスタート
+		[ezfg_change2 name="fg_novel" count="BG_SP"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[maintxt_print text="人間、二十歳を過ぎてしまえば"]	// ノベル
+		[maintxt_print text="そうそう【初めての体験】などというものと"]	// ノベル
+		[maintxt_print text="出会うことは稀だと思っていた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="感情をコントロールできないのも、"]	// ノベル
+		[maintxt_print text="溢れる衝動を持て余すのも、"]	// ノベル
+		[maintxt_print text="自分にとっては縁遠い感覚だと。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="学生の頃に好き勝手していた分、"]	// ノベル
+		[maintxt_print text="成熟が早かったせいか、年齢よりも"]	// ノベル
+		[maintxt_print text="落ち着いているのは自覚している。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="それは良い面もあるだろうが、"]	// ノベル
+		[maintxt_print text="時にこの性分で困らせられることもある。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="たとえば――"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		背景：探偵事務所・内部１（アップ）（夜）
+		------------------------------*/
+		/*----------------------------*/
+		/* ページ切り替え             */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="enbg_35c_sofa" time="LIGHT" count="BG_SP"]	/* bg35　夜　　　　探偵事務所＿内部１　ソファ　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="250" point_y="135" size_z="51" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		[maintxt_print text="「……おい、いつまで拗ねてるんだ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「拗ねてるわけじゃありません……。"]	// ノベル
+		[maintxt_print text="　ちょっと、悔しいだけです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「それを拗ねてるって言うんだ。"]	// ノベル
+		[maintxt_print text="　ほら、こっち向け」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="頬を膨らませて顔をそむけていた"]	// ノベル
+		[maintxt_print text="恋人――星野#Name[1]の耳にかかる髪を"]	// ノベル
+		[maintxt_print text="宥めるように指でかきあげる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="すると、彼女は観念したように"]	// ノベル
+		[maintxt_print text="おずおずと俺に目線を向けた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……ホワイトデーのプレゼント、"]	// ノベル
+		[maintxt_print text="　気に入らなかったか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ちっ、違います！　むしろすごく……嬉しくて。"]	// ノベル
+		[maintxt_print text="　この小物入れも私の好みにピッタリですし、"]	// ノベル
+		[maintxt_print text="　なにより、柳さんが作ってくれたクッキー……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="必死に弁明するような彼女の言葉尻が、"]	// ノベル
+		[maintxt_print text="しおしおと萎れていく。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「美味しすぎて……悔しいんです……！"]	// ノベル
+		[maintxt_print text="　私がバレンタインに渡したチョコなんて、"]	// ノベル
+		[maintxt_print text="　比べものにならないくらい……！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="言葉通り、喜びと悔しさの混ざった彼女の顔を見て、"]	// ノベル
+		[maintxt_print text="俺は思わず吹き出してしまった。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「な、なんで笑うんですか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「いや、その……可愛いと、思って」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「へっ！？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「そんな風に可愛い反応をされると、困る」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「か、からかわないでください……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――いや、冗談ではない。"]	// ノベル
+		[maintxt_print text="真実、ここのところ困っているのはこれだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="長い間、あまり人と深く関わらないように"]	// ノベル
+		[maintxt_print text="してきた上に、大抵のことは軽く流せてしまう"]	// ノベル
+		[maintxt_print text="癖がついていた反動なのか――"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="最近は彼女の何気ない言葉や、"]	// ノベル
+		[maintxt_print text="ころころと変わる表情に心揺さぶられて、"]	// ノベル
+		[maintxt_print text="平常心でいられなくなることが多い。"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		背景：新宿俯瞰（夜）
+		------------------------------*/
+		/*----------------------------*/
+		/* ページ切り替え             */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="bg_00c" time="NIGHT" count="BG_SP"]		/* bg00　　夜　　　　新宿俯瞰　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[maintxt_print text="――この新宿の街を中心に発生していた"]	// ノベル
+		[maintxt_print text="連続テロ事件、通称【X-Day事件】を"]	// ノベル
+		[maintxt_print text="きっかけに出逢った俺と彼女は、数ヶ月前までは"]	// ノベル
+		[maintxt_print text="共に事件を追う協力者という関係性だった。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="だが、事件も一旦は解決の目途が立ち、"]	// ノベル
+		[maintxt_print text="晴れて恋人同士としてなんの気兼ねもなく"]	// ノベル
+		[maintxt_print text="毎日を過ごすことができている。"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		背景：探偵事務所・内部１（夜）
+		------------------------------*/
+		/*----------------------------*/
+		/* ページ切り替え             */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="bg_35c" time="LIGHT" count="BG_SP"]		/* bg35　　夜　　　　探偵事務所　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[maintxt_print text="学生の頃はそれなりに女性との付き合いはあったし、"]	// ノベル
+		[maintxt_print text="卒業して警察官を目指すことになってからも、"]	// ノベル
+		[maintxt_print text="短期間であれば男女関係になる相手もいた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="だが、例外なくドライな関係ばかりだった。"]	// ノベル
+		[maintxt_print text="本気の恋愛など刑事の仕事にとって、"]	// ノベル
+		[maintxt_print text="足枷にしかならないと思っていたから。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="この歳になって、恋人ができたからといって……"]	// ノベル
+		[maintxt_print text="しかも七歳も下の彼女相手に。"]	// ノベル
+		[maintxt_print text="――こんな風になるとは思わなかったのだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="そう、俺は今、恋人が可愛すぎて困っている。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（いい歳して、これは恥ずかしいな……）"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		背景：探偵事務所・内部１（アップ）（夜）
+		------------------------------*/
+		/*----------------------------*/
+		/* ページ切り替え             */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="enbg_35c_sofa" time="LIGHT" count="BG_SP"]	/* bg35　夜　　　　探偵事務所＿内部１　ソファ　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="250" point_y="135" size_z="51" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[maintxt_print text="自分の思考に羞恥心を覚えていると――ふと、"]	// ノベル
+		[maintxt_print text="彼女の小さな手が、俺の服の裾をきゅっと握る。"]	// ノベル
+		[maintxt_print text="俺が考え込んでいたのを何か誤解したのか、"]	// ノベル
+		[maintxt_print text="不安そうな顔がこちらを見上げていた。"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn1
+
+		[maintxt_print text="「柳さん……あの、私、本当に嬉しいですから。"]	// ノベル
+		[maintxt_print text="　ごめんなさい。自分がまだまだだなって痛感して、"]	// ノベル
+		[maintxt_print text="　ちょっと情けなくなってただけなんです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……ああ、わかってる。だがな、焦ることはない。"]	// ノベル
+		[maintxt_print text="　お前はお前のペースでいいんだ。それに、俺が"]	// ノベル
+		[maintxt_print text="　できることとお前ができることは違うだろう？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……はい」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="頷きながらも、彼女はまだ悔しそうにしていた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="その健気さにも心が揺れてしまう事実に"]	// ノベル
+		[maintxt_print text="内心で苦笑しながら、俺は#Name[1]の頭を"]	// ノベル
+		[maintxt_print text="そっと撫でた。彼女は気持ちよさそうに"]	// ノベル
+		[maintxt_print text="目を細め、ためらいがちに身体を寄せてくる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「でも、いつも私ばかり甘やかされてる気がして。"]	// ノベル
+		[maintxt_print text="　たまには柳さんをあっと驚かせたり……、"]	// ノベル
+		[maintxt_print text="　私にも柳さんに与えられるものがあるって、"]	// ノベル
+		[maintxt_print text="　……思いたいんです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「…………」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="もう、じゅうぶん驚かされているというか。"]	// ノベル
+		[maintxt_print text="そういう発言だけで【降参】と両手を"]	// ノベル
+		[maintxt_print text="挙げたい気持ちになっているのだが。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「まったく……前にも言ったが、"]	// ノベル
+		[maintxt_print text="　お前は相変わらず、俺の気持ちを"]	// ノベル
+		[maintxt_print text="　信用してくれていないな」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「い、いえ。疑ってるわけじゃないんです。"]	// ノベル
+		[maintxt_print text="　ただ、その……好きな人のために何かしていたい、"]	// ノベル
+		[maintxt_print text="　って思うのは当然じゃないですか……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……っ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「私だけができることで、喜ばせたいんです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="ぷつり、と頭の中で何かの糸が切れるような"]	// ノベル
+		[maintxt_print text="音がした。おそらく、理性という名のそれだろう。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="ここまで言われて、今までみたいに"]	// ノベル
+		[maintxt_print text="【ああそうか、ありがとう】などと軽く流せるほど、"]	// ノベル
+		[maintxt_print text="俺は大人じゃなくなってしまった。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「わかった。じゃあ、今日は俺が我侭を言う。"]	// ノベル
+		[maintxt_print text="　お前は、それを叶えてくれるか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「！　はい。何でも言ってください！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……念のために確認しておくが、"]	// ノベル
+		[maintxt_print text="　そういうことは、俺以外には言うなよ？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「え？　もちろん、言いませんけど……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「はあ……。それじゃあ、まずは……」"]	// ノベル
+
+		[batch]
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+
+		[maintxt_print text="自分から提案しておいて、何も考えてなかった。"]	// ノベル
+		[maintxt_print text="理性という皮を脱いでしまえば、それこそ彼女に"]	// ノベル
+		[maintxt_print text="求めたいことなど山とあるが――。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（怖がらせたくないし、嫌われたくもない）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="なんだかんだ言って、そこの理性は働くらしい。"]	// ノベル
+		[maintxt_print text="しばし思案して、俺は彼女の頬に手を伸ばすと、"]	// ノベル
+		[maintxt_print text="するりと肌に指を這わせた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……柳、さん？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……今日は、お前からキスしてくれるか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……っ！！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="目の前にある彼女の頬が、ぱっと朱色に染まる。"]	// ノベル
+		[maintxt_print text="小さく見開かれた瞳が愛しくて、自分から顔を"]	// ノベル
+		[maintxt_print text="近づけると、恋人の耳元にそっと囁く。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「俺は、ありのままのお前が好きだ。"]	// ノベル
+		[maintxt_print text="　こうして一緒にいられるだけで幸せなんだよ。"]	// ノベル
+		[maintxt_print text="　だから、特別なことはしなくていい。"]	// ノベル
+		[maintxt_print text="　……ただ、触れていたい」"]	// ノベル
+
+		[batch]
+
+		[bgm_play no="10" count="0"]		// BGM再生：10_恋愛Ａ 安らぎ
+
+		[maintxt_print text="想いをこめて伝えれば、今度は耳が真っ赤になった。"]	// ノベル
+		[maintxt_print text="自然と口元が綻んでしまう。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……つまり……私がそういうことすると、"]	// ノベル
+		[maintxt_print text="　柳さんは嬉しいってこと、ですよね……？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「もちろん。さすがの俺でも舞い上がるぞ」"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn2
+
+		[maintxt_print text="「っ、えっと……今日って、榎本さんは……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「佐竹さんと飲みに行くって言ってたな。"]	// ノベル
+		[maintxt_print text="　帰りは深夜になるんじゃないか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……じゃあ、目を、閉じてください」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="恥ずかしげに目を伏せて呟かれた言葉に、"]	// ノベル
+		[maintxt_print text="心は既に愛しさで満たされた。"]	// ノベル
+
+		[batch]
+
+		/*----------------------------*/
+		/* ページ切り替え             */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		/*----------------------------*/
+
+		/*----------------------------*/
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_BACK5" alpha="255" speed="60"]	// ブラックアウト開始
+		[txtwaitset count="60"]
+		[batch]
+		/*----------------------------*/
+
+		[maintxt_print text="彼女の言う通りに目を閉じて、"]	// ノベル
+		[maintxt_print text="その存在がゆっくりと近づいてくるのを感じる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="かすかな吐息が唇に触れる。"]	// ノベル
+		[maintxt_print text="腕を伸ばして抱きしめたい衝動に駆られたが、"]	// ノベル
+		[maintxt_print text="今は我慢して身を委ねることにした。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……愛時さん、好きです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――唇が触れ合う、刹那。"]	// ノベル
+		[maintxt_print text="囁かれた彼女の声に、俺の理性は脆くも崩れ去った。"]	// ノベル
+
+		[batch]
+
+		/*----------------------------*/
+		/* ページ切り替え             */
+
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_BACK5" speed="60"]					// ブラックアウト終了
+		[txtwaitset count="60"]
+		[batch]
+		/*----------------------------*/
+
+		/*----------------------------*/
+		[ezbg_change3 name="enbg_35c_sofa" time="LIGHT" count="0"]	/* bg35　夜　　　　探偵事務所＿内部１　ソファ　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="SOFA_XPOS_CENTER" point_y="SOFA_YPOS" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]	//背景カメラ：ソファ
+
+		[ef_shake3 side="OUTSIDE" slevel="TATE_Lv1"]	/* 縦揺れＬｖ１（ソファに座ったときなど） */
+		[se_play2_n no="00172" count="40"]/* SE再生：衣服　止める（ぼふっ）ソファに座る音　　　　　　　　　　　　　　　　　　　　 */
+		/*----------------------------*/
+
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+
+		[maintxt_print text="「んっ！？　っ……柳、さ……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="柔らかい唇が触れたと同時に、"]	// ノベル
+		[maintxt_print text="彼女の腰を強引に引き寄せて。"]	// ノベル
+		[maintxt_print text="離れようとする唇に噛みつくように口付ける。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……っふ……っ。……ぅ……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="お返しの深いキスを必死で受け入れる、"]	// ノベル
+		[maintxt_print text="息苦しそうな彼女の表情。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="俺の胸元を必死でぎゅっと握る、震える指。"]	// ノベル
+		[maintxt_print text="彼女の仕草すべてに煽られて、"]	// ノベル
+		[maintxt_print text="わずかな嗜虐心が沸きあがるのを感じた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「はっ……、わ、私からするって……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ん……してもらったから、お返しだ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「だからって……いきなり、すぎます」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「お前が悪い。あんなこと……言うから」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="熱を孕んだ声で告げられた自身の名前。"]	// ノベル
+		[maintxt_print text="あんな言葉を耳にして、平静でいろと"]	// ノベル
+		[maintxt_print text="言われても難しい。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="長い繋がりから解放されて、荒い息を吐いている"]	// ノベル
+		[maintxt_print text="彼女のこめかみにキスを落とす。"]	// ノベル
+		[maintxt_print text="くすぐったそうに頬を染めた#Name[1]は、"]	// ノベル
+		[maintxt_print text="俺を見上げてぽつりと呟いた。"]	// ノベル
+
+		[batch]
+
+		[ezbg_change3 name="enbg_35c_sofa" time="LIGHT" count="BG_SP"]	/* bg35　夜　　　　探偵事務所＿内部１　ソファ　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="250" point_y="135" size_z="51" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+
+		[maintxt_print text="「あの……喜んで、もらえましたか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……さっきのキスで、わかるだろ。"]	// ノベル
+		[maintxt_print text="　驚くほど浮かれてる」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……ふふ、よかった。嬉しいです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="先程までの羞恥の表情や戸惑いはどこへやら、"]	// ノベル
+		[maintxt_print text="花が咲いたようにふわりと笑う彼女に、"]	// ノベル
+		[maintxt_print text="不覚にも俺は目を奪われた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あれ？　柳さん……ちょっと顔、赤いです？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「もう、これ以上煽るな……。"]	// ノベル
+		[maintxt_print text="　大事にしてやりたいって言ってるだろ……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「じゅうぶん、大事にしてもらってます。"]	// ノベル
+		[maintxt_print text="　柳さんにされて、嫌なことなんてありません」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――主導権を譲ってしまった、と悟った。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="でも、こんな風に押しの強い彼女のことも"]	// ノベル
+		[maintxt_print text="好きなのだから、べつにいいかと思ってしまう。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……いい大人なんだから、自分の発言には"]	// ノベル
+		[maintxt_print text="　ちゃんと責任は持つように」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「はい」"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn3
+
+		[maintxt_print text="（まったく……。そんなに嬉しそうな顔するな）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="盲目にも近く、想ってくれていることに"]	// ノベル
+		[maintxt_print text="嬉しさと少しの罪悪感が心を襲う。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="だからこそ、ある種の背徳感を覚えて"]	// ノベル
+		[maintxt_print text="歯止めが利かなくなってしまうのだが。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="そんなことを思いながら、再びその唇を塞いだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……#Name[1]。俺も、好きだ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="キスの合間に、ふと目が合って、"]	// ノベル
+		[maintxt_print text="どちらからともなく笑い合う。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="こんな幸せが身近にある事実に、"]	// ノベル
+		[maintxt_print text="時にはわずかな恐怖も感じるけれど。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="過去も後悔も手放さないまま、"]	// ノベル
+		[maintxt_print text="今は、この腕の中にある大切なものを守りたい。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……他に、何かしてほしいことはないですか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="吐息が混ざり合う中で、彼女が呟く。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……そうだな。今度、ドライブでもしないか。"]	// ノベル
+		[maintxt_print text="　少し遠出して……お前と、海を見に行きたい」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="そう返すと、彼女は『助手席に座れるなんて"]	// ノベル
+		[maintxt_print text="夢みたいで嬉しいです』などと、また可愛い"]	// ノベル
+		[maintxt_print text="ことを言い出した。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="こうして、何気ない約束ができること。"]	// ノベル
+		[maintxt_print text="大切な人と特別な思い出を作れること。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="当たり前で奇跡のような日常に、"]	// ノベル
+		[maintxt_print text="眩暈を感じるほどの愛しさが募っていく。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="今、自分がどれだけの幸せを感じているか。"]	// ノベル
+		[maintxt_print text="この想いが全部伝わればいいのにと思いながら、"]	// ノベル
+		[maintxt_print text="その細い身体を強く――強く、抱きしめた。"]	// ノベル
+
+		[batch]
+
+		/*----------------------------*/
+		/* 終了処理                   */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[novel_end]		// ノベルエンド
+		[batch]
+		[txtwaitset count="60"]
+		[batch]
+		[sub_end count="120"]	// 終了処理
+		[txtwaitset count="60"]
+		[batch]
+		/*----------------------------*/
+
+		/*------------------------------
+		終わり＞ＳＳ選択画面に戻ります
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[calllua function="game_end"]
+
+	[return]
+
+

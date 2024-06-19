@@ -1,0 +1,5493 @@
+
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure1_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure1_turn2"]
+	[/if]
+
+	*sure1_turn0
+
+		/*------------------------------
+		●シーン005-aiji-0023
+		場所：新宿署
+		時間：昼
+		登場人物（服装）：主人公（制服）、望田
+		視点：主人公
+		------------------------------*/
+		/*------------------------------
+		背景：新宿署・特防デスク（昼）
+		------------------------------*/
+		/*------------------------------
+		演出：日付表示
+		１２月１５日、ＡＭ９：３７
+		------------------------------*/
+		[scenechange_bs name="bg_04a" time="NOON" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_ON"]	/* bg04　昼　　　　　新宿署＿特殊地域防犯対策室　　　　　　　　　　*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[CW_Current_Time control_id="1" month="MONTH_12" day="DAY_15" ampm="AP_AM" time="TIME_09" minutes="MINUTES_37"]	// 現在時刻
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="――はい、わかりました。"]	// 「
+		[maintxt_print2 text="では、巡回の警察官を向かわせます"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="念のため、不審物には近づかないよう"]	// 「
+		[maintxt_print2 text="注意してください。お願いします"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……はい、特防の星野が承りました。"]	// 「
+		[maintxt_print2 text="ご協力ありがとうございました"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：電話を切る音
+		------------------------------*/
+		[se_play2 no="00297" count="WAIT_NONE"]/* SE再生：固定電話の受話器を置く　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ふう……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="通報への対処を終わらせて、電話を切る。"]
+		[maintxt_print2 text="交番へ巡回に関する連絡をしながら、"]
+		[maintxt_print2 text="軽く息を吐いた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="瀬良君が逮捕されて、署内はどことなく"]
+		[maintxt_print2 text="一息ついた、といった雰囲気になっている。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="事情聴取は、まだ続いている。"]
+		[maintxt_print2 text="けど、新たな情報が得られたという報告はない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（香月に言うわけにはいかないけど……"]
+		[maintxt_print2 text="　連絡が取れなくなったら、不審がるよね……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="瀬良君は未成年ゆえに報道はされない。"]
+		[maintxt_print2 text="だからこそ、香月のことを想うと胸が痛い。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……私が、支えなきゃ）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――そのためにも、"]
+		[maintxt_print2 text="今は仕事に集中しなきゃいけない。"]
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：ガガーピーッ　とスピーカーからノイズ
+		------------------------------*/
+		[se_play2 no="00303" count="5"]/* SE再生：機械　一瞬のノイズ音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え？"]	// 「	// 」
+
+		[batch]
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[batch]
+		[se_play2 no="00303" count="5"]/* SE再生：機械　一瞬のノイズ音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――署内に変なノイズ音が響いたのは、"]
+		[maintxt_print2 text="そんなときだった。"]
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_09a" time="NOON" count="0"]		/* bg09　昼　　　　　新宿署＿地域課　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="mob-man_a100b" place="LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+		[chara_app_cm ch_name="mob-man_b100a" place="RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="920111" count="0"]
+
+		[speaker_change name="特防署員Ａ"]// 特防署員Ａ（男性）
+		[maintxt_print2 text="お、おい？　なんだ、今の？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mob-man_a100a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+		[ezchara_nextstate_cm ch_name="mob-man_b100b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="920302" count="0"]
+
+		[speaker_change name="特防署員Ｂ"]// 特防署員Ｃ（男性）
+		[maintxt_print2 text="スピーカーの故障か……？"]	// 「	// 」
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_04a" time="NOON" count="0"]		/* bg04　昼　　　　　新宿署＿特殊地域防犯対策室　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		/*------------------------------
+		ＳＥ：ざわめき（複数）
+		------------------------------*/
+		[loopse_play no="GAYA_45" count="0" ch="CH00"]		/* サブBGM：ガヤ　捜査本部　ざわめき　　　　　　　　　　　　　　　　　　 */
+
+		[se_play2 no="00303" count="30"]/* SE再生：機械　一瞬のノイズ音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[se_play2 no="00303" count="WAIT_NONE"]/* SE再生：機械　一瞬のノイズ音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="不自然なノイズ音を聞かされて、"]
+		[maintxt_print2 text="辺りにざわめきが広がる。"]
+
+		[batch]
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[batch]
+		[se_play2 no="00303" count="WAIT_NONE"]/* SE再生：機械　一瞬のノイズ音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="全員の視線が、スピーカーへと向けられた。"]
+		[maintxt_print2 text="まだ、ノイズは響いている。"]
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：プツっとスピーカーから音
+		------------------------------*/
+		/*------------------------------
+		ボイス加工：冴木のみボイスチェンジャー及びスピーカー越し
+		------------------------------*/
+		/*------------------------------
+		流用：シーン001-zero-0021から
+		------------------------------*/
+		[loopse_stop count="LP_SP" ch="CH00"]			/* ループＳＥ停止 */
+
+		[bgm_play no="12" count="0"]		// BGM再生：12_ホラー
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="090110" count="0"]
+
+		[speaker_change name="？？？"]// ※冴木弓弦
+		[maintxt_print2 text="X-Dayをお知らせします"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="な……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="次にスピーカーから聞こえてきたのは、"]
+		[maintxt_print2 text="聞き覚えのあるボイスチェンジャーの声だ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="それに――今、確かに聞こえた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="【X-Day】、と。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="090409" count="0"]
+
+		[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="予定通り、本日罪人を裁きます"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="090410" count="0"]
+
+		[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="凄惨ないじめを見て見ぬふりをした――"]	// 「
+		[maintxt_print2 text="いえ、知っていながら賄賂を受け取り、"]
+		[maintxt_print2 text="なかったこととした方々に……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="090411" count="0"]
+
+		[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="【アドニス】が正義の裁きを"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：プツっとマイクが切れる音
+		------------------------------*/
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_09a" time="NOON" count="0"]		/* bg09　昼　　　　　新宿署＿地域課　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="mob-man_a103b" place="LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+		[chara_app_cm ch_name="mob-man_b100a" place="RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+		/*------------------------------
+		ＳＥ：ざわめき（複数）
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="920112" count="0"]
+
+		[speaker_change name="特防署員Ａ"]// 特防署員Ａ（男性）
+		[maintxt_print2 text="おい、どういうことだ！？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mob-man_b103b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="920303" count="0"]
+
+		[speaker_change name="特防署員Ｂ"]// 特防署員Ｃ（男性）
+		[maintxt_print2 text="す、すぐに確認を！！"]	// 「	// 」
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_04a" time="NOON" count="0"]		/* bg04　昼　　　　　新宿署＿特殊地域防犯対策室　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+		/*------------------------------
+		ＳＥ：バタバタと走り去る音（複数）
+		------------------------------*/
+		[se_play2 no="00050" count="60"]/* SE再生：足音　走り　去る　３人・汎用（タッタッタ…）　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="どういうこと……？"]	// 「	// 」
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（どうして、署内アナウンスで……？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="署内に内通者がいる、その事実が重く"]
+		[maintxt_print2 text="のしかかる。こんなことまで、できるなんて。"]
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：ノイズ音（小さめ）
+		------------------------------*/
+		[se_play2 no="00303" count="WAIT_NONE"]/* SE再生：機械　一瞬のノイズ音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		/*------------------------------
+		ボイス加工：冴木のみボイスチェンジャー
+		------------------------------*/
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="4" gyo_01="1"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090412" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="ふふ……"]	// 「	// 」
+//                      １２３４
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn1
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ッ！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="しかも、今度は首輪から小さなノイズと"]
+		[maintxt_print2 text="笑い声が聞こえてきた。"]
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：望田政信ＩＮ
+		------------------------------*/
+		[chara_app_cm ch_name="mochi_a105b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080475" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="星野？　今、なんか言ったか？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ、あの、ちょっと急用を思い出しました！"]	// 「
+		[maintxt_print2 text="すみません席外します！！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a102b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080476" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="お？　おう？？"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：望田政信ＯＵＴ
+		------------------------------*/
+		[ezchara_del_cm ch_name="mochi_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+		[scenechange_bs name="bg_BLACK" time="NOON" color="F_BLACK" count="F_SP_FAST" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+
+		[se_play2 no="00309" count="WAIT_NONE"]/* SE再生：足音　走り　去る　ハイヒールの足音　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="望田先輩に勢いだけしかない言い訳をして、"]
+		[maintxt_print2 text="私は猛ダッシュで部屋を飛び出した。"]
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+		/*------------------------------
+		背景：新宿署・非常階段（昼）
+		------------------------------*/
+		[scenechange_bs name="bg_11a" time="NOON" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg11　昼　　　　　新宿署＿非常階段用　　　　　　　　　　　　　　*/
+
+		/*------------------------------
+		（済み）ＳＥ：カンカンカンと階段を駆け下りる音　１人
+		------------------------------*/
+		[se_play3 no="00305" count="WAIT_WK8"]/* SE再生：足音　歩き　寄る　ハイヒールの足音　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="人気がない場所を探して、署内を走る。"]
+		[maintxt_print2 text="行き着いた先は、非常階段だった。"]
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="はあ、はあ……っ"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="15" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090413" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="瀬良あきとを籠絡した手練手管、"]	// 「
+		[maintxt_print2 text="　　 じつにお見事でした"]	// 」
+//                      １２３４５６７８９★１２３４５
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……やっ……ぱ、り"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="足を止め、息を整えていると案の定、"]
+		[maintxt_print2 text="首輪から声が聞こえてくる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私をひとりにさせるために、わざとあそこで"]
+		[maintxt_print2 text="首輪から声を出したのだろう。"]
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="11" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090414" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text=" ですが……彼には本日、"]	// 「
+		[maintxt_print2 text="仕事を頼んでいたのです"]	// 」
+//                      １２３４５６７８９★１
+
+		[batch]
+
+		[tw_center moji_01="19" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090415" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="台無しにされるわけにはいきませんので。"]	// 「
+		[maintxt_print2 text="　　　　予定通り、実行します"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="なにをするつもりなの"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="17" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090416" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　　　 威勢がいいですね。"]	// 「
+		[maintxt_print2 text="被害者が増えるのを防ぎたいですか？"]	// 」
+//                      １２３４５６７８９★１２３４５６７
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="当たり前じゃない！"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="17" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090417" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　　では、あなたに――いえ、"]	// 「
+		[maintxt_print2 text="あなたと柳愛時に試練を与えましょう"]	// 」
+//                      １２３４５６７８９★１２３４５６７
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="試練……ですって？"]	// 「
+		[maintxt_print2 text="私と、柳さんに？　柳さんまで？"]	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="17" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090418" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="ええ、そうです。……あなたは薄々、"]	// 「
+		[maintxt_print2 text=" 勘づいているのではないですか？"]	// 」
+//                      １２３４５６７８９★１２３４５６７
+
+		[batch]
+
+		[tw_center moji_01="17" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090419" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　 柳愛時は本来、犯罪者に敵対し、"]	// 「
+		[maintxt_print2 text="正義を掲げられるような人間ではない"]	// 」
+//                      １２３４５６７８９★１２３４５６７
+
+		[batch]
+
+		[tw_center moji_01="17" gyo_01="1"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090420" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="彼は過去――人を、殺したんですから"]	// 「	// 」
+//                      １２３４５６７８９★１２３４５６７
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		/*------------------------------
+		（済み）ＳＥ：ドクン、と心臓の鼓動の音
+		------------------------------*/
+		[se_play2 no="00276" count="WAIT_NONE"]/* SE再生：状態　心音　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="な……っ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="一瞬、息が止まった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="でもそれと同時に、"]
+		[maintxt_print2 text="前に首輪が言っていたことが"]
+		[maintxt_print2 text="次々と脳裏に浮かんでくる。"]
+
+		[batch]
+
+		/*------------------------------
+		流用：シーン003-aiji-0001から
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　開始                          */
+
+		[monochro_st1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_OFF" substop="SUBSTOP_ON" f_se="SE_OFF"]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="0"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="aiji_a400a" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[monochro_st2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[tw_center moji_01="19" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090386" count="0"]
+
+		//[speaker_change name="？？？"]// ※冴木弓弦
+		[maintxt_print2 text="ですが、あなたがいくら説いたところで"]	// 「
+		[maintxt_print2 text="　　 なにも説得力がありませんね。"]
+		[maintxt_print2 text="――他の誰でもない、あなただからこそ"]	// 」
+
+		[batch]
+
+		[tw_center moji_01="20" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090387" count="0"]
+
+		//[speaker_change name="？？？"]// ※冴木弓弦
+		[maintxt_print2 text=" それは、あなたが傷つけてしまった人間に"]	// 「
+		[maintxt_print2 text="復讐されないための口実ではありませんか？"]	// 」
+
+		[batch]
+
+		[tw_center moji_01="15" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090388" count="0"]
+
+		//[speaker_change name="？？？"]// ※冴木弓弦
+		[maintxt_print2 text="あなたは、傷つけた人間の哀しみを"]	// 「
+		[maintxt_print2 text="　本当に理解しているのですか？"]	// 」
+
+		[batch]
+
+		[tw_center moji_01="19" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090394" count="0"]
+
+		//[speaker_change name="？？？"]// ※冴木弓弦
+		[maintxt_print2 text="　あなたが柳愛時の背負う罪を知っても"]	// 「
+		[maintxt_print2 text="その姿勢を貫けるかどうか……楽しみです"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		流用：ここまで
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　終了                          */
+
+		[monochro_ed1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_OFF" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_11a" time="NOON" count="0"]		/* bg11　昼　　　　　新宿署＿非常階段用　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[monochro_ed2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="でも、柳さんが――人を殺した、なんて。"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn2
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そんな、こと……まさか"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="21" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090421" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　この続きは、彼の口から直接聞きましょう。"]	// 「
+		[maintxt_print2 text="……よろしいですね？　舞台へ、ご招待します"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９★１
+
+		[batch]
+
+		[tw_center moji_01="13" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090422" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　 柳愛時とふたりで、"]	// 「
+		[maintxt_print2 text="都庁展望台まで来てください"]	// 」
+//                      １２３４５６７８９★１２３
+
+		[batch]
+
+		[tw_center moji_01="18" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090423" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　 せっかくの晴れ舞台ですから……"]	// 「
+		[maintxt_print2 text="決して、他の人間は連れて来ないように"]	// 」
+//                      １２３４５６７８９★１２３４５６７８
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		/*------------------------------
+		ＳＥ：ザッとノイズ音（首輪専用）
+		------------------------------*/
+		[se_play2 no="00303" count="WAIT_NONE"]/* SE再生：機械　一瞬のノイズ音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="待って……！"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：階段を歩いて下りてくる音　１人
+		------------------------------*/
+		/*------------------------------
+		立ち絵：望田政信ＩＮ
+		------------------------------*/
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[se_play3 no="00012" count="WAIT_WK1"]/* SE再生：足音　歩き　寄る　１人・汎用Ａ（…トットット）　　　　　　　　　　　　　　　 */
+
+		[chara_app_cm ch_name="mochi_a100b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080477" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="星野、お前こんなところにいたのか"]	// 「	// 」
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="っ……望田先輩"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="首輪からなんの音もしなくなると同時に"]
+		[maintxt_print2 text="私の前に現れたのは、望田先輩だった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="その顔には、心配そうな表情が浮かんでいる。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a105b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080478" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="様子がおかしかったから、気になってな。"]	// 「
+		[maintxt_print2 text="なにか、あったのか？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="先輩……すみません。"]	// 「
+		[maintxt_print2 text="私、行かなきゃいけないところがあるんです"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="先に釘を刺されてしまったから、"]
+		[maintxt_print2 text="柳さん以外を連れて行くこともできない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="説明はできないけど、譲ることもできない。"]
+		[maintxt_print2 text="その決意と覚悟を視線に込める。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a104b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080479" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="……その様子だと、ただ事じゃないな。"]	// 「
+		[maintxt_print2 text="俺もついて行ったほうがいいか？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="いえ、大丈夫です。"]	// 「
+		[maintxt_print2 text="お気持ちだけ、受け取っておきます。"]
+		[maintxt_print2 text="……ありがとうございます"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a104a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080480" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="いいか、無茶だけはするなよ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="はい"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080481" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="なら、いい。……行ってこい"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：望田政信ＯＵＴ
+		------------------------------*/
+		/*------------------------------
+		（済み）ＳＥ：遠ざかる足音　１人
+		------------------------------*/
+
+		[ezchara_del_cm ch_name="mochi_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[se_play2 no="00013" count="WAIT_NONE"]/* SE再生：足音　歩き　去る　１人・汎用Ａ（トットット…）　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="去っていく望田先輩の背中を見送る。"]
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="心配して追いかけてきてくれた望田先輩に、"]
+		[maintxt_print2 text="本当のことを言えないのが心苦しい。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（今は……柳さんに、連絡しなきゃ）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="犯行場所を知らされたのは、私だけ。"]
+		[maintxt_print2 text="もたもたしている余裕はない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私は急いで携帯を取り出した。"]
+
+		[batch]
+
+		/*------------------------------
+		＞シーン005-aiji-0024へ
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure2"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure2
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure2_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure2_turn2"]
+	[/if]
+	[if estimate="$i==3"][calllua function="stcm2_goto" label="sure2_turn3"]
+	[/if]
+	[if estimate="$i==4"][calllua function="stcm2_goto" label="sure2_turn4"]
+	[/if]
+	[if estimate="$i==5"][calllua function="stcm2_goto" label="sure2_turn5"]
+	[/if]
+	[if estimate="$i==6"][calllua function="stcm2_goto" label="sure2_turn6"]
+	[/if]
+
+	*sure2_turn0
+
+		/*------------------------------
+		●シーン005-aiji-0024
+		場所：新宿
+		時間：昼
+		登場人物（服装）：主人公（制服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*------------------------------
+		背景：新宿署付近・交差点（昼）
+		------------------------------*/
+		[scenechange_bs name="bg_15aN" time="NOON" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg15　昼　　　　　新宿署付近＿交差点　（人あり）　　　　　　　　*/
+
+		/*------------------------------
+		（済み）ＳＥ：走って近づいてくる足音　１人
+		------------------------------*/
+		[se_play3 no="00308" count="WAIT_DS5"]/* SE再生：足音　走り　寄る　ハイヒールの足音　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="柳さん……！"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：柳愛時ＩＮ
+		------------------------------*/
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[chara_app_cm ch_name="aiji_a200b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011177" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="星野。……首輪の奴は、"]	// 「
+		[maintxt_print2 text="俺とお前の２人で来いと言ったんだな？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="は……はい"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a205b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011178" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="瀬良の出頭で予定が狂ったのはわかるが、"]	// 「
+		[maintxt_print2 text="わざわざ俺たちを呼び出すからには……"]
+		[maintxt_print2 text="なにか企んでいるのは間違いない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……そう、ですね。あの……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a200a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011179" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="？　どうした？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="いえ……なんでも、ありません"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんと合流して、確認事項に頷きながらも"]
+		[maintxt_print2 text="私は半分以上他のことに気を取られていた。"]
+
+		[batch]
+
+		/*------------------------------
+		演出：ノベルモードで中央表示
+		流用：直前シーンから
+		------------------------------*/
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="17" gyo_01="1"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090420" count="0"]
+
+		//[speaker_change name="？？？"]// ※冴木弓弦
+		[maintxt_print2 text="彼は過去――人を、殺したんですから"]	// 「	// 」
+//                      １２３４５６７８９★１２３４５６７
+
+		[batch]
+
+		/*------------------------------
+		演出：ノベルモード　ここまで
+		------------------------------*/
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="先刻、首輪に告げられた柳さんの過去が"]
+		[maintxt_print2 text="ぐるぐると頭の中で回っている。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（嘘ですよねって、聞きたい）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="でも――もし、肯定されたら？"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そう思うと怖くて、"]
+		[maintxt_print2 text="聞くことすらできそうになかった。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a400b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011180" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……なにか、言われたのか？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え……っ、と、……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんの言葉に、自分の身体がびくりと"]
+		[maintxt_print2 text="震えたのが、嫌というほどわかった。"]
+
+		[batch]
+
+		[bgm_play no="08" count="0"]		// BGM再生：08_悲しみＡ 事件
+
+		[ezchara_nextstate_cm ch_name="aiji_a403a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011181" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="ああ……そうか"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんが、なにかを察したように薄く笑う。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="その笑みは、胸に突き刺さるような"]
+		[maintxt_print2 text="哀しみに満ちていた。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011182" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="あの時も……お前は、"]	// 「
+		[maintxt_print2 text="そんな風に怯えた目で俺を見ていた。"]
+		[maintxt_print2 text="……今も、同じ目をしてる"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え……？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a405a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011183" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="お前と引き合わせようとした時点で、"]	// 「
+		[maintxt_print2 text="アドニスは俺たちのことを調べたはずだ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011184" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……俺が過去にしたことを、聞いたんだろう？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="く……詳しいことは、"]	// 「
+		[maintxt_print2 text="なにも聞いてません。ただ――"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="や……柳さんが、人を殺した……と、だけ"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a408a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011185" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……そうか"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そ……そんなの、私の不安を"]	// 「
+		[maintxt_print2 text="煽ろうとしての嘘に決まってますよね"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="冷静な判断ができないようにするために、"]	// 「
+		[maintxt_print2 text="あんなことを言ったとしか……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a205a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011186" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="いや、それは事実だ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんの声が、必死で否定しようとしていた"]
+		[maintxt_print2 text="私の心に切り込んでくる。"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn1
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――【事実】。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんが、人を……本当に？"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……信じられない。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a205b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011187" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="他には、なにか言ってたか？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ……詳しくは、直接、って……"]	// 「
+		[maintxt_print2 text="あの、都庁展望台……に"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a205a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011188" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="わかった。急ぐぞ"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：柳愛時ＯＵＴ
+		------------------------------*/
+		/*------------------------------
+		（済み）ＳＥ：走り去る足音　１人
+		------------------------------*/
+
+		[ezchara_del_cm ch_name="aiji_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[se_play2 no="00048" count="WAIT_NONE"]/* SE再生：足音　走り　去る　１人・汎用（タッタッタ…）　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="表情を引き締めて、柳さんが走り出す。"]
+		[maintxt_print2 text="呆然とその背中を見送りかけて、"]
+		[maintxt_print2 text="はっと我に返った。"]
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ……は、はい！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そうだ、惑わされている場合じゃない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="今は、アドニスに狙われている人を"]
+		[maintxt_print2 text="助けるために動かなければ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（信じられないけど……"]
+		[maintxt_print2 text="　今は、考えちゃいけない）"]
+
+		[batch]
+
+		[se_play2 no="00309" count="WAIT_NONE"]/* SE再生：足音　走り　去る　ハイヒールの足音　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="頭を振って迷いを追い払ってから、"]
+		[maintxt_print2 text="私も都庁に向かって走り出した。"]
+
+		[batch]
+
+		/*------------------------------
+		場面転換
+		------------------------------*/
+		/*------------------------------
+		背景：都庁展望台（昼）
+		------------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP_SLOW"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[se_play2 no="00358" count="1"]/* SE再生：エレベーターが到着した時　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[scenechange_bs name="bg_51a" time="NOON" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_ON"]	/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+		/*----------------------------*/
+		/*------------------------------
+		ＳＥ：エレベーターの扉が開く音
+		------------------------------*/
+		[se_play2 no="00359" count="WAIT_NONE"]/* SE再生：エレベータードアの開閉　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……けっこう、人がいますね"]	// 「	// 」
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+		/*------------------------------
+		立ち絵：柳愛時ＩＮ
+		------------------------------*/
+
+		[chara_app_cm ch_name="aiji_a400a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011189" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="ああ……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="指定された都庁展望台に、"]
+		[maintxt_print2 text="今のところ不審な様子はなかった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ただ、一般客がそこそこいる。"]
+		[maintxt_print2 text="なにが起こるか分からないから、"]
+		[maintxt_print2 text="避難を呼びかけたほうがよさそうだ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="係員に警察手帳を見せれば、"]	// 「
+		[maintxt_print2 text="避難誘導をしてもらえます。今――"]	// 」
+
+		[batch]
+
+		[bgm_play no="12" count="0"]		// BGM再生：12_ホラー
+
+		/*------------------------------
+		ボイス加工：冴木のみボイスチェンジャー
+		------------------------------*/
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="15" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*------------------------------
+		デフォルト名分岐
+		------------------------------*/
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[default_txt_print2 no1="090424" text1="ようこそ、いらっしゃいました。" text2="　星野市香さん、柳愛時さん" no2="090425" text4="ようこそ、いらっしゃいました。" text5="星野#Name[1]さん、柳愛時さん"]
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011190" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……こんなところに呼び出して、"]	// 「
+		[maintxt_print2 text="一体なにをするつもりだ"]	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="19" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090426" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="柳さん。我々は、彼女と同じくあなたにも"]	// 「
+		[maintxt_print2 text=" 適性があるのではないかと踏んでいます"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="aiji_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011191" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="適性、だと？"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="16" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090427" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　　 もちろん、我々――"]	// 「
+		[maintxt_print2 text="アドニスと志を共にできる方だ、と"]	// 」
+//                      １２３４５６７８９★１２３４５６
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="aiji_a204b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011192" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="ふざけるな。"]	// 「
+		[maintxt_print2 text="お前たちテロリストの理想に、"]
+		[maintxt_print2 text="共感などできるわけがない"]	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="14" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090428" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text=" 本当にそう言い切れますか？"]	// 「
+		[maintxt_print2 text="　 あなた自身が犯した罪を、"]
+		[maintxt_print2 text="忘れたわけではないですよね？"]	// 」
+//                      １２３４５６７８９★１２３４
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="aiji_a202a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011193" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="…………ッ"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="16" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*------------------------------
+		デフォルト名分岐
+		------------------------------*/
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[default_txt_print3 no1="090429" text1="　　　　 星野市香さん。" text2="彼がひとりの人間を壊した事実を、" text3="　 信じていただけましたか？" no2="090430" text4="星野#Name[1]さん。" text5="彼がひとりの人間を壊した事実を、" text6="　 信じていただけましたか？"]
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……あなたの言うことは、信じない"]	// 「	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn2
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="たとえ柳さんが認めたとしても、"]
+		[maintxt_print2 text="首輪の言葉に惑わされる気はない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私がそれを信じるのは、柳さんの口から"]
+		[maintxt_print2 text="ちゃんと詳細を知らされたときだ。"]
+		[maintxt_print2 text="それ以外に、ない。"]
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="20" gyo_01="1"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090431" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="ですが、あなたもその現場にいたはずですよ"]	// 「	// 」
+//                      １２３４５６７８９★１２３４５６７８９★
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え……？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="なのに、またしても決心を揺さぶられるような"]
+		[maintxt_print2 text="ことを突きつけられた。動揺で、声が震える。"]
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="22" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090432" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　　　――１２年前の冬のことです。"]	// 「
+		[maintxt_print2 text="あなたは実家のある新潟から親戚を訪ねるため、"]
+		[maintxt_print2 text="　　　　　　 東京に来ましたね"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９★１２
+
+		[batch]
+
+		[tw_center moji_01="17" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090433" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="そのときに巻き込まれた事件のことを"]	// 「
+		[maintxt_print2 text="　　　　覚えていませんか？"]	// 」
+//                      １２３４５６７８９★１２３４５６７
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="言われて――脳裏に、記憶があふれる。"]
+		[maintxt_print2 text="あのときの……１２年前の、出来事。"]
+
+		[batch]
+
+		[ezchara_del_cm ch_name="aiji_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		// 正式なＣＧではなく演出画像を使用する。ここではＣＧ登録せず５章で。吉田
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+		/*------------------------------
+		ＣＧ：ev1061
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+
+		[bgm_play no="07" count="0"]		// BGM再生：07_回想 神秘的でやや怪しい
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="まだ、子供の頃。"]
+		[maintxt_print2 text="私は知らない男性に誘拐された。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そして、暴行を受けて……"]
+		[maintxt_print2 text="そこからは記憶が曖昧だ。"]
+
+		[batch]
+
+		[ezbg_change3 name="en1061" time="NOON" count="CG_WAIT"]		/* 愛時06　 ／ 　　 ／ 青年愛時　中年男性を鉄パイプで攻撃　　　　　　　　　　　　　　　　　　　　　 */
+		[ezbg_target_set side="URA" target="CAME0" point_x="700" point_y="1400" size_z="100" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="覚えているのは、ひとつの景色。"]
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		// スマートフォン版変更
+//		[ezbg_target_set side="OMOTE" target="CAME0" point_x="100" point_y="800" size_z="100" count="0" ptn="0"]				//背景カメラ
+		[ezbg_change3 name="en1061" time="NOON" count="0"]		/* 愛時06　 ／ 　　 ／ 青年愛時　中年男性を鉄パイプで攻撃　　　　　　　　　　　　　　　　　　　　　 */
+		[ezbg_target_set side="URA" target="CAME0" point_x="100" point_y="800" size_z="100" count="0" ptn="0"]				//背景カメラ
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[cross_fade_ed count="120"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+		[maintxt_print2 text="誰かが、血まみれになりながら。"]
+		[maintxt_print2 text="誰かを、殴り続けていた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……怖かった、とても。"]
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		// スマートフォン版変更
+//		[ezbg_target_set side="OMOTE" target="CAME0" point_x="450" point_y="360" size_z="90" count="0" ptn="0"]				//背景カメラ
+		[ezbg_change3 name="en1061" time="NOON" count="0"]		/* 愛時06　 ／ 　　 ／ 青年愛時　中年男性を鉄パイプで攻撃　　　　　　　　　　　　　　　　　　　　　 */
+		[ezbg_target_set side="URA" target="CAME0" point_x="450" point_y="360" size_z="90" count="0" ptn="0"]				//背景カメラ
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[cross_fade_ed count="120"]
+		/*-------------------------------------*/
+
+		[ezbg_target_set side="OMOTE" target="CAME0" point_x="500" point_y="340" size_z="90" count="120" ptn="GEN_PT"]				//背景カメラ
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（そう……か。あれは……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="助けてくれと懇願する男に向かって、"]
+		[maintxt_print2 text="鉄パイプを振り下ろす狂気に満ちた表情の、"]
+		[maintxt_print2 text="あの人は――あの、怪物は。"]
+
+		[batch]
+
+		// 正式なＣＧではなく演出画像を使用する。ここではＣＧ登録せず５章で。吉田
+
+		/*------------------------------
+		※ＣＧをちゃんと出すのは５章です。	←この場面ではＣＧ登録はせず、５章で行います。
+		------------------------------*/
+		/*------------------------------
+		ＣＧ：ev1060
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="en1060" time="NOON" count="30"]		/* 愛時06　 ／ 　　 ／ 青年愛時　中年男性を鉄パイプで攻撃　　　　　　　　　　　　　　　　　　　　　 */
+		[ezbg_target_set side="URA" target="CAME0" point_x="500" point_y="340" size_z="90" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（柳さん、だったんだ）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私を、助けてくれようとした。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="でも――目に焼きついてしまった光景が"]
+		[maintxt_print2 text="ただ、どうしようもなく怖くて。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（なにも、言えなかった。"]
+		[maintxt_print2 text="　恐怖に震えるしか、できなくて）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そして――今も、言葉が出てこない。"]
+
+		[batch]
+
+		/*------------------------------
+		背景：都庁展望台（昼）
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_51a" time="NOON" count="BG_SP"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a207a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011194" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……そうだ。"]	// 「
+		[maintxt_print2 text="俺は……ひとりの人間の人生を、壊した"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんの瞳に、哀しみが浮かぶ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="自分自身を責めているような――"]
+		[maintxt_print2 text="そんな苦しそうな表情に見えた。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a408a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011195" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="理性を忘れ、殺られる前に殺ろうと思った。"]	// 「
+		[maintxt_print2 text="元々、警察官になれる資格なんてない人間だ。"]
+		[maintxt_print2 text="それは、誰よりも俺自身が知っている"]	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="18" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090434" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text=" ですが、正当防衛が認められましたね。"]	// 「
+		[maintxt_print2 text="年齢や状況からも無罪放免でお咎めなし"]	// 」
+//                      １２３４５６７８９★１２３４５６７８
+
+		[batch]
+
+		[tw_center moji_01="21" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090435" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="だからこそ、これまで誰にも露見しなかった。"]	// 「
+		[maintxt_print2 text="　　　　周囲をあざむいてこられた"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９★１
+
+		[batch]
+
+		[tw_center moji_01="21" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090436" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　　　 あなたは本来、我々と同じ。"]	// 「
+		[maintxt_print2 text="犯罪者なら、ためらわず裁けるはずの人間です"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９★１
+
+		[batch]
+
+		[tw_center moji_01="19" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090437" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="それなのに猫を被って、正義感にあふれる"]	// 「
+		[maintxt_print2 text="　警察官を演じて、楽しかったですか？"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="aiji_a407a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn3
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="18" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090438" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text=" 我々が罪人ならば、あなたも罪人です。"]	// 「
+		[maintxt_print2 text="ですが……我々は、あなたに同情もして"]
+		[maintxt_print2 text="　　　　　　いるのですよ"]	// 」
+//                      １２３４５６７８９★１２３４５６７８
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="aiji_a400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011196" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="同情……だと？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="18" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090439" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　他に方法がなかったのでしょう？"]	// 「
+		[maintxt_print2 text="相手が暴力を振るってきたのですから、"]
+		[maintxt_print2 text="　　　 抵抗するのは当然です"]	// 」
+//                      １２３４５６７８９★１２３４５６７８
+
+		[batch]
+
+		[tw_center moji_01="20" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090440" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="やりすぎだと非難する人もいるでしょうが、"]	// 「
+		[maintxt_print2 text=" ならば痛みを受け入れ、死の恐怖に怯え、"]
+		[maintxt_print2 text="　ただ耐えていればよかったのですか？"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９★
+
+		[batch]
+
+		[tw_center moji_01="19" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090441" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　 それでは加害者の思うつぼです。"]	// 「
+		[maintxt_print2 text="抗わなければ待っているのは破滅しかない"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="aiji_a400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011197" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……そんな同情はいらない。"]	// 「
+		[maintxt_print2 text="俺は、自分がしたことを正しいなんて思ってない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011198" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="復讐は、なにも生まない。"]	// 「
+		[maintxt_print2 text="あの時も、憎しみで武器を振るったわけじゃない"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a410b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011199" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="ただ怖くて、臆病で……弱かっただけだ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011200" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="もう、あんな想いをしたくないから。"]	// 「
+		[maintxt_print2 text="――誰にも同じ想いをさせたくないから、"]
+		[maintxt_print2 text="強くなりたいと思った"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a405a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011201" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="だから、お前たちがやろうとしていることは"]	// 「
+		[maintxt_print2 text="絶対に認められない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんの声に、決意と覚悟が宿る。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="混乱していた私の心に、光を差すように。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a204b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011202" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="犯罪は、必ず起こる。故意であれ偶然であれ、"]	// 「
+		[maintxt_print2 text="完全に失くすことは不可能だ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011203" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="犯罪者をただ駆除したところで、"]	// 「
+		[maintxt_print2 text="恒久的な平和なんて訪れない。"]
+		[maintxt_print2 text="その場しのぎにしかならない"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a204a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011204" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="ましてや、そのために犯罪を犯している"]	// 「
+		[maintxt_print2 text="お前たちが平和を説いたところで、"]
+		[maintxt_print2 text="説得力なんてあるわけないだろう"]	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="15" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090442" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　 ……どうやら、あなたとは"]	// 「
+		[maintxt_print2 text="相容れないようですね。残念です"]	// 」
+//                      １２３４５６７８９★１２３４５
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="首輪の声には、落胆がにじみ出ていた。"]
+		[maintxt_print2 text="本気で、柳さんを取り込むつもりだったのか。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんは自分が犯した罪を受け止めて、"]
+		[maintxt_print2 text="ずっと背負ってきたのだ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="たった、ひとりで。"]
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="13" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090443" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="では、あなたの覚悟とやらを"]	// 「
+		[maintxt_print2 text="　見せていただきましょう"]	// 」
+//                      １２３４５６７８９★１２３
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="っ、なにを――"]	// 「	// 」
+
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="860110" count="0"]
+
+		[speaker_change name="？？？"]// 女性Ａ
+		[maintxt_print2 text="きゃああああああっ！！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="！？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a214a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011205" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="ッ！？"]	// 「	// 」
+
+		[batch]
+
+		[bgm_play no="16" count="0"]		// BGM再生：16_サスペンスＣ 事件発生
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そのとき、まるで首輪の声に呼応するように"]
+		[maintxt_print2 text="突然、女性の悲鳴が響き渡った。"]
+
+		[batch]
+
+		[ezchara_del_cm ch_name="aiji_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		/*------------------------------
+		演出：アイテムＣＧ
+		モブ男性がモブ女性の頭に銃を突きつけている。
+		どちらもモブ立ち絵と同じで目見えなくてＯＫ。
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="incident_227" time="NOON" count="BG_SP"]	/* 事件ＣＧ ／ 　　アイテムcg_人質　　　　　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="360102" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ
+		[maintxt_print2 text="「全員そこから動くんじゃねえ！」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「な……」"]
+
+		[batch]
+
+		[maintxt_print2 text="慌てて悲鳴が聞こえてきたほうへと"]
+		[maintxt_print2 text="視線を向ければ――"]
+
+		[batch]
+
+		[maintxt_print2 text="……男が女性の頭に、"]
+		[maintxt_print2 text="銃を突きつけている光景が広がっていた。"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_51a" time="NOON" count="BG_SP"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+
+		/*------------------------------
+		ＳＥ：ざわめき（複数）
+		------------------------------*/
+
+		[chara_app_cm ch_name="aiji_a214a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="21" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090444" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　　　人質になっている女性は過去、"]	// 「
+		[maintxt_print2 text="　賄賂を受け取っていじめをもみ消しました。"]
+		[maintxt_print2 text="結果、いじめを受けた少女は自殺してしまった"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９★１
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn4
+
+		[tw_center moji_01="20" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090445" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　 銃を突きつけている犯人は過去、"]	// 「
+		[maintxt_print2 text="信じていた人間に騙され人生を狂わされた。"]
+		[maintxt_print2 text="　元はごく普通の、善良だった人間です"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９★
+
+		[batch]
+
+		[tw_center moji_01="22" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090446" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text=" 犯人を刺激すれば、人質の頭が撃ち抜かれます。"]	// 「
+		[maintxt_print2 text="人質を助けるためには、犯人を即死させなければ"]
+		[maintxt_print2 text="　　　　　　　ならないでしょう"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９★１２
+
+		[batch]
+
+		[tw_center moji_01="13" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090447" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text=" ――さあ、どうしますか？"]	// 「
+		[maintxt_print2 text="　なにひとつ遺恨を残さず、"]
+		[maintxt_print2 text="この状況を解決できますか？"]	// 」
+//                      １２３４５６７８９★１２３
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="aiji_a214b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011206" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……これ、は……"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[tw_center moji_01="21" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090448" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　 この光景に、見覚えがあるでしょう。"]	// 「
+		[maintxt_print2 text="　あなたは【すべてを守る】と言いましたね。"]
+		[maintxt_print2 text="犠牲を出さず、本当に守ることができますか？"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９★１
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="aiji_a202a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011207" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="…………っ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんが動揺している。声が、震えていた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（理屈だけ考えれば……"]
+		[maintxt_print2 text="　人質の命を優先しなきゃいけない）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="過去にどれだけ悪事を重ねていようと、"]
+		[maintxt_print2 text="目の前にいるのは被害者。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="けれど銃を持った犯人も――"]
+		[maintxt_print2 text="過去には被害者だった人間。"]
+
+		[batch]
+
+		/*------------------------------
+		演出：回想　シーン003-aiji-0018から
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　開始                          */
+
+		[monochro_st1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_OFF" substop="SUBSTOP_ON" f_se="SE_OFF"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_43b" time="EV" count="0"]		/* bg43　夕方　　　　公園　　　　　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="aiji_a400b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[monochro_st2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="010588" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="……俺は、たとえ人を傷つけた加害者でも、"]	// 「
+		[maintxt_print2 text="闇雲に命を奪っていいとは思わない。思えない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="010589" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="罪を償わせるために相応の罰は必要だ。"]	// 「
+		[maintxt_print2 text="だが……事件解決のために犯罪者の命を"]
+		[maintxt_print2 text="消せばいいなんて、絶対に思えないんだ"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		演出：回想　ここまで
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　終了                          */
+
+		[monochro_ed1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_OFF" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="incident_227" time="NOON" count="0"]	/* 事件ＣＧ ／ 　　アイテムcg_人質　　　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[monochro_ed2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――どうするのが正しいことなのか。"]
+		[maintxt_print2 text="とっさには頭が働かない。"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="360103" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ
+		[maintxt_print2 text="「うっ、撃つぞ！　近寄るな！」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="860111" count="0"]
+
+		[speaker_change name="女性"]// 女性Ａ
+		[maintxt_print2 text="「た……助けて！　お願い、誰か！"]
+		[maintxt_print2 text="　助けてえええ！」"]
+
+		[batch]
+
+		[maintxt_print2 text="怒号と悲鳴が、展望台に響き渡る。"]
+
+		[batch]
+
+		[maintxt_print2 text="動揺した人たちのざわめきがどんどん"]
+		[maintxt_print2 text="広がっていくのがわかった。"]
+
+		[batch]
+
+		[maintxt_print2 text="そんな、混乱の中。"]
+
+		[batch]
+
+		/*------------------------------
+		アイテムＣＧ：ここまで
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_51a" time="NOON" count="BG_SP"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a407a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011208" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="俺、は……。"]	// 「
+		[maintxt_print2 text="もう……誰も、傷つけたくない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="小さな声が、私の耳に響いた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私の迷いを、惑いを、恐怖を、"]
+		[maintxt_print2 text="――すべて振り払うように。"]
+
+		[batch]
+
+		/*------------------------------
+		演出：回想　シーン002-aiji-0021から
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　開始                          */
+
+		[monochro_st1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_OFF" substop="SUBSTOP_ON" f_se="SE_OFF"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="0"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="aiji_a200b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[monochro_st2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="010430" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="俺はな、全部守りたいんだよ"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a209a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="010431" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="文字通り、全部だ。"]	// 「
+		[maintxt_print2 text="警察のルールでは守れないものも、守りたい"]	// 」
+
+		[batch]
+
+		/*------------------------------
+		演出：回想　ここまで
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　終了                          */
+
+		[monochro_ed1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_OFF" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_51a" time="NOON" count="0"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="aiji_a407a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[monochro_ed2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……柳さん"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――そう、なにを揺れていたのか。"]
+		[maintxt_print2 text="最初からわかっていたことだというのに。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんの過去がどうであろうと、"]
+		[maintxt_print2 text="なんであろうと、関係ない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私の知っている彼は優しくて――"]
+		[maintxt_print2 text="そして、誰より強くあろうとする人だ。"]
+
+		[batch]
+
+		/*------------------------------
+		演出：回想　シーン001-zero-ai12から
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　開始                          */
+
+		[monochro_st1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_OFF" substop="SUBSTOP_ON" f_se="SE_OFF"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="ev1022" time="NOON" count="0"]		/* 愛時02　 ／ 差分 ／ 主人公の頭を小突く愛時　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[monochro_st2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="010208" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="「事件を解決するのに必要なのは、"]
+		[maintxt_print2 text="　力の強さじゃない」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="010209" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="「こんな状況に放り込まれても、"]
+		[maintxt_print2 text="　お前はちゃんと自分の足で立ってる」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="010210" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="「十分、強いだろ。あまり悲観するな」"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn5
+
+		/*------------------------------
+		演出：回想　ここまで
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　終了                          */
+
+		[monochro_ed1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_OFF" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_51a" time="NOON" count="0"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="aiji_a407a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[monochro_ed2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（私は、今の柳さんに強さを教えられた）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="怖くても前を向くこと、守りたいという意志を。"]
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		// スマートフォン版変更
+//		[ezbg_target_set side="OMOTE" target="CAME0" point_x="POS_X" point_y="-100" size_z="140" count="120" ptn="KAS_PT"]				//背景カメラ
+		[ezbg_change3 name="bg_51a" time="NOON" count="0"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="POS_X" point_y="-100" size_z="140" count="120" ptn="KAS_PT"]				//背景カメラ
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-aiji_a407a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[se_play2 no="00010" count="WAIT_NONE"]/* SE再生：足音　１歩　ハイヒール（コツッ）　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="たとえ過去になにがあっても、"]	// 「
+		[maintxt_print2 text="私は柳さんを信じます"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="立ち尽くす柳さんの背に、そっと手で触れる。"]
+
+		[batch]
+
+		/*------------------------------
+		【自動分岐】
+		信頼度一定値以上　＞シーン005-aiji-0025へ
+		信頼度一定値未満　＞シーン005-aiji-0026へ
+		------------------------------*/
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn6
+
+		[flag_set name="switch" num="0"]
+
+		[flag_number name="信頼度_柳" i="i"]
+
+		[if estimate="$i >= 4"][thread_change label="sure3"] [return]
+		[/if]
+					  [thread_change label="sure4"] [return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure3
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+	[if estimate="$i==10"][calllua function="stcm2_goto" label="sure3_turn10"]//トリガーシステム
+	[/if]
+
+	*sure3_turn0
+
+		/*------------------------------
+		●シーン005-aiji-0025
+		場所：都庁展望台
+		時間：昼
+		登場人物（服装）：主人公（制服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*正規ルート*/
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a200a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011209" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="星野……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="私が床に威嚇射撃をします。"]	// 「
+		[maintxt_print2 text="そのすぐ後に、男の手を狙って撃ってください"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……そうすれば、助けられます。"]	// 「
+		[maintxt_print2 text="どちらも、です"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a207b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011210" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="だが、俺は……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="柳さんならできます"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a207a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あなたが強くなりたいと願っていたことも、"]	// 「
+		[maintxt_print2 text="そのために孤独に戦っていたことも知っています"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="柳さんが誰も傷つけたくないと、"]	// 「
+		[maintxt_print2 text="誰より強く願っていることも知ってます。"]
+		[maintxt_print2 text="付き合いは短くても、それだけはわかります"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="だから……柳さんが助けてあげてください。"]	// 「
+		[maintxt_print2 text="どちらかじゃなくて、どちらも"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="難しくても、怖くても、足がすくんでも、"]	// 「
+		[maintxt_print2 text="今できることを自分でしなきゃいけない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そうしないと、前に進めない。"]	// 「
+		[maintxt_print2 text="……そうでしょう？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a209a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011211" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……そう、だ。"]	// 「
+		[maintxt_print2 text="ああ……そうだったな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a205a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんが、顔を上げる。"]
+		[maintxt_print2 text="その表情に、もう迷いはなかった。"]
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_51a" time="NOON" count="0"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんの手が、ホルスターを探る。"]
+		[maintxt_print2 text="それを確認してから、私も銃を手にした。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="銃口を犯人に向けないようにしながら、口を開く。"]
+
+		[batch]
+
+//アイテムＣＧ
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="incident_227" time="NOON" count="BG_SP"]	/* 事件ＣＧ ／ 　　アイテムcg_人質　　　　　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「警察です。"]
+		[maintxt_print2 text="　銃を下ろして、人質を解放してください」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「要求があれば、可能な限り聞きます。"]
+		[maintxt_print2 text="　なにか理由があってこんなことをしたんですよね。"]
+		[maintxt_print2 text="　私に、話してください」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="360104" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ
+		[maintxt_print2 text="「そんなの……そんなの、嘘っぱちだ！"]
+		[maintxt_print2 text="　警察が俺の話を聞いてくれたことなんて、"]
+		[maintxt_print2 text="　今まで一度も……！」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011212" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「ここで引き金を引いたら、"]
+		[maintxt_print2 text="　お前は本当の犯罪者になってしまう。"]
+		[maintxt_print2 text="　……頼む、自分に負けないでくれ」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="360105" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ
+		[maintxt_print2 text="「…………っ」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011213" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「取り返しのつかないことになる前に、"]
+		[maintxt_print2 text="　話を聞かせてほしい。今ならまだ間に合う」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="360106" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ
+		[maintxt_print2 text="「で……でも……」"]
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_51a" time="NOON" count="0"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="男の動揺が伝わったのか、人質の女性の"]
+		[maintxt_print2 text="こめかみに突きつけられていた銃口が、揺らぐ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（今だ……！）"]
+
+		[batch]
+
+		/*-----------------------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[CW_Load control_id="1" file_id="546"]		// 市香と愛時ダブルショット演出
+		[batch]
+		[txtwaitset count="10"]
+		[batch]
+		[ezbg_change3 name="en6032" time="NOON" count="0"]
+		[batch]
+		[txtwaitset count="67"]
+		[batch]
+		[CW_FreeEnd control_id="1"]
+		/*-----------------------------------------------*/
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="その隙を見逃さずに、私は銃を構えた。"]
+		[maintxt_print2 text="――失敗は、許されない。"]
+
+		[batch]
+
+		/*------------------------------
+		演出：ev6010（主人公の銃構え／制服）と
+		愛時の立ち絵03を斜めにコマ割りで配置して
+		２人で一緒に銃を構えてる感じに加工した画像。
+		
+		※新規ＣＧにしようと思ったんですが、
+		　素材あるのでもったいないかと……。
+		
+		※このＣＧのままトリガーシステムに移行できますか？
+		　厳しければ通常のトリガーシステムで。
+		------------------------------*/
+
+		/*------------------------------
+		【トリガーシステム】
+		失敗　　　＞シーン005-aiji-0027
+		成功　　　＞シーン005-aiji-0028
+		------------------------------*/
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		/*---------------------------------------*/
+		/* トリガー                              */
+
+		[bgm_play no="19" count="0"]		// BGM再生：19_戦闘
+
+		// ▽トリガーカットイン
+		[CW_guntrigger_cutin control_id="0" count="20"]	// 制服　クロノＩＤ／ブラックアウトＳＰ
+
+		// ▽トリガーシステム
+		[start_guntrigger2 pos="TR_POS_ICHIKA" count="TR_SP_NOML"]
+		[batch]
+		/*---------------------------------------*/
+
+		[flag_set name="switch" num="10"]
+
+		[return]
+
+	////////////////////////////////////////////////////////////////////////////////
+	*sure3_turn10
+
+		[flag_set name="switch" num="0"]
+
+		[flag_number name="TriggerResultID" i="i"]
+
+		[if estimate="$i == t.define.TR_MISS"][thread_change label="sure5"] [return]
+		[else]			  [thread_change label="sure6"] [return]
+		[/if]
+
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure4
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure4_turn0"]
+	[/if]
+	[if estimate="$i==10"][calllua function="stcm2_goto" label="sure4_turn10"]//トリガーシステム
+	[/if]
+
+	*sure4_turn0
+
+		/*------------------------------
+		●シーン005-aiji-0026
+		場所：都庁展望台
+		時間：昼
+		登場人物（服装）：主人公（制服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*ＢＡＤＥＮＤ直行*/
+
+		/*------------------------------
+		流用：シーン005-aiji-0025から
+		------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a207a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011209" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="星野……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="どちらも助けましょう、柳さん。"]	// 「
+		[maintxt_print2 text="２人でなら、できます"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a223b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011214" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="………俺には……無理だ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="柳さん"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a223a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011215" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="俺は……撃てない。"]	// 「
+		[maintxt_print2 text="失えない……怖い、んだ……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="だからこそ、動けない。"]
+		[maintxt_print2 text="自分の手で切り開けない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんの怯えた目は、そう主張していた。"]
+		[maintxt_print2 text="だとすれば……私が覚悟を決めるしかない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……わかりました。"]	// 「
+		[maintxt_print2 text="柳さんは、床を狙って威嚇射撃してください"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="私が――犯人の手を狙って撃ちます。"]	// 「
+		[maintxt_print2 text="大丈夫です。私は絶対に外しません"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a207b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011216" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="…………わかった"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="迷いながらも、柳さんは頷いてくれた。"]
+		[maintxt_print2 text="安堵の息を吐いて、私も小さく頷く。"]
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_51a" time="NOON" count="0"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんの手が、ホルスターを探る。"]
+		[maintxt_print2 text="それを確認してから、私も銃を手にした。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="銃口を犯人に向けないようにしながら、口を開く。"]
+
+		[batch]
+
+//アイテムＣＧ
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="incident_227" time="NOON" count="BG_SP"]	/* 事件ＣＧ ／ 　　アイテムcg_人質　　　　　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「警察です。"]
+		[maintxt_print2 text="　銃を下ろして、人質を解放してください」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「要求があれば、可能な限り聞きます。"]
+		[maintxt_print2 text="　なにか理由があってこんなことをしたんですよね。"]
+		[maintxt_print2 text="　私に、話してください」"]
+
+		[batch]
+
+		/*------------------------------
+		流用：シーン005-aiji-0025から
+		------------------------------*/
+
+		/*ボイス再生*/
+		[voice_play no="360104" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ// ※
+		[maintxt_print2 text="「そんなの……そんなの、嘘っぱちだ！"]
+		[maintxt_print2 text="　警察が俺の話を聞いてくれたことなんて、"]
+		[maintxt_print2 text="　今まで一度も……！」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011212" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="「ここで引き金を引いたら、"]
+		[maintxt_print2 text="　お前は本当の犯罪者になってしまう。"]
+		[maintxt_print2 text="　……頼む、自分に負けないでくれ」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="360105" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ// ※
+		[maintxt_print2 text="「…………っ」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011213" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="「取り返しのつかないことになる前に、"]
+		[maintxt_print2 text="　話を聞かせてほしい。今ならまだ間に合う」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="360106" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ// ※
+		[maintxt_print2 text="「で……でも……」"]
+
+		[batch]
+
+		/*------------------------------
+		流用：ここまで
+		------------------------------*/
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_51a" time="NOON" count="0"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="aiji_a303a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="男の動揺が伝わったのか、人質の女性の"]
+		[maintxt_print2 text="こめかみに突きつけられていた銃口が、揺らぐ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（今だ……！）"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a307a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011217" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="…………ッ！！"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：銃を発砲する音
+		------------------------------*/
+		/*------------------------------
+		ＳＥ：跳弾の音
+		------------------------------*/
+
+		[ezchara_del_cm ch_name="aiji_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[se_play2 no="NEW_SE06" count="WAIT_NONE"]/* SE再生：自動拳銃の発射音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[ef_shake3 side="INSIDE" slevel="ATCK_Lv1"]	/* 衝撃　Ｌｖ１（通常の打撃など　　　　） */
+		[blackout_flash2 dir="F_FADE" color="F_WHITE" zpos="ZPOS_FORE3" alpha="255" speed="20"]	/* 白フラッシュ */
+		[txtwaitset count="20"]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="タイミングを逃すことなく、柳さんが床を撃つ。"]
+
+		[batch]
+
+		//ギャグ音に聞こえるのでカットします。　大島さんメモ
+		//[se_play2 no="NEW_SE30" count="WAIT_NONE"]/* SE再生：跳弾の音　プシュン！プシュン！プシュン！　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="360107" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ
+		[maintxt_print2 text="うわあっ！？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="けれど――撃った場所が"]
+		[maintxt_print2 text="犯人に近すぎたのかもしれない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="動揺した犯人が、大きく揺れ動く。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……っ！　ダメ……！"]// 「	//	」
+
+		[batch]
+
+//トリガーシステム　強制失敗はボタン封鎖で対応　小塚
+
+		[restrict_noskip]	// 入力制限（開始）※早送りは使用可
+		[batch]
+
+		/*------------------------------
+		演出：こっちは主人公のみのＣＧ使用してください。
+		------------------------------*/
+
+		/*------------------------------
+		【トリガーシステム】
+
+		失敗　　　＞シーン005-aiji-0027
+		※強制的に失敗となります。
+		------------------------------*/
+		/*---------------------------------------*/
+		/* トリガー                              */
+
+		[bgm_play no="19" count="0"]		// BGM再生：19_戦闘
+
+		// ▽トリガーカットイン
+		[CW_guntrigger_cutin control_id="0" count="20"]	// 制服　クロノＩＤ／ブラックアウトＳＰ
+
+		[noButton_guntrigger]	// トリガー機能でボタンを無効にする
+
+		// ▽トリガーシステム
+		[start_guntrigger2 pos="TR_POS_ICHIKA" count="TR_SP_NOML"]
+		[batch]
+		/*---------------------------------------*/
+
+		[flag_set name="switch" num="10"]
+
+		[return]
+
+	////////////////////////////////////////////////////////////////////////////////
+	*sure4_turn10
+
+		[flag_set name="switch" num="0"]
+
+		[flag_number name="TriggerResultID" i="i"]
+
+		[if estimate="$i == t.define.TR_MISS"][thread_change label="sure5"] [return]
+		[else]			  [thread_change label="sure5"] [return]
+		[/if]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure5
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure5_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure5_turn1"]
+	[/if]
+
+	*sure5_turn0
+
+		/*------------------------------
+		●シーン005-aiji-0027
+		場所：都庁展望台
+		時間：昼
+		登場人物（服装）：主人公（制服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*トリガーシステム【失敗】*/
+
+		[restoff_noskip] 	// 入力制限（解除）※早送りは使用可
+
+		[batch]
+
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		/*------------------------------
+		ＳＥ：銃で撃たれる音
+		------------------------------*/
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		/*----------------------------*/
+
+		[blackout_flash2 dir="F_FADE" color="F_RED" zpos="ZPOS_FORE3" alpha="255" speed="20"]	/* 赤フラッシュ */
+
+		[se_play2 no="00212" count="WAIT_NONE"]/* SE再生：血が飛び散る（ビシャ！） 　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[ezbg_change3 name="blood_01" time="NOON" count="0"]	/* 血しぶき：１箇所 */
+		// スマートフォン版変更 (画面揺れが機能していない問題への対策)
+//		[ef_shake3 side="INSIDE" slevel="ATCK_Lv1"]	/* 衝撃　Ｌｖ１（通常の打撃など　　　　） */
+		[ef_shake3 side="OUTSIDE" slevel="ATCK_Lv1"]	/* 衝撃　Ｌｖ１（通常の打撃など　　　　） */
+		[txtwaitset count="20"]
+		[batch]
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="860112" count="0"]
+
+		[speaker_change name="女性"]// 女性Ａ
+		[maintxt_print2 text="きゃああああああ！！！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――狙いが、外れた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="銃弾は、よりによって人質の肩を"]
+		[maintxt_print2 text="貫通してしまった。"]
+
+		[batch]
+
+		[ezbg_change3 name="bg_51a" time="NOON" count="BG_SP"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="lc-aiji_a202a" place="CENTER" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="011218" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="…………っ"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：床に倒れる音
+		------------------------------*/
+		[se_play2 no="00224" count="WAIT_NONE"]/* SE再生：倒れる　汎用　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="860113" count="0"]
+
+		[speaker_change name="女性"]// 女性Ａ
+		[maintxt_print2 text="あ……あ、ああ……"]	// 「	// 」
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[ezchara_del_cm ch_name="lc-aiji_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ッ！！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="360108" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ
+		[maintxt_print2 text="く……くそおっ！！"]	// 「
+		[maintxt_print2 text="だ、騙しやがって……！！"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="床に崩れ落ちた人質に目もくれず、"]
+		[maintxt_print2 text="逆上した男が銃を構える。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="その銃口は――まっすぐに、"]
+		[maintxt_print2 text="柳さんへと向けられていた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんは――目を見開いて"]
+		[maintxt_print2 text="立ち尽くしている。"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[se_play2 no="00001" count="WAIT_NONE"]/* SE再生：足音　１歩　汎用　着地（軽く：タツッ）　　　　　　　　　　　　　　　　　　　 */
+
+		[ezbg_target_set side="OMOTE" target="CAME0" point_x="POS_X" point_y="0" size_z="140" count="20" ptn="KAS_PT"]				//背景カメラ
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="柳さん！！"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：銃声
+		------------------------------*/
+		/*------------------------------
+		演出：フラッシュ（可能なら赤）
+		------------------------------*/
+		/*------------------------------
+		ＳＥ：ドクン、と鼓動の音
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[se_play2 no="NEW_SE06" count="WAIT_NONE"]/* SE再生：自動拳銃の発射音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[blackout_flash2 dir="F_FADE" color="F_WHITE" zpos="ZPOS_FORE3" alpha="255" speed="20"]	/* 白フラッシュ */
+		[txtwaitset count="20"]
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……それは、本当にとっさの行動だった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="考えている余裕なんて、どこにもなかった。"]
+
+		[batch]
+
+		/*------------------------------
+		演出：画面揺れ
+		------------------------------*/
+		/*------------------------------
+		ＳＥ：床に倒れる音
+		------------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[ef_shake3 side="INSIDE" slevel="ATCK_Lv1"]	/* 衝撃　Ｌｖ１（通常の打撃など　　　　） */
+		[se_play2 no="00212" count="WAIT_NONE"]/* SE再生：血が飛び散る（ビシャ！）　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[blackout_flash2 dir="F_FADE" color="F_RED" zpos="ZPOS_FORE3" alpha="255" speed="40"]	/* 赤フラッシュ */
+		[txtwaitset count="60"]
+		[batch]
+
+		[scenechange_bs name="bg_BLACK" time="NOON" color="F_BLACK" count="10" dir="F_DOWN" bgmstop="BGMSTOP_OFF"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[se_play2 no="00224" count="40"]/* SE再生：倒れる　汎用　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="011219" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="星野！！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="焼け付くように、胸が痛い。"]
+		[maintxt_print2 text="――撃たれたのだと、嫌でもわかった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="誰かが、倒れた私を抱きかかえている。"]
+		[maintxt_print2 text="きっと……これは、柳さんの腕だ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（よかった）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="なら、柳さんは無事なのだ。"]
+		[maintxt_print2 text="私は間に合ったと、そういうことだろう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="あの銃弾から柳さんを助けるためには、"]
+		[maintxt_print2 text="自分の身体を割り込ませるしかなかった。"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure5_turn1
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_51a" time="NOON" count="0"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="1200" point_y="-100" size_z="150" count="0" ptn="NO_PT"]				//背景カメラ
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-aiji_a207a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[bgm_play no="08" count="0"]		// BGM再生：08_悲しみＡ 事件
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011220" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="俺の……俺のせい、で……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんの顔が、絶望に染まっていく。"]
+		[maintxt_print2 text="……こんな顔を見たかったわけじゃない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（大丈夫、ですから）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そう言って、笑顔を見せたかった。"]
+		[maintxt_print2 text="でも……ちょっと、無理そうだ。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-aiji_a223a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011221" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="俺が、迷ったから……。"]	// 「
+		[maintxt_print2 text="また……なにも、できずに……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（そんな哀しい顔……しないでください）"]
+
+		[batch]
+
+//		/*------------------------------
+//		◆すみませんが、以下の愛時台詞カットでお願いします。
+//		------------------------------*/
+//
+//		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+//
+//		/*ボイス再生*/
+//		[voice_play no="011222" count="0"]
+//
+//		[speaker_change name="柳 愛時"]
+//		[maintxt_print2 text="どう……して、どうして……！"]	// 「
+//		[maintxt_print2 text="なんで、俺なんかを庇ったんだ……！"]	// 」
+//
+//		[batch]
+//
+//		/*------------------------------
+//		◆愛時の台詞カット　ここまで
+//		------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もっと、柳さんの隣にいたかった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんの願いを叶えるために、"]
+		[maintxt_print2 text="一緒に歩いていきたかった。"]
+
+		[batch]
+
+		[ezchara_del_cm ch_name="b-aiji_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		/*------------------------------
+		暗転
+		------------------------------*/
+		[scenechange_bs name="bg_BLACK" time="NOON" color="F_BLACK" count="F_SP_SLOW" dir="F_FADE" bgmstop="BGMSTOP_OFF"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――でも、それは。"]
+		[maintxt_print2 text="残念ながら、叶いそうにない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011223" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="ダメだ、星野……。"]	// 「
+		[maintxt_print2 text="嫌だ……目を開けてくれ……！"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="もう……、"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="あの優しい声も、聞こえない。"]
+
+		[batch]
+
+		/*ＢＡＤＥＮＤ　タイトルに戻ります。*/
+
+		/*----------------------------*/
+		// ▽画面終了処理
+		[end_graphic_bad speed="0" name="BAD_END"]	// ブラックアウト速度　／　バッドＥＮＤ
+
+		// ▽フラグ
+		[spflag_set name="badend柳_02" num="1"]		// ＢＡＤＥＮＤ　０４
+
+		// ▽トロフィー（判定）
+		[unlock_trophy2 no="TROPHY_09"]	// トロフィー09：初めてバッドエンドを見た
+		[all_end_check]					// トロフィー開放判定
+		/*----------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[calllua function="game_end"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure6
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure6_turn0"]
+	[/if]
+
+	*sure6_turn0
+
+		/*------------------------------
+		●シーン005-aiji-0028
+		場所：都庁展望台
+		時間：昼
+		登場人物（服装）：主人公（制服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*トリガーシステム【成功】*/
+
+		/*------------------------------
+		（済み）ＳＥ：発砲する音
+		------------------------------*/
+		/*------------------------------
+		ＳＥ：銃弾が銃に当たる音
+		------------------------------*/
+		/*----------------------------*/
+
+		[blackout_flash2 dir="F_FADE" color="F_RED" zpos="ZPOS_FORE3" alpha="255" speed="20"]	/* 赤フラッシュ */
+
+		[se_play2 no="00212" count="WAIT_NONE"]/* SE再生：血が飛び散る（ビシャ！） 　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[ezbg_change3 name="blood_01" time="NOON" count="0"]	/* 血しぶき：１箇所 */
+		// スマートフォン版変更 (画面揺れが機能していない問題への対策)
+//		[ef_shake3 side="INSIDE" slevel="ATCK_Lv1"]	/* 衝撃　Ｌｖ１（通常の打撃など　　　　） */
+		[ef_shake3 side="OUTSIDE" slevel="ATCK_Lv1"]	/* 衝撃　Ｌｖ１（通常の打撃など　　　　） */
+		[txtwaitset count="20"]
+		[batch]
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="360109" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ
+		[maintxt_print2 text="ぐあっ！！"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：銃が床に落ちる音
+		------------------------------*/
+		[se_play2 no="NEW_SE39" count="60"]/* SE再生：銃を落とす音　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんの撃った弾が、男の手にある銃を"]
+		[maintxt_print2 text="見事に弾き飛ばした。"]
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_51a" time="NOON" count="0"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="900" point_y="400" size_z="100" count="0" ptn="NO_PT"]				//背景カメラ
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[se_play3 no="00308" count="WAIT_DS5"]/* SE再生：足音　走り　寄る　ハイヒールの足音　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="衝撃でよろけた男の手が人質の女性から"]
+		[maintxt_print2 text="離れた瞬間、柳さんが発砲すると同時に"]
+		[maintxt_print2 text="走り出していた私がその身柄を確保する。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="大丈夫ですか"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="860114" count="0"]
+
+		[speaker_change name="女性"]// 女性Ａ
+		[maintxt_print2 text="は……は、はい……っ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="360110" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ
+		[maintxt_print2 text="きっ、貴様……！"]	// 「	// 」
+
+		[batch]
+
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_51a" time="NOON" count="0"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="aiji_a303a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011224" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="動くな"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="360111" count="0"]
+
+		[speaker_change name="男性"]//男性Ａ
+		[maintxt_print2 text="ヒッ……！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="柳さんに銃口を向けられて、"]
+		[maintxt_print2 text="犯人の男はすぐに大人しくなった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="銃をはじき飛ばされた彼に、"]
+		[maintxt_print2 text="もう武器はないらしい。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……助け、られた）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="無事に、どちらも。"]
+		[maintxt_print2 text="怪我らしい怪我も、ないはずだ。"]
+
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		/*------------------------------
+		ＳＥ：ざわめき（複数）
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え……？"]	// 「	// 」
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		/*------------------------------
+		（済み）ＳＥ：バタバタと駆け寄ってくる足音（複数）
+		------------------------------*/
+		[se_play3 no="00047" count="WAIT_DS1"] /* SE再生：足音　走り　寄る　３人・汎用（…タッタッタ）　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="970136" count="0"]
+
+		[speaker_change name="捜査員Ａ"]// 捜査員Ａ（男性）
+		[maintxt_print2 text="警察だ！　通してくれ！"]	// 「	// 」
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="970224" count="0"]
+
+		[speaker_change name="捜査員Ｂ"]// 捜査員Ｂ（男性）
+		[maintxt_print2 text="銃声が聞こえたが、怪我人は！？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="警察が乗り込んできたのだと気づいて、"]
+		[maintxt_print2 text="全身から力が抜けそうになる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="それでも、人質になっていた彼女を誰かに"]
+		[maintxt_print2 text="引き渡すまでは、へたり込んでいられない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="970324" count="0"]
+
+		[speaker_change name="捜査員Ｃ"]// 捜査員Ｃ（男性）
+		[maintxt_print2 text="おい、大丈夫か！？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="はい、人質は無事です。"]	// 「
+		[maintxt_print2 text="怪我もないはずですが、"]
+		[maintxt_print2 text="念のために搬送の手配を……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="970325" count="0"]
+
+		[speaker_change name="捜査員Ｃ"]// 捜査員Ｃ（男性）
+		[maintxt_print2 text="わかった。"]	// 「
+		[maintxt_print2 text="……もう大丈夫ですよ、立てますか？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="860115" count="0"]
+
+		[speaker_change name="女性"]// 女性Ａ
+		[maintxt_print2 text="は……は、い……"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：遠ざかっていく足音
+		------------------------------*/
+		[se_play2 no="00036" count="WAIT_NONE"]/* SE再生：足音　歩き　去る　２人・廊下　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="警官に付き添われて、"]
+		[maintxt_print2 text="よろよろと去って行く女性の背中を見送る。"]
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……彼女も、きっと自分の過去を"]
+		[maintxt_print2 text="後悔している。そう、思いたい。"]
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：近づいてくる足音
+		------------------------------*/
+		/*------------------------------
+		立ち絵：森丘創ＩＮ
+		------------------------------*/
+		[se_play3 no="00012" count="WAIT_WK1"]/* SE再生：足音　歩き　寄る　１人・汎用Ａ（…トットット）　　　　　　　　　　　　　　　 */
+
+		[chara_app_cm ch_name="moriok_a100a" place="RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="100218" count="0"]
+
+		[speaker_change name="森丘 創"]
+		[maintxt_print2 text="……柳か"]	// 「	// 」
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[chara_app_cm ch_name="aiji_a200a" place="LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011225" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……森丘さん"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="どうやら、森丘さんも来ていたようだ。"]
+		[maintxt_print2 text="柳さんと森丘さんの視線が、交錯する。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="それは――決して、"]
+		[maintxt_print2 text="不穏なものではないように見えた。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="moriok_a100b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="100219" count="0"]
+
+		[speaker_change name="森丘 創"]
+		[maintxt_print2 text="あとで詳しく聞かせてもらうぞ"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="moriok_a100a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+		[ezchara_nextstate_cm ch_name="aiji_a200b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011226" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……はい"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：森丘創ＯＵＴ
+		------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="aiji_a200a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[ezchara_del_cm ch_name="moriok_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="それだけ言って、森丘さんは"]
+		[maintxt_print2 text="捜査員たちの中に混じってしまった。"]
+
+		[batch]
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure50"]	// シーン再生スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+	シーン再生用
+=======================================================================================================================*/
+*sure50
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure50_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure50_turn1"]
+	[/if]
+
+	*sure50_turn0
+
+		/*--------------------------------------------------------*/
+		/* シーン再生・初期                                       */
+		[flag_number name="flg_memory" i="i"]
+		[if estimate="$i == 1"]	// ▼シーン再生時
+
+			// ▽背景
+			[ezbg_change3 name="bg_51a" time="NOON" count="BG_SP"]		/* bg51　昼　　　　　都庁＿展望台　　　　　　　　　　　　　　　　　*/
+			// ▽ＢＧＭ・ループＳＥ
+			// ▽立ち絵
+			[chara_app_cm ch_name="aiji_a200a" place="LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[else]			// ▼通常時
+
+
+		[/if]
+		/*--------------------------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="呆然としていた犯人が、"]
+		[maintxt_print2 text="あっという間に捜査員に囲まれる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……なんとか、なった……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="はっと正気に返り、思わず首元に触れる。"]
+		[maintxt_print2 text="――特に反応はない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……はは"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		/*------------------------------
+		ＳＥ：床に座り込む音
+		------------------------------*/
+		[ezbg_target_set side="OMOTE" target="CAME0" point_x="POS_X" point_y="30" size_z="110" count="20" ptn="KAS_PT"]				//背景カメラ
+		[se_play2 no="00172" count="WAIT_NONE"]/* SE再生：衣服　止める（ぼふっ）ソファに座る音　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="気が抜けると同時に、その場にへたり込む。"]
+		[maintxt_print2 text="もう、立っていられそうにない。"]
+
+		[batch]
+
+		[chara_app_cm ch_name="lc-aiji_a208a" place="CENTER" dir="FROM_CENTER" zpos="ZPOS_BACK4" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="011227" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="大丈夫か？"]	// 「
+		[maintxt_print2 text="……なんて、言える資格はないな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="柳さん……？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_del_cm ch_name="lc-aiji_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="自嘲を含んだ笑みを見せたと思ったら、"]
+		[maintxt_print2 text="柳さんはおもむろに座り込んだ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私の背に、体重を預けるように。"]
+		[maintxt_print2 text="――触れた広い背中が、あたたかい。"]
+
+		[batch]
+
+		/*------------------------------
+		ＣＧ：ev1080
+		
+		愛時と主人公、ふたりで背中合わせで座り込む。
+		主人公はおねえさん座りでへたりこむイメージ。
+		愛時は片膝立てて少し上を見てる感じ。
+		
+		主人公は両手で銃を持ったまま緊張がゆるんだ表情
+		愛時も片手に銃を持ったまま苦笑。
+		
+		場所：都庁展望台
+		時間：昼
+		服装：主人公（制服）、愛時（上着あり）
+		------------------------------*/
+		/*表示演出開始--------------------------------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_WHITE" time="NOON" count="BG_SP"]	/* bg53　共通　　　　白　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+
+		[bgm_play no="10" count="0"]		// BGM再生：10_恋愛Ａ 安らぎ
+
+		[CW_Load control_id="1" file_id="700"]			// 愛時08
+
+		[txtwaitset count="320"]
+		[batch]/* 演出用 */
+		[ezbg_change3 name="bg_WHITE" time="NOON" count="0"]	/* bg53　共通　　　　白　　　　　　　　　　　　　　　　　　　　　　*/
+		[CW_FreeEnd control_id="1"]
+		[txtwaitset count="30"]
+		[batch]/* 演出用 */
+
+		[ezbg_change3 name="ev1080" time="NOON" count="BG_SP_SLOW"]		/* 愛時08　 ／ 　　 ／ 愛時と背中合わせで座り込む　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[ezbg_target_set side="URA" target="CAME0" point_x="POS_X" point_y="POS_Y" size_z="120" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[ezbg_target_set side="URA" target="CAME1" point_x="POS_X" point_y="POS_Y" size_z="100" count="120" ptn="GEN_PT"]				//背景カメラ
+		/*表示演出終了--------------------------------------------------------*/
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="011228" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「……まだ、手が震えてるんだ。情けないな」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「……情けなくなんか、ないですよ。"]
+		[maintxt_print2 text="柳さんは、ちゃんと守れたじゃないですか」"]
+
+		[batch]
+
+		[maintxt_print2 text="犯人も、人質も。どちらも、救ったのだ。"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011229" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「お前のおかげだ」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「え。私は、なにも……」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011230" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「お前がいたから、撃てた。"]
+		[maintxt_print2 text="　……撃つ勇気を、持てた」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011231" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「……お前がいなかったら、"]
+		[maintxt_print2 text="　俺はきっとまた……失ってた」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「私……柳さんの役に、立てましたか？」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011232" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「役に立てた、どころじゃないだろ。"]
+		[maintxt_print2 text="　あのふたりだけじゃなくて……"]
+		[maintxt_print2 text="　お前は、俺のことも救ってくれたんだぞ」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「…………」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011233" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「本当に情けない話だけどな。"]
+		[maintxt_print2 text="　全部守りたいとか……偉そうなことを言って。"]
+		[maintxt_print2 text="　いざ目の前にしたら、指ひとつ動かせなかった」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011234" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「失うことを考えたら……身体が拒否するんだ。"]
+		[maintxt_print2 text="　……まるで呪いみたいに。もう一生、"]
+		[maintxt_print2 text="　自分で乗り越えることはできないと思ってた」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011235" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「でも、お前はどっちも助けられると言ってくれた。"]
+		[maintxt_print2 text="　俺自身がやらなきゃ意味がない、って……」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011236" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「お前ひとりでもなんとかなったかもしれないのに、"]
+		[maintxt_print2 text="　俺を信じて任せてくれた。そんなお前を信じたから、"]
+		[maintxt_print2 text="　俺はやっと……撃つことができたんだ」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011237" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「……お前がいてくれて、よかった」"]
+
+		[batch]
+
+		[maintxt_print2 text="柳さんのその言葉が、"]
+		[maintxt_print2 text="どれだけ私の心を震わせたか。"]
+
+		[batch]
+
+		[maintxt_print2 text="きっと、それは誰にもわからないだろう。"]
+
+		[batch]
+
+		/*------------------------------
+		ＣＧ：ev1080
+		
+		表情差分です。
+		顔をくしゃっとさせて泣き出す主人公。
+		優しい顔で微笑む愛時。
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="ev1081" time="NOON" count="CG_WAIT2"]		/* 愛時08　 ／ 差分 ／ 主人公　涙　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「……よかった」"]
+
+		[batch]
+
+		[maintxt_print2 text="涙が出てきたのは、気が弛んだからだ。"]
+
+		[batch]
+
+		[maintxt_print2 text="本当は、すごく怖かった。"]
+		[maintxt_print2 text="現場で銃を使うのは、初めてだったから。"]
+
+		[batch]
+
+		[maintxt_print2 text="私のせいで誰かが傷つくのではと思うと、"]
+		[maintxt_print2 text="震えそうなくらい怖かった。"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure50_turn1
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（柳さんもきっと、"]
+		[maintxt_print2 text="　ずっとこんな恐怖と戦ってきたんだ……）"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011238" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「お前は、すごいな。……本当に、強い」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「そんなこと、ないです。"]
+		[maintxt_print2 text="　……さっきだって怖かったですし、"]
+		[maintxt_print2 text="　今も……ちょっと情けないし」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011239" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「いや……怖くても、お前は逃げないだろう。"]
+		[maintxt_print2 text="　正直、俺は罪悪感に苛まれてばかりで、"]
+		[maintxt_print2 text="　お前とちゃんと向き合えなかった」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011240" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「……お前から、逃げようとしてた。"]
+		[maintxt_print2 text="　また、怯えた目で見られたくなくて」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「…………」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011241" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「お前は俺を信頼して、"]
+		[maintxt_print2 text="　向き合いたいと思ってくれていたのに……"]
+		[maintxt_print2 text="　どこかで遠ざけようとしてたんだ」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011242" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「……悪かった」"]
+
+		[batch]
+
+		[maintxt_print2 text="その言葉に、必死で首を横に振る。"]
+		[maintxt_print2 text="柳さんが謝る必要なんて、ない。"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011243" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「でも、お前はいつだって一所懸命で、"]
+		[maintxt_print2 text="　まっすぐで……俺が過去にしたことを"]
+		[maintxt_print2 text="　思い出しても、背中を押してくれた」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011244" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「……俺を信じてくれて、ありがとう」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「柳さん……」"]
+
+		[batch]
+
+		[maintxt_print2 text="私の気持ちは、伝わっていた。"]
+		[maintxt_print2 text="柳さんは、ちゃんとわかってくれていた。"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「たとえ過去になにがあっても、"]
+		[maintxt_print2 text="　私は柳さんを信じます。今のあなたを、信じたい」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「私、これからも柳さんの隣にいて"]
+		[maintxt_print2 text="　いいですか……？」"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011245" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「……はは。お前には参った、降参だよ」"]
+
+		[batch]
+
+		[maintxt_print2 text="恐る恐る聞いてみれば、柳さんが笑う。"]
+		[maintxt_print2 text="その笑い声は、どこか清々しく聞こえた。"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011246" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「……これからも隣にいてくれ。"]
+		[maintxt_print2 text="　お前は、俺のパートナーだからな」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「っ……ありがとう、ございます……」"]
+
+		[batch]
+
+		[maintxt_print2 text="視界が、ますますにじんでいく。"]
+		[maintxt_print2 text="嬉しさで、涙が止まらない。"]
+
+		[batch]
+
+		[maintxt_print2 text="柳さんが、認めてくれた。"]
+		[maintxt_print2 text="私をパートナーだと、認めてくれたのだ。"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="011247" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="「むしろ、隣にいてくれたほうがいい。"]
+		[maintxt_print2 text="　そのほうが、強くなれる」"]
+
+		[batch]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="「はい……！」"]
+
+		[batch]
+
+		[maintxt_print2 text="ずっと願っていた、"]
+		[maintxt_print2 text="欲しかった柳さんの言葉が胸を打つ。"]
+
+		[batch]
+
+		[maintxt_print2 text="それだけで私も強くなれるような、"]
+		[maintxt_print2 text="そんな気がした。"]
+
+		[batch]
+
+		/*--------------------------------------------------------*/
+		/* シーン再生・終了前                                     */
+		[flag_number name="flg_memory" i="i"]
+		[if estimate="$i == 1"]
+			[scene_play_end count="SCENE_PLAY"]	// ①黒 ②前景削除 ③全キャラ削除 ④BGM･ﾙｰﾌﾟSE停止
+			[flag_set name="switch" num="0"]
+			[file_change no="2006" label="sure60"]
+			[return]
+
+		[/if]
+		/*--------------------------------------------------------*/
+
+		/*----------------------------*/
+		[sub_end count="120"]	// 終了処理
+		[txtwaitset count="60"]
+		[batch]
+
+		[unlock_trophy2 no="TROPHY_20"]	// トロフィー20：柳愛時の信頼を得た
+		[batch]
+		/*----------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure7"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure7
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure7_turn0"]
+	[/if]
+
+	*sure7_turn0
+
+		/*------------------------------
+		●シーン005-aiji-0029
+		場所：アドニス本部
+		時間：昼
+		登場人物（服装）：一之瀬、白石（声のみ）
+		視点：一之瀬
+		------------------------------*/
+		/*------------------------------
+		背景：アドニス内部１
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 視点変更                            */
+
+		[player_change1 color="F_BLACK" speed="F_SP_60" bgmstop="BGMSTOP_ON" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▼前景　　　　　※速度は"０"
+		[ezfg_change_pc pc="PC_ADONIS"]/* 送りアイコン＋前景チェンジ　 ／ アドニス　　　　 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_49a" time="NOON" count="0"]		/* bg49　昼　　　　　アドニス内部２　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[player_change2 speed="F_SP_60"]
+		/*-------------------------------------*/
+
+		[bgm_play no="12" count="0"]		// BGM再生：12_ホラー
+
+		/*------------------------------
+		（済み）ＳＥ：電話の呼び出し音
+		------------------------------*/
+
+		// 『呼び出し』から『着信』にＳＥ変更　0620
+		//[loopse_play no="00031" count="0" ch="CH00"]		/* サブBGM：機械　電話呼び出し（トゥルルル）　　　　　　　　　　　　　　 */
+		[loopse_play no="SE_MOBILECALL" count="0" ch="CH02"]	/* サブBGM：機械　携帯電話の着信音	　　　　　　　　　　　　　　　　 */
+		[txtwaitset count="80"]
+
+		/*------------------------------
+		ＳＥ：電話を切る音
+		------------------------------*/
+		[batch]
+		[loopse_stop_all count="LP_SP"]			/* 全てのループSEを停止*/
+		[batch]
+		[txtwaitset count="30"]
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="170143" count="0"]
+
+		[speaker_change name="御國 れい"]
+		[maintxt_print2 text="はい。なにかありましたか？"]	// 「	// 」
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		/*------------------------------
+		音声加工：以下白石の声、電話越し
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051557" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……なにかあったのはそっちでしょ？"]	// 「
+		[maintxt_print2 text="ずいぶん、ゼロの暴走を許してるみたいだね"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="170144" count="0"]
+
+		[speaker_change name="御國 れい"]
+		[maintxt_print2 text="……もう、止められるとは思っていません"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051558" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……君が本当に願った未来は、"]	// 「
+		[maintxt_print2 text="こんな形じゃなかったはずだ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[openUiDictionaryPopUp2 no="DC_93" text="１４番"]							// 93：１４番
+
+		/*ボイス再生*/
+		[voice_play no="170145" count="0"]
+
+		[speaker_change name="御國 れい"]
+		[maintxt_print2 text="どうして、そんなことを気にするんですか？"]	// 「
+		[maintxt_print2 text="あなたらしくないですね、１４番"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051559" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="まあ……君とは長い付き合いだし、"]	// 「
+		[maintxt_print2 text="俺も外の世界に出て長いからね。"]
+		[maintxt_print2 text="それなりに……情を知る機会もあるんだよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="170146" count="0"]
+
+		[speaker_change name="御國 れい"]
+		[maintxt_print2 text="人形のはずのあなたが、情……ですか。"]	// 「
+		[maintxt_print2 text="それは、柳愛時たちに対して？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051560" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="それもあるけど、君に対してもだよ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="170147" count="0"]
+
+		[speaker_change name="御國 れい"]
+		[maintxt_print2 text="……私？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051561" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="俺が知ってるアドニスの理念は、"]	// 「
+		[maintxt_print2 text="無差別殺人じゃない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="170148" count="0"]
+
+		[speaker_change name="御國 れい"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051562" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="君には、君自身の叶えたかった理想がある。"]	// 「
+		[maintxt_print2 text="なのに、このままアドニスが歪められていくのを"]
+		[maintxt_print2 text="ただ黙って見過ごすつもりなのかな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="051563" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="君の【正義】を捻じ曲げられて……"]	// 「
+		[maintxt_print2 text="本当に、いいの？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="170149" count="0"]
+
+		[speaker_change name="御國 れい"]
+		[maintxt_print2 text="……私、は……"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		＞シーン006-aiji-0001へ
+		------------------------------*/
+
+		/*------------------------------
+		【愛時ルート　４章　終了】
+		------------------------------*/
+
+		[sub_end count="60"]	// 終了処理
+
+		[flag_set name="switch" num="0"]
+
+		[file_change no="158" label="sure1"]
+
+	[return]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

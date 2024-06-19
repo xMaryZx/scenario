@@ -1,0 +1,794 @@
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure1_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure1_turn2"]
+	[/if]
+	[if estimate="$i==3"][calllua function="stcm2_goto" label="sure1_turn3"]
+	[/if]
+	[if estimate="$i==4"][calllua function="stcm2_goto" label="sure1_turn4"]
+	[/if]
+
+	*sure1_turn0
+
+		/*------------------------------
+		●シーンAS-kageyuki-0001
+		場所：拘置所（夢の中）
+		時間：なし
+		登場人物（服装）：主人公、白石
+		視点：白石
+		------------------------------*/
+		/*------------------------------
+		【カラマリ】ショートストーリー
+		白石景之編
+		------------------------------*/
+
+		/*------------------------------
+		演出：すべてノベルモードです。
+		※ボイスはありません。
+		------------------------------*/
+		/*------------------------------
+		背景：白
+		------------------------------*/
+		/*----------------------------*/
+		/* 制限                       */
+		// スマートフォン版はメニュー画面を終了確認ウィンドウに置き換えます
+//		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="1"]			// メニュー
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+		/*----------------------------*/
+		/*----------------------------*/
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+		[ezbg_change3 name="bg_WHITE" time="NOON" count="BG_SP"]	/* bg53　共通　　　　白　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[novel_st shadow="0" outline="0"]		// ノベルスタート
+		[ezfg_change2 name="fg_novel" count="BG_SP"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[bgm_play no="14" count="0"]		// BGM再生：14_サスペンスＡ 静か（やや神聖なイメージ）
+
+		[maintxt_print text="ふわふわと、身体が浮遊しているような感覚。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="温かい毛布に包まれているような心地よさ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="ずっと、ここに留まっていたい。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="何もかも忘れて、優しさの水底に沈んで。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（これは……夢だ）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="本当はずっと微睡んでいたい。"]	// ノベル
+		[maintxt_print text="現実から目を背けて夢の中にいたい。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="でも、その誘惑に負けるわけにはいかない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（だって、約束したから）"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		背景：白い壁
+		※何かのアップ背景を代用頂けると助かります。
+		　白石は逮捕されたので拘置所の中です。
+		------------------------------*/
+		/*----------------------------*/
+		/* ページ切り替え             */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="enbg_59aDA" time="NOON" count="BG_SP"]		/* bg59　昼　　　　　地下の病室＿暗い　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="POS_X" point_y="POS_Y" size_z="120" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[maintxt_print text="なんとか瞼を押し上げれば、"]	// ノベル
+		[maintxt_print text="そこには無機質な壁と天井があった。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="先程まで感じていた温かさは、もうない。"]	// ノベル
+		[maintxt_print text="ただ冷たい檻の景色が広がっている。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（これが、現実。"]	// ノベル
+		[maintxt_print text="べつに悲観的になることじゃない）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="俺――白石景之は、こうして四角い箱の中に"]	// ノベル
+		[maintxt_print text="閉じ込められて当然のことをした人間なのだから。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="赦されるとも、赦されたいとも思っていない。"]	// ノベル
+		[maintxt_print text="今は、時の流れと世界のルールに従うだけ。"]	// ノベル
+		[maintxt_print text="昔からやってきたことと大して変わらない。"]	// ノベル
+		[maintxt_print text="管理する人間が入れ替わったくらいだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="ただ――"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="ただ、昔とは絶対的に違う部分がある。"]	// ノベル
+		[maintxt_print text="たとえ赦されなくても、願いは捨てたくない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（君に、会いたい）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――代わりの利かない何かになりたい。"]	// ノベル
+		[maintxt_print text="その願いを叶えてくれた彼女に、"]	// ノベル
+		[maintxt_print text="【白石景之】として、触れたい。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（君のそばに、還りたい）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="いつか来る終わりを待っていた昔とは違う。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="いつか来る始まりを願って、"]	// ノベル
+		[maintxt_print text="俺は……今日も夢を見る。"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		背景：白
+		------------------------------*/
+		/*----------------------------*/
+		/* ページ切り替え             */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="bg_WHITE" time="NOON" count="BG_SP"]	/* bg53　共通　　　　白　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[maintxt_print text="瞳を閉じて、再び微睡の底に沈んだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="幸せな夢を見られるから、"]	// ノベル
+		[maintxt_print text="冷たい檻の中でも寂しくない。"]	// ノベル
+
+		[batch]
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+
+		/*------------------------------
+		背景：遊園地（昼）
+		※峰雄のシチュエーションで使用した背景、
+		　ここで使用することは可能でしょうか？
+		　厳しければ空などで代用いたします。
+		------------------------------*/
+		/*----------------------------*/
+		/* ページ切り替え             */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="bg_61a" time="NOON" count="BG_SP"]		/* bg61　昼　　　　　遊園地　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[maintxt_print text="――今日の夢は、少し毛色が違った。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="子供たちの笑い声、底抜けに明るいＢＧＭ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（ここは……どこだろう。"]	// ノベル
+		[maintxt_print text="俺、こんなところ来たことあったっけ）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「――白石さん！」"]	// ノベル
+
+		[batch]
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[maintxt_print text="――突如。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="夢の景色をぼんやり眺めていた俺は、"]	// ノベル
+		[maintxt_print text="背後から聞こえた覚えのある声に、"]	// ノベル
+		[maintxt_print text="びくりと肩を揺らした。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「はあ……こんなところにいたんですね。"]	// ノベル
+		[maintxt_print text="　ずいぶん探したんですよ？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="振り返れば、そこには何より望んだ姿。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="俺が愛した彼女――星野#Name[1]が"]	// ノベル
+		[maintxt_print text="記憶と寸分違わない姿でそこにいた。"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn1
+
+		[maintxt_print text="「……#Name[1]ちゃん……？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「？　どうしたんですか、変な顔して。"]	// ノベル
+		[maintxt_print text="　ほら、早く行かないと混んじゃいますよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="呆然としている俺には構わず、"]	// ノベル
+		[maintxt_print text="彼女は俺の手を取って歩き出す。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="その手は、温かった。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（これは、夢だ）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（ああ……そうだ、夢なんだ）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="だから、こんな風に都合の良いことが起こる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="望んだ幻影を見せつけられたからこそ、"]	// ノベル
+		[maintxt_print text="これが夢であることを強く実感できた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（俺も大概、夢見がちだなあ……）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="自嘲しながらも、せっかくの夢ならば"]	// ノベル
+		[maintxt_print text="楽しまなければもったいない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="そう思いながら彼女の手を握り返して、"]	// ノベル
+		[maintxt_print text="肩を並べて隣に並んだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「というかさ、ここってどこなの？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「えっ？"]	// ノベル
+		[maintxt_print text="　……白石さん、頭でも打ったんですか？"]	// ノベル
+		[maintxt_print text="　ここに来たいって言ったのはあなたですよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あー……、うん。言ったかもしれないね？"]	// ノベル
+		[maintxt_print text="　でも確認しておきたくて。で、ここどこ？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「遊園地ですよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「遊園地……？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="もちろん、その名称は知っている。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="いわゆる、娯楽のために作られた"]	// ノベル
+		[maintxt_print text="テーマパークというやつだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（ええ……？"]	// ノベル
+		[maintxt_print text="俺、遊園地に来たかったの……？）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="自分のことながら、呆れてしまった。"]	// ノベル
+		[maintxt_print text="夢は願望の表れとも言うが、"]	// ノベル
+		[maintxt_print text="まさかこんな場所に憧れを抱いていた"]	// ノベル
+		[maintxt_print text="とでも言うのか。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……本当に大丈夫ですか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「いや、うーん……俺ってさあ、"]	// ノベル
+		[maintxt_print text="　榎本君のこととやかく言えないくらい、"]	// ノベル
+		[maintxt_print text="　意外とロマンチストだったのかも」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ふふ、それは確かにそうですね」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「え、そこは否定してよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「だって、白石さんって時々子供みたいって"]	// ノベル
+		[maintxt_print text="　いうか……でも、そういう白石さん、"]	// ノベル
+		[maintxt_print text="　私は可愛くて好きですよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……っ。……そう」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「はい」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="にこにこと笑う彼女から、目を背ける。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="なんというか、自分の夢だからこそ、"]	// ノベル
+		[maintxt_print text="妙な恥ずかしさを覚えてしまう。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……行こうか」"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn2
+
+		[maintxt_print text="そう、これは夢なのだから。"]	// ノベル
+		[maintxt_print text="余計なことを考える必要はない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="思い直して彼女に笑顔を向けると、"]	// ノベル
+		[maintxt_print text="気恥ずかしそうな微笑を返してくれた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="……それだけで、幸せを感じた。"]	// ノベル
+
+		[batch]
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+		[ezbg_change3 name="bg_60a" time="NOON" count="BG_SP"]		/* bg60　昼　　　　　空　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="120"]
+		[batch]
+		[ezbg_change3 name="bg_60b" time="EV" count="BG_SP"]		/* bg60　夕方　　　　空　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="60"]
+		[batch]
+
+		/*------------------------------
+		演出：改ページをお願いします
+		------------------------------*/
+		/*------------------------------
+		背景：遊園地（夜）
+		……夜ってないですよね……
+		ノベルモードだから時間帯気にせずＯＫでしょうか
+		------------------------------*/
+		/*----------------------------*/
+		/* ページ切り替え             */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="bg_61b" time="NOON" count="BG_SP"]		/* bg61　夕方　　　　　遊園地　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		[maintxt_print text="ジェットコースターにお化け屋敷、"]	// ノベル
+		[maintxt_print text="水上ショーや露店に並ぶスイーツの食べ歩き。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="園内の隅々まで堪能していたら、"]	// ノベル
+		[maintxt_print text="気付けば空には星が瞬く時間になっていた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……もう、遅い時間だね。帰らなきゃ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="寂しさを残しながら、彼女に向き合う。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="帰らなきゃいけない。"]	// ノベル
+		[maintxt_print text="これは都合の良い、ただの夢だから。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="帰らなきゃいけない。"]	// ノベル
+		[maintxt_print text="彼女のいない、冷たい世界に。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「まだですよ。白石さんがいちばん楽しみに"]	// ノベル
+		[maintxt_print text="　していたものに乗ってませんから」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="でも、彼女は俺の手を強く握って、"]	// ノベル
+		[maintxt_print text="そんなことを言う。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……俺が、楽しみにしてたもの？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「観覧車です」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――そんなことを言った記憶はない。"]	// ノベル
+		[maintxt_print text="妄想の中の自分は望んでいたのだろうか。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="ひとりぼっちで白い壁に囲まれる世界ではなく、"]	// ノベル
+		[maintxt_print text="彼女と２人で色鮮やかな景色を観る世界を。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あ、そういえば、頂上に着いたときに"]	// ノベル
+		[maintxt_print text="　キスすると願いが叶うんだっけ？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……そんなの、どこで聞いたんですか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「榎本君の愛読書に書いてあったよ。"]	// ノベル
+		[maintxt_print text="　カップルにはマストなシチュエーションだとか」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あの本の知識は偏ってますから……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あれ、間違ってた？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「間違ってはいませんけど……。"]	// ノベル
+		[maintxt_print text="　なんでも願いが叶うわけじゃありませんよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="彼女は恥ずかしそうに俯くと、"]	// ノベル
+		[maintxt_print text="頬を薄紅色に染めてこちらを見上げてくる。"]	// ノベル
+
+		[batch]
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+
+		[maintxt_print text="「頂上でキスした恋人同士は、"]	// ノベル
+		[maintxt_print text="　永遠に離れることはない……んだそうです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「…………」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="よくあるジンクス。迷信。占いと同じように"]	// ノベル
+		[maintxt_print text="信憑性のない、現実味のない妄想。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="しかもこれは【夢】の中の出来事だ。"]	// ノベル
+		[maintxt_print text="目が覚めたら意味のない虚像に成り果てる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="なのに……"]	// ノベル
+
+		[batch]
+
+		[bgm_play no="10" count="0"]		// BGM再生：10_恋愛Ａ 安らぎ
+
+		[maintxt_print text="「……じゃあ、キスしよう」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「えっ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="そんな虚像にさえ、縋りたくなる。"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn3
+
+		[maintxt_print text="「ほら、早くしないと閉園時間になっちゃう」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="今度は俺が彼女の手を引いて、"]	// ノベル
+		[maintxt_print text="速足で歩きだした。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あの、白石さん……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「もしかして、俺とキスするのは嫌？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……っ！　わかってて、聞いてますよね」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ふふ、だって俺はね、"]	// ノベル
+		[maintxt_print text="　君が恥ずかしがる顔が好きだから」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……趣味が悪いです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「そう、君は趣味が悪い。"]	// ノベル
+		[maintxt_print text="　俺なんかのこと好きだとかいう時点でね」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ふふ、そうですね。"]	// ノベル
+		[maintxt_print text="　でも……そんな自分が嫌いじゃないです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「………、君は……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="卑怯だとは思う。"]	// ノベル
+		[maintxt_print text="でも、これが夢だからこそ、現実では"]	// ノベル
+		[maintxt_print text="聞くことのできなかった言葉を口にしたくなる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「君は、俺のことを汚いと思わないの？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……汚い？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="幻の彼女は目をぱちくりとさせて、"]	// ノベル
+		[maintxt_print text="俺のことをじっと見つめた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="現実の彼女と寸分違わない瞳で。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――ああ、そうか。"]	// ノベル
+		[maintxt_print text="俺はこんなにも、彼女のすべてを"]	// ノベル
+		[maintxt_print text="心の記憶に焼き付けていたんだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……あなたは、犯罪者です。"]	// ノベル
+		[maintxt_print text="　多くの人を傷つけ、哀しませた。"]	// ノベル
+		[maintxt_print text="　赦されるべき人間ではありません」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「…………」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「でも……、」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="言葉を止めると、彼女はなぜか"]	// ノベル
+		[maintxt_print text="泣きそうな顔をこちらに向ける。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「でも、私にとっては大切で特別で、"]	// ノベル
+		[maintxt_print text="　誰より――大好きな人です」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……#Name[1]ちゃん」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……それだけが真実です」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="自分に都合の良い夢を見ている。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="それはわかりきっているのに、"]	// ノベル
+		[maintxt_print text="もしかしたらこれは現実なんじゃ"]	// ノベル
+		[maintxt_print text="ないかと錯覚してしまう。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="だって、本当の彼女もきっと"]	// ノベル
+		[maintxt_print text="こんな風に言ってくれるだろうから。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（だから、俺は還りたいと思った）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="何があっても、どんな困難があっても、"]	// ノベル
+		[maintxt_print text="他の誰でもなく彼女のところに。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……ありがとう」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="今は伝えることのできない言葉に、"]	// ノベル
+		[maintxt_print text="精一杯の想いを込める。"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn4
+
+		[maintxt_print text="それ以上は何も言わずに、"]	// ノベル
+		[maintxt_print text="大人しく手を引かれる彼女に愛しさが募った。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="観覧車に乗ろう。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="頂上でキスをして、永遠を誓い合おう。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="たとえ幻でも、その誓いさえあれば。"]	// ノベル
+		[maintxt_print text="俺は、どんなことだって乗り越えられる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（本当の君に会うまで、いつまでも）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="罪の意識も、自己嫌悪も、後悔も、"]	// ノベル
+		[maintxt_print text="何もかも吹き飛ばしてしまうほどに。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――ただ、君が愛しいから。"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		終わり＞ＳＳ選択画面に戻ります
+		------------------------------*/
+
+		/*----------------------------*/
+		/* 終了処理                   */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[novel_end]		// ノベルエンド
+		[batch]
+		[txtwaitset count="60"]
+		[batch]
+		[sub_end count="120"]	// 終了処理
+		[txtwaitset count="60"]
+		[batch]
+		/*----------------------------*/
+
+		/*------------------------------
+		終わり＞ＳＳ選択画面に戻ります
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[calllua function="game_end"]
+
+	[return]
+
+

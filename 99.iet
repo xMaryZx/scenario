@@ -1,0 +1,5203 @@
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+ＣＥＲＯ用
+=======================================================================================================================*/
+//	EXPORT alignment FUNCTION sure1()
+//	{
+//
+//		[flag_number name="switch" i="i"]
+//		[if estimate="$i==0"][calllua function="stcm2_goto" label="None_turn0"]
+//
+//		Label turn0
+//
+//			[flag_set name="switch" num="0"]
+//
+//			[ezbg_change3 name="bg_60a" time="NOON" count="BG_SP"]		/* bg60　昼　　　　　空　　　　　　　　　　　　　　　　　　　　　　*/
+//
+//			[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+//
+//			[maintxt_print2 text="飛び先を選択してください。"]
+//
+//			[batch]
+//
+//			[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+//			[batch]
+//
+//			[menutxt_set2 num="HANYO" text="本編へ" file="99" sure="sure99"]
+//			[menutxt_set2 num="HANYO" text="サンプルプログラム" file="900" sure="sure99"]
+//			[menutxt_set2 num="HANYO" text="ＰＶ用" file="950" sure="sure60"]
+//
+//			[batch]
+//
+//		[return]
+//
+//	}
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+//EXPORT alignment FUNCTION sure99()//サンプルプログラムの分岐が不必要になったら削除して【sure１】にして下さい　小塚
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure1_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure1_turn2"]
+	[/if]
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+	*sure1_turn0
+
+		/*------------------------------
+		●冒頭シーン
+		------------------------------*/
+		[save_name name="CHAPTER.0　prologue" icon="SAVE_ICHK"]	// セーブネーム：プロローグ
+
+		[lostMaterial_point]	// マテリアルクリア共通以外
+
+		[bgm_play no="17" count="0"]		// BGM再生：17_捜査Ａ システム
+
+		[batch]
+
+		[nameinput_mode chara="0"]	// 名前入力モード　←この直後はスレチェンジまたはターンを分ける。（済み）
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+	*sure1_turn1
+
+		/*----------------------------------------------------------------------------------*/
+		/*★スキップ制限用																	*/
+		[restrict_menu]							/* メニュー制限（開始）					*/
+		[restrict_txt]								/* 履歴制限    （開始）					*/
+		[restrict_input]							// 入力制限（開始）
+		[batch]
+		[bgm_stop count="FD_NOML"]	/* BGM停止：通常 */
+		[batch]
+		[ezbg_change4 name="FICTION_ALERT" count="BG_SP"]		/* フィクションアラート */
+		[batch]
+		[txtwaitset count="240"]
+		[batch]
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+
+		/*----------------------------------------------------------------------------------*/
+		// スマートフォン版追加
+		// 購入済みの場合に限り選択肢表示可
+		[purchase_get name="full_version" i="i"]
+		[if estimate="$i == 1"]
+
+			/* ▼４キャラのクリア状態を確認                                                     */
+			[chr4_clear_check]	// SPフラグ "４キャラクリア" に合計値が入る。
+
+			// ▼プロローグをクリアしたら、選択肢表示ターンへ
+			[spflag_number name="プロローグ" i="i"]
+			[if estimate="$i != 0"]
+
+				[flag_change name="switch" num="1"]
+				[return]
+
+			[/if]
+
+		[/if]
+		/*----------------------------------------------------------------------------------*/
+
+		/*------------------------------
+		制限解除
+		------------------------------*/
+		[restoff_menu]								/* メニュー制限（解除）					*/
+		[restoff_txt]								/* 履歴制限    （解除）					*/
+		[restoff_input]							// 入力制限（解除）
+		[batch]
+		/*----------------------------------------------------------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure2"]
+
+		[return]
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+	*sure1_turn2
+
+		[ezbg_change3 name="bg_SCENE" time="NOON" count="BG_SP"]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		// スマートフォン版追加
+		[restrict_autosave]
+
+		[flag_set name="switch" num="0"]
+		                                                   [menutxt_set text="Capítulo 0　Prólogo" file="99" sure="sure10"]
+		[spflag_number name="プロローグ" i="i"] [if estimate="$i != 0"][menutxt_set text="Capítulo 0　Ruta común" file="100" sure="sure1"]
+		[/if]
+		[spflag_number name="４キャラクリア" i="i"] [if estimate="$i >= 4"][menutxt_set text="Capítulo 0　Aiji Yanagi" file="150" sure="sure1"]
+		[/if]
+
+	[return]
+
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure10
+
+
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP"]
+		[batch]
+
+		/*----------------------------------------------------------------------------------*/
+		/*------------------------------
+		制限解除
+		------------------------------*/
+		[restoff_menu]								/* メニュー制限（解除）					*/
+		[restoff_txt]								/* 履歴制限    （解除）					*/
+		[restoff_input]							// 入力制限（解除）
+		[batch]
+		/*----------------------------------------------------------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure2"]
+
+	[return]
+
+
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure2
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure2_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure2_turn2"]
+	[/if]
+	[if estimate="$i==3"][calllua function="stcm2_goto" label="sure2_turn3"]
+	[/if]
+
+	*sure2_turn0
+
+		/*------------------------------
+		●シーン000-prologue-0001（１／８）
+		場所：冴木の部屋
+		時間：夜
+		登場人物（服装）：ナシ
+		視点：冴木
+		------------------------------*/
+		/*------------------------------
+		【カラー×マリス】プロローグシナリオ 
+		------------------------------*/
+		/*------------------------------
+		◆大島1207　ＦＩＸ調整済み。
+		------------------------------*/
+		/*------------------------------
+		演出：プロローグムービー再生（X-Day事件概要）
+		------------------------------*/
+		/*------------------------------
+		背景：冴木のＰＣ
+		------------------------------*/
+		/*------------------------------
+		演出：冒頭、報告書にタイプ打ちしているような演出。
+		　　　その後はノベルモードで表示。
+		　　　以降、文字が見える範囲で背景薄めてください。
+		------------------------------*/
+		/*-----------------------------
+		背景：新宿駅アルタ前（昼）
+		-----------------------------*/
+
+		[save_name name="CHAPTER.0　prologue" icon="SAVE_ICHK"]	// セーブネーム：プロローグ
+
+		/*----------------------------*/
+
+		// スマートフォン版追加
+		[txtwaitset count="1"]
+		[batch]
+
+		[movie_play name="prologue"]	// プロローグムービー
+
+		[batch]
+		/*----------------------------*/
+		/*-------------------------------------*/
+		/* 冴木ＰＣ→タイピング                */
+		[restrict_noskip]		// 入力制限（開始）※早送りは使用可
+		[batch]
+		[ezbg_change3 name="incident_219" time="NOON" count="BG_SP"]	/* 事件ＣＧ ／ 　　アイテムcg_冴木のＰＣ　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="60"]
+		[batch]
+		[CW_Typing control_id="0" type="TYPE_00"]// タイピング　X-Day事件における経過報告書
+		/*-------------------------------------*/
+
+		/*-------------------------------------*/
+		/* 説明　開始 （ノベルモード）         */
+
+		[novel_st1 color="F_BLACK" speed="0" bgmstop="BGMSTOP_ON" substop="SUBSTOP_OFF"]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_17a" time="NOON" count="0"]		/* bg17　昼　　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+
+		[novel_st2 speed="KAISOU_NOVEL"]
+		/*-------------------------------------*/
+
+		[bgm_play no="14" count="0"]			// BGM再生：14_サスペンスＡ 静か（やや神聖なイメージ）
+
+		[ezfg_change2 name="fg_novel" count="BG_SP"]	/* 前景チェンジ　ノベル黒フィルター */
+
+		[maintxt_print text="Informe de los incidentes del Día X."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="Primero de abril."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="Todos observaban con atención la inmensa pantalla"]	// ノベル
+		[maintxt_print text="de la estación de Shinjuku cuando el vídeo que lo empezó todo"]	// ノベル
+		[maintxt_print text="fue reproducido por primera vez."]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		演出：４月事件のＣＧ表示
+		------------------------------*/
+		/*------------------------------
+		演出：下記台詞、実際の表示では「」外してください。
+		------------------------------*/
+		/*-------------------------------
+		ボイス加工：以下の一之瀬の台詞はボイスチェンジャー
+		-------------------------------*/
+
+
+		/*-------------------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+
+		// ▽ビジョンに向けて拡大
+		[bg_target_point_set2 side="0" target="0" point_x="0" point_y="0" size_x="100" size_y="100" size_z="100"]	/* 背景拡大　開始 */
+		[bg_target_count_set side="0" target="0" count="0"]
+		[bg_target_point_set2 side="0" target="1" point_x="-140" point_y="-220" size_x="100" size_y="100" size_z="180"]	/* 背景拡大　開始 */
+		[bg_target_count_set side="0" target="1" count="80"]
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="255" speed="80"]	// ブラックアウト開始
+		[txtwaitset count="80"]
+		[batch]
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="0"]					// ブラックアウト終了
+		[batch]
+
+		// ▽クロノ再生
+		[CW_Load control_id="1" file_id="101"]		// ノイズ：黒～４月
+		[batch]
+		[txtwaitset count="10"]
+		[batch]
+		[ezbg_change3 name="incident_100" time="NOON" count="0"]	/* 事件ＣＧ ／ 　　アイテムcg_4月 　　　　　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="76" point_y="POS_Y" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[txtwaitset count="130"]
+		[batch]
+		[CW_FreeEnd control_id="1"]
+		[batch]
+		/*-------------------------------------*/
+		/*-------------------------------
+		以下、御國れい、流用ボイス
+		-------------------------------*/
+
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+
+		/*ボイス再生*/
+		[voice_play no="170050" count="0"]
+
+		//[speaker_change name="???"]// 御國れい
+		[maintxt_print text="«Con el fin de purificar Japón y devolverlo a un estado óptimo,"]	// ノベル
+		[maintxt_print text="la cuenta regresiva para cierto día iniciará a partir de ahora»."]	// ノベル
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="170058" count="0"]
+
+		//[speaker_change name="???"]// 御國れい
+		[maintxt_print text="«Nuestro objetivo es simple: erradicar la corrupción"]	// ノベル
+		[maintxt_print text="y convertir a Shinjuku en la cuna del renacimiento»."]	// ノベル
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="170059" count="0"]
+
+		//[speaker_change name="???"]// 御國れい
+		[maintxt_print text="«Si nos temen, más vale que huyan. Nadie podrá detenernos»."]	// ノベル
+		
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="170060" count="0"]
+
+		//[speaker_change name="???"]// 御國れい
+		[maintxt_print text="«Quedan advertidos: no importan dónde se encuentren,"]	// ノベル
+        [maintxt_print text="todos ustedes serán juzgados. Sin excepciones»."]	// ノベル
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="170061" count="0"]
+
+		//[speaker_change name="???"]// 御國れい
+		[maintxt_print text="«Nosotros devolveremos la honestidad a este mundo."]	// ノベル
+        [maintxt_print text="Los débiles no tendrán por qué ser hostigados nunca más»."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="El vídeo es protagonizado por agentes de policía."]	// ノベル
+        [maintxt_print text="Permanecen estáticos e inmóviles, atados a sus sillas."]	// ノベル
+		 [maintxt_print text="La estación intenta rastrear la transmisión a toda prisa."]	// ノベル
+
+		[batch]
+
+		/*-------------------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[CW_Load control_id="2" file_id="102"]		// ノイズ：４～黒
+		[batch]
+		[txtwaitset count="10"]
+		[batch]
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[txtwaitset count="120"]
+		[batch]
+		[CW_FreeEnd control_id="2"]
+		[batch]
+		/*-------------------------------------*/
+
+		[maintxt_print text="Antes de que esa transmisión tomase lugar, se reportó la desaparición"]	// ノベル
+        [maintxt_print text="de múltiples agentes del cuerpo policial."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="No hallaron pistas ni a los oficiales desaparecidos."]	// ノベル
+        [maintxt_print text="Así se mantuvieron las cosas hasta mayo..."]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn1
+		[maintxt_print text="Entonces, en las redes apareció un vídeo similar al de abril."]	// ノベル
+        [maintxt_print text="El contenido mostraba a los oficiales atados una vez más."]	// ノベル
+       
+
+		[batch]
+
+		/*---------------------------------------
+		演出：５月事件のＣＧ表示
+		---------------------------------------*/
+		/*-------------------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[CW_Load control_id="0" file_id="103"]		// ノイズ：黒～５月
+		[batch]
+		[txtwaitset count="10"]
+		[batch]
+		[ezbg_change3 name="incident_101" time="NOON" count="0"]	/* 事件ＣＧ ／ 　　アイテムcg_5月_撃たれた前　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="50" point_y="POS_Y" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[txtwaitset count="80"]
+		[batch]
+		[CW_FreeEnd control_id="0"]
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		/*-------------------------------------*/
+
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+
+		/*-------------------------------
+		ボイス加工：以下の小林花子の台詞はボイスチェンジャー
+		-------------------------------*/
+		/*-------------------------------
+		以下、小林花子、流用ボイス
+		-------------------------------*/
+
+		/*ボイス再生*/
+		[voice_play no="240001" count="0"]
+
+		[speaker_change name="???"]// ※小林花子
+		[maintxt_print text="«Gracias a todos por esperar pacientemente."]
+		[maintxt_print text="La hora del juicio ha llegado»."]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="240002" count="0"]
+
+		[speaker_change name="???"]// ※小林花子
+		[maintxt_print text="«Como decíamos: estas personas son criminales»."]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="240003" count="0"]
+
+		[speaker_change name="???"]// ※小林花子
+		[maintxt_print text="«Para salvar Japón, personas como estas deben ser eliminadas»."]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="240004" count="0"]
+
+		[speaker_change name="???"]// ※小林花子
+		[maintxt_print text="«Este juicio es solo una pequeña demostración"]
+        [maintxt_print text="de lo que les espera en el Día X»."]
+		
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="240005" count="0"]
+
+		[speaker_change name="???"]// ※小林花子
+		[maintxt_print text="«Las cosas no acaban aquí. Al contrario, impartiremos"]
+		[maintxt_print text="justicia para contribuir al renacimiento de nuestra nación»."]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="240006" count="0"]
+
+		[speaker_change name="???"]// ※小林花子
+		[maintxt_print text="«Nuestro nombre es... \"Adonis\"»."]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="240007" count="0"]
+
+		[speaker_change name="???"]// ※小林花子
+		[maintxt_print text="«¡Asegúrense de recordar muy bien ese nombre!"]
+
+		[batch]
+
+		/*ボイス再生*/
+		[voice_play no="240008" count="0"]
+
+		[speaker_change name="???"]// ※小林花子
+		[maintxt_print text="«¡Hagamos de este mundo un paraíso!»."]
+
+		[batch]
+
+		/*-------------------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+
+		[CW_Load control_id="1" file_id="107"]				// 血しぶき４連発（１／５）
+		[strse_play no="NEW_SE06" count="0"]/* SE再生：自動拳銃の発射音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[txtwaitset count="20"]
+		[batch]
+
+		[CW_GlobalFlagSet control_id="1" flag_no="0" param="1"]// 血しぶき４連発（２／５）
+		[strse_play no="NEW_SE06" count="0"]/* SE再生：自動拳銃の発射音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[txtwaitset count="20"]
+		[batch]
+
+		[CW_GlobalFlagSet control_id="1" flag_no="0" param="2"]// 血しぶき４連発（３／５）
+		[strse_play no="NEW_SE06" count="0"]/* SE再生：自動拳銃の発射音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[txtwaitset count="20"]
+		[batch]
+
+		[CW_GlobalFlagSet control_id="1" flag_no="0" param="3"]// 血しぶき４連発（４／５）
+		[strse_play no="NEW_SE06" count="0"]/* SE再生：自動拳銃の発射音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[txtwaitset count="80"]
+		[batch]
+
+		[CW_GlobalFlagSet control_id="1" flag_no="0" param="4"]// 血しぶき４連発（５／５）
+		[txtwaitset count="40"]
+		[batch]
+
+		[CW_FreeEnd control_id="1"]
+		[batch]
+
+		[ezbg_change3 name="incident_102" time="NOON" count="BG_SP"]	/* 事件ＣＧ ／ 　　アイテムcg_5月_撃たれた後　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="70" point_y="POS_Y" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[batch]
+
+		[txtwaitset count="40"]
+		[batch]
+		/*-------------------------------------*/
+
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+
+		[maintxt_print text="Su declaración fue acompañada por disparos al unísono"]	// ノベル
+		[maintxt_print text="que acertaron en los oficiales."]	// ノベル
+
+		[batch]
+
+		/*---------------------------------------
+		背景：冴木のＰＣ　←ここは黒画面で。吉田
+		---------------------------------------*/
+		/*-------------------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[CW_Load control_id="2" file_id="104"]		// ノイズ：５～黒
+		[batch]
+		[txtwaitset count="10"]
+		[batch]
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[txtwaitset count="110"]
+		[batch]
+		[CW_FreeEnd control_id="2"]
+		[batch]
+		/*-------------------------------------*/
+
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+
+		[maintxt_print text="La policía rastreó la señal de la transmisión hasta un edificio"]	// ノベル
+		[maintxt_print text="abandonado donde confirmaron la muerte de un oficial."]	// ノベル
+		[maintxt_print text="Adicionalmente, se descubrieron rastros de sangre."]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn2
+
+		[maintxt_print text="El paradero de los criminales y los agentes restantes"]	// ノベル
+		[maintxt_print text="todavía es desconocido."]	// ノベル
+
+		[batch]
+
+		/*---------------------------------------
+		演出：６月、７月、８月の事件CGを立て続けに表示
+		---------------------------------------*/
+
+		// ＣＧ登録追加　0623
+		[bg_check name="incident_103" num="1"]	// ＣＧ登録　アイテムＣＧ　　６月：
+		[bg_check name="incident_104" num="1"]	// ＣＧ登録　アイテムＣＧ　　７月：
+		[bg_check name="incident_105" num="1"]	// ＣＧ登録　アイテムＣＧ　　８月：並木通り
+		[bg_check name="incident_106" num="1"]	// ＣＧ登録　アイテムＣＧ　　８月：住宅街２
+
+		/*-------------------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+
+		[CW_Load control_id="0" file_id="105"]		// ノイズ：黒～６、７、８月
+		[batch]
+		[txtwaitset count="10"]
+		[batch]
+		[ezbg_change3 name="incident_107" time="NOON" count="0"]	/* 事件ＣＧ ／ 　　アイテムcg_8月_線路下　　　　　　　　　　　　　　　　*/
+		[txtwaitset count="370"]
+		[batch]
+		[CW_FreeEnd control_id="0"]
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		/*-------------------------------------*/
+
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+
+		[maintxt_print text="Este incidente desató una ola de desagradables crímenes"]	// ノベル
+		[maintxt_print text="que continuó a lo largo de junio, julio y agosto. El número"]	// ノベル
+		[maintxt_print text="de víctimas también incrementó exponencialmente. "]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="La policía se ganó el desdén del público con el paso del tiempo,"]	// ノベル
+		[maintxt_print text="ya que sus intentos por retomar el control fueron en vano."]	// ノベル
+
+		[batch]
+
+		/*---------------------------------------
+		背景：血文字のローマ数字＆コインのアイテム画像
+		　　　できればＰＣで表示された警察資料を見ている感じに
+		---------------------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+
+		/*-------------------------------------*/
+		[CW_Load control_id="1" file_id="106"]		// 電源ＯＦＦ
+		[batch]
+		[txtwaitset count="10"]
+		[batch]
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[txtwaitset count="80"]
+		[batch]
+		[CW_FreeEnd control_id="1"]
+		[batch]
+		/*-------------------------------------*/
+
+		[ezbg_change3 name="incident_218" time="NOON" count="BG_SP"]	/* 事件ＣＧ ／ 　　アイテムcg_ローマ数字とアドニスコインの資料　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="60" point_y="POS_Y" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+
+		[maintxt_print text="En las escenas se encontraron números romanos que indicaban"]	// ノベル
+		[maintxt_print text="la cuenta regresiva y monedas difíciles de falsificar."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="El grabado de las monedas generó teorías sobre el resurgimiento"]	// ノベル
+		[maintxt_print text="de una disuelta organización terrorista llamada «Adonis»."]	// ノベル
+
+		[batch]
+
+		/*---------------------------------------
+		背景：新宿全景
+		---------------------------------------*/
+		/*----------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="bg_00c" time="NIGHT" count="BG_SP"]		/* bg00　　夜　　　　新宿俯瞰　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		/*----------------------------*/
+
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+
+		[maintxt_print text="En consecuencia, cuando llegó el primero de septiembre..."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="Hartos de los constantes crímines, el gobierno aplicó medidas"]	// ノベル
+		[maintxt_print text="extremas."]	// ノベル
+		
+
+		[batch]
+
+		[maintxt_print text="«La cuarentena de Shinjuku»."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="Esta contramedida que pretendía encerrar a los criminales"]	// ノベル
+		[maintxt_print text="dentro de los confines de Shinjuku —obviamente— molestó"]	// ノベル
+		[maintxt_print text="a los civiles."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="Se veían protestas en cada frontera; sin embargo, el gobierno"]	// ノベル
+		[maintxt_print text="las reprimió declarando que era por el bienestar de Shinjuku."]	// ノベル
+		
+		[batch]
+		
+		[maintxt_print text="Era evidente que tampoco se detendrían allí. Incluso se vieron"]	// ノベル
+		[maintxt_print text="en la obligación de recurrir a métodos extrajudiciales."]	// ノベル
+
+	    [batch]
+
+		/*---------------------------------------
+		背景：歌舞伎町
+		---------------------------------------*/
+		/*----------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="bg_18c" time="NIGHT" count="BG_SP"]		/* bg18　　夜　　　　新宿＿歌舞伎町　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		/*----------------------------*/
+
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+
+		[maintxt_print text="«Levantamiento de la ley del control de armas»."]	// ノベル
+
+		[batch]
+
+		/*---------------------------------------
+		演出：銃のアイテム画像表示
+		---------------------------------------*/
+		/*----------------------------*/
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[ezbg_change3 name="incident_203" time="NOON" count="BG_SP"]	/* 事件ＣＧ ／ 　　アイテムcg_国民に配布された銃　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		/*----------------------------*/
+
+		[ezfg_change2 name="fg_novel" count="BG_SP_FAST"]	/* 前景チェンジ　ノベル黒フィルター */
+
+		// 【１８歳以上】→【２０歳以上】に修正
+
+		[maintxt_print text=""]	// ノベル
+		[maintxt_print text="Para otorgarles medios de defensa a los ciudadanos,"]	// ノベル
+		[maintxt_print text="se concedieron armas a personas mayores de veinte años."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="Todo con el pretexto de que las utilizaran en defensa personal."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="Tanto las armas como sus municiones estaban registradas,"]	// ノベル
+		[maintxt_print text="así sería más fácil identificar al portador cuando las usaran."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="«Los criminales poseen armas, por lo que los demás"]	// ノベル
+		[maintxt_print text="deberían tener acceso a ellas de la misma manera»."]	// ノベル
+
+		[batch]
+ 
+
+		[maintxt_print text="«A partir de ahora, los residentes de Shinjuku tendrán"]	// ノベル
+		[maintxt_print text="el deber de portar armas como contramedida extrajudicial»."]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn3
+
+		[maintxt_print text="La nueva ley discutida detrás de cámaras entró en vigencia"]	// ノベル
+		[maintxt_print text="sin previo aviso."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="La policía tuvo que seguir las órdenes del gobierno"]	// ノベル
+		[maintxt_print text="y los disturbios en Shinjuku no hacían más que aumentar."]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="Por más ira que la situación causase, era un hecho que"]	// ノベル
+		[maintxt_print text="estaban mejor preparados para sobrevivir a futuros incidentes."]	// ノベル
+
+		[batch]
+
+		/*---------------------------------------
+		ノベルモードはここまで。
+		演出：以下は背景のセンターにゆっくり表示される
+		---------------------------------------*/
+		/*---------------------------------------
+		背景：冴木のＰＣ
+		---------------------------------------*/
+		/*-------------------------------------*/
+		/* 説明　終了 （ノベルモード）         */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+
+		[novel_ed1 color="F_WHITE" speed="KAISOU_NOVEL" bgmstop="BGMSTOP_OFF" substop="SUBSTOP_OFF"]
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="incident_219" time="NOON" count="0"]	/* 事件ＣＧ ／ 　　アイテムcg_冴木のＰＣ　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[novel_ed2 speed="KAISOU_NOVEL"]
+		/*-------------------------------------*/
+
+		[proc_talk_ex proc="ADV_STCM_TALK_CHARA_EX" chara_num="NEXT_COLOR_HANYO"]	// 地の文送りアイコン：汎用
+
+		[txtwin_info_cm type="WIN_CG" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="Claramente, era un plan sin pies ni cabeza..."]
+
+		[batch]
+
+		[maintxt_print2 text="Pero ya no había marcha atrás."]
+
+		[batch]
+
+		[maintxt_print2 text="Todo renacerá el Día X."]
+		[maintxt_print2 text="Para que la utopía se haga realidad..."]
+
+		[batch]
+
+		// スマートフォン版追加処理
+		[txtwin_proc onoff="WIN_CL"]	// ウィンドウ（閉じる）
+		[bgm_stop count="FD_FAST"]		// BGM停止：速い
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP"]	// bg52　共通　　　　黒
+		[batch]
+        
+		[purchase_check name="full_version" label="purchase_label_sure2"]
+
+		/*---------------------------------------
+		演出：最後ノイズが入ってかき消される状態から
+		　　　主人公視点に移行できたら、と思います。
+		---------------------------------------*/
+
+		// スマートフォン版変更 (既に背景を切り替え済みのため、速度を変更)
+//		[CW_title control_id="2" count="BG_SP"]	// ノイズタイトル　引数（ｉｄ，黒背景速度）
+		[CW_title control_id="2" count="0"]
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure3"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure3
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure3_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure3_turn2"]
+	[/if]
+	[if estimate="$i==3"][calllua function="stcm2_goto" label="sure3_turn3"]
+	[/if]
+
+	*sure3_turn0
+
+		/*------------------------------
+		●シーン000-prologue-0001（２／８）
+		場所：
+		時間：
+		登場人物（服装）：
+		視点：
+		------------------------------*/
+		/*---------------------------------------
+		背景：新宿全景（夕）
+		---------------------------------------*/
+		/*---------------------------------------
+		背景：新宿署　外観（夕）
+		---------------------------------------*/
+		/*---------------------------------------
+		背景：新宿署　特防デスク（夕）
+		---------------------------------------*/
+		/*---------------------------------------
+		演出：以下の日付はテキストウィンドウではなく
+		　　　画面に帯で出して欲しいです。（上下中央は応相談）
+		　　　これ以降、日付部分は全て同じ演出ですので
+		　　　コメントアウトで記載します。
+
+		日付表示：１２月５日、ＰＭ４：００
+		---------------------------------------*/
+		/*---------------------------------------
+		（済み）ＳＥ：電話が鳴る音
+		（済み）ＳＥ：電話をとる音
+		---------------------------------------*/
+		/*-------------------------------------*/
+		[CW_Chapter control_id="0" file_id="CP_HSIN" param="CP_00"]	// 扉絵：零編
+		[batch]
+		[ezbg_change3 name="bg_00b" time="EV" count="BG_SP"]		/* bg00　夕方　　　　新宿俯瞰　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[ezbg_change3 name="bg_01b" time="EV" count="BG_SP"]		/* bg01　夕方　　　　新宿署＿外観　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+
+		[bg_target_point_set2 side="0" target="1" point_x="-140" point_y="-220" size_x="100" size_y="100" size_z="180"]	/* 背景拡大　開始 */
+		[bg_target_count_set side="0" target="1" count="80"]
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="255" speed="80"]	// ブラックアウト開始
+		[txtwaitset count="80"]
+		[batch]
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="0"]					// ブラックアウト終了
+		[batch]
+
+		[se_play2 no="00295" count="WAIT_NONE"]/* SE再生：機械　固定電話（着信：トルルルルル）　　　　　　　　　　　　　　　　　　　　 */
+
+		[ezbg_change3 name="bg_04b" time="LIGHT" count="BG_SP"]		/* bg04　夕方　　　　新宿署＿特殊地域防犯対策室　　　　　　　　　　*/
+		[batch]
+		[CW_Current_Time control_id="1" month="MONTH_12" day="DAY_05" ampm="AP_PM" time="TIME_04" minutes="MINUTES_00"]	// 現在時刻
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[se_play2 no="00296" count="WAIT_NONE"]/* SE再生：機械　固定電話の受話器を取る　　　　　　　　　　　　　　　　　　　　　　　　 */
+		/*-------------------------------------*/
+
+		[proc_talk_ex proc="ADV_STCM_TALK_CHARA_EX" chara_num="NEXT_COLOR_ICHIK"]	// 地の文送りアイコン：主人公
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="¿Sí? Habla con la División Especial de Prevención"]	// 「	// 」
+		[maintxt_print2 text="de Crímenes. Dígame qué desea reportar, por favor."]	// 「	// 」
+
+		[batch]
+
+		/*---------------------------------------
+		ボイス加工：電話
+		---------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="760101" count="0"]
+
+		[speaker_change name="Señora"]// 通報者Ａ
+		[maintxt_print2 text="Conozco esta voz... ¿Eres tú, Hoshino?"]	// 「
+		[maintxt_print2 text="Ese hombre armado está rondando otra vez."]
+        [maintxt_print2 text="Por favor, vengan rápido."]	// 」
+
+		[batch]
+
+		/*---------------------------------------
+		（済み）ＳＥ：電話が切れる音
+		---------------------------------------*/
+		[se_play2 no="00145" count="60"]/* SE再生：切断（ブツッ）　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[se_play2 no="00144" count="WAIT_NONE"]/* SE再生：切断（ツー×３）　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="Аh..."]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		演出：ネームプレート表示
+
+		　　　地域課　特殊地域防犯対策室
+		　　　望田政信（３２）
+		------------------------------*/
+
+		[stop_se time="SE_SP" wait="0"]			/* SE再生を止める */
+
+		[txtwin_proc onoff="WIN_CL"]	/* ウィンドウ（閉じる）  */
+
+		[chara_app_cm ch_name="mochi_a100a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[CW_Name_Plate control_id="0" file_id="408" x="50"]	// ネームプレート08 望田政信
+
+		[ezchara_nextstate_cm ch_name="mochi_a105b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080001" count="0"]
+
+		[speaker_change name="Masanobu Mochida"]
+		[maintxt_print2 text="Déjame adivinar, ¿era esa señora de nuevo?"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="Sí..."]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a102b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080002" count="0"]
+
+		[speaker_change name="Masanobu Mochida"]
+		[maintxt_print2 text="Tu expresión me dice que te ha vuelto a colgar."]	// 「
+		[maintxt_print2 text="¿Cuántas veces van con esta?"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="Lo siento. Siempre cuelga antes de que responda,"]	// 「
+		[maintxt_print2 text="por eso no he podido negarme..."]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a103b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080003" count="0"]
+
+		[speaker_change name="Masanobu Mochida"]
+		[maintxt_print2 text="Escucha, Hoshino."]	// 「
+		[maintxt_print2 text="Recuerda todas las veces que fuimos."]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080004" count="0"]
+
+		[speaker_change name="Masanobu Mochida"]
+		[maintxt_print2 text="Siempre que vamos resulta ser su imaginación"]	// 「
+		[maintxt_print2 text="o cualquier cosa que no merece la pena."]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a102b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080005" count="0"]
+
+		[speaker_change name="Masanobu Mochida"]
+		[maintxt_print2 text="¿Cuántas veces investigamos sus informes para nada?"]	// 「
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="Tienes razón... Sé que no conseguimos nada útil."]	// 「
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure3_turn1
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[openUiDictionaryPopUp2 no="DC_07" text="Синдзюку"]							// 07：新宿
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="Pero nunca se puede estar lo suficientemente seguro,"]	// 「
+		[maintxt_print2 text="especialmente con el estado actual de Shinjuku."]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a105b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080006" count="0"]
+
+		[speaker_change name="Masanobu Mochida"]
+		[maintxt_print2 text="Bueno, quizá estás en lo cierto..."]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="De todos modos, ¿no te parece que esa señora"]	// 「
+		[maintxt_print2 text="solo nos llama porque está angustiada?"]	// 「
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="Hace tres meses, habría sido una locura siquiera"]	// 「
+		[maintxt_print2 text="pensar que los civiles portarían armas como ahora."]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a102b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080007" count="0"]
+
+		[speaker_change name="Masanobu Mochida"]
+		[maintxt_print2 text="Me impresiona escucharte hablar de esto como si nada."]	// 「
+		[maintxt_print2 text="Si no te conociera, nunca creería que apenas llevas"]
+		[maintxt_print2 text="medio año en esta división."]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="えっ。そう……ですか？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a108a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080008" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="ああ。俺が入りたての頃なんて、"]	// 「
+		[maintxt_print2 text="もっと必死で猪突猛進というか……"]
+		[maintxt_print2 text="がむしゃらに突っ走ってただけだからな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="今だって先輩はいつも猪突猛進……"]	// 「
+		[maintxt_print2 text="じゃなくて、一生懸命じゃないですか"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a103b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[openUiDictionaryPopUp2 no="DC_01" text="特防"]							// 01：特防
+
+		/*ボイス再生*/
+		[voice_play no="080009" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="いーや。今は特防として、苦情には平謝り、"]	// 「
+		[maintxt_print2 text="嫌味を言われても平謝りな日々だ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080010" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="昔だったらすぐに頭に血が上ってたぞ。"]	// 「
+		[maintxt_print2 text="俺もずいぶん大人になったもんだ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="はあ……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a105b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080011" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="しかし、特防はX-Day事件の捜査を"]	// 「
+		[maintxt_print2 text="させてもらえるわけじゃないからな。"]
+		[maintxt_print2 text="それだけが残念だ……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（あ……、また望田先輩が遠い目をしてる。"]
+		[maintxt_print2 text="　よっぽど事件の捜査がしたいんだろうな）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[openUiDictionaryPopUp2 no="DC_08" text="新宿署"]							// 08：新宿署
+
+		[maintxt_print2 text="政府が新宿隔離措置を強行してから、"]
+		[maintxt_print2 text="新宿署には新宿区民専用窓口が設けられた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そこでX-Day事件に関する情報を募ったものの、"]
+		[maintxt_print2 text="いたずらや苦情が大半で人手が足りず……。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="様々な部署から人材を集めて新設されたのが"]
+		[maintxt_print2 text="【特殊地域防犯対策室】――通称【特防】。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="主に、先程のような苦情や真偽のわからない"]
+		[maintxt_print2 text="通報に対処したり、巡回連絡を行うことで"]
+		[maintxt_print2 text="新宿区の治安を維持するのが仕事だ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="地域課からは私と望田先輩が配属されたため、"]
+		[maintxt_print2 text="何かと先輩と行動することが多い。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="今の新宿区内は不満や不信が渦巻いてて、"]	// 「
+		[maintxt_print2 text="安心して出歩くことなんてできません"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="通報を受けるたびに、"]	// 「
+		[maintxt_print2 text="警察は信用できないって声もよく聞きます"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="それでもまだ……警察を頼りに"]	// 「
+		[maintxt_print2 text="してくれてる人がいるんですよね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080012" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="……そうだな。あんまりあのばあさんを"]	// 「
+		[maintxt_print2 text="待たせるわけにもいかないし。……行くか"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="はい！"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_del_cm ch_name="mochi_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		/*---------------------------------------
+		時間経過
+		背景：住宅街２（夕）
+		---------------------------------------*/
+		[scenechange_bs name="bg_21b" time="EV2" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_ON"]	/* bg21　夕方　　　　住宅街２（新宿）　　　　　　　　　　　　　　　*/
+
+		[bgm_play no="03" count="0"]		// BGM再生：03_日常Ｂ 昼
+
+		[chara_app_cm ch_name="mochi_a109a" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080013" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="……今日も今日とて、ただ単に人相が"]	// 「
+		[maintxt_print2 text="悪い男がうろついてただけだったわけだが"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a108a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080014" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="あのばあさん、お前が話を聞くと"]	// 「
+		[maintxt_print2 text="いつも帰る頃には安心した顔してるよな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……一人暮らしで、"]	// 「
+		[maintxt_print2 text="他に頼れる人がいないそうなんです"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="怖そうに見えますけど、"]	// 「
+		[maintxt_print2 text="たまにお孫さんの話をされたりもしますし"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="本当は優しい人なんですよ、きっと"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a111a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080015" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="……そういうのも、お前が相手だから"]	// 「
+		[maintxt_print2 text="話そうって思えるのかもな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080016" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="子供やお年寄りから話を聞くのは、"]	// 「
+		[maintxt_print2 text="お前の方が適任だ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a108a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080017" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="俺はどうも、相手が話してる途中で"]	// 「
+		[maintxt_print2 text="口を挟みたくなるんだよな……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（確かに望田先輩、"]
+		[maintxt_print2 text="　そういうところがあるかも……）"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a105b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080018" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="……おい、星野。"]	// 「
+		[maintxt_print2 text="ここは否定するところだぞ"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure3_turn2
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ、すみません"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a102b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080019" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="お前な……。後輩なら、"]	// 「
+		[maintxt_print2 text="少しは先輩を立てろって。傷つくだろ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="ふふっ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="望田先輩は上司だけど、"]
+		[maintxt_print2 text="同じ目線で話してくれるおかげで"]
+		[maintxt_print2 text="気遣ったり恐縮しないでいられる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="警察は徹底した縦社会だと思っていたから、"]
+		[maintxt_print2 text="実はちょっとホッとしている。"]
+		[maintxt_print2 text="……本人に面と向かっては言えないけど。"]
+
+		[batch]
+
+		[ezchara_del_cm ch_name="mochi_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="500001" count="0"]
+
+		[speaker_change name="通行人Ａ"]
+		[maintxt_print2 text="おい。あんたたち……警察だよな？"]	// 「
+		[maintxt_print2 text="ずいぶん暇そうじゃねえか"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="背後からかけられた声に振り返ると、"]
+		[maintxt_print2 text="柄の悪そうな男たちが銃を手にこちらを見ていた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="720201" count="0"]
+
+		[speaker_change name="通行人Ｂ"]
+		[maintxt_print2 text="俺たちが新宿に閉じ込められたのってさぁ、"]	// 「
+		[maintxt_print2 text="警察が無能なせいだろ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="720301" count="0"]
+
+		[speaker_change name="通行人Ｃ"]
+		[maintxt_print2 text="責任取って、今この場で土下座しろよ。"]	// 「
+		[maintxt_print2 text="できるよな？　でねえと……"]	// 」
+
+		[batch]
+
+		/*-------------------------------
+		（済み）ＳＥ：銃を持ち上げる音
+		-------------------------------*/
+		[se_play2 no="NEW_SE07" count="30"]/* SE再生：銃を構える音　チャキ　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="！"]	// 「	// 」
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="男の１人が銃を持ち上げ、私に――"]
+
+		[batch]
+
+		/*-------------------------------
+		（済み）ＳＥ：腕をねじりあげる音　←ここでは衣服の音で代用
+		-------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]	/* ウィンドウ（閉じる）  */
+		[batch]/* 演出用 */
+		[bg_target_point_set2 side="0" target="0" point_x="0" point_y="0" size_x="100" size_y="100" size_z="120"]	/* 背景拡大　開始 */
+		[bg_target_count_set side="0" target="0" count="0"]
+		[ef_shake3 side="INSIDE" slevel="ATCK_Lv1"]	/* 衝撃　Ｌｖ１（通常の打撃など　　　　） */
+		[se_play2 no="00168" count="30"]/* SE再生：衣服　動く（ガバッ） 　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[chara_app_cm ch_name="b-mochi_a103a" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080020" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="やめとけ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="720302" count="0"]
+
+		[speaker_change name="通行人Ｃ"]
+		[maintxt_print2 text="いっ！？　いてててて……！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="望田先輩！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="すばやく男との距離を詰めた先輩は、"]
+		[maintxt_print2 text="男の腕をねじりあげて銃を取り上げた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="500002" count="0"]
+
+		[speaker_change name="通行人Ａ"]
+		[maintxt_print2 text="お前……！　そいつを離せ！"]	// 「	// 」
+
+		[batch]
+
+		/*-------------------------------
+		ＳＥ：銃を構える音　　SE検討中by杉山
+		-------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="b-mochi_a103b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080021" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="……銃による脅迫には刑罰が下される。"]	// 「
+		[maintxt_print2 text="お前たち、知っててこんな真似してるのか？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="720202" count="0"]
+
+		[speaker_change name="通行人Ｂ"]
+		[maintxt_print2 text="そ、それは……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="500003" count="0"]
+
+		[speaker_change name="通行人Ａ"]
+		[maintxt_print2 text="だったら何だって言うんだよ。"]	// 「
+		[maintxt_print2 text="文句あるのか！？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mochi_a104a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080022" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="……俺は、言い訳をするつもりはない"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080023" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="見たところ、遊びたい盛りだろう。"]	// 「
+		[maintxt_print2 text="それなのにこんな事態に巻き込んだのは、"]
+		[maintxt_print2 text="警察として申し訳ないと思う"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mochi_a103b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080024" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="しかしな、その鬱憤を晴らすために"]	// 「
+		[maintxt_print2 text="誰かを傷つけようとするな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mochi_a103a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080025" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="その銃は、身を守るために使うものだ。"]	// 「
+		[maintxt_print2 text="武器として扱うのは許さん"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="通行人Ａ＆通行人Ｂ"]//※
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezchara_del_cm ch_name="b-mochi_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+		[ezbg_change3 name="bg_21b" time="EV2" count="BG_SP"]		/* bg21　夕方　　　　住宅街２（新宿）　　　　　　　　　　　　　　　*/
+		[batch]/* 演出用 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="望田先輩の言葉に気圧されたのか、"]
+		[maintxt_print2 text="彼らは気まずげに銃を下ろした。"]
+
+		[batch]
+
+/*		「【カラー×マリス】ボイスリスト0525.xlsx」では「もう帰る」ですが
+		話の流れ上、絡んできた通行人に諭す言い方なので「もう帰れ」のままにします
+		※音声でもそこまで不自然ではないので　by長本*/
+
+		[chara_app_cm ch_name="mochi_a101a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080026" count="0"]
+
+		[speaker_change name="望田 政信"]
+		//[maintxt_print2 text="……それでいい。"]	// 「
+		//[maintxt_print2 text="こんなところでつるんでないでもう帰れ"]	// 」
+
+		[maintxt_print2 text="……それでいい。"]	// 「
+		[maintxt_print2 text="陽も暮れるし、"]	// 」
+		[maintxt_print2 text="こんなところでつるんでないでもう帰れ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="取り上げた銃を男に返すと、"]
+		[maintxt_print2 text="望田先輩は彼らの背中を押す。"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure3_turn3
+
+		[ezchara_nextstate_cm ch_name="mochi_a103b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080027" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="いいか、一般人相手に同じ真似はするなよ？"]	// 「
+		[maintxt_print2 text="二度目はないぞ"]	// 」
+
+		[batch]
+
+		/*-------------------------------
+		（済み）ＳＥ：歩き去る音（３人）
+		-------------------------------*/
+		/*-----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[ezchara_nextstate_cm ch_name="mochi_a103a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+		[batch]/* 演出用 */
+
+		[se_play2 no="00020" count="120"]/* SE再生：足音　歩き　去る　３人・アスファルトＢ（固め：タッタッタ…）　　　　　　　　 */
+
+		[ezchara_del_cm ch_name="mochi_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[chara_app_cm ch_name="b-mochi_a104a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+		/*-----------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="３人組が大人しく去っていくと、"]
+		[maintxt_print2 text="望田先輩は私に向き直った。"]
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[bgm_play no="05" count="0"]		// BGM再生：05_日常Ｄ 真面目
+
+		[ezchara_nextstate_cm ch_name="b-mochi_a102b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080028" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="すまん、星野。今の奴らのことは……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="わかってます。"]	// 「
+		[maintxt_print2 text="目をつむるんですよね？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="今みたいに警察に対する反感を"]
+		[maintxt_print2 text="ぶつけてくる人は少なくない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[openUiDictionaryPopUp2 no="DC_02" text="公務執行妨害"]					// 02：公務執行妨害
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（本来は、公務執行妨害で現行犯逮捕だけど。"]
+		[maintxt_print2 text="　警察がこの事態を招いたという言い分は、"]
+		[maintxt_print2 text="　間違ってるわけじゃない）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="望田先輩もその点を気にしてるようで、"]
+		[maintxt_print2 text="さっきのように注意だけで済ますことがある。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[openUiDictionaryPopUp2 no="DC_03" text="銃の番号"]						// 03：銃の番号
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="一応、彼らの銃の番号は控えておきました"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mochi_a113a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080029" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="おお、助かる。あいつらも、"]	// 「
+		[maintxt_print2 text="根は悪い奴らじゃないと思うんだ。"]
+		[maintxt_print2 text="１人は銃の安全装置をかけたままだったし"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mochi_a106a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080030" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="しかし、お前も頼もしくなったな。"]	// 「
+		[maintxt_print2 text="銃を向けられても冷静に状況を見て行動できてる"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="はい。慣れ……と言ったらおかしいですけど"]	// 「
+		[maintxt_print2 text="さすがに落ち着いて対処できるようになりました"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[openUiDictionaryPopUp2 no="DC_04" text="銃刀法"]							// 04：銃刀法
+
+		[maintxt_print2 text="銃刀法が解除された当初は、"]
+		[maintxt_print2 text="銃を向けられただけで身が竦んでいた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[openUiDictionaryPopUp2 no="DC_05" text="警察学校"]						// 05：警察学校
+
+		[maintxt_print2 text="警察学校で訓練を受けたとはいえ、"]
+		[maintxt_print2 text="実際に敵意をもって銃口を向けられると"]
+		[maintxt_print2 text="冷静な対応ができないことが何度かあった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……でも、そんな時はいつも"]
+		[maintxt_print2 text="望田先輩が私をかばってくれた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="望田先輩のおかげです。"]	// 「
+		[maintxt_print2 text="今みたいな先輩のやり方を見て来たから、"]
+		[maintxt_print2 text="銃への抵抗も少なくなったんだと思います"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mochi_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080031" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="こういうのは、場数を踏んでいくうちに"]	// 「
+		[maintxt_print2 text="慣れて来るもんだ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mochi_a113a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080032" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="それに、こういう時くらい、"]	// 「
+		[maintxt_print2 text="先輩らしいところを見せないとな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="胸を張る望田先輩を見て、"]
+		[maintxt_print2 text="思わず笑ってしまう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="親戚のおじさんのような気安さもあるけど、"]
+		[maintxt_print2 text="望田先輩はやっぱり頼りになる先輩だ。"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure4"]
+
+	[return]
+
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure4
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure4_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure4_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure4_turn2"]
+	[/if]
+	[if estimate="$i==3"][calllua function="stcm2_goto" label="sure4_turn3"]
+	[/if]
+
+		/*------------------------------
+		●シーン000-prologue-0001（３／８）
+		場所：
+		時間：
+		登場人物（服装）：
+		視点：
+		------------------------------*/
+
+	*sure4_turn0
+
+		/*-------------------------------
+		背景：新宿署・外観（夜）
+		-------------------------------*/
+		/*-------------------------------
+		背景：新宿署・廊下（夜）
+		-------------------------------*/
+		/*----------------------------*/
+		[scenechange_bs name="bg_01c" time="NIGHT" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_ON"]	/* bg01　　夜　　　　新宿署＿外観　　　　　　　　　　　　　　　　　*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[txtwaitset count="40"]
+		[batch]
+
+		[ezbg_change3 name="bg_03a" time="NOON" count="BG_SP"]		/* bg03　昼　　　　　新宿署＿廊下　　　　　　　　　　　　　　　　　*/
+		[batch]
+		/*----------------------------*/
+
+		[se_play2 no="00350" count="180"]/* SE再生：ガヤ　署に連行される男性１『放せつってんだろ！俺は何もやってねぇよ！』 　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="新宿署に戻ってくると、"]
+		[maintxt_print2 text="怒鳴り声とそれをいさめる声が聞こえてきた。"]
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		[chara_app_cm ch_name="mochi_a102b" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080033" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="また誰かしょっ引かれたか……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="新宿の犯罪発生率は、"]	// 「
+		[maintxt_print2 text="過去最高になりましたからね……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a105b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080034" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="それも再犯じゃなく、初犯が大半だ。"]	// 「
+		[maintxt_print2 text="一般人が現状に納得していない証拠だろうな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080035" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="混乱に乗じて犯罪に手を染める奴もいれば、"]	// 「
+		[maintxt_print2 text="第二の英雄になろうとしてる奴もいる"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="第二の英雄、ですか……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="先月、X-Day事件の犯人と名乗る者が"]
+		[maintxt_print2 text="銃を乱射する事件があった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="その際、一般人が持っていた銃で犯人を撃ち、"]
+		[maintxt_print2 text="被害者を出さずに済んだのだが……。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（感謝状と破格の懸賞金が話題になって、"]
+		[maintxt_print2 text="　後に続こうとしてる人も多い……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[openUiDictionaryPopUp2 no="DC_06" text="模倣犯"]							// 06：模倣犯
+
+		[maintxt_print2 text="撃たれた犯人は死亡したが、"]
+		[maintxt_print2 text="捜査上でX-Day事件との関連性は見られず、"]
+		[maintxt_print2 text="警察内部では模倣犯という見解になっている。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="でも、その事件があったことで"]
+		[maintxt_print2 text="銃の所持を肯定する人間が増えたのも事実だ。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a104a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080036" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="国民の手で犯人を裁いたことがもてはやされ、"]	// 「
+		[maintxt_print2 text="軽犯罪の抑止力にもなってると言われているが"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a103a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080037" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="本来なら犯人逮捕は俺たち、警察の仕事だ。"]	// 「
+		[maintxt_print2 text="それなのに……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="望田先輩。"]	// 「
+		[maintxt_print2 text="署内は誰が聞いているかわからないので……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a114a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="辺りを見回しつつ声を潜めると、"]
+		[maintxt_print2 text="望田先輩はバツが悪そうに頬をかいた。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a102b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080038" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="すまん。上から納得しろと言われはしたが、"]	// 「
+		[maintxt_print2 text="どうも煮え切らなくてな……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="……気持ちはわかります。"]	// 「
+		[maintxt_print2 text="歯がゆさを感じてるのは、私も同じですから"]	// 」
+
+		[batch]
+
+		[ezchara_del_cm ch_name="mochi_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（警察官として、私もX-Day事件解決のために"]
+		[maintxt_print2 text="　何かしたいとは思うけど……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私にできるのは、特防に寄せられた"]
+		[maintxt_print2 text="区民の話に耳を傾けること。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ただ……、それだけだ。"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure4_turn1
+
+		[chara_app_cm ch_name="mochi_a101a" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080039" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="あ。星野、俺は地域企画課に用があるから、"]	// 「
+		[maintxt_print2 text="先に戻っててくれるか？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="わかりました"]	// 「	// 」
+
+		[batch]
+
+		/*---------------------------------------
+		望田政信ＯＵＴ
+		---------------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezchara_del_cm ch_name="mochi_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+		[batch]/* 演出用 */
+		[se_play2 no="00011" count="WAIT_NONE"]/* SE再生：足音_歩き_通常_１人・汎用Ａ（トットット）　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="望田先輩と別れて歩き出してから、"]
+		[maintxt_print2 text="すぐに私は見知った顔を見つけた。"]
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="冴木君、お疲れ"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：冴木弓弦、制服で帽子なし
+		------------------------------*/
+
+		/*------------------------------
+		演出：ネームプレート表示
+
+		　　　地域課　交番勤務
+		　　　冴木弓弦（２３）
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]	/* ウィンドウ（閉じる）  */
+
+		[chara_app_cm ch_name="saeki_a400a" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[CW_Name_Plate control_id="0" file_id="409" x="-200"]	// ネームプレート09 冴木弓弦
+
+		[ezchara_nextstate_cm ch_name="saeki_a101b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090001" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="ああ、星野。"]	// 「
+		[maintxt_print2 text="お疲れ。もうあがるのか？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="ううん、まだだよ。"]	// 「
+		[maintxt_print2 text="これから報告書をあげるところ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="彼は警察学校の同期で、仲間内で飲みに"]
+		[maintxt_print2 text="行った時に話して仲良くなった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="同じ課に配属されてからは、"]
+		[maintxt_print2 text="飲みながら愚痴をこぼしあう仲だ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="冴木君は、もうあがり？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a108a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090002" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="いや、俺もお前と同じで"]	// 「
+		[maintxt_print2 text="報告書を書かなきゃでさ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a401a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090003" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="あ、そういや明日飲みに行く約束、"]	// 「
+		[maintxt_print2 text="忘れてないよな？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="うん。"]	// 「
+		[maintxt_print2 text="色々聞いてほしいこともあるからね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a414b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090004" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="なんだ、また悩み相談か？"]	// 「
+		[maintxt_print2 text="お前、特防になってから多いよな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090005" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="警察学校にいた頃は、"]	// 「
+		[maintxt_print2 text="【犯罪者を１人でも多く捕まえてみせる！】"]
+		[maintxt_print2 text="って、燃えてたのにさ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="あ、あの時は……こんな事態に"]	// 「
+		[maintxt_print2 text="なるなんて思わなかったから……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a419a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090006" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="俺はお前の熱血ぶり、"]	// 「
+		[maintxt_print2 text="嫌いじゃなかったけどなー"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090007" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="窓際の特防に追いやられて、"]	// 「
+		[maintxt_print2 text="情熱までなくしちゃったか……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="なくしてないよ！　今だって、"]	// 「
+		[maintxt_print2 text="気持ちはあの頃と変わってない"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a113b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090008" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="お、急に元気になったな。"]	// 「
+		[maintxt_print2 text="うん。やっぱお前はそうでなくちゃ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a113a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="笑顔を浮かべる冴木君に、"]
+		[maintxt_print2 text="思わず笑い返してしまう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（ちょっと気持ちが軽くなったかも）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="こんな調子で言いたいことを"]
+		[maintxt_print2 text="言い合える同期は、冴木君しかいない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ジレンマを抱えつつも仕事に前向きで"]
+		[maintxt_print2 text="いられるのは、彼の存在が大きい。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="080040" count="0"]
+
+		[speaker_change name="？？？"]//望田政信
+		[maintxt_print2 text="なんだ。"]	// 「
+		[maintxt_print2 text="誰と話しているのかと思えば、冴木か"]	// 」
+
+		[batch]
+
+		/*-------------------------------------------
+		演出：望田の立ち絵ここで入れる
+		-------------------------------------------*/
+
+		[ezchara_move_cm ch_name="saeki_a" place="RIGHT" speed="NORMAL_MOVE" delay="NO_DELAY"]/*キャラ移動*/
+
+		[ezchara_nextstate_cm ch_name="saeki_a401a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[chara_app_cm ch_name="mochi_a100a" place="LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090009" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="お疲れ様です、望田さん"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080041" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="ああ、お前はもうあがりか？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a413b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090010" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="いえ、もうひと頑張りしないとです。"]	// 「
+		[maintxt_print2 text="それじゃあ、失礼しますね"]	// 」
+
+		[batch]
+
+		[ezchara_del_cm ch_name="saeki_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="望田先輩に軽く頭を下げ、"]
+		[maintxt_print2 text="冴木君は視線だけを私に投げる。"]
+
+		[batch]
+
+		[chara_app_cm ch_name="rc-saeki_a105a" place="CENTER" dir="FROM_CENTER" zpos="ZPOS_BACK4" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]// カットインに合わせ右に配置
+
+		/*ボイス再生*/
+		[voice_play no="090011" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="頑張れよ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="うん、ありがとう"]	// 「	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure4_turn2
+
+		/*-------------------------------------------
+		演出：ここで冴木の立ち絵消す
+		-------------------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[ezchara_del_cm ch_name="rc-saeki_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		/*-------------------------------------------
+		（済み）ＳＥ：遠ざかる足音（１人）
+		-------------------------------------------*/
+		[se_play2 no="00013" count="120"]/* SE再生：足音_歩き_去る_１人・汎用Ａ（トットット…）　　　　　　　　　　　　　　　　　 */
+
+		[ezchara_nextstate_cm ch_name="mochi_a106a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080042" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="お前たちは相変わらず仲がいいなあ。"]	// 「
+		[maintxt_print2 text="明日も飲みに行くんだろう？"]	// 」
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="あれ……？"]	// 「
+		[maintxt_print2 text="私、飲みに行くって言いましたっけ？"]	// 」
+
+		[batch]
+
+		/*-------------------------------------------
+		望田、笑いながら
+		-------------------------------------------*/
+
+		[ezchara_nextstate_cm ch_name="mochi_a111a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080043" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="冴木だよ。１週間くらい前だったかな……。"]	// 「
+		[maintxt_print2 text="俺のところに来て、飲みに行く日は"]
+		[maintxt_print2 text="お前に残業させないでほしいって頼まれてさ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="す、すみません。冴木君、"]	// 「
+		[maintxt_print2 text="正直すぎるところがあるので……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="mochi_a113a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="080044" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="はは。まあ、こんな時だからな、"]	// 「
+		[maintxt_print2 text="羽を伸ばすのも大事だろう。楽しんで来い"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="はい"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		/*-------------------------------------------
+		演出：時間経過
+		-------------------------------------------*/
+		[scenechange_bs name="bg_04c" time="LIGHT" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg04　　夜　　　　新宿署＿交通課　　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="報告書を望田先輩に提出した後、"]
+		[maintxt_print2 text="帰る準備をしながら、ふと思いついた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（帰る前に、あそこに寄っていこう）"]
+
+		[batch]
+
+		/*-------------------------------------------
+		背景：射撃場
+		-------------------------------------------*/
+		[scenechange_bs name="bg_55a" time="NOON" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_ON"]	/* bg55　昼　　　　　射撃場　　　　　　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="少しでも時間が出来た時には、"]
+		[maintxt_print2 text="署内にあるこの射撃訓練場に来ることが多い。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="いざという時のために自分の腕を少しでも"]
+		[maintxt_print2 text="磨いておきたいのもあるし、ここに来ると"]
+		[maintxt_print2 text="心にある迷いや不安が凪いでいくから。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私は準備を整えて銃を握ると、深く息を吸った。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（最初は、持つだけでも手が震えてたな……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="たとえ訓練でも、標的が無機物であっても、"]
+		[maintxt_print2 text="人を殺せる武器を持つことに抵抗があった。"]
+		[maintxt_print2 text="……怖かった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――その迷いが断ち切れたのは、"]
+		[maintxt_print2 text="警察学校で訓練をしていた、ある日のことだ。"]
+
+		[batch]
+
+		/*-------------------------------------------
+		回想　：ここから
+		背景　：警察学校の射撃場。組み込みは通常射撃場でＯＫ
+		演出　：背景をセピア色にしてください
+		立ち絵：警察学校時代なので、冴木立ち絵は非表示です。
+		-------------------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　開始                          */
+
+		[monochro_st1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_ON" substop="SUBSTOP_ON" f_se="SE_OFF"]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_55a" time="NOON" count="0"]		/* bg55　昼　　　　　射撃場　　　　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[monochro_st2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[bgm_play no="05" count="0"]		// BGM再生：05_日常Ｄ 真面目
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090012" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="お。まだ残ってたのか？"]	// 「
+		[maintxt_print2 text="……その顔じゃ、また迷ってるみたいだな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="冴木君……。"]	// 「
+		[maintxt_print2 text="……やっぱり私、向いてないのかな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="今はただの的でも、それが生きた人間だったら。"]	// 「
+		[maintxt_print2 text="――そう考えると、どうしても狙いが外れるの"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090013" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="……星野。"]	// 「
+		[maintxt_print2 text="お前はさ、銃がなんのためにあると思う？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="え……。犯罪者を捕まえるため、だよね"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090014" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="そこからして、ちょっと頭固いんじゃないか？"]	// 「
+		[maintxt_print2 text="俺は、銃を撃つのは守るためだと思ってる"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090015" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="誰もが持てるもんじゃない。"]	// 「
+		[maintxt_print2 text="俺たち警察だけに許された守る手段だろ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="守るため……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090016" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="人質を取った犯人の隙を突く、"]	// 「
+		[maintxt_print2 text="逃亡しようとする奴の足止めをする、"]
+		[maintxt_print2 text="正確な射撃能力があればそれも可能になる"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090017" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="でも、撃つ覚悟と能力が備わってなけりゃ"]	// 「
+		[maintxt_print2 text="人質をみすみす死なせてしまうかもしれない。"]
+		[maintxt_print2 text="犯人を逃して被害を広げるかもしれない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090018" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="殺すためじゃない。"]	// 「
+		[maintxt_print2 text="守るために撃つ。そうは考えられないか？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="そう……だよね。"]	// 「
+		[maintxt_print2 text="そもそも警察官が銃を持つのを許されてるのは"]
+		[maintxt_print2 text="市民の安全を守る側の人間だからだもんね"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090019" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="うん。……でもさ、星野。"]	// 「
+		[maintxt_print2 text="銃を持つことを許された俺たちだからこそ"]
+		[maintxt_print2 text="最悪の事態を考えなきゃダメだと思うんだ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="最悪の事態……罪のない人を助けるために"]	// 「
+		[maintxt_print2 text="犯罪者を殺さなきゃいけない状況……ってこと？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090020" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="ああ、たとえそれで犯罪者の命を奪ったとしても"]	// 「
+		[maintxt_print2 text="何かを守るためには代償を負う覚悟が必要だろ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="090021" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="……もし、そういう選択を迫られたとき。"]	// 「
+		[maintxt_print2 text="お前は、犯罪者を撃つ覚悟があるか？"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure4_turn3
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		/*-------------------------------------------
+		回想：ここまで
+		-------------------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　終了                          */
+
+		[monochro_ed1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_ON" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		//[ezchara_del_cm ch_name="saeki_a" dir="TO_CENTER" speed="0" delay="NO_DELAY"]/*キャラ削除*/
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_55a" time="NOON" count="0"]		/* bg55　昼　　　　　射撃場　　　　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[monochro_ed2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="あの言葉を聞いてから、"]
+		[maintxt_print2 text="私にとって銃の重みの意味が変わった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="これは人を殺す道具じゃない。"]
+		[maintxt_print2 text="守るための手段なんだ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（覚悟がないなら、銃なんて持っちゃいけない。"]
+		[maintxt_print2 text="　警察官なら、撃つ覚悟を持たなきゃいけない）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="後はひたすら訓練を重ねる日々だった。"]
+		[maintxt_print2 text="冴木君の言う通り、覚悟だけじゃ意味がない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="能力が備わっていなければ、いざという時、"]
+		[maintxt_print2 text="これは人を殺す道具に早変わりしてしまう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そうならないように、私は来る日も来る日も"]
+		[maintxt_print2 text="射撃場で的を相手に銃を向けた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――そして、今では唯一の特技が射撃と"]
+		[maintxt_print2 text="胸を張って自負できるほど、腕前は上がった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もちろん、実戦になったときに"]
+		[maintxt_print2 text="訓練と同じように出来るとは思っていないけど。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（その時がいつ来るかはわからないから……"]
+		[maintxt_print2 text="　後悔しないためにも、訓練は欠かしたくない）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="今の新宿の状態が変わらない限り、"]
+		[maintxt_print2 text="X-Day事件が起こり続ける限り、"]
+		[maintxt_print2 text="いつか必ず【その時】が来るという予感はある。"]
+
+		[batch]
+
+		/*----------------------------*/
+		/* 撃ち場に寄る               */
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[txtwaitset count="20"]
+		[batch]
+
+		// スマートフォン版変更 (背景の端が見えてしまう問題への対策)
+//		[ezbg_target_set side="OMOTE" target="CAME0" point_x="100" point_y="POS_Y" size_z="120" count="120" ptn="GEN_PT"]				//背景カメラ
+		[ezbg_target_set side="OMOTE" target="CAME0" point_x="95" point_y="POS_Y" size_z="120" count="120" ptn="GEN_PT"]				//背景カメラ
+		[batch]
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私は改めて銃を握りなおして、顔を上げた。"]
+
+		[batch]
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure5"]
+
+	[return]
+
+
+/*=======================================================================================================================
+トリガーシステム　チュートリアル
+=======================================================================================================================*/
+*sure5
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure5_turn0"]
+	[/if]
+	[if estimate="$i==10"][calllua function="stcm2_goto" label="sure5_turn10"]
+	[/if]
+	[if estimate="$i==11"][calllua function="stcm2_goto" label="sure5_turn11"]
+	[/if]
+	[if estimate="$i==12"][calllua function="stcm2_goto" label="sure5_turn12"]
+	[/if]
+	[if estimate="$i==20"][calllua function="stcm2_goto" label="sure5_turn20"]
+	[/if]
+
+	*sure5_turn0
+
+		/*------------------------------
+		●シーン000-prologue-0001（４／８）
+		場所：
+		時間：
+		登場人物（服装）：
+		視点：
+		------------------------------*/
+
+		/*------------------------------
+		【トリガー練習パート】吉田
+		成功失敗に関係なく３回プレイできます。
+		終了後、ストーリーに戻ります
+		------------------------------*/
+
+		/*---------------------------------------*/
+		/* トリガー                              */
+
+		[bgm_play no="19" count="0"]		// BGM再生：19_戦闘
+
+		// ▽トリガーカットイン
+		[CW_guntrigger_cutin control_id="0" count="20"]	// 制服　クロノＩＤ／ブラックアウトＳＰ
+
+		// ▽トリガーシステム
+		[start_guntrigger2 pos="TR_POS_ICHIKA" count="TR_SP_NOML"]
+		[setTrophyFlag_guntrigger flag="1"]	// トロフィー未取得
+		[batch]
+		/*---------------------------------------*/
+
+		[flag_set name="switch" num="10"]
+
+		[return]
+
+	////////////////////////////////////////////////////////////////////////////////
+	*sure5_turn10
+
+		//[flag_set name="switch" num="0"]
+
+		[flag_number name="TriggerResultID" i="i"]
+
+		[if estimate="$i == t.define.TR_MISS"][flag_set name="switch" num="11"] [return]	// ×失敗
+		[else]			  [flag_set name="switch" num="12"] [return]	// ○成功
+		[/if]
+
+
+	////////////////////////////////////////////////////////////////////////////////
+	*sure5_turn11
+
+		/*---------------------------------------
+		×失敗
+		---------------------------------------*/
+		/*-------------------------------------*/
+		/* トリガー発射エフェクト後・失敗        */
+
+		// ▽背景　　　　　　※速度は"ＱＫ"
+		[ezbg_change3 name="bg_55a" time="NOON" count="BG_SP_QK"]		/* bg55　昼　　　　　射撃場　　　　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵　　　　　※速度は"ＱＫ"
+		/*-------------------------------------*/
+
+		/*----------------------------*/
+		[flag_number name="トリガー練習" i="i"]
+		[if estimate="$i >= 2"]
+
+			[flag_set name="トリガー練習" num="0"]	// 練習カウント初期化
+			[flag_set name="switch" num="20"]	// 合流ターンへ
+			[return]
+
+		[/if]
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（ダメだ、もう一度！）"]
+
+		[batch]
+
+		/*----------------------------*/
+		[flag_change name="トリガー練習" num="1"]	// 練習カウント＋１
+		/*----------------------------*/
+
+		[flag_set name="switch" num="1"]			// 冒頭に戻る
+		[return]
+
+	////////////////////////////////////////////////////////////////////////////////
+	*sure5_turn12
+
+		/*---------------------------------------
+		○成功
+		---------------------------------------*/
+		/*-------------------------------------*/
+		/* トリガー発射エフェクト後・成功      */
+
+		// ▽背景　　　　　　※速度は"０"
+		[ezbg_change3 name="bg_55a" time="NOON" count="0"]		/* bg55　昼　　　　　射撃場　　　　　　　　　　　　　　　　　　　　*/
+
+		// ▽前景／血しぶき　※速度は"０"
+
+		// ▽立ち絵　　　　　※速度は"０"
+
+		// ▽揺れ
+		/*-------------------------------------*/
+
+		/*----------------------------*/
+		[flag_number name="トリガー練習" i="i"]
+		[if estimate="$i >= 2"]
+
+			[flag_set name="トリガー練習" num="0"]	// 練習カウント初期化
+			[flag_set name="switch" num="20"]	// 合流ターンへ
+			[return]
+
+		[/if]
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（よし、この調子！）"]
+
+		[batch]
+
+		/*----------------------------*/
+		[flag_change name="トリガー練習" num="1"]	// 練習カウント＋１
+		/*----------------------------*/
+
+		[flag_set name="switch" num="1"]			// 冒頭に戻る
+		[return]
+
+	////////////////////////////////////////////////////////////////////////////////
+	*sure5_turn20
+
+		/*---------------------------------------
+		合流ターン
+		---------------------------------------*/
+
+		[sub_end count="60"]
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure6"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure6
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure6_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure6_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure6_turn2"]
+	[/if]
+
+	*sure6_turn0
+
+		/*------------------------------
+		●シーン000-prologue-0001（５／８）
+		場所：
+		時間：
+		登場人物（服装）：
+		視点：
+		------------------------------*/
+
+		[ezbg_change3 name="bg_55a" time="NOON" count="BG_SP"]		/* bg55　昼　　　　　射撃場　　　　　　　　　　　　　　　　　　　　*/
+		// スマートフォン版変更 (背景の端が見えてしまう問題への対策)
+//		[ezbg_target_set side="URA" target="CAME0" point_x="100" point_y="POS_Y" size_z="120" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[ezbg_target_set side="URA" target="CAME0" point_x="95" point_y="POS_Y" size_z="120" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="ふう……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="気付けば、１時間が経過していた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="最後に、狙った通り標的の真ん中に"]
+		[maintxt_print2 text="銃弾を撃ち込んだところで、深く息を吐く。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090022" count="0"]
+
+		[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="――さすが、相変わらずの腕前だな"]	// 「	// 」
+
+		[batch]
+
+		[ef_shake3 side="INSIDE" slevel="TATE_Lv0"]	/* 縦揺れＬｖ０（軽くソファに座わるなど） */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="わっ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="突然、背後から声がして、"]
+		[maintxt_print2 text="私は焦りながら振り返る。"]
+
+		[batch]
+
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		/*-------------------------------------------
+		立ち絵：冴木立ち絵（帽子なし）IN
+		-------------------------------------------*/
+
+		[chara_app_cm ch_name="saeki_a401a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="冴木君。まだ帰ってなかったの？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a101b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090023" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="けっこう時間かかっちゃってさ。"]	// 「
+		[maintxt_print2 text="息抜きにサボろうかと思ったら、"]
+		[maintxt_print2 text="お前がこっち来るの見えたから"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="え、じゃあもしかして……ずっと見てたの？"]	// 「
+		[maintxt_print2 text="声かけてくれればよかったのに"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a105a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090024" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="あれだけ集中してるの見て、邪魔できないって。"]	// 「
+		[maintxt_print2 text="それに、俺……好きなんだ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="え？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a113a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090025" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="好きなんだよ。お前の射撃、見るの。"]	// 「
+		[maintxt_print2 text="なんか、心が落ち着くっていうか……"]
+		[maintxt_print2 text="うーん……色んなモノが浄化される感じ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="あはは、なにそれ。"]	// 「
+		[maintxt_print2 text="……それって喜んでいいのかな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a404a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090026" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="もちろん、褒めてるんだぜ。"]	// 「
+		[maintxt_print2 text="俺は尊敬してるんだ。お前のそういう……"]
+		[maintxt_print2 text="努力家で、一生懸命でまっすぐなとこ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="急にどうしたの？"]	// 「
+		[maintxt_print2 text="褒めてもなにも出ないよ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="いつもお調子者の彼が、どうしたのだろう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="照れ隠しで茶化すように返すと、"]
+		[maintxt_print2 text="冴木君は少し寂しそうに笑った。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a408a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090027" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="お前は昔から熱心だったけどさ。"]	// 「
+		[maintxt_print2 text="ここ数ヶ月、頻繁に来るようになったのは"]
+		[maintxt_print2 text="……銃刀法が解除されたからだろ"]	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure6_turn1
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="……！　……うん"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="さすがは、同期だ。"]
+		[maintxt_print2 text="多くは語らずともわかってくれている。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="確かに私は、銃刀法が解除されてから"]
+		[maintxt_print2 text="より射撃の訓練に精を出すようになった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="それというのも、警察でも持つだけで覚悟のいる"]
+		[maintxt_print2 text="この重い鉄の塊を、資格もない一般人が"]
+		[maintxt_print2 text="簡単に手に出来るようになったから。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="今日会った男性たちのように、"]
+		[maintxt_print2 text="遊び半分で人に銃を突きつけられるような"]
+		[maintxt_print2 text="世の中に変わってしまったから。"]
+
+		[batch]
+
+		/*-------------------------------------------
+		回想：ここから（直前シーン）
+		-------------------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　開始                          */
+
+		[monochro_st1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_ON" substop="SUBSTOP_ON" f_se="SE_ON1"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_cm ch_name="saeki_a" dir="TO_CENTER" speed="0" delay="NO_DELAY"]/*キャラ削除*/
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_21b" time="EV2" count="0"]		/* bg21　夕方　　　　住宅街２（新宿）　　　　　　　　　　　　　　　*/
+		[bg_target_point_set2 side="1" target="0" point_x="0" point_y="0" size_x="100" size_y="100" size_z="120"]	/* 背景拡大　開始 */
+		[bg_target_count_set side="1" target="0" count="0"]
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-mochi_a104a" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[monochro_st2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080023" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="見たところ、遊びたい盛りだろう。"]	// 「
+		[maintxt_print2 text="それなのにこんな事態に巻き込んだのは、"]
+		[maintxt_print2 text="警察として申し訳ないと思う"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mochi_a103a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080024" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="しかしな、その鬱憤を晴らすために"]	// 「
+		[maintxt_print2 text="誰かを傷つけようとするな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-mochi_a103b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080025" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="その銃は、身を守るために使うものだ。"]	// 「
+		[maintxt_print2 text="武器として扱うのは許さん"]	// 」
+
+		[batch]
+
+		/*-------------------------------------------
+		回想：ここまで
+		-------------------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　終了                          */
+
+		[monochro_ed1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_ON" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_cm ch_name="b-mochi_a" dir="TO_CENTER" speed="0" delay="NO_DELAY"]/*キャラ削除*/
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_55a" time="NOON" count="0"]		/* bg55　昼　　　　　射撃場　　　　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="saeki_a408a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+
+		[monochro_ed2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="望田先輩の言葉を思い返しながら、"]
+		[maintxt_print2 text="私は改めて銃の重みを確かめる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="これは、決して遊び半分で扱っていいものじゃない。"]
+		[maintxt_print2 text="おそらく政府の方針に困惑している大多数の"]
+		[maintxt_print2 text="区民が同じことを思っているだろう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="支給された銃を見るのも嫌な人だっているはずだ。"]
+		[maintxt_print2 text="――でも、持っている以上、使う可能性はある。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="自衛のためだけじゃなく、人を傷つけるために。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="私は……こんな重いものを簡単に一般人に"]	// 「
+		[maintxt_print2 text="持たせようって決めた人の気持ちがわからない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="私が撃つ覚悟を決めたのは、警察官だから。"]	// 「
+		[maintxt_print2 text="警察官でいるためには、責任を負わなきゃいけない。"]
+		[maintxt_print2 text="そのために努力も惜しまないつもりだよ。でも……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a409a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090028" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="その覚悟を持たない――持てない一般人が、"]	// 「
+		[maintxt_print2 text="引き金ひとつで人を殺せる武器を手にした。"]
+		[maintxt_print2 text="……俺も、おかしいって思うぜ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a404a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090029" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="武器を持てるのは、ある意味、選ばれた人間だ。"]	// 「
+		[maintxt_print2 text="そうじゃなきゃ秩序なんか保てない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="……そう、だよね。"]	// 「
+		[maintxt_print2 text="いくら自衛のためだって言っても、"]
+		[maintxt_print2 text="やっぱり間違ってるって思う"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="上の人間は、国が決めたことだからと"]
+		[maintxt_print2 text="銃刀法解除については口を噤んでいる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="組織の下っ端である私にも文句は言えない。"]
+		[maintxt_print2 text="それでも、誰もが当たり前に武器を振るえる"]
+		[maintxt_print2 text="世の中を肯定することはできない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="口で言ってるだけじゃダメだよね。"]	// 「
+		[maintxt_print2 text="いざという時、一般の人に銃を使わせない"]
+		[maintxt_print2 text="ためにも……私はもっと自分の腕を磨くよ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="saeki_a113b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090030" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="おう。俺も負けてられないな！"]	// 「
+		[maintxt_print2 text="まあ、さすがにお前には勝てそうにないけど。"]
+		[maintxt_print2 text="努力以前にお前の射撃は天性のもんだよ"]	// 」
+
+		[batch]
+
+		[ezchara_del_cm ch_name="saeki_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="明るく笑った冴木君が、伸びをしながら歩き出す。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="その背中を見送ろうと視線を動かすと、"]
+		[maintxt_print2 text="ふっと彼が曖昧な笑みを浮かべて振り返った。"]
+
+		[batch]
+
+		[chara_app_cm ch_name="rc-saeki_a105a" place="CENTER" dir="FROM_CENTER" zpos="ZPOS_BACK4" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="090031" count="0"]
+
+		[speaker_change name="冴木 弓弦"]
+		[maintxt_print2 text="……なあ、星野。"]	// 「
+		[maintxt_print2 text="お前は、犯罪者を目の前にした時――"]
+		[maintxt_print2 text="【守るために】撃つ覚悟があるんだよな"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="うん"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="以前と同じ問いに、"]
+		[maintxt_print2 text="今はもうハッキリと答えられた。"]
+
+		[batch]
+
+//0603　シナリオ修正　小塚
+//-----------------------------------------------------------------------------------------------
+//		[ezchara_nextstate_cm ch_name="rc-saeki_a110b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+//
+//		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+//
+//		/*ボイス再生*/
+//		[voice_play no="090032" count="0"]
+//
+//		[speaker_change name="冴木 弓弦"]
+//		[maintxt_print2 text="そっか。……よかった"]	// 「	// 」
+//
+//		[batch]
+//
+//		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+//		[ezchara_del_cm ch_name="rc-saeki_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+//		[se_play2 no="00013" count="120"]/* SE再生：足音_歩き_去る_１人・汎用Ａ（トットット…）　　　　　　　　　　　　　　　　　 */
+//
+//		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+//
+//		[maintxt_print2 text="どこか安心したように笑う冴木君に、"]
+//		[maintxt_print2 text="もしかして彼も何かあったのかなと思う。"]
+//
+//		[batch]
+//
+//		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+//
+//		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+//
+//		[maintxt_print2 text="私が迷っていたとき、"]
+//		[maintxt_print2 text="彼が手を差し伸べてくれたように、"]
+//		[maintxt_print2 text="今度は私が手を差し伸べられたらいい。"]
+//
+//		[batch]
+//
+//		/*----------------------------*/
+//		/* 撃ち場に寄る               */
+//		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+//		[ezbg_change3 name="bg_55a" time="NOON" count="BG_SP"]		/* bg55　昼　　　　　射撃場　　　　　　　　　　　　　　　　　　　　*/
+//		[batch]
+//		[txtwaitset count="20"]
+//		[batch]
+//
+//		[ezbg_target_set side="OMOTE" target="CAME0" point_x="100" point_y="POS_Y" size_z="120" count="120" ptn="GEN_PT"]				//背景カメラ
+//		[batch]
+//		/*----------------------------*/
+//
+//		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+//
+//		[maintxt_print2 text="そう思いながら、私は銃を構え――"]
+//
+//-----------------------------------------------------------------------------------------------
+
+		[ezchara_del_cm ch_name="rc-saeki_a" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		/*----------------------------*/
+		/* 撃ち場に寄る               */
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[txtwaitset count="20"]
+		[batch]
+
+		// スマートフォン版変更 (背景の端が見えてしまう問題への対策)
+//		[ezbg_target_set side="OMOTE" target="CAME0" point_x="100" point_y="POS_Y" size_z="120" count="120" ptn="GEN_PT"]				//背景カメラ
+		[ezbg_target_set side="OMOTE" target="CAME0" point_x="95" point_y="POS_Y" size_z="120" count="120" ptn="GEN_PT"]				//背景カメラ
+		[batch]
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="冴木君に笑みを返してから"]
+		[maintxt_print2 text="私は再び銃を構え――"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure6_turn2
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私の中の覚悟を示すように、"]
+		[maintxt_print2 text="躊躇わずトリガーをひいた。"]
+
+		[batch]
+
+		/*------------------------------
+		（済み）ＳＥ：銃を撃つ音
+		------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[bgm_stop count="FD_ZERO"]	// BGM停止：ゼロ
+		[ezbg_change3 name="bg_WHITE" time="NOON" count="0"]	/* bg53　共通　　　　白　　　　　　　　　　　　　　　　　　　　　　*/
+		[se_play2 no="NEW_SE06" count="80"]/* SE再生：自動拳銃の発射音　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――【覚悟】は、心の真ん中に撃ち込まれていた。"]
+
+		[batch]
+
+		/*------------------------------
+		時間経過
+		背景：オフィス街（夜）
+		------------------------------*/
+		/*------------------------------
+		日付表示：１２月５日、ＰＭ１０：００
+		------------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP_SLOW"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[scenechange_bs name="bg_16c" time="LIGHT2" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg16　　夜　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[se_play2 no="00099" count="WAIT_NONE"]/* SE再生：風（普通） 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[CW_Current_Time control_id="0" month="MONTH_12" day="DAY_05" ampm="AP_PM" time="TIME_10" minutes="MINUTES_00"]	// 現在時刻
+		/*----------------------------*/
+
+		[loopse_play no="NEW_LOOP_SE26" count="LOOP_FADE_ZATO" ch="CH00"]	/* サブBGM：ループ　雑踏（街中）　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="署を出て、自宅への道を歩きながら"]
+		[maintxt_print2 text="私は風の冷たさに身震いした。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（寒い……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="マフラーや厚手のコートを着ていても"]
+		[maintxt_print2 text="１２月の寒さは身にこたえる。"]
+
+		[batch]
+
+		[loopse_stop count="LP_SP" ch="CH00"]			/* ループＳＥ停止 */
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="白い息を吐きながら歩く道すがら、"]
+		[maintxt_print2 text="改めて街並みを見渡した。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（……ここも、随分変わっちゃったな）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="昼夜問わず人であふれかえっていた新宿は、"]
+		[maintxt_print2 text="夜になると出歩く人がほとんどいなくなった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="新宿区を出入りできない時点で、"]
+		[maintxt_print2 text="多くの会社は機能を失っている。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="店や学校、流通などが機能してるのは"]
+		[maintxt_print2 text="政府の自己満足で、普通の生活が"]
+		[maintxt_print2 text="送れているのは見せかけにすぎない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="どこに犯人が潜んでいるかわからない以上、"]
+		[maintxt_print2 text="身の危険はいつも付きまとう。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（こんな状態じゃ、不安になるなって"]
+		[maintxt_print2 text="　言うほうが難しいよね……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="隔離されたせいで、会いたい人に会えない。"]
+		[maintxt_print2 text="いつ事件に巻き込まれるかもわからない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="自分が……あるいは友達や恋人が"]
+		[maintxt_print2 text="いつ被害者になるとも知れない状態で、"]
+		[maintxt_print2 text="それでも生きていかなければならない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="今まで普通だと思っていた日常が、"]
+		[maintxt_print2 text="どれほど大切だったか。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="こうなってみて痛感したのは、"]
+		[maintxt_print2 text="私だけじゃないはずだ。"]
+
+		[batch]
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure80"]
+
+	[return]
+
+
+/*=======================================================================================================================
+携帯　着信スレ　望田政信（１／２）
+=======================================================================================================================*/
+*sure80
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure80_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure80_turn1"]
+	[/if]
+
+		/*------------------------------
+		●シーン000-prologue-0001（６／８）
+		場所：
+		時間：
+		登場人物（服装）：
+		視点：
+		------------------------------*/
+
+	*sure80_turn0
+
+		/*-------------------------------
+		（済み）ＳＥ：携帯のバイブの音
+		-------------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[loopse_play no="SE_MOBILECALL" count="0" ch="CH02"]	/* サブBGM：機械　携帯電話の着信音	　　　　　　　　　　　　　　　　 */
+		[batch]
+
+		[txtwaitset count="60"]
+		[batch]
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（……ん？）"]
+
+		[batch]
+
+		/*-------------------------------
+		演出：携帯表示
+		着信：望田政信
+		-------------------------------*/
+
+		/*-------------------------------------*/
+		/* 携帯着信モード　開始                */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[call_start chara="ID_MTDA" strap="ST_FAN"]	// 着信：望田 政信　　／　ストラップ：ファン君
+		[batch]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="急いで携帯を取り出すと、"]
+		[maintxt_print2 text="望田先輩の名前が表示されていた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（報告書に不備でもあったのかな……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="戻って直せと言われたらどうしようと"]
+		[maintxt_print2 text="思いつつ、通話ボタンを押す。"]
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* 携帯着信モード　判定                */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[call_select type="TS_ON" time="0"]	// 着信分岐タイプ：強制的に電話にでる　　　／　秒数
+
+		[batch]
+
+		[flag_set name="switch" num="1"]
+
+		[batch]
+
+		[return]
+		/*-------------------------------------*/
+
+	*sure80_turn1
+
+		[flag_set name="switch" num="0"]
+
+		// フラグは電話を取った場合が0,取らなかった場合が1となります。
+//		[flag_number name="PhoneResultID" i="flag"]
+//		[if estimate="$flag == 0"]
+//		{
+			[thread_change label="sure81"]
+//		}
+//		[elseif estimate="$flag == 1"]
+//		{
+//			[thread_change label="sure"]
+//		}
+
+		[batch]
+
+	[return]
+
+
+/*=======================================================================================================================
+携帯　着信スレ　望田政信（２／２）
+=======================================================================================================================*/
+*sure81
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure81_turn0"]
+	[/if]
+
+		/*------------------------------
+		●シーン000-prologue-0001（７／８）
+		場所：
+		時間：
+		登場人物（服装）：
+		視点：
+		------------------------------*/
+
+	*sure81_turn0
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="はい、星野です"]	// 「	// 」
+
+		[batch]
+
+		/*-------------------------------
+		ボイス加工：ここから望田政信の台詞は電話越し
+		-------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080045" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="あがったばかりで悪いんだが、仕事だ。"]	// 「
+		[maintxt_print2 text="なんでも新宿苑内でもめごとがあったらしい"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（新宿苑……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="その地名を聞くと、誰でも警戒心が膨れあがる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="８月に起こった【X-Day事件】。"]
+		[maintxt_print2 text="複数人が犠牲になったあの事件の現場であり"]
+		[maintxt_print2 text="世間に恐怖を知らしめた中心地でもあるからだ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（今も閉鎖されてるはずだけど……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080046" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="場所が場所だけに、X-Day事件と"]	// 「
+		[maintxt_print2 text="無関係とも言い切れない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080047" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="交番勤務の奴らは別件で"]	// 「
+		[maintxt_print2 text="ほとんど出払ってるらしくてな。"]
+		[maintxt_print2 text="俺たちに応援要請があったってわけだ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="わかりました。すぐ現場に向かいます"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="080048" count="0"]
+
+		[speaker_change name="望田 政信"]
+		[maintxt_print2 text="相手がどんな連中かわからないからな。"]	// 「
+		[maintxt_print2 text="俺が行くまで、必ず現場で待機してろよ？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="わかってます。単独行動はしません"]	// 「	// 」
+
+		[batch]
+
+		/*-------------------------------------*/
+		/* 携帯着信モード　終了                */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[call_fin]
+		[batch]
+		/*-------------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure7"]
+		[batch]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure7
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure7_turn0"]
+	[/if]
+
+	*sure7_turn0
+
+		/*------------------------------
+		●シーン000-prologue-0001（８／８）
+		場所：
+		時間：
+		登場人物（服装）：
+		視点：
+		------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="電話を切ると、"]
+		[maintxt_print2 text="私は足早に新宿苑へと向かった。"]
+
+		[batch]
+
+		/*-------------------------------------------
+		背景：新宿苑　並木通り（夜）
+		-------------------------------------------*/
+		[scenechange_bs name="bg_28c" time="LIGHT3" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg28　　夜　　　　新宿苑＿並木通り　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="新宿苑に着いてから、"]
+		[maintxt_print2 text="辺りの様子を窺ってみたものの――"]
+
+		[batch]
+
+		/*-------------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[batch]
+		[CW_Load control_id="0" file_id="514"]
+		[batch]
+		[txtwaitset count="420"]
+		[batch]
+		[CW_FreeEnd control_id="0"]
+		[batch]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（……誰もいない？）"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		/*-------------------------------
+		（済み）ＳＥ：風で木が揺れる音（ざああ…）
+		-------------------------------*/
+		[se_play2 no="00099" count="WAIT_NONE"]/* SE再生：風（普通） 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="辺りは薄暗く、視界が悪い。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（これじゃ誰かが潜んでいたとしても、"]
+		[maintxt_print2 text="　すぐにはわからないよね……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="万が一に備え、ホルスターから銃を抜く。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="いつも持ち歩いているし"]
+		[maintxt_print2 text="訓練は重ねてきたとはいえ、"]
+		[maintxt_print2 text="銃を実戦で使ったことはない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="だから正直……不安はある。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（……でも）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="もし誰かの命を奪う犯罪者と対峙した、"]
+		[maintxt_print2 text="その時は――"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（迷っちゃいけない）"]
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="周囲に気を配りつつ、閉鎖されている"]
+		[maintxt_print2 text="新宿苑の門へ目を向ける。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（……望田先輩、まだかな）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="新宿署から向かっているにしては"]
+		[maintxt_print2 text="やけに到着が遅い。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……なにか、トラブルに巻き込まれたのだろうか。"]
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		/*-------------------------------
+		（済み）ＳＥ：歩み寄る足音
+		-------------------------------*/
+		[se_play3 no="00305" count="WAIT_WK8"]/* SE再生：足音　歩き　寄る　ハイヒールの足音　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="携帯で連絡を取ろうか迷っていると、"]
+		[maintxt_print2 text="こちらに向かってくる足音が聞こえた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（あ、望田先輩かな）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そう思いながら、振り返ろうとして――。"]
+
+		[batch]
+
+		/*-------------------------------
+		（済み）ＳＥ：スタンガン
+		-------------------------------*/
+		/*-----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[bg_target_point_set2 side="0" target="0" point_x="0" point_y="-20" size_x="100" size_y="100" size_z="110"]	/* 背景拡大　開始 */
+		[bg_target_count_set side="0" target="0" count="0"]
+		[ef_shake3 side="INSIDE" slevel="ATCK_Lv2"]	/* 衝撃　Ｌｖ２（激しい打撃など　　　　） */
+		[blackout_flash2 dir="F_FADE" color="F_WHITE" zpos="ZPOS_FORE3" alpha="255" speed="20"]	/* 白フラッシュ */
+
+		[blackout_start2 dir="F_FADE" color="F_WHITE" zpos="ZPOS_FORE2" alpha="160" speed="20"]	// ホワイトアウト開始
+
+		[se_play2 no="00247" count="20"]/* SE再生：スタンガン　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		/*-----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="――っ！！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="なにかを腰に押し当てられたと思った直後、"]
+		[maintxt_print2 text="体に衝撃が走り、目の前に火花が散った。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="あ………"]	// 「	// 」
+
+		[batch]
+
+		/*-------------------------------
+		暗転
+		（済み）ＳＥ：倒れる音
+		-------------------------------*/
+		/*-----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[bg_target_point_set2 side="0" target="0" point_x="0" point_y="-20" size_x="100" size_y="100" size_z="110"]	/* 背景拡大　開始 */
+		[bg_target_count_set side="0" target="0" count="0"]
+		[bg_target_point_set2 side="0" target="0" point_x="0" point_y="40" size_x="100" size_y="100" size_z="110"]	/* 背景拡大　開始 */
+		[bg_target_count_set side="0" target="0" count="16"]
+
+		[blackout_start2 dir="F_UP" color="F_BLACK" zpos="ZPOS_FORE3" alpha="255" speed="10"]	// ブラックアウト開始
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE2" speed="0"]					// ホワイトアウト終了
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="0"]					// ブラックアウト終了
+		[txtwaitset count="20"]
+		[batch]
+
+		[se_play2 no="00226" count="300"]/* SE再生：倒れる　布の音あり（ドドスス） 　　　　　　　　　　　　　　　　　　　　　　　 */
+		/*-----------------------------*/
+
+		[batch]
+		[txtwaitset count="120"]
+		[batch]
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure8"]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure8
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure8_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure8_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure8_turn2"]
+	[/if]
+
+	*sure8_turn0
+
+		/*------------------------------
+		●シーン000-prologue-0002
+		場所：新宿苑　教会（夜）
+		時間：夜
+		登場人物（服装）：主人公（私服）
+		視点：主人公
+		------------------------------*/
+
+		/*-------------------------------
+		暗転スタート
+		-------------------------------*/
+		/*-------------------------------
+		演出：瞬きをして覚醒するような演出
+		-------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="う……"]	// 「	// 」
+
+		[batch]
+
+		/*-------------------------------
+		背景：新宿苑　教会（夜）
+		-------------------------------*/
+		/*-------------------------------
+		演出：背景縦長なので縦パンで上から下へゆっくり表示
+		-------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="bg_44c" time="NIGHT" count="BG_SP_SLOW"]		/* bg44　　夜　　　　教会　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]/* 演出用 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ゆっくり目を開いて、瞬きをする。"]
+
+		[batch]
+
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[txtwaitset count="20"]
+		[batch]
+		[ezbg_target_set side="OMOTE" target="CAME0" point_x="POS_X" point_y="500" size_z="DEF_SIZE" count="240" ptn="NO_PT"]				//背景カメラ
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（ここは……？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="仰向けになっていた身体を起こそうとするも、"]
+		[maintxt_print2 text="しびれて動けない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（なに……これ。どういうこと……？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="周囲の状況だけでも把握するために"]
+		[maintxt_print2 text="頭を動かそうとして――"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（……？　なにか、ある……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="首に、妙な圧迫感を覚えた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="それがなんなのか知りたいのに、"]
+		[maintxt_print2 text="手を持ち上げることもできない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（やだ、どうして……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="まるで、私の身体じゃないみたいだ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="それでもなんとか指を少しずつ動かし、"]
+		[maintxt_print2 text="恐る恐る首元に触れてみると。"]
+
+		[batch]
+
+		/*-------------------------------
+		演出：主人公の首輪アップ
+		-------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="incident_223" time="NOON" count="BG_SP"]	/* 事件ＣＧ ／ 　　アイテムcg_主人公の首輪　私服差分　　首輪あり　　　　*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（これ……首輪？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="無機質な冷たさに、血の気が引いていく。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（どうしてこんなものを……。"]
+		[maintxt_print2 text="　それに、ここはどこ……？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="視線を巡らせると、周囲の床には"]
+		[maintxt_print2 text="赤い花のようなものが散らばっていた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――血のように、赤い花。"]
+
+		[batch]
+
+		/*-------------------------------
+		演出：視線を巡らせてステンドグラスに焦点を当てる
+		-------------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="enbg_44c" time="NIGHT" count="BG_SP"]		/* bg44　　夜　　　　教会　　　　　　　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="300" point_y="1000" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[ezbg_target_set side="URA" target="CAME1" point_x="POS_X" point_y="1000" size_z="DEF_SIZE" count="180" ptn="GEN_PT"]				//背景カメラ
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="enbg_44c" time="NIGHT" count="BG_SP"]		/* bg44　　夜　　　　教会　　　　　　　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="300" point_y="1000" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[ezbg_target_set side="URA" target="CAME1" point_x="600" point_y="1000" size_z="DEF_SIZE" count="180" ptn="GEN_PT"]				//背景カメラ
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezbg_change3 name="enbg_44c" time="NIGHT" count="BG_SP"]		/* bg44　　夜　　　　教会　　　　　　　　　　　　　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="400" point_y="650" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]				//背景カメラ
+		[ezbg_target_set side="URA" target="CAME1" point_x="400" point_y="380" size_z="DEF_SIZE" count="180" ptn="GEN_PT"]				//背景カメラ
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="さらに頭上を振り仰ぐと、"]
+		[maintxt_print2 text="月明かりに照らされたステンドグラスが目に入る。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（ここは……教会なの？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="原因不明の身体の痺れ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="身に覚えのない首輪。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そんな恐怖を一時でも忘れさせてくれるような"]
+		[maintxt_print2 text="幻想的な美しさに、思わず目を奪われる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（このステンドグラス、どこかで……）"]
+
+		[batch]
+
+		/*-------------------------------
+		ＳＥ：ザッとノイズ音（首輪専用）　ＳＥリストに記入済み　吉田
+		-------------------------------*/
+		/*-------------------------------
+		ボイス加工：ここから冴木弓弦の台詞はボイスチェンジャー
+		-------------------------------*/
+		/*-------------------------------
+		台詞：黒幕verの冴木は優しげでゆったり喋り
+		-------------------------------*/
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+
+		[tw_center moji_01="14" gyo_01="2"]			/* センター化：文字数×行 */
+		/*------------------------------------*/
+
+		[bgm_play no="07" count="0"]		// BGM再生：07_回想 神秘的でやや怪しい
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[default_txt_print2 no1="090033" text1="どうやらお目覚めのようですね、" text2="　　　　星野市香さん" no2="090034" text4="どうやらお目覚めのようですね、" text5="星野#Name[1]さん"]
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="！！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="声は私のすぐ傍……首輪から聞こえた。"]
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+
+		[tw_center moji_01="16" gyo_01="2"]			/* センター化：文字数×行 */
+		/*------------------------------------*/
+
+		/*ボイス再生*/
+		[voice_play no="090035" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text=" 突然このような場所にお連れして、"]	// 「
+		[maintxt_print2 text="さぞや驚かれていることと思います"]	// 」
+//                      １２３４５６７８９★１２３４５６
+
+		[batch]
+
+		[tw_center moji_01="16" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090036" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text=" ですがどうしてもあなたと２人で"]	// 「
+		[maintxt_print2 text="話がしたいと思い、このような形を"]
+		[maintxt_print2 text="　　 取らせていただきました"]	// 」
+//                      １２３４５６７８９★１２３４５６
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="あなたは……誰？"]	// 「
+		[maintxt_print2 text="この首輪はあなたがやったの？"]
+		[maintxt_print2 text="どうしてこんな――"]	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+
+		[tw_center moji_01="13" gyo_01="2"]			/* センター化：文字数×行 */
+		/*------------------------------------*/
+
+		/*ボイス再生*/
+		[voice_play no="090037" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　　……その問いに、"]	// 「
+		[maintxt_print2 text="今は答えることはできません"]	// 」
+//                      １２３４５６７８９★１２３
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure8_turn1
+
+		[tw_center moji_01="17" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090038" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　　ただ、どのみちあなたは"]	// 「
+		[maintxt_print2 text="我々にたどり着くことになるでしょう"]	// 」
+//                      １２３４５６７８９★１２３４５６７
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="どういうこと……？"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+
+		[tw_center moji_01="16" gyo_01="3"]			/* センター化：文字数×行 */
+		/*------------------------------------*/
+
+		/*ボイス再生*/
+		[voice_play no="090039" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text=" あなたは選ばれた実験体なのです。"]	// 「
+		[maintxt_print2 text="　これから私は【X-Day】までの間、"]
+		[maintxt_print2 text="あなたの行動を監視させて頂きます"]	// 」
+//                      １２３４５６７８９★１２３４５６
+
+		[batch]
+
+		[tw_center moji_01="16" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090040" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="そしてあなたが自分の正義を貫いた"]	// 「
+		[maintxt_print2 text=" その時こそ……こんな形ではなく、"]
+		[maintxt_print2 text="直接お会いすることをお約束します"]	// 」
+//                      １２３４５６７８９★１２３４５６
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="……なにが目的なの？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="実験体ってなに？　私になにを……！"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+
+		[tw_center moji_01="17" gyo_01="1"]			/* センター化：文字数×行 */
+		/*------------------------------------*/
+
+		/*ボイス再生*/
+		[voice_play no="090041" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="お静かに。でないと……死にますよ？"]	// 「	// 」
+//                      １２３４５６７８９★１２３４５６７
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="っ！"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+
+		[tw_center moji_01="19" gyo_01="2"]			/* センター化：文字数×行 */
+		/*------------------------------------*/
+
+		/*ボイス再生*/
+		[voice_play no="090042" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　 あなたの首に付けさせていただいた"]	// 「
+		[maintxt_print2 text="首輪には、致死量の毒が仕込まれています"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="毒……！？"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+
+		[tw_center moji_01="19" gyo_01="3"]			/* センター化：文字数×行 */
+		/*------------------------------------*/
+
+		/*ボイス再生*/
+		[voice_play no="090043" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="ただ、現在あなたの身体を蝕んでいるのは"]	// 「
+		[maintxt_print2 text="　 遅効性の毒で致死量ではありません。"]
+		[maintxt_print2 text=" ここで死んでもらっては困りますからね"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="私を殺すのが目的じゃないと言う。"]
+		[maintxt_print2 text="でも私を動けない状態にしている。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="相手の意図が全く読めない。"]
+		[maintxt_print2 text="なにもわからない状況に、焦りだけが募る。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="それでも……私は警察官として、"]
+		[maintxt_print2 text="黙っているわけにはいかなかった。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="なぜなら、この首輪の向こうの声は"]
+		[maintxt_print2 text="【X-Day】と言った。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="決して、聞き逃してはいけない言葉だ。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="（少しでも情報を聞き出して、"]
+		[maintxt_print2 text="　報告しなきゃ……）"]
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+
+		[tw_center moji_01="19" gyo_01="2"]			/* センター化：文字数×行 */
+		/*------------------------------------*/
+
+		/*ボイス再生*/
+		[voice_play no="090044" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="尚、このことは警察に口外しないで下さい。"]	// 「
+		[maintxt_print2 text=" こちらも無暗に手をかけたくはないので"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９
+
+		[batch]
+
+		[tw_center moji_01="18" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090045" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　　あなたも……身近な人間や"]	// 「
+		[maintxt_print2 text="大切な人を失うのは、哀しいでしょう？"]	// 」
+//                      １２３４５６７８９★１２３４５６７８
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="KUBIWA"]					// ブラックアウト終了
+		[txtwaitset count="KUBIWA"]
+		[batch]
+		/*------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="っ！"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="この犯人が、私のことをどこまで"]
+		[maintxt_print2 text="知っているかはわからない。"]
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure8_turn2
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="でも、もしも私の身近な人にまで"]
+		[maintxt_print2 text="危害が及ぶようなことになったら……。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="っ私は……、あなたを許さないわ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="#Name[1] Hoshino"]
+		[maintxt_print2 text="絶対に、許さない"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　開始                     */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="130" speed="KUBIWA"]	// ブラックアウト開始
+		[txtwaitset count="KUBIWA"]
+		[batch]
+
+		[tw_center moji_01="12" gyo_01="2"]			/* センター化：文字数×行 */
+		/*------------------------------------*/
+
+		/*ボイス再生*/
+		[voice_play no="090046" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text=" ……あなたのその言葉が、"]	// 「
+		[maintxt_print2 text="嘘ではないといいのですが"]	// 」
+//                      １２３４５６７８９★１２
+
+		[batch]
+
+		[tw_center moji_01="19" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090047" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="我々は薄っぺらい正義心などに興味はない。"]	// 「
+		[maintxt_print2 text="　　 求めるのは、崇高な志なのです"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９
+
+		[batch]
+
+		[tw_center moji_01="19" gyo_01="2"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090048" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="　　 この世に満ちた悪意、曖昧な法、"]	// 「
+		[maintxt_print2 text="理想ばかりが鮮やかで、形のない正義――"]	// 」
+//                      １２３４５６７８９★１２３４５６７８９
+
+		[batch]
+
+		[tw_center moji_01="16" gyo_01="3"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090049" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="真実を知ったあなたがどう抗うのか、"]	// 「
+		[maintxt_print2 text=" 我々と共に再生を導けるのか……。"]
+		[maintxt_print2 text="　　　楽しみにしていますよ"]	// 」
+//                      １２３４５６７８９★１２３４５６
+
+		[batch]
+
+		[tw_center moji_01="10" gyo_01="2"]			/* センター化：文字数×行 */
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[default_txt_print2 no1="090050" text1="さあ、見せてください。" text2="　　星野市香さん" no2="090051" text4="さあ、見せてください。" text5="星野#Name[1]さん"]//                           １２３４５６７８９★
+
+		[batch]
+
+		[tw_center moji_01="10" gyo_01="1"]			/* センター化：文字数×行 */
+
+		/*ボイス再生*/
+		[voice_play no="090052" count="0"]
+
+		//[speaker_change name="？？？"]// 冴木 弓弦
+		[maintxt_print2 text="あなたの、正義を――"]	// 「	// 」
+//                      １２３４５６７８９★
+
+		[batch]
+
+		/*------------------------------------*/
+		/* 文字中央　終了 → 黒               */
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP_SLOW"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="0"]					// ブラックアウト終了
+		[batch]
+		/*------------------------------------*/
+		/*------------------------------
+		演出：ＯＰムービー挿入
+		------------------------------*/
+		/*----------------------------*/
+
+		// スマートフォン版追加
+		[restrict_input]	// 入力制限（開始）
+		[batch]
+
+		[sub_end count="0"]	// 各話終了処理
+		[batch]
+
+		// スマートフォン版追加
+		[txtwaitset count="105"]
+		[batch]
+		[restoff_input]	// 入力制限（解除）
+		[batch]
+
+		[movie_play name="op"]	//オープニングムービー
+		[batch]
+
+		[unlock_trophy2 no="TROPHY_02"]	// トロフィー02：プロローグをクリア
+		[batch]
+		/*----------------------------*/
+
+		/*------------------------------
+		＞プロローグ終了、共通零編へ
+		------------------------------*/
+		/*------------------------------
+		＞シーン001-zero-0001へ
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[file_change no="100" label="sure1"]
+
+	[return]
+
+
+
+
+
+
+
+
+
+
+
+
+

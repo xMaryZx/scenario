@@ -1,0 +1,1474 @@
+
+		/*------------------------------
+		【不正解の対応ワード】
+		
+		ヤナギ　アイジ　　　＞シーン006-aiji-0023a
+		オカザキ　ケイ　　　＞シーン006-aiji-0023b
+		エノモト　ミネオ　　＞シーン006-aiji-0023c
+		ササヅカ　タケル　　＞シーン006-aiji-0023d
+		シライシ　カゲユキ　＞シーン006-aiji-0023e
+		
+		モチダ　マサノブ　　＞シーン006-aiji-0023f
+		
+		サクラガワ　コトホ　＞シーン006-aiji-0023g
+		ムカイ　エリコ　　　＞シーン006-aiji-0023g
+		ヨシナリ　ヒデアキ　＞シーン006-aiji-0023g
+		サタケ　ケンゾウ　　＞シーン006-aiji-0023g
+		モリオカ　ハジメ　　＞シーン006-aiji-0023g
+		ミネギシ　セイジ　　＞シーン006-aiji-0023g
+		
+		ホシノ　カヅキ　　　＞シーン006-aiji-0023h
+		
+		オトメ　イト　　　　＞シーン006-aiji-0023i
+		オト　メイト　　　　＞シーン006-aiji-0023i
+		
+		その他　　　　　　　＞シーン006-aiji-0023j
+		
+		サエキ　ユズル　　　＞シーン006-aiji-0023k
+		
+		３回失敗した場合　　＞シーン006-aiji-0023l
+		
+		※○回以上失敗でBADとか作ったほうがよければ
+		　主人公のト書きだけで瞬間BAD作ります。
+		------------------------------*/
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure1_turn1"]
+	[/if]
+
+	*sure1_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023a
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*不正解【ヤナギ　アイジ】*/
+
+		/*----------------------------*/
+		/* 不正解判定                 */
+
+		// ▽３回間違えたら専用スレへ
+		[flag_number name="犯人名前不正解cnt" i="i"]
+		[if estimate="$i >= 3"]
+
+			[flag_set name="switch" num="0"]
+			[thread_change label="sure12"]
+			[return]
+
+		[/if]
+
+		// ▽不正解フラグ＋１
+		[flag_change name="犯人名前不正解cnt" num="1"]	// ＋１
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ターン追加                 */
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn1
+		/*----------------------------*/
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a202a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011536" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……本気で言ってるのか？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……すみません。"]	// 「
+		[maintxt_print2 text="正直、現実逃避しました"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a209a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011537" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="まあ……俺は元々お前を知っていたし、"]	// 「
+		[maintxt_print2 text="ひそかに付け狙っていたと考えれば"]
+		[maintxt_print2 text="犯行は不可能じゃないが"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="冷静に分析しないでください……！"]	// 「
+		[maintxt_print2 text="一ミリも疑ってませんから！"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a407a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011538" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……少し、傷ついた"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="う……うう……。本当にすみません"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a402a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011539" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="はあ……冷静になれ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もう一度、ちゃんと考えよう。"]
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure2
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure2_turn1"]
+	[/if]
+
+	*sure2_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023b
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*不正解【オカザキ　ケイ】*/
+
+		/*----------------------------*/
+		/* 不正解判定                 */
+
+		// ▽３回間違えたら専用スレへ
+		[flag_number name="犯人名前不正解cnt" i="i"]
+		[if estimate="$i >= 3"]
+
+			[flag_set name="switch" num="0"]
+			[thread_change label="sure12"]
+			[return]
+
+		[/if]
+
+		// ▽不正解フラグ＋１
+		[flag_change name="犯人名前不正解cnt" num="1"]	// ＋１
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ターン追加                 */
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure2_turn1
+		/*----------------------------*/
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a202a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011536" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="……本気で言ってるのか？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……０、５％くらいは……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a207a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011540" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="確かにあいつは、やたらとお前に構うし"]	// 「
+		[maintxt_print2 text="とぼけた顔して食えない奴だが……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011541" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="良くも悪くも自分に正直な人間だ。"]	// 「
+		[maintxt_print2 text="俺たちと違って警察を信用しているしな。"]
+		[maintxt_print2 text="……ほぼ間違いなくシロだと思うが"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そう……ですよね。すみません……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a402a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011539" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="はあ……冷静になれ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もう一度、ちゃんと考えよう。"]
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure3
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure3_turn1"]
+	[/if]
+
+	*sure3_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023c
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*不正解【エノモト　ミネオ】*/
+
+		/*----------------------------*/
+		/* 不正解判定                 */
+
+		// ▽３回間違えたら専用スレへ
+		[flag_number name="犯人名前不正解cnt" i="i"]
+		[if estimate="$i >= 3"]
+
+			[flag_set name="switch" num="0"]
+			[thread_change label="sure12"]
+			[return]
+
+		[/if]
+
+		// ▽不正解フラグ＋１
+		[flag_change name="犯人名前不正解cnt" num="1"]	// ＋１
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ターン追加                 */
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure3_turn1
+		/*----------------------------*/
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a202a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="………………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="………………"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a207a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011542" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……あいつはいじられやすいし、"]	// 「
+		[maintxt_print2 text="ある程度の冗談には寛容な奴だが"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011543" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="こんなときにまで"]	// 「
+		[maintxt_print2 text="ふざけるのはやめてやれ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……すみません……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a402a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011539" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="はあ……冷静になれ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もう一度、ちゃんと考えよう。"]
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure4
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure4_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure4_turn1"]
+	[/if]
+
+	*sure4_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023d
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*不正解【ササヅカ　タケル】*/
+
+		/*----------------------------*/
+		/* 不正解判定                 */
+
+		// ▽３回間違えたら専用スレへ
+		[flag_number name="犯人名前不正解cnt" i="i"]
+		[if estimate="$i >= 3"]
+
+			[flag_set name="switch" num="0"]
+			[thread_change label="sure12"]
+			[return]
+
+		[/if]
+
+		// ▽不正解フラグ＋１
+		[flag_change name="犯人名前不正解cnt" num="1"]	// ＋１
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ターン追加                 */
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure4_turn1
+		/*----------------------------*/
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a202a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011544" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……俺の知らないところで"]	// 「
+		[maintxt_print2 text="苛められたのか？　きつく叱っておくが"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……すみません。"]	// 「
+		[maintxt_print2 text="ちょっと言ってみたかっただけです"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a402a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011539" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="はあ……冷静になれ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もう一度、ちゃんと考えよう。"]
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure5
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure5_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure5_turn1"]
+	[/if]
+
+	*sure5_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023e
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*不正解【シライシ　カゲユキ】*/
+
+		/*----------------------------*/
+		/* 不正解判定                 */
+
+		// ▽３回間違えたら専用スレへ
+		[flag_number name="犯人名前不正解cnt" i="i"]
+		[if estimate="$i >= 3"]
+
+			[flag_set name="switch" num="0"]
+			[thread_change label="sure12"]
+			[return]
+
+		[/if]
+
+		// ▽不正解フラグ＋１
+		[flag_change name="犯人名前不正解cnt" num="1"]	// ＋１
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ターン追加                 */
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure5_turn1
+		/*----------------------------*/
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a209a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011545" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="疑いたくなる気持ちはわかる。"]	// 「
+		[maintxt_print2 text="あいつは平気で嘘をつくし、"]
+		[maintxt_print2 text="ただの駒だって話も本当かはわからない"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a205a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011546" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……ただ、これに関してだけは、違う。"]	// 「
+		[maintxt_print2 text="根拠は薄いが……俺の勘を信じてくれ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……いえ。"]	// 「
+		[maintxt_print2 text="違うとわかってて言いました。すみません"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a402a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011539" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="はあ……冷静になれ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もう一度、ちゃんと考えよう。"]
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure6
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure6_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure6_turn1"]
+	[/if]
+
+	*sure6_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023f
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*不正解【モチダ　マサノブ】*/
+
+		/*----------------------------*/
+		/* 不正解判定                 */
+
+		// ▽３回間違えたら専用スレへ
+		[flag_number name="犯人名前不正解cnt" i="i"]
+		[if estimate="$i >= 3"]
+
+			[flag_set name="switch" num="0"]
+			[thread_change label="sure12"]
+			[return]
+
+		[/if]
+
+		// ▽不正解フラグ＋１
+		[flag_change name="犯人名前不正解cnt" num="1"]	// ＋１
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ターン追加                 */
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure6_turn1
+		/*----------------------------*/
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a202a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011547" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="俺も最初は怪しいと思ったが……。"]	// 「
+		[maintxt_print2 text="調べてみた感じじゃ、犯人像に当てはまらない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そう……ですよね。よかった……。"]	// 「
+		[maintxt_print2 text="すみません、確信が欲しかったんです"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a402a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011539" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="はあ……冷静になれ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もう一度、ちゃんと考えよう。"]
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure7
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure7_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure7_turn1"]
+	[/if]
+
+	*sure7_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023g
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*不正解【サクラガワ　コトホ】【ムカイ　エリコ】【ヨシナリ　ヒデアキ】【サタケ　ケンゾウ】【モリオカ　ハジメ】【ミネギシ　セイジ】*/
+
+		/*----------------------------*/
+		/* 不正解判定                 */
+
+		// ▽３回間違えたら専用スレへ
+		[flag_number name="犯人名前不正解cnt" i="i"]
+		[if estimate="$i >= 3"]
+
+			[flag_set name="switch" num="0"]
+			[thread_change label="sure12"]
+			[return]
+
+		[/if]
+
+		// ▽不正解フラグ＋１
+		[flag_change name="犯人名前不正解cnt" num="1"]	// ＋１
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ターン追加                 */
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure7_turn1
+		/*----------------------------*/
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a202a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011548" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……ちゃんと考えたか？"]	// 「
+		[maintxt_print2 text="さっき話した条件に当てはまらないだろう"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="そう……ですよね"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a402a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011539" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="はあ……冷静になれ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もう一度、ちゃんと考えよう。"]
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure8
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure8_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure8_turn1"]
+	[/if]
+
+	*sure8_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023h
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*不正解【ホシノ　カヅキ】*/
+
+		/*----------------------------*/
+		/* 不正解判定                 */
+
+		// ▽３回間違えたら専用スレへ
+		[flag_number name="犯人名前不正解cnt" i="i"]
+		[if estimate="$i >= 3"]
+
+			[flag_set name="switch" num="0"]
+			[thread_change label="sure12"]
+			[return]
+
+		[/if]
+
+		// ▽不正解フラグ＋１
+		[flag_change name="犯人名前不正解cnt" num="1"]	// ＋１
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ターン追加                 */
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure8_turn1
+		/*----------------------------*/
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a202a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011536" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="……本気で言ってるのか？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="いえ、まったく本気じゃありません。"]	// 「
+		[maintxt_print2 text="いっそ絶対にありえない人間から"]
+		[maintxt_print2 text="言ってみたほうがいいのかなと……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a207a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011549" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……いくら仲が悪かったとはいえ、"]	// 「
+		[maintxt_print2 text="ここ最近で関係を修復できたんだろう？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="はい……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a209a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011550" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="なら、冗談でもやめてやれ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……すみません"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もう一度、ちゃんと考えよう。"]
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure9
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure9_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure9_turn1"]
+	[/if]
+
+	*sure9_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023i
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*不正解【オトメ　イト】【オト　メイト】*/
+
+		/*----------------------------*/
+		/* 不正解判定                 */
+
+		// ▽３回間違えたら専用スレへ
+		[flag_number name="犯人名前不正解cnt" i="i"]
+		[if estimate="$i >= 3"]
+
+			[flag_set name="switch" num="0"]
+			[thread_change label="sure12"]
+			[return]
+
+		[/if]
+
+		// ▽不正解フラグ＋１
+		[flag_change name="犯人名前不正解cnt" num="1"]	// ＋１
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ターン追加                 */
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure9_turn1
+		/*----------------------------*/
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a202a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011551" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……誰だ、それは。警察関係者か？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="元凶と言えば元凶かなと……"]	// 「
+		[maintxt_print2 text="いえ、なんでもありません。間違いました"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a402a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011539" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="はあ……冷静になれ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もう一度、ちゃんと考えよう。"]
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure10
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure10_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure10_turn1"]
+	[/if]
+
+	*sure10_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023j
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*不正解【その他】*/
+
+		/*----------------------------*/
+		/* 不正解判定                 */
+
+		// ▽３回間違えたら専用スレへ
+		[flag_number name="犯人名前不正解cnt" i="i"]
+		[if estimate="$i >= 3"]
+
+			[flag_set name="switch" num="0"]
+			[thread_change label="sure12"]
+			[return]
+
+		[/if]
+
+		// ▽不正解フラグ＋１
+		[flag_change name="犯人名前不正解cnt" num="1"]	// ＋１
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ターン追加                 */
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure10_turn1
+		/*----------------------------*/
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a202a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="………………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="………………"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="すみません、違いますね……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a402a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011539" count="0"]
+
+		[speaker_change name="柳 愛時"]// ※
+		[maintxt_print2 text="はあ……冷静になれ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="……もう一度、ちゃんと考えよう。"]
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure11
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure11_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure11_turn1"]
+	[/if]
+
+	*sure11_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023k
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*不正解【サエキ　ユズル】*/
+
+		/*----------------------------*/
+		/* 不正解判定                 */
+
+		// ▽３回間違えたら専用スレへ
+		[flag_number name="犯人名前不正解cnt" i="i"]
+		[if estimate="$i >= 3"]
+
+			[flag_set name="switch" num="0"]
+			[thread_change label="sure12"]
+			[return]
+
+		[/if]
+
+		// ▽不正解フラグ＋１
+		[flag_change name="犯人名前不正解cnt" num="1"]	// ＋１
+		/*----------------------------*/
+		/*----------------------------*/
+		/* ターン追加                 */
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure11_turn1
+		/*----------------------------*/
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a202a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011552" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="……惜しい。若干違う"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="えっ"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a200a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011553" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="もう一度、よく思い出せ"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		演出：犯人候補の演出で冴木をクローズアップ
+		　　　フリガナのとこ強調するイメージ
+		------------------------------*/
+		/*-------------------------------------*/
+		/* 回想　開始                          */
+
+		[monochro_st1 color="F_BLACK" speed="KAISOU" bgmstop="BGMSTOP_OFF" substop="SUBSTOP_ON" f_se="SE_ON1"]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[blackout_end dir1="0" dir2="0" zpos="ZPOS_FULLMAX_FORE" speed="KAISOU"]					// カラーアウト（ＭＡＸ）終了
+		[txtwaitset count="KAISOU"]
+		[batch]
+		/*-------------------------------------*/
+
+		[ezbg_change3 name="criminal_rea_6" time="NOON" count="BG_SP"]		/* 黒幕推理　冴木　弓弦　　　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="120"]
+		[batch]
+
+		/*-------------------------------------*/
+		/* 回想　終了                          */
+
+		[monochro_ed1 color="F_WHITE" speed="KAISOU" bgmstop="BGMSTOP_OFF" substop="SUBSTOP_ON"]
+
+		// ▽立ち絵・削除　※速度は"０"
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="0"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		// ▽立ち絵・表示　※速度は"０"
+
+		[monochro_ed2 speed="KAISOU"]
+		/*-------------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="……あ"]	// 「	// 」
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure12
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure12_turn0"]
+	[/if]
+
+	*sure12_turn0
+
+		/*------------------------------
+		●シーン006-aiji-0023l
+		場所：探偵事務所・屋上
+		時間：夜
+		登場人物（服装）：主人公（私服）、愛時（上着あり）
+		視点：主人公
+		------------------------------*/
+		/*【３回間違えた場合】*/
+
+		[flag_set name="犯人名前不正解cnt" num="0"]	// リセット
+
+		[ezbg_change3 name="bg_57cNO" time="LIGHT3" count="BG_SP"]		/* bg57　　夜　　　　探偵事務所＿屋上　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="aiji_a202a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011554" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="…………わざとか？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="………………"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="aiji_a209a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="011555" count="0"]
+
+		[speaker_change name="柳 愛時"]
+		[maintxt_print2 text="現実逃避したい気持ちもわかるが、"]	// 「
+		[maintxt_print2 text="もう覚悟を決めなきゃならない時だ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]//主人公info
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………はい"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="自分の心の弱さを、痛いほど思い知る。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="信じたくない気持ちが、"]
+		[maintxt_print2 text="どうしてもその名前を告げることを拒む。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="男性で、私の勤務形態を知ることができて、"]
+		[maintxt_print2 text="家族やプライベートの話を頻繁にはしない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そして――"]
+		[maintxt_print2 text="【正義】について語り合ったことがある、人。"]
+
+		[batch]
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[thread_change label="sure20"]	// 合流スレへ
+
+	[return]
+
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure20
+
+		/*------------------------------
+		【犯人入力システムへ】
+		------------------------------*/
+
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[blackout_start2 dir="F_FADE" color="F_BLACK" zpos="ZPOS_FORE3" alpha="255" speed="60"]	// ブラックアウト開始
+		[txtwaitset count="60"]
+		[batch]
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="0"]
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_FORE3" speed="0"]					// ブラックアウト終了
+		[batch]
+		/*----------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[file_change no="159" label="sure14"]
+
+	[return]
+

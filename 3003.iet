@@ -1,0 +1,696 @@
+
+/*------------------------------------------------------------------------------
+＞松井さんからのメール
+
+	シチュエーション機能を実装いたしました。
+	環境を更新することで確認できます。
+
+	シチュエーションのデータベース、サンプルスクリプトは以下のファイルになります。
+	データベース    ：    \make\database\dbSituation.cpp
+	サンプル		：    \make\script\シナリオ\サンプルプログラム\907-シチュエーション.stcm2
+
+	実行のテストはゲーム起動時のデバッグメニューから
+	松井テスト→シチュエーション
+	を選択することで可能です。
+
+	実行の際は以下の点にご注意ください。
+	・各解放のフラグがないためInitファイルに追加する必要があります。
+	・サンプルでは峰雄のソースのみが用意されているため、強制で峰雄のシチュエーションが始まります。
+	・シチュエーション名画像の8番がないため表示されません。（ダミーなので問題はございません）
+
+------------------------------------------------------------------------------*/
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+// 笹塚服装：上着なし
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure60
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure60_turn0"]
+	[/if]
+
+	*sure60_turn0
+
+		// 機能の制限
+		// パレットメニューは開けないように制限する必要があります。
+		// ※セーブ、ロード、タイトルへ戻るなどの動作があるため
+		// バックログは使用可能ですが、ログに同じ言葉が並ぶことになると思われるので
+		// 見栄えが悪くなる可能性があります。
+
+		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="1"]			// メニュー
+		//[set_restrict bit="ADV_RESTRICT_INPUT_BACKLOG" num="1"]	// バックログ
+		//[set_restrict bit="ADV_RESTRICT_INPUT_QUICK" num="1"]		// クイックセーブ、クイックロード
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+
+		///////////////////////////////////////////////
+
+		[bgm_play no="18" count="0"]		// BGM再生：18_捜査Ｂ ＡＤＶ
+
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j == 0"]	[ezbg_change3 name="bg_34c" time="LIGHT2" count="0"]		/* bg34　　夜　　　　探偵事務所前データ　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 1"]	[ezbg_change3 name="bg_15a" time="NOON" count="0"]		/* bg15　昼　　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 2"]	[ezbg_change3 name="bg_16a" time="NOON" count="0"]		/* bg16　昼　　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 3"]	[ezbg_change3 name="bg_17a" time="NOON" count="0"]		/* bg17　昼　　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 4"]	[ezbg_change3 name="bg_17c" time="LIGHT2" count="0"]		/* bg17　　夜　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 5"]	[ezbg_change3 name="bg_15c" time="LIGHT2" count="0"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[/if]
+
+		[chara_app_cm ch_name="taker_b100a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		// シチュエーション開始
+		[open_situation chara_id="3"]	// ３：笹塚尊
+
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		// スマートフォン版はメニュー画面を終了確認ウィンドウに置き換えます
+		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="0"]			// メニュー
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション１　■待ち合わせ
+=======================================================================================================================*/
+*sure1
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+
+	*sure1_turn0
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]/* 全キャラ削除 */
+		[batch]
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 1"]
+
+			[ezbg_change3 name="bg_15a" time="NOON" count="BG_SP"]		/* bg15　昼　　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="1"]
+		/*-----------------------------*/
+
+		[chara_app_cm ch_name="taker_b100a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+		[batch]
+
+		/*-----------------------------
+		ＳＥ：駆けてくる足音
+		-------------------------------*/
+		[se_play3 no="00308" count="120"]/* SE再生：足音　走り　寄る　ハイヒールの足音　　　　　　　　　　　　　　　　　　　　　 */
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[ezchara_nextstate_cm ch_name="taker_b201a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042003" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="クッ……人の顔見るなり走ってきて、"]	// 「
+		[maintxt_print2 text="すげえ勢いでしっぽ振ってんな。"]
+		[maintxt_print2 text="よしよし、こっち来い、撫でてやるから"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b222b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042004" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="なんだよ、不満か？"]	// 「
+		[maintxt_print2 text="この上なくわかりやすい愛情表現だろ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b523b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042005" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="髪？　少しくらい崩れたっていいんだよ。"]	// 「
+		[maintxt_print2 text="俺が撫でたいときに撫でて何が悪い？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b210a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042006" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="はいはい、女心な。わかったわかった。"]	// 「
+		[maintxt_print2 text="いつもよりめかしこんでるのもわかった。"]
+		[maintxt_print2 text="……でもな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b222b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042007" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="やっぱ今は撫でさせろ。"]	// 「
+		[maintxt_print2 text="そういう気分なんだよ、いいだろ"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3003" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション２　■手をつなぐ
+=======================================================================================================================*/
+*sure2
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+
+	*sure2_turn0
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]/* 全キャラ削除 */
+		[batch]
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 2"]
+
+			[ezbg_change3 name="bg_16a" time="NOON" count="BG_SP"]		/* bg16　昼　　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="2"]
+		/*-----------------------------*/
+
+		[bgm_play no="03" count="0"]		// BGM再生：03_日常Ｂ 昼
+
+		[chara_app_cm ch_name="b-taker_b102a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042008" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="はあ……、お前も懲りねえな。"]	// 「
+		[maintxt_print2 text="なんでそんなに手繋ぐのにこだわるんだよ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-taker_b117b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042009" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="はいはい、恋人繋ぎな。"]	// 「
+		[maintxt_print2 text="んなことしなくたって恋人は恋人だろ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-taker_b106a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042010" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="……別に嫌ってほどじゃねえけど、"]	// 「
+		[maintxt_print2 text="お前の手、無駄にあったかくて落ち着かねえだけ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-taker_b104b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042011" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="はあ？　今更緊張って……、"]	// 「
+		[maintxt_print2 text="わけわかんねえ。ガキじゃあるまいし"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-taker_b107a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042012" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="……とりあえず、お前が俺のこと好きで"]	// 「
+		[maintxt_print2 text="たまんないってのはよくわかった。"]
+		[maintxt_print2 text="だから黙って手は繋いどけ、バーカ"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3003" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション３　■トラブル発生（orささいな喧嘩）
+=======================================================================================================================*/
+*sure3
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+
+	*sure3_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 3"]
+
+			[ezbg_change3 name="bg_17a" time="NOON" count="BG_SP"]		/* bg17　昼　　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="3"]
+		/*-----------------------------*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[ezchara_nextstate_cm ch_name="taker_b204a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042013" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="……やっと見つけた。"]	// 「
+		[maintxt_print2 text="どこうろちょろしてんだよ、お前。"]
+		[maintxt_print2 text="さっきのとこで待ってろって言ったろ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b200b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042014" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="迷子？　……ああ、それでか。"]	// 「
+		[maintxt_print2 text="だったらせめてメールくらいしとけ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b202a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042015" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="お前のお人よしぶりは知ってる。"]	// 「
+		[maintxt_print2 text="今更そんなことで怒らねえけど、"]
+		[maintxt_print2 text="いなくなったら心配すんだろ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b201a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042016" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="おう、しっかり反省しろ。"]	// 「
+		[maintxt_print2 text="そして俺の機嫌を取れ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b222b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042017" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="……キスのひとつやふたつで済むと思うなよ？"]	// 「
+		[maintxt_print2 text="心配させた分、倍で返せよな"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3003" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション４　■タイトル未定（デート終盤、いちばん良いムード、改めての告白や内緒のキスなど）
+=======================================================================================================================*/
+*sure4
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure4_turn0"]
+	[/if]
+
+	*sure4_turn0
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]/* 全キャラ削除 */
+		[batch]
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 4"]
+
+			[ezbg_change3 name="bg_17c" time="LIGHT2" count="BG_SP"]		/* bg17　　夜　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="4"]
+		/*-----------------------------*/
+
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		[chara_app_cm ch_name="b-taker_b500b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042018" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="ん？　なんだよ、珍しく甘えてくるな。"]	// 「
+		[maintxt_print2 text="なんかあったか？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-taker_b522b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042019" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="いつもそうやって素直に甘えるなら、"]	// 「
+		[maintxt_print2 text="もっと可愛がってやるのに"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-taker_b509a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042020" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="意地悪？　バーカ、可愛くなかったら"]	// 「
+		[maintxt_print2 text="苛めたりしねえよ、つまんねえだろ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-taker_b200b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042021" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="なあ、お前さ、もっと俺に愛されてる"]	// 「
+		[maintxt_print2 text="自覚持った方がいいんじゃねえの"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-taker_b201a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042022" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="始終ベタベタされんのは勘弁だけど、"]	// 「
+		[maintxt_print2 text="こうやってデートしてるときくらい、"]
+		[maintxt_print2 text="特別扱いしてやるよ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-taker_b201b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042023" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="だから、こっち向け。……ほら"]	// 「	// 」
+
+		[batch]
+
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[blackout_start2 dir="F_FADE" color="F_WHITE" zpos="ZPOS_BACK5" alpha="255" speed="60"]	// ホワイトアウト開始
+		[txtwaitset count="60"]
+		[batch]
+		[ezchara_nextstate_cm ch_name="b-taker_b228a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+		[txtwaitset count="60"]
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_BACK5" speed="80"]					// ブラックアウト終了
+		[txtwaitset count="80"]
+		[batch]
+		/*----------------------------*/
+
+		/*-----------------------------
+		演技：冒頭にキス音
+		-------------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042024" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="…………、好きでなきゃ、"]	// 「
+		[maintxt_print2 text="こんな真似しねえよ。"]
+		[maintxt_print2 text="だから、安心して甘えろ"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3003" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション５　■また明日
+=======================================================================================================================*/
+*sure5
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure5_turn0"]
+	[/if]
+
+	*sure5_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 5"]
+
+			[ezbg_change3 name="bg_15c" time="LIGHT2" count="BG_SP"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="5"]
+		/*-----------------------------*/
+
+		/*-----------------------------
+		ＳＥ：メール着信（連続）
+		-------------------------------*/
+		[se_play2 no="00142" count="60"]/* SE再生：着信音Ｄ（バイブ：ブー×３）　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[ezchara_nextstate_cm ch_name="taker_b221b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042025" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="ちっ……さっきからうるせえな。"]	// 「
+		[maintxt_print2 text="電源落としとくか"]	// 」
+
+		[batch]
+
+		/*-----------------------------
+		ＳＥ：携帯の電源ＯＦＦ音
+		-------------------------------*/
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[bgm_play no="10" count="0"]		// BGM再生：10_恋愛Ａ 安らぎ
+
+		[ezchara_nextstate_cm ch_name="taker_b500b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042026" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="あ？　別にたいしたことじゃねえよ。"]	// 「
+		[maintxt_print2 text="お前の弟にメールしといただけ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b522b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042027" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="【お前の大好きな姉ちゃんは頂いた。"]	// 「
+		[maintxt_print2 text="間違いなく朝帰りになるから、"]
+		[maintxt_print2 text="歯磨いてさっさと寝とけ】ってな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b210a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042028" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="すげえ勢いで返信きてたけど、"]	// 「
+		[maintxt_print2 text="ま、気にすんな。スルーしとけ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b201b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042029" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="まさかここまで来て、"]	// 「
+		[maintxt_print2 text="帰るとか言わねえよな？"]
+		[maintxt_print2 text="……言わせねえけど"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="taker_b201a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="042030" count="0"]
+
+		[speaker_change name="笹塚 尊"]
+		[maintxt_print2 text="今夜は、一晩中放してやらねえ。"]	// 「
+		[maintxt_print2 text="覚悟しとけ。……いいな？"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3003" label="sure60"]
+
+		[batch]
+
+		[return]
+
+

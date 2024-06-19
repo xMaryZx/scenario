@@ -1,0 +1,668 @@
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+
+	*sure1_turn0
+
+		/*------------------------------
+		●シーンbaddf-03-0001
+		場所：住宅街１
+		時間：夜
+		登場人物（服装）：主人公（私服）、菅原
+		視点：主人公
+		------------------------------*/
+		/*------------------------------
+		【カラマリ】バッドエンド汎用シナリオ
+		菅原理香編
+		------------------------------*/
+		/*------------------------------
+		◆注意。菅原は７日に事件を起こして
+		ルートによっては１２日に指名手配。
+		尊、峰雄、白石ルートのみで使用予定。
+		------------------------------*/
+		/*------------------------------
+		背景：住宅街１（夜）
+		------------------------------*/
+		[scenechange_bs name="bg_20c" time="LIGHT2" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_ON"]	/* bg20　　夜　　　　住宅街１（新宿）　　　　　　　　　　　　　　　*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（このあたりも、人通りが少なくなったな……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="人気のない道を歩いていた、そのとき――。"]
+
+		[batch]
+
+		/*------------------------------
+		台詞：ぶつぶつと独り言。事件を起こしたあとなので
+		精神的に追い詰められています。
+		------------------------------*/
+		/*------------------------------
+		演出：ボイスのボリューム下げて、
+		実際のテキスト、見えないくらい文字小さくするとかできますか。
+		
+		------------------------------*/
+
+		//ＢＧＭ変更　0620
+		//[bgm_play no="15" count="0"]		// BGM再生：15_サスペンスＢ 怪しい
+		[bgm_play no="07" count="0"]		// BGM再生：07_回想 神秘的でやや怪しい
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="220147" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="#Scale[0.8]……やった……やってやったの……。"]	// 「
+		[maintxt_print2 text="ちゃんと自分の手で……私……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="220148" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="#Scale[0.8]ふ……ふふふ……これでもう……"]	// 「
+		[maintxt_print2 text="悪夢なんて見ないのよね……？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="…………？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="どこからか独り言のような声が聞こえる。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（誰もいない……よね。え、幻聴？）"]
+
+		[batch]
+
+		/*------------------------------
+		【選択肢】
+		走って帰る　　＞シーンbaddf-03-0002へ
+		耳をすませる　＞シーンbaddf-03-0003へ
+		------------------------------*/
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+
+		[flag_set name="switch" num="0"]
+
+		[menutxt_set2 num="HANYO" text="走って帰る" file="702" sure="sure2"]
+		[menutxt_set2 num="HANYO" text="耳をすませる" file="702" sure="sure3"]
+
+		[batch]
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure2
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+
+	*sure2_turn0
+
+		/*------------------------------
+		●シーンbaddf-03-0002
+		場所：住宅街１
+		時間：夜
+		登場人物（服装）：主人公（私服）、菅原
+		視点：主人公
+		------------------------------*/
+		/*選択肢【走って帰る】から*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（幽霊とか信じないけど……。"]
+		[maintxt_print2 text="　これはちょっと、怖すぎる……！）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="気のせいだと思い込むことにして、"]
+		[maintxt_print2 text="私は足早に家路を急いだ。"]
+
+		[batch]
+
+		[sub_end count="120"]	// 終了処理
+
+		/*個別ルートに戻る*/
+
+		[flag_set name="switch" num="0"]
+
+		[file_change no="502" label="sure19"]	// 白石２章
+
+	[return]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure3
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure3_turn1"]
+	[/if]
+
+	*sure3_turn0
+
+		/*------------------------------
+		●シーンbaddf-03-0003
+		場所：住宅街１
+		時間：夜
+		登場人物（服装）：主人公（私服）、菅原
+		視点：主人公
+		------------------------------*/
+		/*選択肢【耳をすませる】から*/
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="聞き間違いじゃないと判断して、"]
+		[maintxt_print2 text="私は耳をすませてみた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="220149" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="#Scale[0.8]ねえ、ゼロ。褒めてくれるでしょう？"]	// 「
+		[maintxt_print2 text="私、ちゃんとやったのよ。役目をこなしたの"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="220150" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="#Scale[0.8]ねえ……どうして答えてくれないの？"]	// 「
+		[maintxt_print2 text="ずっと待ってるのに……どうして……？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――女の人の声だ。"]
+		[maintxt_print2 text="それも、ただ事じゃない様子を感じた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（なにか事件に巻き込まれた……？）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="220151" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="#Scale[0.8]あなたの声が聴きたい……。"]	// 「
+		[maintxt_print2 text="もう、これが最後かもしれないのよ……？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="小さくて言葉は聞き取れないけれど、"]
+		[maintxt_print2 text="どうにか声の発信源を辿ってみると――。"]
+
+		[batch]
+
+		/*------------------------------
+		演出：テキストの文字小さく、ここまで
+		------------------------------*/
+		/*------------------------------
+		背景：路地裏（夜）
+		------------------------------*/
+		[scenechange_bs name="bg_45c" time="LIGHT3" color="F_BLACK" count="F_SP" dir="F_RIGHT" bgmstop="BGMSTOP_OFF"]	/* bg45　　夜　　　　路地裏　　　　　　　　　　　　　　　　　　　　*/
+
+		[chara_app_cm ch_name="rc-rikka_a107b" place="CENTER" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="220152" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="お願いよ、私の神様……。"]	// 「
+		[maintxt_print2 text="……だって私、このままじゃ……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="rc-rikka_a116b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="220153" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="私……捕まってしまうのよ！？"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="！？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="そこには地面にしゃがみ込んで"]
+		[maintxt_print2 text="頭を抱えている女性がいた。"]
+
+		[batch]
+
+		/*------------------------------
+		立ち絵：菅原ＩＮ
+		------------------------------*/
+		[chara_app_cm ch_name="rikka_a113b" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="220154" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="っ！！　誰！？"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ……すみません。"]	// 「
+		[maintxt_print2 text="その、通りがかって……大丈夫ですか？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="暗がりでもわかるほど、"]
+		[maintxt_print2 text="彼女はひどく怯えているように見えた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（……あれ？　この顔、どこかで……）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="もしかして具合でも悪いんですか？"]	// 「
+		[maintxt_print2 text="それともなにか……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="rikka_a116b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="220155" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="なに……なんなのよ、あなた！"]	// 「
+		[maintxt_print2 text="やめて！　私に近付かないで！！"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="落ち着いてください。"]	// 「
+		[maintxt_print2 text="私は……警察です"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="rikka_a115b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="220156" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="っっ！！　警……察……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="はい。ですから、"]	// 「
+		[maintxt_print2 text="なにかあったなら話を――"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="rikka_a109a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="220157" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="ふふ……あははは！！"]	// 「
+		[maintxt_print2 text="そう、そうなの！　終わりなのね！？"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え、あの……"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="rikka_a101a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="220158" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="……でも、大丈夫。"]	// 「
+		[maintxt_print2 text="あなたの声を聴くまで死ねないわ"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="220159" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="いつか終わりが来るとしても……"]	// 「
+		[maintxt_print2 text="私は最後の瞬間まで、あなたを愛するもの"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="（ダメだ、こっちの言葉が届いてない）"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="これはもう、錯乱状態と言っていいだろう。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="rikka_a111a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="220160" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="…………"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="彼女はフラフラとした足取りで立ち上がり、"]
+		[maintxt_print2 text="こちらに近づいてきた。"]
+
+		[batch]
+
+		[chara_app_cm ch_name="b-rikka_a111a" place="MD_RIGHT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ、待ってください。"]	// 「
+		[maintxt_print2 text="そんな状態で夜道を歩くのは危険です。"]
+		[maintxt_print2 text="帰るなら送って行きますから"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="増援を呼ぶべきか、根気強く"]
+		[maintxt_print2 text="話を聞き出すか悩んで――。"]
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：どん、とぶつかる音
+		------------------------------*/
+		/*------------------------------
+		演出：画面揺れ
+		------------------------------*/
+		/*------------------------------
+		ＳＥ：ザシュッとナイフで刺される音
+		------------------------------*/
+		/*------------------------------
+		演出：赤フラッシュ
+		------------------------------*/
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+
+		[se_play2 no="00182" count="20"]/* SE再生：打撃・通常Lv01・１発（ダン）　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[se_play2 no="00203" count="WAIT_NONE"]/* SE再生：突き・人体（ザッ）　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+		[ef_shake3 side="INSIDE" slevel="ATCK_Lv1"]	/* 衝撃　Ｌｖ１（通常の打撃など　　　　） */
+		[blackout_flash2 dir="F_FADE" color="F_RED" zpos="ZPOS_FORE3" alpha="255" speed="20"]	/* 赤フラッシュ */
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="え……"]	// 「	// 」
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure3_turn1
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="――突然、体当たりされた。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="それを実感すると同時に、"]
+		[maintxt_print2 text="心臓のあたりに重い熱を感じる。"]
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-rikka_a112a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
+
+		/*ボイス再生*/
+		[voice_play no="220161" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="ふふ……ふふふふふ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="どこか遠くから、笑い声が聞こえた。"]
+
+		[batch]
+
+		/*------------------------------
+		演出：画面ぼやける
+		------------------------------*/
+		/*------------------------------
+		ＳＥ：どさっと倒れる音
+		------------------------------*/
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+
+		[ezbg_change3 name="bg_BLACK" time="NOON" count="BG_SP"]	/* bg52　共通　　　　黒　　　　　　　　　　　　　　　　　　　　　　*/
+		[se_play2 no="00224" count="WAIT_NONE"]/* SE再生：倒れる　汎用　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="ナイフで心臓を刺されたのだと、"]
+		[maintxt_print2 text="気付いたときにはもう遅い。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		[speaker_change name="星野 #Name[1]"]
+		[maintxt_print2 text="あ……"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="どくどくと全身が心臓になったかのように"]
+		[maintxt_print2 text="熱くて熱くて――痛みさえ感じない。"]
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="220162" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="……ねえ、ゼロ。"]	// 「
+		[maintxt_print2 text="私はね、あなたのために捕まってもいい。"]
+		[maintxt_print2 text="あなたのために全て消されても構わない"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="220163" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="でも……どうしても、最後に一度だけ。"]	// 「
+		[maintxt_print2 text="あなたの声が聴きたいの……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="220164" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="私に残された最後の願いは、"]	// 「
+		[maintxt_print2 text="ただそれだけなのよ……"]	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
+
+		/*ボイス再生*/
+		[voice_play no="220165" count="0"]
+
+		[speaker_change name="？？？"]// 菅原 理香
+		[maintxt_print2 text="……ずっと、愛しているわ"]	// 「	// 」
+
+		[batch]
+
+		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
+
+		[maintxt_print2 text="最後まで理解不能な言葉を"]
+		[maintxt_print2 text="耳にしながら、私の意識は沈んでいった。"]
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：立ち去る足音
+		------------------------------*/
+		[se_play2 no="00306" count="100"]/* SE再生：足音　歩き　去る　ハイヒールの足音　　　　　　　　　　　　　　　　　　　　　 */
+
+		[batch]
+
+		/*　バッドエンド　菅原専用のＢＡＤ扉絵*/
+
+		/*----------------------------*/
+		// ▽画面終了処理
+		[end_graphic_bad speed="0" name="BAD_END_6"]	// ブラックアウト速度　／　バッドＥＮＤ（白石ルート１個目）
+
+		// ▽フラグ
+		[spflag_set name="badend白石_01" num="1"]		// ＢＡＤＥＮＤ　２２
+
+		// ▽トロフィー（判定）
+		[unlock_trophy2 no="TROPHY_09"]	// トロフィー09：初めてバッドエンドを見た
+		[all_end_check]					// トロフィー開放判定
+		/*----------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[calllua function="game_end"]
+
+	[return]
+

@@ -1,0 +1,656 @@
+
+/*------------------------------------------------------------------------------
+＞松井さんからのメール
+
+	シチュエーション機能を実装いたしました。
+	環境を更新することで確認できます。
+
+	シチュエーションのデータベース、サンプルスクリプトは以下のファイルになります。
+	データベース    ：    \make\database\dbSituation.cpp
+	サンプル		：    \make\script\シナリオ\サンプルプログラム\907-シチュエーション.stcm2
+
+	実行のテストはゲーム起動時のデバッグメニューから
+	松井テスト→シチュエーション
+	を選択することで可能です。
+
+	実行の際は以下の点にご注意ください。
+	・各解放のフラグがないためInitファイルに追加する必要があります。
+	・サンプルでは峰雄のソースのみが用意されているため、強制で峰雄のシチュエーションが始まります。
+	・シチュエーション名画像の8番がないため表示されません。（ダミーなので問題はございません）
+
+------------------------------------------------------------------------------*/
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+// 岡崎服装：上着なし
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure60
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure60_turn0"]
+	[/if]
+
+	*sure60_turn0
+
+		// 機能の制限
+		// パレットメニューは開けないように制限する必要があります。
+		// ※セーブ、ロード、タイトルへ戻るなどの動作があるため
+		// バックログは使用可能ですが、ログに同じ言葉が並ぶことになると思われるので
+		// 見栄えが悪くなる可能性があります。
+
+		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="1"]			// メニュー
+		//[set_restrict bit="ADV_RESTRICT_INPUT_BACKLOG" num="1"]	// バックログ
+		//[set_restrict bit="ADV_RESTRICT_INPUT_QUICK" num="1"]		// クイックセーブ、クイックロード
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+
+		///////////////////////////////////////////////
+
+		[bgm_play no="18" count="0"]		// BGM再生：18_捜査Ｂ ＡＤＶ
+
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j == 0"]	[ezbg_change3 name="bg_34c" time="LIGHT2" count="0"]		/* bg34　　夜　　　　探偵事務所前データ　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 1"]	[ezbg_change3 name="bg_15a" time="NOON" count="0"]		/* bg15　昼　　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 2"]	[ezbg_change3 name="bg_16a" time="NOON" count="0"]		/* bg16　昼　　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 3"]	[ezbg_change3 name="bg_17a" time="NOON" count="0"]		/* bg17　昼　　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 4"]	[ezbg_change3 name="bg_17c" time="LIGHT2" count="0"]		/* bg17　　夜　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 5"]	[ezbg_change3 name="bg_15c" time="LIGHT2" count="0"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[/if]
+
+		[chara_app_cm ch_name="kei_b101a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		// シチュエーション開始
+		[open_situation chara_id="1"]	// １：岡崎契
+
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		// スマートフォン版はメニュー画面を終了確認ウィンドウに置き換えます
+		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="0"]			// メニュー
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション１　■待ち合わせ
+=======================================================================================================================*/
+*sure1
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+
+	*sure1_turn0
+
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 1"]
+
+			[ezbg_change3 name="bg_15a" time="NOON" count="BG_SP"]		/* bg15　昼　　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="1"]
+		/*-----------------------------*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[ezchara_nextstate_cm ch_name="kei_b401b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022074" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="おはよう。"]	// 「
+		[maintxt_print2 text="ふふ、いつもキミの家に迎えに行くから"]
+		[maintxt_print2 text="こんな風に待ち合わせするの新鮮だね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022075" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="ん？　そんなに待ってないよ。"]	// 「
+		[maintxt_print2 text="オレが早く来すぎちゃっただけ。"]
+		[maintxt_print2 text="……なんだか、待ちきれなくて"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b110a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022076" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="待ってる間ね、ぼーっと空眺めてたんだ。"]	// 「
+		[maintxt_print2 text="青空ってこんなにきれいなんだー、とか"]
+		[maintxt_print2 text="もう少しでキミに会えるんだ、とか……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b113b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022077" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="そんなこと考えてるだけで、無性に嬉しくて。"]	// 「
+		[maintxt_print2 text="……で、キミに会えて、もっと嬉しくなった"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b220a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022078" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="ちょっと大げさだけど、"]	// 「
+		[maintxt_print2 text="生きててよかった、なんて思っちゃったよ。"]
+		[maintxt_print2 text="……うん、今日もキミに会えて嬉しい"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3001" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション２　■手をつなぐ
+=======================================================================================================================*/
+*sure2
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+
+	*sure2_turn0
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]/* 全キャラ削除 */
+		[batch]
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 2"]
+
+			[ezbg_change3 name="bg_16a" time="NOON" count="BG_SP"]		/* bg16　昼　　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="2"]
+		/*-----------------------------*/
+
+		[bgm_play no="03" count="0"]		// BGM再生：03_日常Ｂ 昼
+
+		[chara_app_cm ch_name="b-kei_b201a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022079" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="……え、なんで嬉しそうなのかって？"]	// 「
+		[maintxt_print2 text="だって、今日はキミから手を繋いでくれたから"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kei_b206a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022080" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="無意識だったの？"]	// 「
+		[maintxt_print2 text="いつもオレが勝手に引っ張ることが多いから"]
+		[maintxt_print2 text="珍しくてびっくりしちゃった"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kei_b212a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022081" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="ふふ、嬉しいに決まってるじゃない。"]	// 「
+		[maintxt_print2 text="最初の頃はこうして手を繋ぐのも"]
+		[maintxt_print2 text="キミは恐る恐るで緊張してたのにさ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kei_b206a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022082" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="今は……オレに全部預けてくれてる。"]	// 「
+		[maintxt_print2 text="キミはオレだけのものなんだなあ、って"]
+		[maintxt_print2 text="実感できて、すごく幸せだよ"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3001" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション３　■トラブル発生（orささいな喧嘩）
+=======================================================================================================================*/
+*sure3
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+
+	*sure3_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 3"]
+
+			[ezbg_change3 name="bg_17a" time="NOON" count="BG_SP"]		/* bg17　昼　　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="3"]
+		/*-----------------------------*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[ezchara_nextstate_cm ch_name="kei_b402a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022083" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="……キミって、やっぱり頑固だと思う。"]	// 「
+		[maintxt_print2 text="こんなに謝ってるのに許してくれないし"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b203a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022084" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="だから、ごめんってば。っていうか……"]	// 「
+		[maintxt_print2 text="悪い意味で言ったつもり、まったくないんだ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b209a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022085" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="キミがケーキを食べてる顔がすごーく可愛くて、"]	// 「
+		[maintxt_print2 text="それ見てたら自然と【ちょっと太ったね】って"]
+		[maintxt_print2 text="言っちゃっただけで……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b207b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022086" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="……はい、ごめんなさい。反省してます。"]	// 「
+		[maintxt_print2 text="でもキミは痩せすぎだから、ちょっとくらい"]
+		[maintxt_print2 text="太ったほうがもっと可愛いよって意味で……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b202b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022087" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="ええ、なんでさらに怒るの？"]	// 「
+		[maintxt_print2 text="オレはどんなキミも大好きなのに……。"]
+		[maintxt_print2 text="……ああもう、ごめんってばー……"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3001" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション４　■タイトル未定（デート終盤、いちばん良いムード、改めての告白や内緒のキスなど）
+=======================================================================================================================*/
+*sure4
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure4_turn0"]
+	[/if]
+
+	*sure4_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 4"]
+
+			[ezbg_change3 name="bg_17c" time="LIGHT2" count="BG_SP"]		/* bg17　　夜　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="4"]
+		/*-----------------------------*/
+
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		[ezchara_nextstate_cm ch_name="kei_b203a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022088" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="夕飯もおなかいっぱい食べたし、"]	// 「
+		[maintxt_print2 text="デザートは……あ、今日はやめとく？"]
+		[maintxt_print2 text="うーん、まだ根に持ってるね……"]	// 」
+
+		[batch]
+
+		[ezchara_del_cm ch_name="kei_b" dir="TO_CENTER" speed="DEL_SP" delay="NO_DELAY"]/*キャラ削除*/
+
+		[chara_app_cm ch_name="b-kei_b101b" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022089" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="じゃあ……はい、これ。"]	// 「
+		[maintxt_print2 text="なにって、キミへのプレゼントだよ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kei_b105b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022090" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="うん、遠慮しないで開けてみて。"]	// 「
+		[maintxt_print2 text="……そう。このブレスレット、"]
+		[maintxt_print2 text="さっきの店でじーっと見てたでしょ？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kei_b113b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022091" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="キミにイメージぴったりで素敵だなって"]	// 「
+		[maintxt_print2 text="思ったのに、結局買わなかったじゃない。"]
+		[maintxt_print2 text="だから今日の御礼に、オレから贈らせて"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kei_b110a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022092" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="お返しなんていらないよ。"]	// 「
+		[maintxt_print2 text="だって、オレは今日たくさんもらったから"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kei_b105b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022093" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="キミとこうして一緒にいられる時間が、"]	// 「
+		[maintxt_print2 text="オレにとっていちばんのプレゼント。"]
+		[maintxt_print2 text="……ふふ、世界一の贅沢者だよね"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3001" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション５　■また明日
+=======================================================================================================================*/
+*sure5
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure5_turn0"]
+	[/if]
+
+	*sure5_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 5"]
+
+			[ezbg_change3 name="bg_15c" time="LIGHT2" count="BG_SP"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="5"]
+		/*-----------------------------*/
+
+		[bgm_play no="10" count="0"]		// BGM再生：10_恋愛Ａ 安らぎ
+
+		[ezchara_nextstate_cm ch_name="kei_b406b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022094" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="もうお別れかあ……寂しいな。"]	// 「
+		[maintxt_print2 text="……うん、もっと一緒にいたい"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b201a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		// １行目の『２４時間なんて全然足りない。』をカット吉田0526
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022095" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="……ね、やっぱり一緒に暮らさない？"]	//「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b206a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022096" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="だって四六時中キミのこと守れるし、"]	// 「
+		[maintxt_print2 text="オレはキミを独り占めできるし、"]
+		[maintxt_print2 text="いいことずくめじゃない"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b207b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022097" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="えー……ダメ？"]	// 「
+		[maintxt_print2 text="あ、いっそのこと弟君も一緒に住むとか。"]
+		[maintxt_print2 text="いちゃいちゃするのは我慢できないけど"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b101b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022098" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="うん。前向きに検討してね？"]	// 「
+		[maintxt_print2 text="まあ……とりあえず、今日のところは"]
+		[maintxt_print2 text="送り狼にならないでおいてあげる"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b107b" zpos="ZPOS_BACK3" delay="NO_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022099" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="でも、毎回紳士にはできないよ。"]	// 「
+		[maintxt_print2 text="キミが足りなくて我慢できなくなったら"]
+		[maintxt_print2 text="嫌だって言ってもさらっちゃうから"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kei_b105b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="022100" count="0"]
+
+		[speaker_change name="岡崎 契"]
+		[maintxt_print2 text="じゃあ……またね。"]	// 「
+		[maintxt_print2 text="今日も、それから明日も。"]
+		[maintxt_print2 text="オレはずっとキミのことが大好きだよ"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3001" label="sure60"]
+
+		[batch]
+
+		[return]
+
+

@@ -1,0 +1,736 @@
+
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure1
+
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+	[if estimate="$i==1"][calllua function="stcm2_goto" label="sure1_turn1"]
+	[/if]
+	[if estimate="$i==2"][calllua function="stcm2_goto" label="sure1_turn2"]
+	[/if]
+	[if estimate="$i==3"][calllua function="stcm2_goto" label="sure1_turn3"]
+	[/if]
+	[if estimate="$i==4"][calllua function="stcm2_goto" label="sure1_turn4"]
+	[/if]
+
+	*sure1_turn0
+
+		/*------------------------------
+		●シーンAS-takeru-0001
+		場所：尊の部屋
+		時間：夜
+		登場人物（服装）：主人公、尊
+		視点：尊
+		------------------------------*/
+		/*------------------------------
+		【カラマリ】ショートストーリー
+		笹塚尊編
+		------------------------------*/
+		/*------------------------------
+		演出：すべてノベルモードです。
+		※ボイスはありません。
+		------------------------------*/
+		/*----------------------------*/
+		/* 制限                       */
+		// スマートフォン版はメニュー画面を終了確認ウィンドウに置き換えます
+//		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="1"]			// メニュー
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+		/*----------------------------*/
+		/*------------------------------
+		背景：尊の部屋（夜）
+		------------------------------*/
+		/*----------------------------*/
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+		[ezbg_change3 name="bg_37c" time="LIGHT" count="0"]		/* bg37　　夜　　　　尊の部屋　　　　　　　　　　　　　　　　　　　*/
+		[batch]
+		[txtwaitset count="40"]
+		[batch]
+		[novel_st shadow="0" outline="0"]		// ノベルスタート
+		[ezfg_change2 name="fg_novel" count="BG_SP"]	/* 前景チェンジ　ノベル黒フィルター */
+		/*----------------------------*/
+
+		[maintxt_print text="「……笹塚さん」"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：キーボードをカタカタする音
+		※あれ？ノベルってＳＥ可能でしたっけ
+		　難しければスルーしてください
+		------------------------------*/
+		[se_play2_n no="00243" count="WAIT_NONE"]/* SE再生：キーボード１　短め　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[maintxt_print text="「…………」"]	// ノベル
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[maintxt_print text="「笹塚さん。少しだけ、聞いてください」"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：キーボードをカタカタする音
+		------------------------------*/
+		[se_play2_n no="00243" count="WAIT_NONE"]/* SE再生：キーボード１　短め　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[maintxt_print text="「見てわかるだろ。忙しい」"]	// ノベル
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[maintxt_print text="「それはわかってます。"]	// ノベル
+		[maintxt_print text="　でも、明日も朝早いですよね？"]	// ノベル
+		[maintxt_print text="　久々に会えたんですから、ちょっとくらい……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「じゃ、手短に。３分な」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「…………」"]	// ノベル
+
+		[batch]
+
+		/*------------------------------
+		ＳＥ：キーボードをカタカタする音
+		------------------------------*/
+		[se_play2_n no="00243" count="WAIT_NONE"]/* SE再生：キーボード１　短め　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 */
+
+		[maintxt_print text="ＰＣ画面から目を逸らさないまま告げると、"]	// ノベル
+		[maintxt_print text="背後の#Name[1]が不満顔になるのが"]	// ノベル
+		[maintxt_print text="ありありと伝わってくる。"]	// ノベル
+
+		[batch]
+
+		[stop_se time="SE_SP" wait="0"]	/* SE再生を止める */
+
+		[maintxt_print text="――警察に復職してからというもの、"]	// ノベル
+		[maintxt_print text="仕事量に際限がなくなった。"]	// ノベル
+
+		[batch]
+
+		[bgm_play no="05" count="0"]		// BGM再生：05_日常Ｄ 真面目
+
+		[maintxt_print text="今は毎日本庁に詰めているが、"]	// ノベル
+		[maintxt_print text="たまに自宅に帰ってきても"]	// ノベル
+		[maintxt_print text="ＰＣから目を離すことはできない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="システムの不備やサイバー攻撃への対処等、"]	// ノベル
+		[maintxt_print text="流動的に変化するネットワークの世界では、"]	// ノベル
+		[maintxt_print text="一瞬の油断が命取りになることがある。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="そんな生活を続けて、恋人であるこいつが"]	// ノベル
+		[maintxt_print text="不満を持つのも当然と言えば当然だった。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……で、なんだよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="さっきまで俺の名前を連呼していた#Name[1]が"]	// ノベル
+		[maintxt_print text="わかりやすく押し黙ったので、ため息をつきながら"]	// ノベル
+		[maintxt_print text="椅子を回して振り返る。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="……案の定、そこにはムッとした顔で"]	// ノベル
+		[maintxt_print text="俺を睨みつける#Name[1]の姿があった。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（相変わらず、苛めたくなる顔してんな）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="状況は無視して、そんなことを思った。"]	// ノベル
+		[maintxt_print text="こいつの怒った顔は嫌いじゃない。"]	// ノベル
+		[maintxt_print text="すました顔なんかより、よっぽど魅力がある。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（どうせ、寂しいって話だろうけど）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="X-Day事件に関する目前の問題が"]	// ノベル
+		[maintxt_print text="一時的な解決を見せたことで、"]	// ノベル
+		[maintxt_print text="俺たちの生活リズムは大きく変わった。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="前までは、メール一通で呼び出せば会えた。"]	// ノベル
+		[maintxt_print text="事件を追っている間は常にこいつが隣にいた。"]	// ノベル
+		[maintxt_print text="短くても濃い時間を共に過ごした自覚はあるから、"]	// ノベル
+		[maintxt_print text="俺としても最初は慣れなかったのが本音だ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="こうして顔を合わせること自体、久々だった。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「だからって、文句言っても始まらねえだろ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「え？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="つい口に出していた言葉に、"]	// ノベル
+		[maintxt_print text="#Name[1]が怪訝な顔で反応する。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「もっと会える時間増やせって話じゃねえの」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……違います。もちろん寂しいですけど、"]	// ノベル
+		[maintxt_print text="　アドニスの残党はまだ全国にいますし、"]	// ノベル
+		[maintxt_print text="　笹塚さんの能力が必要とされているのは"]	// ノベル
+		[maintxt_print text="　ちゃんと理解してます」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「…………」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="キッパリと告げられて、わずかに自省した。"]	// ノベル
+		[maintxt_print text="確かに、こいつは意外と寂しがり屋だし"]	// ノベル
+		[maintxt_print text="激情家な面はあるが、相手に対してそれを"]	// ノベル
+		[maintxt_print text="押しつけるような真似はしない。分別がつく。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="他人のことを考えすぎたり、意地を張って"]	// ノベル
+		[maintxt_print text="ギリギリまで我慢するのは短所とも言えるが、"]	// ノベル
+		[maintxt_print text="そういうところが気に入ってもいる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（最近は頑なに寂しいって言わねえのも、"]	// ノベル
+		[maintxt_print text="　それはそれでムカつくけど）"]	// ノベル
+
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[maintxt_print text="「私が話したいのは、そういうことじゃなくて……。"]	// ノベル
+		[maintxt_print text="　笹塚さん。最近、１日の平均睡眠時間は"]	// ノベル
+		[maintxt_print text="　何時間くらいですか？」"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn1
+
+		[maintxt_print text="「は？」"]	// ノベル
+
+		[batch]
+
+		[bgm_play no="06" count="0"]		// BGM再生：06_日常Ｅ コミカル
+
+		[maintxt_print text="「それから、さっき部屋を片付けましたけど、"]	// ノベル
+		[maintxt_print text="　またピザの出前を取りましたよね。"]	// ノベル
+		[maintxt_print text="　それもＬサイズを２枚……！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="……いきなり何を言い出すんだこいつは。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「意味わかんねえんだけど」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「笹塚さんのただれた生活が心配なんです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ただれたとか言うな。"]	// ノベル
+		[maintxt_print text="　だから、お前は俺の母親かっての」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「母親じゃありません。恋人です」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……最低限必要な睡眠は取ってる。"]	// ノベル
+		[maintxt_print text="　ピザは食いたかったから頼んだ。"]	// ノベル
+		[maintxt_print text="　それとも飲まず食わずで仕事しろって？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「そうじゃなくて……！"]	// ノベル
+		[maintxt_print text="　このままじゃ、本当に病気になりますよ。"]	// ノベル
+		[maintxt_print text="　前みたいに、呼んでくれればいつでも"]	// ノベル
+		[maintxt_print text="　栄養つくもの作りますし……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「今の状況じゃ、いつ帰れるかギリギリまで"]	// ノベル
+		[maintxt_print text="　わかんねえし、お前だって仕事があるだろ。"]	// ノベル
+		[maintxt_print text="　連絡してお前が来るまで待つとか、非効率。"]	// ノベル
+		[maintxt_print text="　健康とか気遣ってる余裕ねえ。以上」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="思ったことを素直に口にすれば、"]	// ノベル
+		[maintxt_print text="#Name[1]はあからさまに傷ついた顔をした。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="……間違ったことは言ってない、が。"]	// ノベル
+		[maintxt_print text="べつにそんな顔をさせたいわけじゃない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……今まで、このやり方で問題なかった。"]	// ノベル
+		[maintxt_print text="　お前が心配すんのもわからなくねえけど、"]	// ノベル
+		[maintxt_print text="　気にすんなとしか言えねえから」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……余計なお世話ってこと、ですよね」"]	// ノベル
+
+		[batch]
+
+		[bgm_stop count="FD_NOML"]	// BGM停止：通常
+
+		[maintxt_print text="「……そこまで言ってねえだろ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="極端な言い方をすればそうだが、"]	// ノベル
+		[maintxt_print text="実際のところ、世話を焼かれるのを"]	// ノベル
+		[maintxt_print text="本気で嫌がっているわけじゃない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="むしろ、こいつが俺のために甲斐甲斐しく"]	// ノベル
+		[maintxt_print text="料理を作ったり、嫁気取りで説教して"]	// ノベル
+		[maintxt_print text="くるような状況を楽しんでもいた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="食生活を改善しろと何度言われても、"]	// ノベル
+		[maintxt_print text="努力するつもりもなかった。なぜかって、"]	// ノベル
+		[maintxt_print text="こいつがいるなら必要ないと思ったからだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="……毎日、仕事帰りに料理を作りにくる"]	// ノベル
+		[maintxt_print text="こいつのことを待つ時間が、好きだった。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――本庁勤めになる前は、だが。"]	// ノベル
+		[maintxt_print text="さすがに今は、状況が許してくれない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（こういうのも、言ってやりゃいいんだろうけど）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……私は、笹塚さんが心配です。"]	// ノベル
+		[maintxt_print text="　でも、それ以上に……役に立ちたいんです。"]	// ノベル
+		[maintxt_print text="　ちゃんと支えられてるのかな、って……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「はあ……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="つまり、また勝手に不安になって"]	// ノベル
+		[maintxt_print text="小さな頭でぐるぐると悩んでいたんだろう。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="俺の深いため息をどう受け取ったのか、"]	// ノベル
+		[maintxt_print text="#Name[1]はさらに顔を俯かせてしまう。"]	// ノベル
+
+		[batch]
+
+		[bgm_play no="10" count="0"]		// BGM再生：10_恋愛Ａ 安らぎ
+
+		[maintxt_print text="「……#Name[1]。こっち来い」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="静かに告げると、ぱっと顔をあげた彼女が"]	// ノベル
+		[maintxt_print text="いそいそと俺のそばまで近づいてくる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="その姿に苦笑しながら、"]	// ノベル
+		[maintxt_print text="俺は#Name[1]の頬に手を伸ばして――"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「バーカ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="思いきり、つねってやった。"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn2
+
+		[maintxt_print text="「い、痛……っ！　何するんですか！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――告白のときからそうだった。"]	// ノベル
+		[maintxt_print text="こいつは、自分を過小評価するきらいがある。"]	// ノベル
+		[maintxt_print text="俺にどれだけ想われているかを理解していない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="まあ、言葉にしない自分も悪いのだろうが。"]	// ノベル
+		[maintxt_print text="それにしたって鈍感すぎるこいつも悪い。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「寂しいなら、ちゃんと言え。"]	// ノベル
+		[maintxt_print text="　お前を甘やかす時間くらい作ってやる」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="結局、ここまでの話を統括すれば、"]	// ノベル
+		[maintxt_print text="こいつが感じている不安はそれに尽きる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="直接的に言えば負担になるだとか、"]	// ノベル
+		[maintxt_print text="嫌がられるんじゃないか、とか。"]	// ノベル
+		[maintxt_print text="そういう余計なことを考えて遠回しに"]	// ノベル
+		[maintxt_print text="切り出してきたのは間違いない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……ごめんなさい」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「何に対して謝ってんだよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「笹塚さんが大変なの、知ってるのに。"]	// ノベル
+		[maintxt_print text="　私ばっかり我侭で……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……あのな」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="呆れを隠せずにため息をつくと、"]	// ノベル
+		[maintxt_print text="俺は椅子に座ったまま#Name[1]の"]	// ノベル
+		[maintxt_print text="腕を掴んで身体を引き寄せた。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「よく聞け。お前のワガママ程度で、"]	// ノベル
+		[maintxt_print text="　俺の負担になるわけねえだろ。"]	// ノベル
+		[maintxt_print text="　……むしろ、逆だ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="また俯こうとする顎を掴んで、"]	// ノベル
+		[maintxt_print text="無理やり上向かせる。"]	// ノベル
+		[maintxt_print text="――そして、間髪入れずにキスをした。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ん……っ！？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="噛みつくように唇を貪って、すぐ離す。"]	// ノベル
+		[maintxt_print text="それから、眼前で揺れる瞳を覗き込んだ。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……正直、仕事でストレス溜まってるし、"]	// ノベル
+		[maintxt_print text="　お前に長いこと会えないのもイラついてる。"]	// ノベル
+		[maintxt_print text="　他の男に尻尾振ってねえか気が気じゃねえし」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「え……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「だからってな、俺は不安になったりしねえ。"]	// ノベル
+		[maintxt_print text="　そんなの、お前の顔見れば吹っ飛ぶんだよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……！！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="驚きに目を瞠った顔が、赤く染まる。"]	// ノベル
+		[maintxt_print text="その光景にほくそ笑んでから、俺は再び"]	// ノベル
+		[maintxt_print text="#Name[1]の頭を引き寄せてキスをした。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……っ、ま……っ、笹塚、さん……！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――さっきよりも、深く長いキスを。"]	// ノベル
+		[maintxt_print text="余計なことを考える頭を俺だけで埋め尽くして、"]	// ノベル
+		[maintxt_print text="不安も情けなさも、全部吹っ飛ばせるように。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……満足したか？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="キスで誤魔化すなんて、酷い男だと詰られそうだ。"]	// ノベル
+		[maintxt_print text="だが、俺は言葉にするよりこっちのほうがいい。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「っ……まだ、してません。"]	// ノベル
+		[maintxt_print text="　満足なんて、できないです」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="なのに、この貪欲な女はそんなことを口にする。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「へえ？　誘うの上手くなったな、ポチ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「えっ！？　あ、そ、そういう意味じゃなくて」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「？　それ以外の何があんだよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「あの……私に会えば元気になるってことは、"]	// ノベル
+		[maintxt_print text="　笹塚さんも寂しかったってことですよね？」"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn3
+
+		[maintxt_print text="「…………、」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――女って生き物は、面倒だ。"]	// ノベル
+		[maintxt_print text="さっきの話で察せただろうに、"]	// ノベル
+		[maintxt_print text="わざわざ言葉にすることを求める。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「ノーコメント」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「またそれ……今日はダメです。"]	// ノベル
+		[maintxt_print text="　さっき、笹塚さんも言いましたよね？"]	// ノベル
+		[maintxt_print text="　寂しいならちゃんと言葉にしろって」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「揚げ足とんな」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「フェアじゃないですよ。言ってください」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「なんでそんなに聞きたいわけ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……明日からまた会えない時間が続いても、"]	// ノベル
+		[maintxt_print text="　それだけで、頑張れる気がします」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「…………」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="出会った当初は俺の言動にいちいちビクついて、"]	// ノベル
+		[maintxt_print text="自分の意見も言いあぐねていたこいつが。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="こんな風に、俺の目をまっすぐに見て"]	// ノベル
+		[maintxt_print text="どこまでも健気に貪欲に求めてきて――"]	// ノベル
+		[maintxt_print text="……可愛くないわけが、ない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="（厄介なのにハマっちまったな）"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="心の中で悪態をつきながら、"]	// ノベル
+		[maintxt_print text="それでも妙な昂揚感が胸を満たす。"]	// ノベル
+		[maintxt_print text="たまには素直に口にしてやってもいいと、"]	// ノベル
+		[maintxt_print text="そう思ってしまうほどの。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……寂しかった」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「…………！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「お前に会う時間作るために死ぬ気で仕事したし"]	// ノベル
+		[maintxt_print text="　寝食忘れて没頭してんのも半分はお前のためだ。"]	// ノベル
+		[maintxt_print text="　それくらいわかれ鈍感バカ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「…………え！？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……なんで驚いてんだよ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「え、だって、そんなこと……"]	// ノベル
+		[maintxt_print text="　言ってもらえるとは思ってなくて」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「言わせた張本人が、いい度胸だな」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="にやりと笑って立ち上がると、"]	// ノベル
+		[maintxt_print text="俺は#Name[1]の背を押して"]	// ノベル
+		[maintxt_print text="なかば強引にベッドまで連れて行く。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……っ、あの、仕事いいんですか？"]	// ノベル
+		[maintxt_print text="　話は３分で済ませろって……」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「『話』、はな。もうおしゃべりは十分だろ。"]	// ノベル
+		[maintxt_print text="　今度は俺の能率あげるために協力しろ」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「……！」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="実際のところ、仕事を放置するわけには"]	// ノベル
+		[maintxt_print text="いかないのだが、後でいくらでも巻き返せる。"]	// ノベル
+		[maintxt_print text="なにより、ここまで煽られて平然と仕事に"]	// ノベル
+		[maintxt_print text="戻れるほど、人間ができてない。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="「お前が誘ったんだからな。"]	// ノベル
+		[maintxt_print text="　せいぜい、甲斐甲斐しく世話しろよ？」"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="何かを反論しかけた#Name[1]の唇を"]	// ノベル
+		[maintxt_print text="また無理やり塞いで、身体をベッドに沈ませる。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="言葉で伝えるのは得意じゃない。"]	// ノベル
+		[maintxt_print text="だから、いつまでもわかってないこいつには"]	// ノベル
+		[maintxt_print text="行動で示したほうが早い。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="――この俺を夢中にさせてるのが"]	// ノベル
+		[maintxt_print text="どこのどいつかキッチリわからせるために。"]	// ノベル
+
+		[batch]
+
+		[maintxt_print text="一晩かけて、教え込んでやることにした。"]	// ノベル
+
+		[flag_change name="switch" num="1"]
+
+		[return]
+
+	*sure1_turn4
+
+		/*----------------------------*/
+		/* 終了処理                   */
+
+		[ezfg_del count="FG_DEL"]	/* 前景　削除 */
+		[novel_next_page]	// テキストクリア
+		[batch]
+		[novel_end]		// ノベルエンド
+		[batch]
+		[txtwaitset count="60"]
+		[batch]
+		[sub_end count="120"]	// 終了処理
+		[txtwaitset count="60"]
+		[batch]
+		/*----------------------------*/
+
+		/*------------------------------
+		終わり＞ＳＳ選択画面に戻ります
+		------------------------------*/
+
+		[flag_set name="switch" num="0"]
+
+		[calllua function="game_end"]
+
+	[return]
+

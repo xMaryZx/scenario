@@ -1,0 +1,811 @@
+
+/*------------------------------------------------------------------------------
+＞松井さんからのメール
+
+	シチュエーション機能を実装いたしました。
+	環境を更新することで確認できます。
+
+	シチュエーションのデータベース、サンプルスクリプトは以下のファイルになります。
+	データベース    ：    \make\database\dbSituation.cpp
+	サンプル		：    \make\script\シナリオ\サンプルプログラム\907-シチュエーション.stcm2
+
+	実行のテストはゲーム起動時のデバッグメニューから
+	松井テスト→シチュエーション
+	を選択することで可能です。
+
+	実行の際は以下の点にご注意ください。
+	・各解放のフラグがないためInitファイルに追加する必要があります。
+	・サンプルでは峰雄のソースのみが用意されているため、強制で峰雄のシチュエーションが始まります。
+	・シチュエーション名画像の8番がないため表示されません。（ダミーなので問題はございません）
+
+------------------------------------------------------------------------------*/
+
+//#include "AdvInclude.h"
+//#include "DF.h"
+
+[var name="i" data="0"]
+[var name="j" data="0"]
+
+// 白石服装：コートあり
+
+/*=======================================================================================================================
+
+=======================================================================================================================*/
+*sure60
+
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure60_turn0"]
+	[/if]
+
+	*sure60_turn0
+
+		// 機能の制限
+		// パレットメニューは開けないように制限する必要があります。
+		// ※セーブ、ロード、タイトルへ戻るなどの動作があるため
+		// バックログは使用可能ですが、ログに同じ言葉が並ぶことになると思われるので
+		// 見栄えが悪くなる可能性があります。
+
+		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="1"]			// メニュー
+		//[set_restrict bit="ADV_RESTRICT_INPUT_BACKLOG" num="1"]	// バックログ
+		//[set_restrict bit="ADV_RESTRICT_INPUT_QUICK" num="1"]		// クイックセーブ、クイックロード
+		[set_restrict bit="ADV_INFO_RESTRICT_CSTM_MATERIAL" num="1"]	// マテリアルズ封鎖
+
+		///////////////////////////////////////////////
+
+		[bgm_play no="18" count="0"]		// BGM再生：18_捜査Ｂ ＡＤＶ
+
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j == 0"]	[ezbg_change3 name="bg_34c" time="LIGHT2" count="0"]		/* bg34　　夜　　　　探偵事務所前データ　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 1"]	[ezbg_change3 name="bg_15a" time="NOON" count="0"]		/* bg15　昼　　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 2"]	[ezbg_change3 name="bg_16a" time="NOON" count="0"]		/* bg16　昼　　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 3"]	[ezbg_change3 name="bg_17a" time="NOON" count="0"]		/* bg17　昼　　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 4"]	[ezbg_change3 name="bg_17c" time="LIGHT2" count="0"]		/* bg17　　夜　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+		[/if]
+		[if estimate="$j == 5"]	[ezbg_change3 name="bg_15c" time="LIGHT2" count="0"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[/if]
+
+		[chara_app_cm ch_name="kage_c101a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		// シチュエーション開始
+		[open_situation chara_id="4"]	// ４：白石景之
+
+		[batch]
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		// スマートフォン版はメニュー画面を終了確認ウィンドウに置き換えます
+		[set_restrict bit="ADV_RESTRICT_INPUT_MENU" num="0"]			// メニュー
+
+		[batch]
+
+		[return]
+
+
+
+/*=======================================================================================================================
+シチュエーション１　■待ち合わせ
+=======================================================================================================================*/
+*sure1
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure1_turn0"]
+	[/if]
+
+	*sure1_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 1"]
+
+			[ezbg_change3 name="bg_15a" time="NOON" count="BG_SP"]		/* bg15　昼　　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="1"]
+		/*-----------------------------*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[ezchara_nextstate_cm ch_name="kage_c401b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052206" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="君さ、待ち合わせ場所に着いてから"]	// 「
+		[maintxt_print2 text="何度も身だしなみを整えてたね？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052207" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……なんで知ってるかって？"]	// 「
+		[maintxt_print2 text="だいぶ前から、少し離れたところで待ってたんだ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c414b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052208" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="だから君がキョロキョロしながら"]	// 「
+		[maintxt_print2 text="俺を探してたのや、いないとわかるなり"]
+		[maintxt_print2 text="身だしなみを整えたのも見てたよ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052209" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="ふふ、可愛かったなあ。"]	// 「
+		[maintxt_print2 text="……ん？　どうして怒るの？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052210" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="あ、待たせちゃったのは悪かったよ。ごめんね。"]	// 「
+		[maintxt_print2 text="でも君が俺のことを考えてくれてるんだなーって"]
+		[maintxt_print2 text="思ったら、嬉しくて……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052211" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="ごめんってば。機嫌直して？"]	// 「
+		[maintxt_print2 text="俺だって、君のことで頭がいっぱいだったんだよ"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3004" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション２　■手をつなぐ
+=======================================================================================================================*/
+*sure2
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure2_turn0"]
+	[/if]
+
+	*sure2_turn0
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]/* 全キャラ削除 */
+		[batch]
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 2"]
+
+			[ezbg_change3 name="bg_16a" time="NOON" count="BG_SP"]		/* bg16　昼　　　　　新宿＿オフィス街　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="2"]
+		/*-----------------------------*/
+
+		[bgm_play no="03" count="0"]		// BGM再生：03_日常Ｂ 昼
+
+		[chara_app_cm ch_name="b-kage_c401a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="APP_SP" delay="NO_DELAY"]/*キャラ登場*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052212" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="ねえ、手を繋いで歩こう？"]	// 「
+		[maintxt_print2 text="あーそうじゃなくて、指開いて……こう"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kage_c416a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052213" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……え、そんなに意外かな。"]	// 「
+		[maintxt_print2 text="デートって、こういうこといっぱい"]
+		[maintxt_print2 text="するんでしょ？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kage_c407a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052214" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="榎本君の愛読書に書いてあるのを読んだときは、"]	// 「
+		[maintxt_print2 text="なんでわざわざ手を繋いで歩くんだろうなあって"]
+		[maintxt_print2 text="ちょっと不思議だったんだ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kage_c413b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052215" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="でも、こうしてれば君とはぐれることもないし、"]	// 「
+		[maintxt_print2 text="他の男も寄ってこないし、一石二鳥だね？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kage_c409a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052216" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="…………ああ、補足をひとつ。"]	// 「
+		[maintxt_print2 text="君の恥ずかしそうな顔も見れてさらにお得"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kage_c401b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052217" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="そういえばこれ、恋人繋ぎって言うんでしょ？"]	// 「
+		[maintxt_print2 text="前は知らなかったけど、あのとき自然と"]
+		[maintxt_print2 text="こう繋いでたってことは……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="b-kage_c405a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052218" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="俺と君は、いずれ恋人同士になるって"]	// 「
+		[maintxt_print2 text="ことだったのかも。……なんてね？"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3004" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション３　■トラブル発生（orささいな喧嘩）
+=======================================================================================================================*/
+*sure3
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure3_turn0"]
+	[/if]
+
+	*sure3_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 3"]
+
+			[ezbg_change3 name="bg_17a" time="NOON" count="BG_SP"]		/* bg17　昼　　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="3"]
+		/*-----------------------------*/
+
+		[bgm_play no="02" count="0"]		// BGM再生：02_日常Ａ 明るい
+
+		[ezchara_nextstate_cm ch_name="kage_c403a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052219" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="手を繋いでたらはぐれることもないと"]	// 「
+		[maintxt_print2 text="思ってたのに……まさか君が無理やり"]
+		[maintxt_print2 text="手を離すなんて思わなかった"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c408a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052220" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……別に、怒ってないよ。呆れてるだけ"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c400a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052221" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="君、なにか見つけて走っていったよね？"]	// 「
+		[maintxt_print2 text="俺を置いてまで、なにに興味を惹かれたの？"]	// 」
+
+		[batch]
+
+		/*-----------------------------
+		ＳＥ：子猫の鳴き声
+		-------------------------------*/
+		[se_play2 no="00315" count="40"]/* SE再生：動物　猫の鳴き声１（「ニャー」（短め））Ａ　　　　　　　　　　　　　　　　　 */
+
+		[ezchara_nextstate_cm ch_name="kage_c400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052222" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……子猫？　"]	// 「
+		[maintxt_print2 text="道路に飛び出しかけてたのを"]
+		[maintxt_print2 text="助けようとしたの？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c409b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052223" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……なんだ、そういうことか。"]	// 「
+		[maintxt_print2 text="君らしいといえばらしいけど、"]
+		[maintxt_print2 text="ちょっとホッとした……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c400b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052224" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="ん？　……不安にもなるよ、当たり前でしょ。"]	// 「
+		[maintxt_print2 text="君が俺から離れてどこかへ行っちゃうなんて……"]
+		[maintxt_print2 text="考えたくもないからね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c401a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052225" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="それよりその子猫、首輪してるね？"]	// 「
+		[maintxt_print2 text="迷子になっちゃったのかもしれない。"]
+		[maintxt_print2 text="……飼い主、探してあげようか"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3004" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション４　■デート終盤
+=======================================================================================================================*/
+*sure4
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure4_turn0"]
+	[/if]
+
+	*sure4_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 4"]
+
+			[ezbg_change3 name="bg_17c" time="LIGHT2" count="BG_SP"]		/* bg17　　夜　　　　新宿＿アルタ前　　　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="4"]
+		/*-----------------------------*/
+
+		[bgm_play no="04" count="0"]		// BGM再生：04_日常Ｃ 落ち着いた雰囲気
+
+		[ezchara_nextstate_cm ch_name="kage_c200b" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052226" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="あーあ。君とのデート楽しみにしてたのに、"]	// 「
+		[maintxt_print2 text="今日はほぼ子猫の飼い主探しで終わっちゃった"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c201a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052227" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="まあ、見つかって良かったよね。"]	// 「
+		[maintxt_print2 text="飼い主の女の子もすごく喜んでたし。"]
+		[maintxt_print2 text="にしても……"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c208a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052228" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="自分の得にならないことなんて、"]	// 「
+		[maintxt_print2 text="前までの俺なら絶対にしなかったのに。"]
+		[maintxt_print2 text="まさか、自分から提案しちゃうなんてね"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c200b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052229" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="君のお節介が俺にも移っちゃったみたいだ。"]	// 「
+		[maintxt_print2 text="それだけ一緒にいるってことなのかな？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c206a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052230" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="でも……、こういうのも悪くない。"]	// 「
+		[maintxt_print2 text="この俺がそんなふうに思えちゃうんだから、"]
+		[maintxt_print2 text="君の存在ってやっぱりすごいのかも"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c201a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052231" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="俺が君のことを想ってるのと同じくらい、"]	// 「
+		[maintxt_print2 text="ううん、それ以上に……君も俺のことを"]
+		[maintxt_print2 text="好きでいてくれてるといいな"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c223a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052232" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="あ、でも無理かも。"]	// 「
+		[maintxt_print2 text="だって俺は言葉では表せないくらい……"]
+		[maintxt_print2 text="誰にも負けないくらい、君のことが大好きだから"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3004" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
+/*=======================================================================================================================
+シチュエーション５　■また明日
+=======================================================================================================================*/
+*sure5
+
+	[flag_number name="switch" i="i"]
+	[if estimate="$i==0"][calllua function="stcm2_goto" label="sure5_turn0"]
+	[/if]
+
+	*sure5_turn0
+
+		/*-----------------------------*/
+		[flag_number name="シチュ用背景" i="j"]
+		[if estimate="$j != 5"]
+
+			[ezbg_change3 name="bg_15c" time="LIGHT2" count="BG_SP"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+
+		[/if]
+
+		[flag_set name="シチュ用背景" num="5"]
+		/*-----------------------------*/
+
+		[bgm_play no="10" count="0"]		// BGM再生：10_恋愛Ａ 安らぎ
+
+		[ezchara_nextstate_cm ch_name="kage_c400c" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]/*ポーズ変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052233" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="じゃあ、今日はここで……また――"]	// 「	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c402a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052234" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……待って。"]	// 「
+		[maintxt_print2 text="やっぱり、もうちょっと一緒にいたい"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c406a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052235" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……子供じみてるって自分でも思うけど、"]	// 「
+		[maintxt_print2 text="まだ終わらせたくないんだ"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c408a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052236" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="きっと俺……、寂しいんだと思う。"]	// 「
+		[maintxt_print2 text="今日をずっと楽しみにしてたからさ。"]
+		[maintxt_print2 text="君と離れるのが……すごく、寂しい"]	// 」
+
+		[batch]
+
+
+		/*-------------------------------------*/
+		/* クロスフェード　※前景使用不可      */
+
+		[cross_fade_st]
+
+		// ▽立ち絵・削除　※速度は"０"
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]/*全キャラ削除*/
+
+		// ▽背景　　　　　※速度は"０"
+		[ezbg_change3 name="enbg_15c" time="LIGHT2" count="0"]	/* bg15　夜　　　　新宿署付近＿交差点（原寸大）　　　　　　　　　*/
+		[ezbg_target_set side="URA" target="CAME0" point_x="200" point_y="160" size_z="DEF_SIZE" count="NO_CNT" ptn="NO_PT"]//背景カメラ
+
+		// ▽立ち絵・表示　※速度は"０"
+		[chara_app_cm ch_name="b-kage_c402a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+		[ezchara_target_set ch_name="b-kage_c" side="URA" target="CAME0" point_x="POS_X" point_y="20" size_z="DEF_SIZE" count="0" ptn="NO_PT"]			//キャラカメラ
+
+		[cross_fade_ed count="40"]
+		/*-------------------------------------*/
+
+		[ezchara_target_set ch_name="b-kage_c" side="OMOTE" target="CAME0" point_x="POS_X" point_y="POS_Y" size_z="DEF_SIZE" count="50" ptn="GEN_PT"]			//キャラカメラ
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052237" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……？　屈んでって……こう？"]	// 「
+		[maintxt_print2 text="いきなり、一体どうし――"]	// 」
+
+		[batch]
+
+		/*-----------------------------
+		ＳＥ：キス音
+		-------------------------------*/
+		/*----------------------------*/
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+		[batch]
+		[ez_target_set side="OMOTE" target="CAME0" point_x="-120" point_y="-80" size_z="140" count="60" ptn="GEN_PT"]					//全体カメラ
+		[blackout_start2 dir="F_FADE" color="F_WHITE" zpos="ZPOS_BACK5" alpha="255" speed="60"]	// ホワイトアウト開始
+		[txtwaitset count="60"]
+		[batch]
+		[camera_all_reset]	// カメラリセット
+		[ezchara_del_all_cm speed="0" delay="NO_DELAY"]/* 全キャラ削除 */
+		[ezbg_change3 name="bg_15c" time="LIGHT2" count="0"]		/* bg15　　夜　　　　新宿署付近＿交差点　　　　　　　　　　　　　　*/
+		[chara_app_cm ch_name="kage_c426a" place="MD_LEFT" dir="FROM_CENTER" zpos="ZPOS_BACK3" speed="0" delay="NO_DELAY"]/*キャラ登場*/
+		[txtwaitset count="60"]
+		[batch]
+		[blackout_end2 dir="F_FADE" zpos="ZPOS_BACK5" speed="80"]					// ホワイトアウト終了
+		[txtwaitset count="80"]
+		[batch]
+		/*----------------------------*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052238" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="っ！？"]	// 「
+		[maintxt_print2 text="今、君からキスした……！？"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c425b" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052239" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="…………う。……うわあ……。"]	// 「
+		[maintxt_print2 text="どういう顔したらいいのか、わからない"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c424a" zpos="ZPOS_BACK3" delay="NO_DELAY"]/*表情変換*/
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052240" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="君ってたまにこういうことするから……困る。"]	// 「
+		[maintxt_print2 text="でも……おかげで寂しいのが"]
+		[maintxt_print2 text="どこかにいっちゃった"]	// 」
+
+		[batch]
+
+		[ezchara_nextstate_cm ch_name="kage_c206a" zpos="ZPOS_BACK3" delay="SLOW_DELAY"]
+
+		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
+
+		/*ボイス再生*/
+		[voice_play no="052241" count="0"]
+
+		[speaker_change name="白石 景之"]
+		[maintxt_print2 text="……ありがとう。"]	// 「
+		[maintxt_print2 text="それじゃ、今度こそ……また明日。"]
+		[maintxt_print2 text="明日は俺のほうからキスするから、覚悟しててね"]	// 」
+
+		[batch]
+
+		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
+
+		[bgm_stop count="FD_FAST"]	// BGM停止：速い
+
+		[ezchara_del_all_cm speed="DELALL_SP" delay="NO_DELAY"]	/* 全キャラ削除 */
+		[batch]
+
+		[file_change no="3004" label="sure60"]
+
+		[batch]
+
+		[return]
+
+
