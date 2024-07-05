@@ -74,7 +74,7 @@
 //		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
 //
 //		[speaker_change name="星野 #Name[1]"]
-//		[maintxt_print2 text="あれ……？"]	// 「	// 」
+//		[maintxt_print2 text="¿Eh...?"]	// 「	// 」
 //
 //		[batch]
 //
@@ -91,19 +91,19 @@
 //		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
 //
 //		[speaker_change name="星野 #Name[1]"]
-//		[maintxt_print2 text="（香月が、まだ帰ってない）"]
+//		[maintxt_print2 text="(Kazuki aún no está en casa)."]
 //
 //		[batch]
 //
 //		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 //
-//		[maintxt_print2 text="携帯を確認しても、特に連絡は入っていない。"]
+//		[maintxt_print2 text="Revisé mi celular, pero no me había llamado."]
 //
 //		[batch]
 //
 //		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 //
-//		[maintxt_print2 text="私は眉をひそめ、すぐにメールを打った。"]
+//		[maintxt_print2 text="Preocupada y molesta, comencé a escribir un mensaje."]
 //
 //		[batch]
 //
@@ -121,11 +121,11 @@
 //		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
 //
 //		星野#Name[1]
-//		今どこにいるの？　早く帰ってきて
+//		¿Dónde estás ahora? Vuelve a casa pronto.
 //		------------------------------*/
 //
 //		[mail_speaker is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/８"]
-//		[mail_txt text="今どこにいるの？　早く帰ってきて"]
+//		[mail_txt text="¿Dónde estás ahora? Vuelve a casa pronto."]
 //
 //		[batch]
 //
@@ -138,9 +138,9 @@
 //
 //		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 //
-//		[maintxt_print2 text="靴を脱ぎ、コートを脱ぎ、"]
-//		[maintxt_print2 text="ハンガーにかけていたところで"]
-//		[maintxt_print2 text="返信が来た。"]
+//		[maintxt_print2 text="Después de quitarme los zapatos y colgar el abrigo"]
+//		[maintxt_print2 text="en una percha, finalmente recibí una"]
+//		[maintxt_print2 text="respuesta a mi mensaje por parte de Kazuki."]
 //
 //		[batch]
 //
@@ -155,7 +155,7 @@
 //
 //		// ▽前回メール１（下）		※中央表示では前回メール１（下段）は使用できません。２（中段）から始めてください。
 //		[zenkai_mail_speaker index="ZM_ST" is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/８"]
-//		[zenkai_mail_txt index="ZM_ST" text="今どこにいるの？　早く帰ってきて"]
+//		[zenkai_mail_txt index="ZM_ST" text="¿Dónde estás ahora? Vuelve a casa pronto."]
 //
 //		// ▽前回メール２（中）
 //		// [zenkai_mail_speaker index="ZM_NK" is_heroine="ウィンドウタイプ" front_word="Ｆｒｏｍ" name="人物名" back_word="日付"]
@@ -176,21 +176,21 @@
 //		------------------------------*/
 //
 //		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="香月" back_word="１２/８"]
-//		[mail_txt text="あきとの家。今夜泊まらせてもらうから"]
+//		[mail_txt text="La casa de Akito. Me quedaré a dormir."]
 //
 //		[batch]
 //
 //		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 //
 //		[speaker_change name="星野 #Name[1]"]
-//		[maintxt_print2 text="他人様のお宅に、こんな急に……？"]	// 「	// 」
+//		[maintxt_print2 text="¿Se quedará en la casa de alguien más tan repentinamente?"]	// 「	// 」
 //
 //		[batch]
 //
 //		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 //
-//		[maintxt_print2 text="居所がわかったことに安堵はしたが、"]
-//		[maintxt_print2 text="今度は別の問題にため息をつく。"]
+//		[maintxt_print2 text="Me sentí aliviada de saber dónde estaba, pero eso solo"]
+//		[maintxt_print2 text="Me hizo suspirar por un problema diferente."]
 //
 //		[batch]
 //
@@ -198,21 +198,21 @@
 //		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
 //		
 //		星野#Name[1]
-//		お家の方にごあいさつしたいから、連絡先教えて
+//		Me gustaría saber la dirección, por favor, envíame la información de contacto.
 //		------------------------------*/
 //
 //		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
 //		[batch]
 //
 //		[mail_speaker is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/８"]
-//		[mail_txt text="お家の方にごあいさつしたいから、"]
-//		[mail_txt text="連絡先教えて"]
+//		[mail_txt text="Me gustaría saber la dirección,"]
+//		[mail_txt text="por favor, envíame la información de contacto."]
 //
 //		[batch]
 //
 //		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 //
-//		[maintxt_print2 text="返信は早かった。"]
+//		[maintxt_print2 text="Su respuesta fue rápida."]
 //
 //		[batch]
 //
@@ -220,14 +220,14 @@
 //		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
 //		
 //		香月
-//		必要ない
+//		No es necesario.
 //		------------------------------*/
 //
 //		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
 //		[batch]
 //
 //		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="香月" back_word="１２/８"]
-//		[mail_txt text="必要ない"]
+//		[mail_txt text="No es necesario."]
 //
 //		[batch]
 //
@@ -1542,15 +1542,15 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="仕事をこなしながら事件のことで"]
-		[maintxt_print2 text="頭を悩ませていたら、夜になっていた。"]
+		[maintxt_print2 text="Mientras trabajaba y pensaba profundamente en el caso,"]
+		[maintxt_print2 text="la noche había llegado."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="休憩しようとコンビニで夕飯を買って、"]
-		[maintxt_print2 text="デスクに戻ろうとしたとき――。"]
+		[maintxt_print2 text="Fui a la tienda de conveniencia a comprar la cena,"]
+		[maintxt_print2 text="y cuando estaba a punto de regresar a mi escritorio..."]
 
 		[batch]
 
@@ -1570,8 +1570,8 @@
 		[voice_play no="210001" count="0"]
 
 		[speaker_change name="？？？"]// 相田学
-		[maintxt_print2 text="……るっせえ、触んなよ！"]	// 「
-		[maintxt_print2 text="離せって言ってんだろ！"]	// 」
+		[maintxt_print2 text="¡Cállate, no me toques...!"]	// 「
+		[maintxt_print2 text="¡Suéltame!"]	// 」
 
 		[batch]
 
@@ -1602,9 +1602,9 @@
 		[voice_play no="970107" count="0"]
 
 		[speaker_change name="捜査員Ａ"]//捜査員Ａ（男性）
-		[maintxt_print2 text="おとなしくしてください。"]	// 「
-		[maintxt_print2 text="場合によっては公務執行妨害で"]
-		[maintxt_print2 text="逮捕しますよ"]	// 」
+		[maintxt_print2 text="Por favor, cálmese."]	// 「
+		[maintxt_print2 text="Si no lo haces te castigaremos por resistirte"]
+		[maintxt_print2 text="al arresto y obstrucción de la justicia."]	// 」
 
 		[batch]
 
@@ -1624,8 +1624,8 @@
 		[voice_play no="210002" count="0"]
 
 		[speaker_change name="？？？"]// 相田学
-		[maintxt_print2 text="俺は無関係だっつってんだ！"]	// 「
-		[maintxt_print2 text="くそ、離せ、離せよ……！！"]	// 」
+		[maintxt_print2 text="¡Ya te lo dije, soy inocente!"]	// 「
+		[maintxt_print2 text="¡Maldita sea, déjame ir! ¡Suéltame...!"]	// 」
 
 		[batch]
 
@@ -1639,8 +1639,8 @@
 		[voice_play no="970205" count="0"]
 
 		[speaker_change name="捜査員Ｂ"]//捜査員Ｂ（男性）
-		[maintxt_print2 text="落ち着け！　詳しい事情は"]	// 「
-		[maintxt_print2 text="取調室で聞くと言ってるだろう！"]	// 」
+		[maintxt_print2 text="¡Cálmate! Escucharemos lo que tengas que decir"]	// 「
+		[maintxt_print2 text="en la sala de interrogatorios!"]	// 」
 
 		[batch]
 
@@ -1659,9 +1659,9 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="派手な印象の男性が、"]
-		[maintxt_print2 text="多くの捜査員に取り囲まれ、"]
-		[maintxt_print2 text="連れ去られていくのが見えた。"]
+		[maintxt_print2 text="Vi a un hombre totalmente fuera de sí"]
+		[maintxt_print2 text="rodeado por muchos oficiales"]
+		[maintxt_print2 text="mientras era llevado lejos."]
 
 		[batch]
 
@@ -1670,7 +1670,7 @@
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="あれって……"]	// 「	// 」
+		[maintxt_print2 text="Ese era..."]	// 「	// 」
 
 		[batch]
 
@@ -1697,8 +1697,8 @@
 		[maintxt_print2 text="……ほら、【X-Day】の"]	// 」
 
 //		[speaker_change name="？？？"]// 冴木 弓弦
-//		[maintxt_print2 text="一昨日の射殺事件の重要参考人らしいぜ。"]	// 「
-//		[maintxt_print2 text="……ほら、【X-Day】の"]	// 」
+//		[maintxt_print2 text="Es una persona de interés en el caso de asesinato reciente"]	// 「
+//		[maintxt_print2 text="del día X."]	// 」
 
 		[batch]
 
@@ -1715,23 +1715,23 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="振り返ると、いつの間にか冴木君が"]
-		[maintxt_print2 text="隣に立っていた。"]
+		[maintxt_print2 text="Cuando me di la vuelta, Saeki estaba de pie junto a mí."]
+		[maintxt_print2 text="Sin siquiera haberme dado cuenta."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="（本当に、捕まったんだ……）"]
+		[maintxt_print2 text="(Realmente lo atraparon...)"]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="どこか現実感がなくて、"]
-		[maintxt_print2 text="呆然と喧騒を見送っていた私に、"]
-		[maintxt_print2 text="冴木君が心配そうに問いかけてくる。"]
+		[maintxt_print2 text="Pensé que estaba en un sueño o algo así,"]
+		[maintxt_print2 text="al notar lo perturbada que estaba en ese momento,"]
+		[maintxt_print2 text="parece que causé un poco de preocupación en Saeki."]
 
 		[batch]
 
@@ -1743,14 +1743,14 @@
 		[voice_play no="090112" count="0"]
 
 		[speaker_change name="冴木 弓弦"]
-		[maintxt_print2 text="おい、大丈夫か？　疲れてんの？"]	// 「	// 」
+		[maintxt_print2 text="Oye, ¿estás bien? ¿Estás cansada?"]	// 「	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="え？　ち、違うけど……"]	// 「	// 」
+		[maintxt_print2 text="¿Eh? N-No..."]	// 「	// 」
 
 		[batch]
 
@@ -1762,21 +1762,21 @@
 		[voice_play no="090113" count="0"]
 
 		[speaker_change name="冴木 弓弦"]
-		[maintxt_print2 text="本当かよ。同期の目をごまかせると思うなよ？"]	// 「	// 」
+		[maintxt_print2 text="¿En serio? No puedes engañar a tu antiguo compañero de la academia."]	// 「	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="本当だって。ちょっと驚いただけで……"]	// 「	// 」
+		[maintxt_print2 text="No miento, solo me sorprendí un poco."]	// 「	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="冴木君はそれでも疑わしそうな目で"]
-		[maintxt_print2 text="私をじろじろと見つめた。"]
+		[maintxt_print2 text="A pesar de mis protestas, Saeki continuó mirándome"]
+		[maintxt_print2 text="con recelo."]
 
 		[batch]
 
@@ -1788,22 +1788,22 @@
 		[voice_play no="090114" count="0"]
 
 		[speaker_change name="冴木 弓弦"]
-		[maintxt_print2 text="……お前、確か明日は非番だろ？"]	// 「
-		[maintxt_print2 text="何なら今夜飲みにでも行く？"]	// 」
+		[maintxt_print2 text="Ya casi acabas tu turno, ¿verdad?"]	// 「
+		[maintxt_print2 text="¿Qué tal si vamos a beber o algo esta noche?"]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="ごめん。今夜は先約があるから"]	// 「	// 」
+		[maintxt_print2 text="Lo siento. Ya hice planes para esta noche."]	// 「	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="冴木君には悪いけど、今の私の頭の中は"]
-		[maintxt_print2 text="それどころではなかった。"]
+		[maintxt_print2 text="Me sentí mal por Saeki, pero no tenía cabeza"]
+		[maintxt_print2 text="para embriagarme y charlar ahora mismo."]
 
 		[batch]
 
@@ -1818,7 +1818,7 @@
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="あと、良かったらこれ食べて！"]	// 「	// 」
+		[maintxt_print2 text="¡Oh, si tienes hambre, puedes comer esto!"]	// 「	// 」
 
 		[batch]
 
@@ -1836,7 +1836,7 @@
 		[voice_play no="090115" count="0"]
 
 		[speaker_change name="冴木 弓弦"]
-		[maintxt_print2 text="え！？　お、おい、星野！？"]	// 「	// 」
+		[maintxt_print2 text="¡¿Eh?! ¡¿O-Oye, Hoshino?!"]	// 「	// 」
 
 		[batch]
 
@@ -1850,8 +1850,8 @@
 
 //大島0604：ト書き修正しました。
 
-		[maintxt_print2 text="手にしていたビニール袋を押し付けると、"]
-		[maintxt_print2 text="私は足早にその場を後にした。"]
+		[maintxt_print2 text="Después de darle la cena que tenía en la mano,"]
+		[maintxt_print2 text="corrí retirandome rápidamente."]
 
 		[batch]
 
@@ -1865,7 +1865,7 @@
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="（……冴木君には後日謝るとして）"]
+		[maintxt_print2 text="(Me disculparé con Saeki más tarde)."]
 
 		[batch]
 
@@ -1873,7 +1873,7 @@
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="（とにかく今は、連絡しなきゃ）"]
+		[maintxt_print2 text="(De todos modos, necesito comunicarme con él ahora)."]
 
 		[flag_change name="switch" num="1"]
 
@@ -1883,8 +1883,8 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="私はポケットから携帯を取り出すと、"]
-		[maintxt_print2 text="躊躇わず笹塚さんにメールした。"]
+		[maintxt_print2 text="Después de sacar mi teléfono celular, inmediatamente"]
+		[maintxt_print2 text="envié un mensaje a Sasazuka."]
 
 		[batch]
 
@@ -1896,8 +1896,8 @@
 		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
 		
 		星野#Name[1]
-		一昨日の射殺事件、
-		重要参考人が連行されました
+		Una persona de interés fue traída、
+		por el asesinato de ayer.
 		------------------------------*/
 
 		[txtwin_proc onoff="WIN_CL"]		/* ウィンドウ（閉じる）*/
@@ -1907,8 +1907,8 @@
 		[batch]
 
 		[mail_speaker is_heroine="ML_MAIN" front_word="Ｆｒｏｍ" name="星野 #Name[1]" back_word="１２/８"]
-		[mail_txt text="昨日の射殺事件、"]
-		[mail_txt text="重要参考人が連行されました"]
+		[mail_txt text="Una persona de interés fue traída"]
+		[mail_txt text="por el asesinato de ayer."]
 
 		[batch]
 
@@ -1916,29 +1916,29 @@
 		【メール内容】※メール内容はこちらでお願いします。ボイスはありません。
 		
 		笹塚尊
-		想定内。
-		それより例のテスト、タイムリミットは
-		２人目の参考人が捕まるまでだから
+		Como se esperaba.
+		Oh sí, en cuanto a la prueba,
+		tu tiempo acaba en cuánto llegue el segundo.
 		------------------------------*/
 
 		[mail_speaker is_heroine="ML_OTHER" front_word="Ｆｒｏｍ" name="笹塚 尊" back_word="１２/８"]
-		[mail_txt text="想定内。"]
-		[mail_txt text="それより例のテスト、タイムリミットは"]
-		[mail_txt text="２人目の参考人が捕まるまでだから"]
+		[mail_txt text="Como se esperaba."]
+		[mail_txt text="Oh sí, en cuanto a la prueba,"]
+		[mail_txt text="tu tiempo acaba en cuánto llegue el segundo."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="……え！？"]	// 「	// 」
+		[maintxt_print2 text="¡¿Qué?!"]	// 「	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="（そんなの聞いてない……！）"]
+		[maintxt_print2 text="(¡Nunca me dijo eso antes!)"]
 
 		[batch]
 
@@ -1954,14 +1954,14 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="一方的な期限付けに冷や汗が出る。"]
+		[maintxt_print2 text="La repentina adición de una fecha límite me sorprendió."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="……とはいえ、抵抗したところで"]
-		[maintxt_print2 text="笹塚さんは聞いてくれないだろう。"]
+		[maintxt_print2 text="Pero no era como si discutir con Sasazuka fuera"]
+		[maintxt_print2 text="a hacer algún bien."]
 
 		[batch]
 
