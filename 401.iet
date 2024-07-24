@@ -2159,8 +2159,8 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="用件を察したのか、すぐにデスクを離れ"]
-		[maintxt_print2 text="ひらりと手を振りながら歩いてくる。"]
+		[maintxt_print2 text="Salió de su escritorio inmediatamente mientras"]
+		[maintxt_print2 text="me saludaba con la mano."]
 
 		[batch]
 
@@ -2171,7 +2171,7 @@
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="すみません、お仕事中に。実は――"]	// 「	// 」
+		[maintxt_print2 text="Lo siento, sigues trabajando. Realmente---"]	// 「	// 」
 
 		[batch]
 
@@ -2185,15 +2185,15 @@
 		[voice_play no="070173" count="0"]
 
 		[speaker_change name="桜川 寿"]
-		[maintxt_print2 text="コインなら一致したよ。"]	// 「
-		[maintxt_print2 text="それ以外、特に話せることはなし"]	// 」
+		[maintxt_print2 text="Si estás aquí por la moneda, coincide."]	// 「
+		[maintxt_print2 text="Eso es todo lo que tengo."]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="そ、そうですか……"]	// 「	// 」
+		[maintxt_print2 text="Y-Ya veo…"]	// 「	// 」
 
 		[batch]
 
@@ -2205,7 +2205,7 @@
 		[voice_play no="070174" count="0"]
 
 		[speaker_change name="桜川 寿"]
-		[maintxt_print2 text="悪いね。……それじゃ"]	// 「	// 」
+		[maintxt_print2 text="Lo siento. Nos vemos…"]	// 「	// 」
 
 		[batch]
 
@@ -2216,8 +2216,8 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="再びデスクに戻る桜川さんに礼をして、"]
-		[maintxt_print2 text="私はその場を離れた。"]
+		[maintxt_print2 text="Le di las gracias a Sakuragawa mientras volvía a su"]
+		[maintxt_print2 text="escritorio, y salí de la oficina."]
 
 		[batch]
 
@@ -2344,17 +2344,17 @@
 		[voice_play no="140044" count="0"]
 
 		[speaker_change name="向井 絵里子"]
-		[maintxt_print2 text="まあ、星野さん……。"]	// 「
-		[maintxt_print2 text="せっかくいらしてくださったのにすみません。"]
-		[maintxt_print2 text="残念なことに、今日は主任がいるんです"]	// 」
+		[maintxt_print2 text="Oh, Dios mío, Hoshino..."]	// 「
+		[maintxt_print2 text="Lamento que hayas venido hasta aquí."]
+		[maintxt_print2 text="Desafortunadamente, el director está hoy."]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="まるでお通夜のような顔で"]
-		[maintxt_print2 text="出迎えてくれた向井さんの後ろから、"]
-		[maintxt_print2 text="白石さんがひょっこりと顔を出す。"]
+		[maintxt_print2 text="Mukai me recibió con una expresión que"]
+		[maintxt_print2 text="parecía que venía de un funeral, y el rostro de Shiraishi"]
+		[maintxt_print2 text="apareció detrás de ella."]
 
 		[batch]
 
@@ -2367,8 +2367,8 @@
 		[voice_play no="050735" count="0"]
 
 		[speaker_change name="白石 景之"]
-		[maintxt_print2 text="俺がいるのは当たり前だと思うんだけど、"]	// 「
-		[maintxt_print2 text="向井さんは不思議なことを言うね"]	// 」
+		[maintxt_print2 text="A pesar de lo que las divagaciones de Mukai puedan llevarte"]	// 「
+		[maintxt_print2 text="creo que es perfectamente normal que esté aquí."]	// 」
 
 		[batch]
 
@@ -2378,23 +2378,23 @@
 		[voice_play no="050736" count="0"]
 
 		[speaker_change name="白石 景之"]
-		[maintxt_print2 text="それに、彼女は俺の方に"]	// 「
-		[maintxt_print2 text="用があるんじゃないのかな？"]	// 」
+		[maintxt_print2 text="Además, obviamente estás aquí porque"]	// 「
+		[maintxt_print2 text="tienes asuntos conmigo, ¿no?"]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="あ……、はい"]	// 「	// 」
+		[maintxt_print2 text="Oh... Sí."]	// 「	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="すんなり頷くと、向井さんはまるで"]
-		[maintxt_print2 text="信じられないものを見たかのように"]
-		[maintxt_print2 text="目を見開いた。"]
+		[maintxt_print2 text="Asentí sin dudarlo y Mukai abrió."]
+		[maintxt_print2 text="tanto sus ojos como si hubiera visto algo que"]
+		[maintxt_print2 text="fue increíble."]
 
 		[batch]
 
@@ -2406,15 +2406,15 @@
 		[voice_play no="140045" count="0"]
 
 		[speaker_change name="向井 絵里子"]
-		[maintxt_print2 text="……星野さん。まさかとは思いますが、"]	// 「
-		[maintxt_print2 text="この人の毒牙にかかったわけでは……？"]	// 」
+		[maintxt_print2 text="...Hoshino. Espero estar asumiendo incorrectamente,"]	// 「
+		[maintxt_print2 text="pero, ¿has caído en las redes de este hombre?"]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="え？"]	// 「	// 」
+		[maintxt_print2 text="¿Qué?"]	// 「	// 」
 
 		[batch]
 
@@ -2426,7 +2426,7 @@
 		[voice_play no="050737" count="0"]
 
 		[speaker_change name="白石 景之"]
-		[maintxt_print2 text="失礼だなあ。合意の上だよ"]	// 「	// 」
+		[maintxt_print2 text="Esto es brusco, se trata de un mutuo acuerdo."]	// 「	// 」
 
 		[batch]
 
@@ -2438,15 +2438,15 @@
 		[voice_play no="140046" count="0"]
 
 		[speaker_change name="向井 絵里子"]
-		[maintxt_print2 text="！？　そんな――"]	// 「	// 」
+		[maintxt_print2 text="...?! No me digas..."]	// 「	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_CENTER"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="……あの、違いますから。"]	// 「
-		[maintxt_print2 text="そういうのじゃありません"]	// 」
+		[maintxt_print2 text="Um, no es así."]	// 「
+		[maintxt_print2 text="No es lo que estás pensando."]	// 」
 
 		[batch]
 
@@ -2462,8 +2462,8 @@
 		[voice_play no="140047" count="0"]
 
 		[speaker_change name="向井 絵里子"]
-		[maintxt_print2 text="……ですよね。ああ、安心しました"]	// 「	// 」
-		[maintxt_print2 text="ですが、くれぐれもご用心を"]	// 」
+		[maintxt_print2 text="...Ya me lo imaginaba. Uf. Estoy tan aliviada,"]	// 「	// 」
+		[maintxt_print2 text="Pero asegúrate de mantener la guardia alta."]	// 」
 
 		[batch]
 
@@ -2473,7 +2473,7 @@
 //		[voice_play no="140047" count="0"]
 //
 //		[speaker_change name="向井 絵里子"]
-//		[maintxt_print2 text="……ですよね。ああ、安心しました"]	// 「	// 」
+//		[maintxt_print2 text="No lo olvides."]	// 「	// 」
 //
 //		[batch]
 //
@@ -2483,8 +2483,8 @@
 //		[voice_play no="140048" count="0"]
 //
 //		[speaker_change name="向井 絵里子"]
-//		[maintxt_print2 text="私はこれからお昼に出るところです。"]	// 「
-//		[maintxt_print2 text="くれぐれもご用心を"]	// 」
+//		[maintxt_print2 text="Estoy a punto de salir a almorzar."]	// 「
+//		[maintxt_print2 text="Por favor, ten cuidado."]	// 」
 //
 //		[batch]
 
@@ -2505,30 +2505,30 @@
 		[voice_play no="050738" count="0"]
 
 		[speaker_change name="白石 景之"]
-		[maintxt_print2 text="ご用心、ねえ。"]	// 「
-		[maintxt_print2 text="何の心配をしてるのやら"]	// 」
+		[maintxt_print2 text="Mantener la guardia alta, ¿eh?"]	// 「
+		[maintxt_print2 text="¿Qué es lo que le preocupa tanto?"]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="……白石さんが紛らわしい"]	// 「
-		[maintxt_print2 text="言い方をするせいだと思います"]	// 」
+		[maintxt_print2 text="...Creo que probablemente sea porque estás"]	// 「
+		[maintxt_print2 text="siempre molestando a la gente."]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="ため息をつくと、私はニヤニヤと笑う"]
-		[maintxt_print2 text="白石さんにさっそく用件を切り出した。"]
+		[maintxt_print2 text="Suspiré y luego me puse manos a la obra"]
+		[maintxt_print2 text="con el sonriente Shiraishi."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="実は、白石さんに伺いたいことがあって"]	// 「	// 」
+		[maintxt_print2 text="De hecho, tengo algo que me gustaría preguntar."]	// 「	// 」
 
 		[batch]
 
@@ -2540,7 +2540,7 @@
 		[voice_play no="050739" count="0"]
 
 		[speaker_change name="白石 景之"]
-		[maintxt_print2 text="ふーん。何かな？"]	// 「	// 」
+		[maintxt_print2 text="Mmm, ¿Qué es?"]	// 「	// 」
 
 		[batch]
 
@@ -2552,22 +2552,22 @@
 		[voice_play no="050740" count="0"]
 
 		[speaker_change name="白石 景之"]
-		[maintxt_print2 text="……ああ、そういえば君、笹塚君から"]	// 「
-		[maintxt_print2 text="テストされてるんだっけ。そのこと？"]	// 」
+		[maintxt_print2 text="... Ohh, según recuerdo, estás siendo probada por"]	// 「
+		[maintxt_print2 text="Sasazuka, ¿verdad? ¿Se trata de eso?"]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="どうやら事情は筒抜けらしい。"]
+		[maintxt_print2 text="Parecía que mi situación era bien conocida."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="はい。一応、自分なりに考えているんですが、"]	// 「
-		[maintxt_print2 text="どうしてもあと少しのところで詰まってしまって"]	// 」
+		[maintxt_print2 text="Sí. He estado tratando de resolverlo por mi cuenta,"]	// 「
+		[maintxt_print2 text="Estoy cerca, pero estoy estancada."]	// 」
 
 		[batch]
 
@@ -2579,8 +2579,8 @@
 		[voice_play no="050741" count="0"]
 
 		[speaker_change name="白石 景之"]
-		[maintxt_print2 text="俺が役に立てるかどうかはわからないけど、"]	// 「
-		[maintxt_print2 text="とりあえず聞いてあげるよ"]	// 」
+		[maintxt_print2 text="No estoy seguro de poder ser de alguna ayuda, pero"]	// 「
+		[maintxt_print2 text="te escucharé de todos modos."]	// 」
 
 		[batch]
 
@@ -2588,22 +2588,22 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="……要するに、ヒントをくれるかどうかは"]
-		[maintxt_print2 text="白石さんの気分次第、ということだろう。"]
+		[maintxt_print2 text="... Entonces, básicamente, si me da pistas o no,"]
+		[maintxt_print2 text="dependerá de su humor caprichoso."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="私は少し緊張しながら、昨夜見つけた"]
-		[maintxt_print2 text="２つの事件のキーワードについて述べた。"]
+		[maintxt_print2 text="Nerviosamente, mencioné los aspectos en común"]
+		[maintxt_print2 text="de los dos incidentes que estudié anoche."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="すると白石さんは薄く笑い、"]
-		[maintxt_print2 text="ひょいと肩を竦めてみせた。"]
+		[maintxt_print2 text="Entonces, Shiraishi sonrió levemente"]
+		[maintxt_print2 text="y se encogió de hombros."]
 
 		[batch]
 
@@ -2615,40 +2615,40 @@
 		[voice_play no="050742" count="0"]
 
 		[speaker_change name="白石 景之"]
-		[maintxt_print2 text="そこまでわかってて、なんで気付かないかなあ。"]	// 「
-		[maintxt_print2 text="君、ちょっと頭が固いんじゃない？"]	// 」
+		[maintxt_print2 text="Si sabes tanto, ¿por qué estás estancada?"]	// 「
+		[maintxt_print2 text="¿No estás siendo un poco cabeza hueca?"]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="途端に退屈そうな顔をする白石さんに、"]
-		[maintxt_print2 text="私は敢えて肯定した。"]
+		[maintxt_print2 text="La expresión de Shiraishi se volvió a una de aburrimiento,"]
+		[maintxt_print2 text="por lo que me limité a estar de acuerdo con él."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="……そうかもしれません。"]	// 「
-		[maintxt_print2 text="なので、白石さんに伺いたかったんです"]	// 」
+		[maintxt_print2 text="...Probablemente es así."]	// 「
+		[maintxt_print2 text="Por eso vine a hablar contigo."]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="白石さんも、柳さんや笹塚さんと同様に"]	// 「
-		[maintxt_print2 text="容疑者は直に捕まるだろうと言っていたと"]
-		[maintxt_print2 text="聞きました"]	// 」
+		[maintxt_print2 text="Escuché que al igual que Yanagi y Sasazuka,"]	// 「
+		[maintxt_print2 text="también dijiste que el sospechoso sería detenido"]
+		[maintxt_print2 text="dentro de poco."]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="そして――彼らは【捨て駒】だと"]	// 「
-		[maintxt_print2 text="言っていたと"]	// 」
+		[maintxt_print2 text="Además, dijiste que era un"]	// 「
+		[maintxt_print2 text=""peón de sacrificio"."]	// 」
 
 		[batch]
 
@@ -2660,9 +2660,9 @@
 		[voice_play no="050743" count="0"]
 
 		[speaker_change name="白石 景之"]
-		[maintxt_print2 text="……へえ。"]	// 「
-		[maintxt_print2 text="向井さん辺りから聞き出したのかな？"]
-		[maintxt_print2 text="なかなかやるね"]	// 」
+		[maintxt_print2 text="...Mmm."]	// 「
+		[maintxt_print2 text="¿Le sacaste eso a Mukai o a alguien más?"]
+		[maintxt_print2 text="Eres bastante buena."]	// 」
 
 		[flag_change name="switch" num="1"]
 
@@ -2672,15 +2672,15 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="チェシャ猫のように細められた目が"]
-		[maintxt_print2 text="うっそりと弧を描く。"]
+		[maintxt_print2 text="Sus ojos se entrecerraron como los del gato de Cheshire"]
+		[maintxt_print2 text="formando una sonrisa de fascinación."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="どうやらうまく"]
-		[maintxt_print2 text="白石さんの関心をひけたようだ。"]
+		[maintxt_print2 text="Parece que pude provocar con éxito"]
+		[maintxt_print2 text="su interés."]
 
 		[batch]
 
@@ -2692,38 +2692,38 @@
 		[voice_play no="050744" count="0"]
 
 		[speaker_change name="白石 景之"]
-		[maintxt_print2 text="【捨て駒】っていうのはね、"]	// 「
-		[maintxt_print2 text="そのままの意味だよ"]	// 」
+		[maintxt_print2 text="Un "peón de sacrificio" es exactamente"]	// 「
+		[maintxt_print2 text="como suena."]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="それだけではまだ私の頭には引っかからない。"]
+		[maintxt_print2 text="Nada hacía clic para mí todavía."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="まだ何かが足りていないのだ。"]
+		[maintxt_print2 text="Todavía faltaba algo."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="……今日連行された重要参考人は、"]	// 「
-		[maintxt_print2 text="おそらく過去の事件で容疑がかかった"]
-		[maintxt_print2 text="人物だと思います"]	// 」
+		[maintxt_print2 text="...Creo que la persona de interés que trajeron"]	// 「
+		[maintxt_print2 text="hoy probablemente era un sospechoso"]
+		[maintxt_print2 text="de los incidentes pasados."]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="当時は完璧なアリバイがあったものの、"]	// 「
-		[maintxt_print2 text="今回はなかった。……だから絞り込みも"]
-		[maintxt_print2 text="早かったんですよね？"]	// 」
+		[maintxt_print2 text="Tenía una coartada irrefutable en aquel momento, pero"]	// 「
+		[maintxt_print2 text="esta vez no la tiene... Y por eso se han demorado"]
+		[maintxt_print2 text="poco en reducir los sospechosos, ¿no?"]	// 」
 
 		[batch]
 
