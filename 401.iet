@@ -3751,30 +3751,30 @@
 		[voice_play no="110176" count="0"]
 
 		[speaker_change name="峰岸 誠司"]
-		[maintxt_print2 text="そう畏まらないでください。"]	// 「
-		[maintxt_print2 text="勤務を終えて署を出たのなら尚更です"]	// 」
+		[maintxt_print2 text="Por favor, no hay necesidad de ser tan formal."]	// 「
+		[maintxt_print2 text="Especialmente porque tu jornada laboral ha terminado."]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="（さすがにそういうわけには……）"]
+		[maintxt_print2 text="(Algo anda mal aquí...)"]
 
 		[batch]
 
 		[txtwinx_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="むしろ昨日の言い逃げを経て、"]
-		[maintxt_print2 text="今なおこんなふうに気さくに話しかけてくる"]
-		[maintxt_print2 text="峰岸さんの意図がわからない。"]
+		[maintxt_print2 text="No sabía cuál era la intención de Minegishi."]
+		[maintxt_print2 text="buscándome y hablándome directamente"]
+		[maintxt_print2 text="después de lo que me dijo ayer."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="……とはいえ、声をかけてもらって"]
-		[maintxt_print2 text="すぐに立ち去るのも失礼だ。"]
+		[maintxt_print2 text="Habría sido de mala educación marcharme"]
+		[maintxt_print2 text="después de haberme llamado."]
 
 		[batch]
 
@@ -3787,18 +3787,18 @@
 //		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 //
 //		[speaker_change name="星野 #Name[1]"]
-//		[maintxt_print2 text="あの……、昼間、重要参考人が"]	// 「
-//		[maintxt_print2 text="連行されたところを見かけました。"]
-//		[maintxt_print2 text="お忙しそうですね"]	// 」
+//		[maintxt_print2 text="Vi que trajeron a un testigo al"]	// 「
+//		[maintxt_print2 text="interrogatorio. Usted y su departamento deben estar"]
+//		[maintxt_print2 text="bastante ocupados en este momento."]	// 」
 //
 //		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="あの……、先ほど、重要参考人が"]	// 「
-		[maintxt_print2 text="連行されたところを見かけました。"]
-		[maintxt_print2 text="お忙しそうですね"]	// 」
+		[maintxt_print2 text="Vi que trajeron a un testigo al"]	// 「
+		[maintxt_print2 text="interrogatorio. Usted y su departamento deben estar"]
+		[maintxt_print2 text="bastante ocupados en este momento."]	// 」
 
 		[batch]
 
@@ -3814,8 +3814,8 @@
 		[voice_play no="110177" count="0"]
 
 		[speaker_change name="峰岸 誠司"]
-		[maintxt_print2 text="否定はしませんが、忙しくとも"]	// 「
-		[maintxt_print2 text="食事をする時間くらいありますよ"]	// 」
+		[maintxt_print2 text="No lo negaré, pero aún así me queda"]	// 「
+		[maintxt_print2 text="tiempo para poder cenar."]	// 」
 
 		[batch]
 
@@ -3825,37 +3825,37 @@
 		[voice_play no="110178" count="0"]
 
 		[speaker_change name="峰岸 誠司"]
-		[maintxt_print2 text="ちょうど外食に出ようとしていたところです。"]	// 「
-		[maintxt_print2 text="よければご一緒にいかがですか？"]	// 」
+		[maintxt_print2 text="Estaba pensando en salir a comer."]	// 「
+		[maintxt_print2 text="¿Te importaría unirte a mí?"]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="（……は！？）"]
+		[maintxt_print2 text="(¡¿Eh?!)"]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="まさかそう来るとは思わず、"]
-		[maintxt_print2 text="私は慌てて首を横に振った。"]
+		[maintxt_print2 text="Debido a que fue un giro tan inesperado"]
+		[maintxt_print2 text="de los eventos, entré en pánico y negué con la cabeza."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="いえ、その、申し訳ないんですが"]	// 「
-		[maintxt_print2 text="先約がありまして……！"]	// 」
+		[maintxt_print2 text="Debo disculparme, pero,"]	// 「
+		[maintxt_print2 text="¡ya he hecho planes para esta noche!"]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="いくらなんでもここで誘いに乗れるほど"]
-		[maintxt_print2 text="図太い神経はしていない。"]
+		[maintxt_print2 text="No había manera de que hubiera tenido el descaro de"]
+		[maintxt_print2 text="aceptar su invitación."]
 
 		[batch]
 
@@ -3867,23 +3867,23 @@
 		[voice_play no="110179" count="0"]
 
 		[speaker_change name="峰岸 誠司"]
-		[maintxt_print2 text="失礼、これではセクハラに当たりますか。"]	// 「
-		[maintxt_print2 text="そういうつもりではなかったのですが"]	// 」
+		[maintxt_print2 text="Lo lamento. Eso pudo verse como acoso."]	// 「
+		[maintxt_print2 text="No me refería a ese tipo de invitación."]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="そんなふうには思っていません。"]	// 「
-		[maintxt_print2 text="本当に……、先約が……"]	// 」
+		[maintxt_print2 text="Oh, no lo estaba melinterpretando."]	// 「
+		[maintxt_print2 text="De verdad... tengo planes previos..."]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="おろおろと断る私に、"]
-		[maintxt_print2 text="峰岸さんは苦笑する。"]
+		[maintxt_print2 text="Rechacé frenéticamente su invitación y"]
+		[maintxt_print2 text="Minegishi rió secamente."]
 
 		[batch]
 
@@ -3895,15 +3895,15 @@
 		[voice_play no="110180" count="0"]
 
 		[speaker_change name="峰岸 誠司"]
-		[maintxt_print2 text="では、せめて人通りの多いところまで"]	// 「
-		[maintxt_print2 text="送らせてください。……ついでですから"]	// 」
+		[maintxt_print2 text="Bueno, al menos déjame acompañarte hasta"]	// 「
+		[maintxt_print2 text="un lugar donde haya más gente ya que voy de camino."]	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="……はい"]	// 「	// 」
+		[maintxt_print2 text="Está bien..."]	// 「	// 」
 
 		[batch]
 
@@ -3911,7 +3911,7 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="さすがにここまで言われては断れない。"]
+		[maintxt_print2 text="No había forma educada de negarme."]
 
 		[flag_change name="switch" num="1"]
 
@@ -3922,14 +3922,14 @@
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="（本当に、何なんだろう……？）"]
+		[maintxt_print2 text="(En serio, ¿qué diablos está pensando...?)"]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="私は緊張を隠せないまま、"]
-		[maintxt_print2 text="少し前を歩く峰岸さんに従った。"]
+		[maintxt_print2 text="Incapaz de ocultar mi nerviosismo, dócilmente"]
+		[maintxt_print2 text="seguí a Minegishi mientras caminaba delante de mí."]
 
 		[batch]
 
@@ -3957,14 +3957,14 @@
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_RIGHT"]
 
 		[speaker_change name="峰岸 誠司"]// ※
-		[maintxt_print2 text="…………"]	// 「	// 」
+		[maintxt_print2 text="..."]	// 「	// 」
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="（……気まずい……）"]
+		[maintxt_print2 text="(Esto es incómodo...)"]
 
 		[batch]
 
@@ -3975,7 +3975,7 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="特に会話もないまま、ひたすら歩く。"]
+		[maintxt_print2 text="Caminamos juntos sin decir una palabra."]
 
 		[batch]
 
@@ -3983,9 +3983,9 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="時折峰岸さんの様子を窺うものの、"]
-		[maintxt_print2 text="彼はまるで気にした風でもなく、"]
-		[maintxt_print2 text="淡々と足を進めるだけだった。"]
+		[maintxt_print2 text="De vez en cuando miraba a Minegishi, pero a él"]
+		[maintxt_print2 text="no parecía importarle y simplemente"]
+		[maintxt_print2 text="seguía adelante."]
 
 		[batch]
 
@@ -4015,8 +4015,8 @@
 		[voice_play no="010831" count="0"]
 
 		[speaker_change name="柳 愛時"]// ※
-		[maintxt_print2 text="笹塚じゃないが、俺も使えるものなら"]	// 「
-		[maintxt_print2 text="利用したいとは思ってる"]	// 」
+		[maintxt_print2 text="Aunque no soy Sasazuka, aún así tomaré"]	// 「
+		[maintxt_print2 text="cualquier ventaje de la cual pueda agarrar."]	// 」
 
 		[batch]
 
@@ -4028,8 +4028,8 @@
 		[voice_play no="010832" count="0"]
 
 		[speaker_change name="柳 愛時"]// ※
-		[maintxt_print2 text="管理官ともなれば、"]	// 「
-		[maintxt_print2 text="持っている情報の有益性はケタ外れだしな"]	// 」
+		[maintxt_print2 text="Un comisionado debe tener una"]	// 「
+		[maintxt_print2 text="cantidad excepcional de información."]	// 」
 
 		[batch]
 
@@ -4055,41 +4055,41 @@
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="（……ある意味、チャンスなのかもしれない）"]
+		[maintxt_print2 text="(En realidad, esta podría ser una buena oportunidad)."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="今の私には、時間がない。"]
+		[maintxt_print2 text="Realmente no había tiempo que perder."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="笹塚さんのテストの答えを導き出すには、"]
-		[maintxt_print2 text="まだ何かが足りていないのだ。"]
+		[maintxt_print2 text="Para deducir la respuesta a la prueba de Sasazuka,"]
+		[maintxt_print2 text="todavía necesitaba algo más."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="（一か八か……、賭けてみよう）"]
+		[maintxt_print2 text="(Después de todo no tenía nada que perder)."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="私は意を決して口を開いた。"]
+		[maintxt_print2 text="Por lo que después de decidirme, hablé."]
 
 		[batch]
 
 		[txtwin_info_cm type="WIN_NOML" pos="WIN_LEFT"]
 
 		[speaker_change name="星野 #Name[1]"]
-		[maintxt_print2 text="……それにしても、まさかこんなに早く"]	// 「
-		[maintxt_print2 text="重要参考人が絞り込めるとは思いませんでした"]	// 」
+		[maintxt_print2 text="No pensé que encontretían una pista tan grande"]	// 「
+		[maintxt_print2 text="de manera inmediata."]	// 」
 
 		[batch]
 
@@ -4097,7 +4097,7 @@
 
 		[txtwin_info_cm type="WIN_JINO" pos="WIN_CENTER"]
 
-		[maintxt_print2 text="すると峰岸さんはふっと笑いながら言う。"]
+		[maintxt_print2 text="Entonces Minegishi sonrió un poco y habló."]
 
 		[batch]
 
@@ -4109,9 +4109,9 @@
 		[voice_play no="110181" count="0"]
 
 		[speaker_change name="峰岸 誠司"]
-		[maintxt_print2 text="実は彼、８月の事件のときにも"]	// 「
-		[maintxt_print2 text="一度重要参考人として連行していた"]
-		[maintxt_print2 text="人物だったんですよ"]	// 」
+		[maintxt_print2 text="En realidad, él solía ser un"]	// 「
+		[maintxt_print2 text="sospechoso del caso de"]
+		[maintxt_print2 text="Agosto."]	// 」
 
 		[batch]
 
@@ -4123,8 +4123,8 @@
 		[voice_play no="110182" count="0"]
 
 		[speaker_change name="峰岸 誠司"]
-		[maintxt_print2 text="そのときは完璧なアリバイがあった。"]	// 「
-		[maintxt_print2 text="しかし――"]	// 」
+		[maintxt_print2 text="En aquel momento tenía una coartada perfecta."]	// 「
+		[maintxt_print2 text="Pero..."]	// 」
 
 		[batch]
 
